@@ -13,10 +13,9 @@
 	<!-- this registers beans annotated with @Aspect -->
 	<aop:aspectj-autoproxy />
 
-	<import resource="classpath:META-INF/logger-reporter.xml" />
 	<import resource="classpath:META-INF/page_base_bean.xml" />
 	<import resource="classpath:META-INF/case_base_bean.xml" />
-	<import resource="../pageObjects/homePage.xml" />
+	<import resource="../pageObjects/cursorMoveHomePage.xml" />
 	<import resource="../pageObjects/lastPage.xml" />
 	
 	<!-- 
@@ -27,21 +26,11 @@
 	<ate:operaDriver    />
 	<ate:htmlUnitDriver />
       -->
-	<ate:htmlUnitDriver  />
+	<ate:htmlUnitDriver />
 	
 	<!-- here test case id has to be "testcase" -->
-	<ate:testCase id="testcase" testCaseName="Bigtester home page test case">
-	
-		<ate:homeStep id="stepOpenBigtesterHomePage" stepName="stepOpenBigtesterHomePage"
-<<<<<<< HEAD
-			stepDescription="open bigtester.com home step" targetStep="true" pageObject="poHomePage">
-=======
-			stepDescription="open bigtester.com home step" targetStep="true" pageObject="poHomePage">			
->>>>>>> branch 'chen' of https://github.com/bigtester/automation-test-engine.git
-			<ate:asserterReferences>
-				<ate:ateXmlElementReference id="assert2" ateXmlElementID="homeElementExistenceAsserter" />
-			</ate:asserterReferences>
-		</ate:homeStep>
+	<ate:testCase id="testcase" testCaseName="cursorMove">
+	 	
 		<ate:lastStep id="stepLastStep" stepName="stepLastStep"
 			stepDescription="last step close browser" targetStep="false" pageObject="poLastPage">
 		</ate:lastStep>

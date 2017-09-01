@@ -14,71 +14,85 @@
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
 package org.bigtester.ate.test.model.page.elementaction;
 
 import org.bigtester.ate.GlobalUtils;
+
 import org.bigtester.ate.model.page.atewebdriver.exception.BrowserUnexpectedException;
-import org.bigtester.ate.model.page.elementaction.DropdownListSelectAction;
+import org.bigtester.ate.model.page.elementaction.IElementAction;
 import org.bigtester.ate.model.page.elementaction.ITestObjectAction;
+import org.bigtester.ate.model.data.IStepInputData;
 import org.bigtester.ate.model.data.exception.RuntimeDataException;
 import org.bigtester.ate.model.page.exception.PageValidationException;
 import org.bigtester.ate.model.page.exception.StepExecutionException;
 import org.bigtester.ate.model.page.page.MyWebElement;
-import org.bigtester.ate.test.BigtesterProjectTest;
+import org.bigtester.ate.test.AbstractBigtesterStepTest;
+import org.eclipse.jdt.annotation.Nullable;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
 import org.springframework.test.context.ContextConfiguration;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
  * 
- * @author Peidong Hu
+ * @author Jun Yang
  *
  */
-@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/dropDownList.xml" })
-public class DropdownSelectActionTest extends BigtesterProjectTest {
+@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/cursorMoveAction.xml" })
+public class CursorMoveActionTest extends AbstractBigtesterStepTest {
 
+	/** The my web e. */
+	@Nullable
+	private transient MyWebElement<?> myWebE;
 	/**
 	 * Ead test.
 	 * 
 	 * @throws RuntimeDataException
 	 * @throws PageValidationException
-	 * @throws StepExecutionException
-	 * @throws InterruptedException
+	 * @throws StepExecutionException 
+	 * @throws InterruptedException 
 	 * @throws BrowserUnexpectedException 
 	 */
 	@Test(priority = 1)
-	public void mainTest() throws PageValidationException,
+	public void cursorMoveEADTest() throws PageValidationException,
 			RuntimeDataException, StepExecutionException, InterruptedException, BrowserUnexpectedException {
-		getTestPage("bigtesterTestNG/aut/dropdownList.html");
+		getTestPage("bigtesterTestNG/aut/textarea.html");
 
-		MyWebElement<?> ead = (MyWebElement<?>) getApplicationContext()
-				.getBean("eadTestDropdownListSelect");
-		ead.doAction();
-
-		Thread.sleep(3000);
-
-		ITestObjectAction<?> testobj = (ITestObjectAction<?>) ead
-				.getTestObjectAction();
-
-		if (testobj == null) {
+		MyWebElement<?> cursorM = (MyWebElement<?>) getApplicationContext()
+				.getBean("eadCursorMove");
+		//CursorM.doAction();
+		this.runElementTestStep(cursorM);		
+				
+		ITestObjectAction<?> moveActObj = (ITestObjectAction<?>) cursorM.getTestObjectAction();
+		if  (moveActObj == null) {
 			Assert.assertTrue(false);
-		} else {
-			String selections = ((DropdownListSelectAction) GlobalUtils
-					.getTargetObject(testobj)).getSelections();
-
-			Select actualVal = new Select(getMyDriver().getWebDriverInstance()
-					.findElements(new By.ByTagName("select")).get(0));
-
-			Assert.assertTrue(selections.equals(actualVal
-					.getFirstSelectedOption().getText()));
-
-		}
-
+		} else {			
+			IStepInputData moveInp = ((IElementAction) moveActObj).getDataValue();
+			
+			 if (moveInp == null) {
+				 Assert.assertTrue(false);
+			 } else {
+				 String expectedVal = moveInp.getStrDataValue();
+				 String actualVal = getMyDriver().getWebDriverInstance().findElements(new By.ByTagName("textarea")).get(0).getAttribute("value");
+				 Assert.assertTrue(expectedVal.equals(actualVal));
+			 }		
+		}				
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
+	@Override
+	public MyWebElement<?> getMyWebElement() {
+			final MyWebElement<?> myWebE2 = myWebE;
+			if (myWebE2 == null) {
+				throw GlobalUtils.createNotInitializedException("myWebe");
+			} else {
+				return myWebE2;
+			}
+		}
 }

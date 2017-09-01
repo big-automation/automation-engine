@@ -40,6 +40,19 @@ import org.testng.annotations.Test;
 /**
  * 
  * @author Chen Chen 
+=======
+import org.bigtester.ate.model.page.elementaction.ClickAction;
+import org.bigtester.ate.test.AbstractBigtesterStepTest;
+import org.eclipse.jdt.annotation.Nullable;
+import org.openqa.selenium.By;
+import org.springframework.test.context.ContextConfiguration;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+/**
+ * 
+ * @author Chen Chen
+>>>>>>> branch 'chen' of https://github.com/bigtester/automation-test-engine.git
  *
  */
 @ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/buttonClick.xml" })

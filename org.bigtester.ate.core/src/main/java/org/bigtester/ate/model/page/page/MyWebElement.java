@@ -74,6 +74,8 @@ public class MyWebElement<T> extends PageModelBase {
 		ITestObjectFinder<T> testObjectFinderTmp = new TestObjectFinder(iElmFind).getCapability(ITestObjectFinder.class); 
 		if (null == testObjectFinderTmp) {
 			throw GlobalUtils.createNotInitializedException("test object finder");
+
+		
 		} else {
 			testObjectFinder = testObjectFinderTmp;
 		}

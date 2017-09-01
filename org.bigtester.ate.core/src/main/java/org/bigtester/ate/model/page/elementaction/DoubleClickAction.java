@@ -26,6 +26,7 @@ import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+
 // TODO: Auto-generated Javadoc
 /**
  * This class DoubleClickAction defines ....
@@ -34,12 +35,14 @@ import org.openqa.selenium.interactions.Actions;
  */
 public class DoubleClickAction extends BaseElementAction implements IElementAction, ITestObjectActionImpl  {
 
+	/** The selections. */
+	final private String selections;
     /**
 	 * @param myWd
 	 */
-	public DoubleClickAction(IMyWebDriver myWd) {
+	public DoubleClickAction(IMyWebDriver myWd, String selections) {
 		super(myWd);
-		// TODO Auto-generated constructor stub
+		this.selections = selections;
 	}
 
 	/**
@@ -51,4 +54,11 @@ public class DoubleClickAction extends BaseElementAction implements IElementActi
     	Actions act = new Actions(getMyWd().getWebDriver());
 		act.doubleClick(webElm);
     }
+    
+    /**
+	 * @return the selections
+	 */
+	public String getSelections() {
+		return selections;
+	}
 }

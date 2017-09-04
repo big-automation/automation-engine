@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE xml>
 <dataset>
 <TESTDATACONTEXTFIELDNAME IDCOLUMN="1" CONTEXTFIELDNAME="User Role" />
 <TESTDATACONTEXTFIELDNAME IDCOLUMN="2" CONTEXTFIELDNAME="Expected Result Assert Condition" />

@@ -79,9 +79,9 @@ public class ExportAsFileActionTest extends BigtesterProjectTest{
 	 */
 	@Test
 	public void doActionTest() {
-		ExportAsFileAction eafa = new ExportAsFileAction(getMyMockedDriver(), this.FILENAME);
+		ExportAsFileAction eafa = new ExportAsFileAction(getMyMockedDriver(), ExportAsFileActionTest.FILENAME);
 		eafa.doAction(fileOpr);
-		Mockito.verify(fileOpr).setExportFileNameWithAbsolutePath(this.FILENAME);
+		Mockito.verify(fileOpr).setExportFileNameWithAbsolutePath(ExportAsFileActionTest.FILENAME);
 		Mockito.verify(fileOpr).saveToSingleFile();
 	}
 }

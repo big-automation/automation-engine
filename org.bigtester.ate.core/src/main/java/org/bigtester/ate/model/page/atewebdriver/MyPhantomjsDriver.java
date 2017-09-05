@@ -73,13 +73,13 @@ public class MyPhantomjsDriver extends AbstractWebDriverBase implements IMyWebDr
 	@Override
 	public WebDriver getWebDriverInstance() {		
 		DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setJavascriptEnabled(true);  
-        caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, "E:\\phantomjs.exe");
+        caps.setJavascriptEnabled(true);        
 		WebDriver retVal = getWebDriver();
 		if (null == retVal) {
 			OSinfo osinfo = new OSinfo();
 			EPlatform platform = osinfo.getOSname();
 			String driverPath = GlobalUtils.getDriverPath(); //NOPMD
+			
 			
 			switch (platform) {
 			case Windows_32:

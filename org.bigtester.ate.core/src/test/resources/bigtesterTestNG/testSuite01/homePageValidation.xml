@@ -33,11 +33,7 @@
 	<ate:testCase id="testcase" testCaseName="Bigtester home page test case">
 	
 		<ate:homeStep id="stepOpenBigtesterHomePage" stepName="stepOpenBigtesterHomePage"
-<<<<<<< HEAD
 			stepDescription="open bigtester.com home step" targetStep="true" pageObject="poHomePage">
-=======
-			stepDescription="open bigtester.com home step" targetStep="true" pageObject="poHomePage">	
->>>>>>> branch 'chen' of https://github.com/bigtester/automation-test-engine.git
 			<ate:asserterReferences>
 				<ate:ateXmlElementReference id="assert2" ateXmlElementID="homeElementExistenceAsserter" />
 			</ate:asserterReferences>

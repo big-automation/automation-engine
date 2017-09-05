@@ -52,7 +52,7 @@ import org.testng.annotations.Test;
 /**
  * 
  * @author Chen Chen
->>>>>>> branch 'chen' of https://github.com/bigtester/automation-test-engine.git
+
  *
  */
 @ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/buttonClick.xml" })

@@ -70,6 +70,7 @@ public class SystemLogger {
 	 * @param joinPoint the join point
 	 * @param error the error
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	@AfterThrowing(pointcut = "selectAll()", throwing = "error")
 	public void afterThrowingAdvice(JoinPoint joinPoint, Throwable error) {
 		if (isAlreadySysPointCut(error)) {

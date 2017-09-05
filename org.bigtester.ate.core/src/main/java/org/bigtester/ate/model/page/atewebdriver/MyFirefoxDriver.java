@@ -26,6 +26,7 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 // TODO: Auto-generated Javadoc
@@ -192,7 +193,10 @@ public class MyFirefoxDriver extends AbstractWebDriverBase implements
 			} else {
 				FirefoxBinary binary = new FirefoxBinary();
 				binary.addCommandLineOptions("-no-remote");
-				retVal = new FirefoxDriver(binary, bPro.getProfile());
+				FirefoxOptions opt = new FirefoxOptions();
+				opt.setBinary(binary);
+				opt.setProfile(bPro.getProfile());
+				retVal = new FirefoxDriver(opt);
 			}
 			setWebDriver(retVal);
 

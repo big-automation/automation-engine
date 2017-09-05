@@ -104,6 +104,7 @@ public class BaseElementAction extends PageModelBase{
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("unchecked")
 	public @Nullable <T> T getCapability(Class<T> type) {
 		if (this instanceof IElementAction) {
 			return (T) this; //NOPMD

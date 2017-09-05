@@ -14,29 +14,19 @@
 	<aop:aspectj-autoproxy />
 
 	<import resource="classpath:META-INF/logger-reporter.xml" />
-	<import resource="classpath:META-INF/page_base_bean.xml" />
-	
+	<import resource="classpath:META-INF/page_base_bean.xml" />	
 	
 	<ate:elementActionDef id="eadAssignValue" elementFind="efTextArea" elementAction="eaAssginValue" />
-	<ate:elementFindByTagName id="efTextArea"
-		findByValue="textarea" />
-	<ate:assignValueAction id="eaAssginValue"
-		dataValue="helloworld /abcddde" />
+	<ate:elementFindByTagName id="efTextArea" findByValue="textarea" />
+	<ate:assignValueAction id="eaAssginValue" dataValue="helloworld /abcddde" />
 		
-		<ate:elementActionDef id="eadEnter" elementFind="efTextArea" elementAction="eaEnter" />
-		<ate:sendKeysAction id="eaEnter" dataValue="\n"
-		/>
-		
-		
-		
-		
+	<ate:elementActionDef id="eadEnter" elementFind="efTextArea" elementAction="eaEnter" />
+	<ate:sendKeysAction id="eaEnter" dataValue="\n"	/>		
 
-<ate:elementActionDef id="eadAssignValuePrepend" elementFind="efTextArea" elementAction="eaAssginValuePrepend" />
-	<ate:assignValueAction id="eaAssginValuePrepend"
-		dataValue="prepended" assignMethod="PREPEND" />
+    <ate:elementActionDef id="eadAssignValuePrepend" elementFind="efTextArea" elementAction="eaAssginValuePrepend" />
+	<ate:assignValueAction id="eaAssginValuePrepend" dataValue="prepended" assignMethod="PREPEND" />
 
 	<ate:elementActionDef id="eadAssignValueAppend" elementFind="efTextArea" elementAction="eaAssginValueAppend" />
-	<ate:assignValueAction id="eaAssginValueAppend" dataValue="appended"
-		assignMethod="APPEND" />
+	<ate:assignValueAction id="eaAssginValueAppend" dataValue="appended" assignMethod="APPEND" />
 
 </beans>

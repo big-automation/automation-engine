@@ -67,6 +67,7 @@ public final class ATEPageFactory implements IATEPageFactory {
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("rawtypes")
 	@Override
 	public MyWebElement<?> getMyWebElement(EnumElementFindType elementFindType,
 			String findByValue, IMyWebDriver myWd) {

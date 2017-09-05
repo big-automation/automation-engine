@@ -158,6 +158,7 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public @Nullable <T> T getCapability(Class<T> type) {
 		if (this instanceof IElementFind) {

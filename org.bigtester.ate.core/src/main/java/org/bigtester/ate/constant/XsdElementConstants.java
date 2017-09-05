@@ -474,38 +474,8 @@ public final class XsdElementConstants {
 	/** The Constant ELEMENT_CHROMEDRIVER. */
 	public static final String ELEMENT_CHROMEDRIVER = "chromeDriver";
 	
-	
-	/** The Constant ATTR_CHROMEDRIVER_PRESERVECOOKIES. */
-	public static final String ATTR_CHROMEDRIVER_PRESERVECOOKIES = "preserveCookies";
-	
-	
-	/** The Constant ATTR_CHROMEDRIVER_START_ARGUMENTS. */
-	public static final String ATTR_CHROMEDRIVER_START_ARGUMENTS = "startArguments";
-	
-	/** The Constant ELEMENT_REMOTEDRIVER. */
-	public static final String ELEMENT_REMOTEDRIVER = "remoteDriver";
-	
-	
-	/** The Constant ATTR_REMOTEDRIVER_BROWSER_NAME. */
-	public static final String ATTR_REMOTEDRIVER_BROWSER_NAME = "browserName";
-	
-	/** The Constant ATTR_REMOTEDRIVER_VERSION. */
-	public static final String ATTR_REMOTEDRIVER_VERSION = "version";
-	
-	/** The Constant ATTR_REMOTEDRIVER_PLATFORM. */
-	public static final String ATTR_REMOTEDRIVER_PLATFORM = "platform";
-	
-	/** The Constant ATTR_REMOTEDRIVER_URL. */
-	public static final String ATTR_REMOTEDRIVER_URL = "url";
-	
 	/** The Constant ELEMENT_SAUCELABDRIVER. */
 	public static final String ELEMENT_SAUCELABDRIVER = "sauceLabDriver";
-	
-	/** The Constant ATTR_SAUCELABDRIVER_USERNAME. */
-	public static final String ATTR_SAUCELABDRIVER_USERNAME = "userName";
-	
-	/** The Constant ATTR_SAUCELABDRIVER_ACCESSKEY. */
-	public static final String ATTR_SAUCELABDRIVER_ACCESSKEY = "accessKey";
 	
 	/** The Constant ELEMENT_IEDRIVER. */
 	public static final String ELEMENT_IEDRIVER = "IEDriver";
@@ -518,6 +488,40 @@ public final class XsdElementConstants {
 	
 	/** The Constant ELEMENT_HTMLUNITDRIVER. */
 	public static final String ELEMENT_HTMLUNITDRIVER = "htmlUnitDriver";
+	
+	/** The Constant ELEMENT_EDGEDRIVER. */
+	public static final String ELEMENT_EDGEDRIVER = "edgeDriver";
+	
+	/** The Constant ELEMENT_PHANTOMJSDRIVER. */
+	public static final String ELEMENT_PHANTOMJSDRIVER = "phantomjsDriver";	
+	
+	/** The Constant ATTR_CHROMEDRIVER_PRESERVECOOKIES. */
+	public static final String ATTR_CHROMEDRIVER_PRESERVECOOKIES = "preserveCookies";
+	
+	
+	/** The Constant ATTR_CHROMEDRIVER_START_ARGUMENTS. */
+	public static final String ATTR_CHROMEDRIVER_START_ARGUMENTS = "startArguments";
+	
+	/** The Constant ELEMENT_REMOTEDRIVER. */
+	public static final String ELEMENT_REMOTEDRIVER = "remoteDriver";	
+	
+	/** The Constant ATTR_REMOTEDRIVER_BROWSER_NAME. */
+	public static final String ATTR_REMOTEDRIVER_BROWSER_NAME = "browserName";
+	
+	/** The Constant ATTR_REMOTEDRIVER_VERSION. */
+	public static final String ATTR_REMOTEDRIVER_VERSION = "version";
+	
+	/** The Constant ATTR_REMOTEDRIVER_PLATFORM. */
+	public static final String ATTR_REMOTEDRIVER_PLATFORM = "platform";
+	
+	/** The Constant ATTR_REMOTEDRIVER_URL. */
+	public static final String ATTR_REMOTEDRIVER_URL = "url";	
+	
+	/** The Constant ATTR_SAUCELABDRIVER_USERNAME. */
+	public static final String ATTR_SAUCELABDRIVER_USERNAME = "userName";
+	
+	/** The Constant ATTR_SAUCELABDRIVER_ACCESSKEY. */
+	public static final String ATTR_SAUCELABDRIVER_ACCESSKEY = "accessKey";	
 	
 	/**
 	 * Instantiates a new xsd element constants.

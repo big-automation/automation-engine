@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns="http://www.bigtester.org/schema/ate"
-	xmlns:tool="http://www.springframework.org/schema/tool" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:tns="http://www.bigtester.org/schema/ate"
-	targetNamespace="http://www.bigtester.org/schema/ate"
-	elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xsd:import namespace="http://www.springframework.org/schema/beans"
-		schemaLocation="http://www.springframework.org/schema/beans/spring-beans-4.0.xsd" />
+	        xmlns:tool="http://www.springframework.org/schema/tool" 
+	        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	        xmlns:beans="http://www.springframework.org/schema/beans" 
+	        xmlns:tns="http://www.bigtester.org/schema/ate"
+	        targetNamespace="http://www.bigtester.org/schema/ate"
+	        elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xsd:import namespace="http://www.springframework.org/schema/beans"
+		    schemaLocation="http://www.springframework.org/schema/beans/spring-beans-4.0.xsd" />
 
 	<!--************************* following for testproject ************************* -->
 
@@ -1019,6 +1021,7 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
+	
 	<xsd:complexType name="MyRemoteDriverType">
 		<xsd:complexContent>
 			<xsd:extension base="AbstractWebDriverBaseType">
@@ -1029,12 +1032,12 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
+	
 	<xsd:complexType name="MySauceLabDriverType">
 		<xsd:complexContent>
 			<xsd:extension base="MyRemoteDriverType">
 				<xsd:attribute name="userName" type="xsd:string" />
 				<xsd:attribute name="accessKey" type="xsd:string" />
-				
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -1071,6 +1074,22 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 
+	<xsd:complexType name="MyEdgeDriverType">
+		<xsd:complexContent>
+			<xsd:extension base="AbstractWebDriverBaseType">
+				<!-- <xsd:attribute name="profileName" type="xsd:string"/> -->
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="MyPhantomjsDriverType">
+		<xsd:complexContent>
+			<xsd:extension base="AbstractWebDriverBaseType">
+				<!-- <xsd:attribute name="profileName" type="xsd:string"/> -->
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>	
+	
 	<!--************************* following elements definition ************************* -->
 
 	<xsd:element name="testCase" type="TestCaseType" />
@@ -1098,7 +1117,6 @@
 	<xsd:element name="pageElementExistenceAsserter" type="PageElementExistenceAsserterType" />
 	<xsd:element name="ateXmlElementReference" type="AteRefType" />
 
-
 	<xsd:element name="baseInputDataValue" type="BaseInputDataValueType" />
 	<xsd:element name="stepInputDataValueParent" type="InputDataValueParentType" />
 	<xsd:element name="runTimeDataHolder" type="RunTimeDataHolderType" />
@@ -1119,8 +1137,7 @@
 
 	<xsd:element name="cookiesFindByDomainName" type="AllCookiesFindByDomainNameType" />
 	<xsd:element name="cookiesFindAll" type="CookiesFindAllType" />
-	<!-- <xsd:element name="cookieFindByCookieNameInDomain" type="CookieFindByCookieNameInDomainType" 
-		/> -->
+	<!-- <xsd:element name="cookieFindByCookieNameInDomain" type="CookieFindByCookieNameInDomainType" /> -->
 
 	<xsd:element name="elementActionDef" type="ElementActionDefType" />
 	<xsd:element name="browserWindowClose" type="TestWindowsCloseActionType" />
@@ -1147,5 +1164,7 @@
 	<xsd:element name="safariDriver" type="MySafariDriverType" />
 	<xsd:element name="operaDriver" type="MyOperaDriverType" />
 	<xsd:element name="htmlUnitDriver" type="MyHtmlUnitDriverType" />
+	<xsd:element name="edgeDriver" type="MyEdgeDriverType" />
+	<xsd:element name="phantomjsDriver" type="MyPhantomjsDriverType" />
 
 </xsd:schema>

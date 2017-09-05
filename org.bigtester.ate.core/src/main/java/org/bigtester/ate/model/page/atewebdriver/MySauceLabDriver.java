@@ -38,9 +38,10 @@ public class MySauceLabDriver extends MyRemoteDriver implements IMyWebDriver {
 	/**
 	 * Instantiates a new my Chrome driver.
 	 */
-	public MySauceLabDriver(String userName, String accesskey) {
+	@SuppressWarnings("null")
+	public MySauceLabDriver(String userName, String accesskey, String browser) {
 		
-		super("chrome", "", Platform.ANY.toString(), "https://" + userName + ":" + accesskey + "@ondemand.saucelabs.com:443/wd/hub");
+		super(browser, "", Platform.ANY.toString(), "https://" + userName + ":" + accesskey + "@ondemand.saucelabs.com:443/wd/hub");
 		this.setUserName(userName);
 		this.setAccesskey(accesskey);
 	}
@@ -48,18 +49,10 @@ public class MySauceLabDriver extends MyRemoteDriver implements IMyWebDriver {
 	/**
 	 * Instantiates a new my Chrome driver.
 	 */
-	public MySauceLabDriver() {
-		
-		super();
-		 
-		 
-	}
-
-	
-		
-	
-
-	
+	@SuppressWarnings("null")
+	public MySauceLabDriver() {		
+		super();		 		 
+	}	
 
 	/**
 	 * @return the userName

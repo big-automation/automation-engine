@@ -31,7 +31,6 @@ import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.apache.commons.lang3.StringUtils;
-import org.bigtester.ate.GlobalUtils;
 import org.eclipse.jdt.annotation.Nullable;
 
 // TODO: Auto-generated Javadoc
@@ -43,6 +42,7 @@ import org.eclipse.jdt.annotation.Nullable;
 public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDriver {
 
 	/** The caps. */
+	@SuppressWarnings("null")
 	private Optional<DesiredCapabilities> caps = Optional.empty();
 	
 	/** The url. */
@@ -50,6 +50,7 @@ public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDrive
 	/**
 	 * Instantiates a new my Chrome driver.
 	 */
+	@SuppressWarnings("null")
 	public MyRemoteDriver(String browserName, String version, String platform, String url) {
 		
 		super();
@@ -83,14 +84,10 @@ public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDrive
 	/**
 	 * Instantiates a new my Chrome driver.
 	 */
-	public MyRemoteDriver() {
-		
-		super();
-		 
-		 
-	}
-
-	
+	@SuppressWarnings("null")
+	public MyRemoteDriver() {		
+		super();		 
+	}	
 		
 	/**
 	 * {@inheritDoc}
@@ -104,6 +101,7 @@ public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDrive
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("null")
 	@Override
 	public WebDriver getWebDriverInstance() {
 		WebDriver retVal = getWebDriver();

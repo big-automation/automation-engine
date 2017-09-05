@@ -49,6 +49,7 @@ public class AlertDialogAcceptLikeAction extends PageModelBase implements
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("unchecked")
 	public @Nullable <T> T getCapability(Class<T> type) {
 		if (this instanceof IAlertDialogAction) {
 			return (T) this; //NOPMD

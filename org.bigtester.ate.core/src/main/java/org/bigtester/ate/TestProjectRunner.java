@@ -53,6 +53,7 @@ import org.bigtester.ate.xmlschema.CookiesFindAllBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.CookiesFindByDomainNameBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.CursorMoveActionBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.DropdownListSelectActionBeanDefinitionParser;
+import org.bigtester.ate.xmlschema.EdgeDriverBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.ElementActionDefBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.ElementStepBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.FileExportActionBeanDefinitionParser;
@@ -81,6 +82,7 @@ import org.bigtester.ate.xmlschema.MyWebElementBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.OperaDriverBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.PageElementExistBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.PagePropertyCorrectBeanDefinitionParser;
+import org.bigtester.ate.xmlschema.PhantomjsDriverBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.RegularPageBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.RemoteDriverBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.RepeatStepBeanDefinitionParser;
@@ -296,6 +298,8 @@ public final class TestProjectRunner {
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_SAFARIDRIVER, new SafariDriverBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_OPERADRIVER, new OperaDriverBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_HTMLUNITDRIVER, new HtmlUnitDriverBeanDefinitionParser());
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_EDGEDRIVER, new EdgeDriverBeanDefinitionParser());
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_PHANTOMJSDRIVER, new PhantomjsDriverBeanDefinitionParser());
 		
 		Map<String, BeanDefinitionParser> userParsers = XsdNameSpaceParserRegistry.getNameSpaceHandlerRegistry();
 		for (Map.Entry<String, BeanDefinitionParser> parser : userParsers.entrySet()) {

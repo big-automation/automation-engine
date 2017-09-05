@@ -123,11 +123,8 @@ public class MyChromeDriver extends AbstractWebDriverBase implements IMyWebDrive
 				line = Optional.of(parser.parse( options, args ));
 			} catch (ParseException e) {
 				retVal = line.get();
-			}
-		    
-		    return retVal;
-		
-	
+			}		    
+		    return retVal;	
 	}
 	
 	@SuppressWarnings("null")
@@ -135,8 +132,7 @@ public class MyChromeDriver extends AbstractWebDriverBase implements IMyWebDrive
 		List<String> retVal = new ArrayList<String>();
 		String[] args = argsStr.split("\\s+");
 		retVal = Arrays.asList(args);
-		return retVal;
-		
+		return retVal;		
 	}
 	
 	/**
@@ -151,18 +147,14 @@ public class MyChromeDriver extends AbstractWebDriverBase implements IMyWebDrive
 		super();
 		getBrowserProfile().setPreserveCookiesOnExecutions(preserveCookiesOnExecutions);
 		
-		getBrowserProfile().setStartArguments(parseArgsIntoArray(startArguments));
-		
+		getBrowserProfile().setStartArguments(parseArgsIntoArray(startArguments));		
 	}
 	
 	/**
 	 * Instantiates a new my Chrome driver.
 	 */
-	public MyChromeDriver() {
-		
-		super();
-		 
-		 
+	public MyChromeDriver() {		
+		super();		 
 	}
 
 	/**
@@ -174,7 +166,6 @@ public class MyChromeDriver extends AbstractWebDriverBase implements IMyWebDrive
 		if (null == retVal) {
 			throw new IllegalStateException(
 					"browserProfile is not correctly populated");
-
 		} else {
 			return retVal;
 		}
@@ -189,63 +180,63 @@ public class MyChromeDriver extends AbstractWebDriverBase implements IMyWebDrive
 		String driverPath = GlobalUtils.getDriverPath(); //NOPMD
 		
 		switch (platform) {
-		case Windows_32:
-			/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "windows", BROWSERNAME, ReadXmlFile.VERSION);*/
-			if (driverPath == null)
-				System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
-						           + BROWSERWIN32PATH + BROWSERWINFILENAME);
-			else
-				System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
-						           + BROWSERWIN32PATH + BROWSERWINFILENAME);
-			break;
-		case Windows_64:
-			/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "windows", BROWSERNAME, ReadXmlFile.VERSION);*/
-			if (driverPath == null)
-				System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
-						           + BROWSERWIN64PATH + BROWSERWINFILENAME);	
-			else
-				System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
-						           + BROWSERWIN64PATH + BROWSERWINFILENAME);
-			break;
-		case Linux_32:
-			/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "linux", BROWSERNAME, ReadXmlFile.VERSION);*/
-			if (driverPath == null)
-				System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
-						           + BROWSERLINUX32PATH + BROWSERLINUXFILENAME);	
-			else
-				System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
-						           + BROWSERLINUX32PATH + BROWSERLINUXFILENAME);
-			break;
-		case Linux_64:
-			/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "linux", BROWSERNAME, ReadXmlFile.VERSION);*/
-			if (driverPath == null)
-				System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
-						           + BROWSERLINUX64PATH + BROWSERLINUXFILENAME);	
-			else
-				System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
-						           + BROWSERLINUX64PATH + BROWSERLINUXFILENAME);
-			break;
-		case Mac_OS_X_32:
-			/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "osx", BROWSERNAME, ReadXmlFile.VERSION);*/
-			if (driverPath == null)
-				System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
-						           + BROWSEROSX32PATH + BROWSER0SXFILENAME);
-			else 
-				System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
-						           + BROWSEROSX32PATH + BROWSER0SXFILENAME);				
-			break;
-		case Mac_OS_X_64:
-			/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "osx", BROWSERNAME, ReadXmlFile.VERSION);*/
-			if (driverPath == null)
-				System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
-						           + BROWSEROSX64PATH + BROWSER0SXFILENAME);	
-			else
-				System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
-						           + BROWSEROSX64PATH + BROWSER0SXFILENAME);
-			break;
-		default:
-			throw GlobalUtils.createNotInitializedException("operating system is not supported ");
-		}
+			case Windows_32:
+				/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "windows", BROWSERNAME, ReadXmlFile.VERSION);*/
+				if (driverPath == null)
+					System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
+							           + BROWSERWIN32PATH + BROWSERWINFILENAME);
+				else
+					System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
+							           + BROWSERWIN32PATH + BROWSERWINFILENAME);
+				break;
+			case Windows_64:
+				/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "windows", BROWSERNAME, ReadXmlFile.VERSION);*/
+				if (driverPath == null)
+					System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
+							           + BROWSERWIN64PATH + BROWSERWINFILENAME);	
+				else
+					System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
+							           + BROWSERWIN64PATH + BROWSERWINFILENAME);
+				break;
+			case Linux_32:
+				/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "linux", BROWSERNAME, ReadXmlFile.VERSION);*/
+				if (driverPath == null)
+					System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
+							           + BROWSERLINUX32PATH + BROWSERLINUXFILENAME);	
+				else
+					System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
+							           + BROWSERLINUX32PATH + BROWSERLINUXFILENAME);
+				break;
+			case Linux_64:
+				/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "linux", BROWSERNAME, ReadXmlFile.VERSION);*/
+				if (driverPath == null)
+					System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
+							           + BROWSERLINUX64PATH + BROWSERLINUXFILENAME);	
+				else
+					System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
+							           + BROWSERLINUX64PATH + BROWSERLINUXFILENAME);
+				break;
+			case Mac_OS_X_32:
+				/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "osx", BROWSERNAME, ReadXmlFile.VERSION);*/
+				if (driverPath == null)
+					System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
+							           + BROWSEROSX32PATH + BROWSER0SXFILENAME);
+				else 
+					System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
+							           + BROWSEROSX32PATH + BROWSER0SXFILENAME);				
+				break;
+			case Mac_OS_X_64:
+				/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "osx", BROWSERNAME, ReadXmlFile.VERSION);*/
+				if (driverPath == null)
+					System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
+							           + BROWSEROSX64PATH + BROWSER0SXFILENAME);	
+				else
+					System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
+							           + BROWSEROSX64PATH + BROWSER0SXFILENAME);
+				break;
+			default:
+				throw GlobalUtils.createNotInitializedException("operating system is not supported ");
+			}
 	}
 	
 	/**
@@ -268,18 +259,13 @@ public class MyChromeDriver extends AbstractWebDriverBase implements IMyWebDrive
 			ChromeOptions ops = new ChromeOptions();
 			ops.addArguments(getBrowserProfile().getStartArguments());
 			if (getBrowserProfile().isPreserveCookiesOnExecutions()) {
-
 				ops.addArguments("--user-data-dir="
 						+ getBrowserProfile().getTestCaseChromeUserDataDir());
-
 			}
-
 			retVal = new ChromeDriver(ops);
-
 			setWebDriver(retVal);
 		}
 		return retVal;
-
 	}
 
 }

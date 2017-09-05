@@ -20,29 +20,30 @@
  *******************************************************************************/
 package org.bigtester.ate.model.page.atewebdriver;
 
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.bigtester.ate.GlobalUtils;
 import org.eclipse.jdt.annotation.Nullable;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class MyIEDriver defines ....
+ * The Class MyEdgeDriver defines ....
  * 
  * @author Jun Yang
  */
-public class MyIEDriver extends AbstractWebDriverBase implements IMyWebDriver {
-
+public class MyEdgeDriver extends AbstractWebDriverBase implements IMyWebDriver {
+			
 	/** The Constant BROWSERNAME. */
-	/*private static final String BROWSERNAME = "internetexplorer";*/
+	/*private static final String BROWSERNAME = "edge";*/
 	/** The Constant BROWSERDRVNAME. */
-	private static final String BROWSERDRVNAME = "webdriver.ie.driver";
+	private static final String BROWSERDRVNAME = "webdriver.edge.driver";
 	/** The Constant BROWSERWIN32PATH. */
-	private static final String BROWSERWIN32PATH = "windows/internetexplorer/32bit/";
+	private static final String BROWSERWIN32PATH = "windows/edge/32bit/";
 	/** The Constant BROWSERWIN64PATH. */
-	private static final String BROWSERWIN64PATH = "windows/internetexplorer/64bit/";
-	/** The Constant BROWSERLINUX32PATH. */
-	private static final String BROWSERFILENAME = "IEDriverServer.exe";
+	private static final String BROWSERWIN64PATH = "windows/edge/64bit/";	
+	/** The Constant BROWSERWINFILENAME. */
+	private static final String BROWSERWINFILENAME = "MicrosoftWebDriver.exe";	
 
 	/**
 	 * {@inheritDoc}
@@ -51,6 +52,7 @@ public class MyIEDriver extends AbstractWebDriverBase implements IMyWebDriver {
 	@Nullable
 	public WebDriver getWebDriver() {
 		return super.getWebDriver();
+
 	}
 
 	/**
@@ -64,36 +66,27 @@ public class MyIEDriver extends AbstractWebDriverBase implements IMyWebDriver {
 			EPlatform platform = osinfo.getOSname();
 			String driverPath = GlobalUtils.getDriverPath(); //NOPMD
 			
-			// System.setProperty("webdriver.ie.driver.loglevel", "ERROR");
-			// System.setProperty("webdriver.ie.driver.logfile",
-			// "d:/develop/IEDriver64.log");
-			// DesiredCapabilities ieCapabilities =
-			// DesiredCapabilities.internetExplorer();
-			// ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
-
 			switch (platform) {
 				case Windows_32:
-					/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "windows", BROWSERNAME, ReadXmlFile.VERSION);*/
-					if (driverPath == null)
-						System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER
-								           + BROWSERWIN32PATH + BROWSERFILENAME);
-					else
-						System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
-								           + BROWSERWIN32PATH + BROWSERFILENAME);
-					break;
-				case Windows_64:
-					/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "windows", BROWSERNAME, ReadXmlFile.VERSION);*/
 					if (driverPath == null)
 						System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
-								           + BROWSERWIN64PATH + BROWSERFILENAME);
+								           + BROWSERWIN32PATH + BROWSERWINFILENAME);
 					else
 						System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
-								           + BROWSERWIN64PATH + BROWSERFILENAME);
+								           + BROWSERWIN32PATH + BROWSERWINFILENAME);
+					break;
+				case Windows_64:
+					if (driverPath == null)
+						System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
+								           + BROWSERWIN64PATH + BROWSERWINFILENAME);
+					else
+						System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
+								           + BROWSERWIN64PATH + BROWSERWINFILENAME);
 					break;
 				default:
 					throw GlobalUtils.createNotInitializedException("operating system is not supported ");
-			}
-			retVal = new InternetExplorerDriver();
+			}				
+			retVal = new EdgeDriver();
 			setWebDriver(retVal);
 		}		
 		return retVal;

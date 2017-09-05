@@ -35,7 +35,6 @@ import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
-import com.sun.jna.platform.unix.X11.Window;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 // TODO: Auto-generated Javadoc
@@ -173,6 +172,7 @@ public class AbstractLockProtectedMultiWindowsHandler {
 	 *            the web d
 	 * @throws BrowserUnexpectedException 
 	 */
+	@SuppressWarnings("unlikely-arg-type")
 	public void refreshWindowsList(@Nullable WebDriver webD,
 			boolean refreshFrameFlag) throws BrowserUnexpectedException {
 		synchronized (lock) {

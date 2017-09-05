@@ -48,6 +48,7 @@ public class TestWindowsSwitchAction extends PageModelBase implements
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("unchecked")
 	public @Nullable <T> T getCapability(Class<T> type) {
 		if (this instanceof ITestWindowAction) {
 			return (T) this; //NOPMD

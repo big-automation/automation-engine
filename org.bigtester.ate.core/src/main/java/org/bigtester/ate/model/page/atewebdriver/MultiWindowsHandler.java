@@ -400,7 +400,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	 */
 	@Override
 	public void afterChangeValueOf(@Nullable WebElement arg0,
-			@Nullable WebDriver arg1, CharSequence[] arg2) {
+			@Nullable WebDriver arg1, @Nullable CharSequence[] arg2) {
 		try {
 			refreshWindowsList(arg1, false);
 		} catch (BrowserUnexpectedException e) {
@@ -499,7 +499,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	 */
 	@Override
 	public void beforeChangeValueOf(@Nullable WebElement arg0,
-			@Nullable WebDriver arg1, CharSequence[] arg2) {
+			@Nullable WebDriver arg1, @Nullable CharSequence[] arg2) {
 		// refreshWindowsList(arg1);
 
 	}
@@ -573,14 +573,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 
 	}
 
-
-
-
-
-
-
-
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -601,12 +593,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 				}
 			}
 		}
-
 	}
-
-
-
-
 
 	/**
 	 * @return the testCase
@@ -627,48 +614,44 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 		this.testCase = testCase;
 	}
 
-
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void afterNavigateRefresh(@Nullable WebDriver arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void afterNavigateRefresh(WebDriver arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void beforeNavigateRefresh(WebDriver arg0) {
+	public void beforeNavigateRefresh(@Nullable WebDriver arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void afterAlertAccept(WebDriver arg0) {
+	public void afterAlertAccept(@Nullable WebDriver arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void afterAlertDismiss(WebDriver arg0) {
+	public void afterAlertDismiss(@Nullable WebDriver arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void beforeAlertAccept(WebDriver arg0) {
+	public void beforeAlertAccept(@Nullable WebDriver arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void beforeAlertDismiss(WebDriver arg0) {
+	public void beforeAlertDismiss(@Nullable WebDriver arg0) {
 		// TODO Auto-generated method stub
 		
 	}

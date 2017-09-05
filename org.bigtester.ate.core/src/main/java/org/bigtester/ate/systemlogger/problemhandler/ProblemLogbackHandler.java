@@ -48,6 +48,7 @@ public class ProblemLogbackHandler extends AbstractProblemHandler implements
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	@Override
 	public void handleProblem(@Nullable Problem aProblem) {
 

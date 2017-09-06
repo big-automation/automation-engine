@@ -224,8 +224,7 @@ public final class TestProjectRunner {
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_LASTSTEP, new LastStepBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_BASEERVALUE, new BaseERValueBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_STEPEXPECTEDRESULTVALUE, new StepERValueBeanDefinitionParser());
-		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_STEPTYPESERVICEREFERENCE, new StepTypeReferenceBeanDefinitionParser());
-		
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_STEPTYPESERVICEREFERENCE, new StepTypeReferenceBeanDefinitionParser());		
 		
 		/******************************* following for Test Page ******************************/
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_BASEPAGEOBJECT, new BasePageObjectBeanDefinitionParser());
@@ -285,9 +284,7 @@ public final class TestProjectRunner {
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_FILEIMPORTACTION, new FileImportActionBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_FILESIMPORTACTION, new FilesImportActionBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_FILEEXPORTACTION, new FileExportActionBeanDefinitionParser());
-		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_FILESEXPORTACTION, new FilesExportActionBeanDefinitionParser());
-		
-		
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_FILESEXPORTACTION, new FilesExportActionBeanDefinitionParser());		
 		
 		/******************************* following for Webdriver ******************************/
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_FIREFOXDRIVER, new FirefoxDriverBeanDefinitionParser());

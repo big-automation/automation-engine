@@ -20,6 +20,8 @@
  *******************************************************************************/
 package org.bigtester.ate.test.model.page.elementaction;
 
+import java.util.concurrent.TimeUnit;
+
 import org.bigtester.ate.GlobalUtils;
 
 import org.bigtester.ate.model.page.atewebdriver.exception.BrowserUnexpectedException;
@@ -62,25 +64,26 @@ public class CursorMoveActionTest extends AbstractBigtesterStepTest {
 			RuntimeDataException, StepExecutionException, InterruptedException, BrowserUnexpectedException {
 		getTestPage("bigtesterTestNG/aut/textarea.html");
 
-		MyWebElement<?> cursorM = (MyWebElement<?>) getApplicationContext()
+		MyWebElement<?> assignValueToInput = (MyWebElement<?>) getApplicationContext()
+				.getBean("eadAssignValue");
+		//assignValueToInput.doAction();
+		this.runElementTestStep(assignValueToInput);
+		
+		TimeUnit.SECONDS.sleep(5);
+		
+		MyWebElement<?> cursorMove = (MyWebElement<?>) getApplicationContext()
 				.getBean("eadCursorMove");
-		//CursorM.doAction();
-		this.runElementTestStep(cursorM);		
-				
-		ITestObjectAction<?> moveActObj = (ITestObjectAction<?>) cursorM.getTestObjectAction();
-		if  (moveActObj == null) {
-			Assert.assertTrue(false);
-		} else {			
-			IStepInputData moveInp = ((IElementAction) moveActObj).getDataValue();
-			
-			 if (moveInp == null) {
-				 Assert.assertTrue(false);
-			 } else {
-				 String expectedVal = moveInp.getStrDataValue();
-				 String actualVal = getMyDriver().getWebDriverInstance().findElements(new By.ByTagName("textarea")).get(0).getAttribute("value");
-				 Assert.assertTrue(expectedVal.equals(actualVal));
-			 }		
-		}				
+		//cursorMove.doAction();
+		this.runElementTestStep(cursorMove);		
+		
+		TimeUnit.SECONDS.sleep(5);
+		
+		MyWebElement<?> sendValue = (MyWebElement<?>) getApplicationContext()
+				.getBean("eadSendValue");
+		//sendValue.doAction();
+		this.runElementTestStep(sendValue);
+		
+		TimeUnit.SECONDS.sleep(5);		
 	}
 
 	/**

@@ -25,6 +25,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
+import java.util.ArrayList;
+
 import org.bigtester.ate.GlobalUtils;
 import org.eclipse.jdt.annotation.Nullable;
 
@@ -71,15 +74,27 @@ public class MyPhantomjsDriver extends AbstractWebDriverBase implements IMyWebDr
 	 * {@inheritDoc}
 	 */
 	@Override
-	public WebDriver getWebDriverInstance() {		
-		DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setJavascriptEnabled(true);        
+	public WebDriver getWebDriverInstance() {
+		ArrayList<String> cliArgsCap = new ArrayList<String>();
+		DesiredCapabilities caps = DesiredCapabilities.phantomjs();
+		cliArgsCap.add("--web-security=false");		
+		/* To launch PhantomJS in Remote WebDriver mode at the intended PORT number 
+		cliArgsCap.add("--webdriver=4444"); */		
+		cliArgsCap.add("--ssl-protocol=any");
+		cliArgsCap.add("--ignore-ssl-errors=true");
+		caps.setCapability("takesScreenshot", true);
+		caps.setCapability("fixSessionCapabilities", false); 
+		caps.setCapability(
+		    PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap);
+		caps.setCapability(
+		    PhantomJSDriverService.PHANTOMJS_GHOSTDRIVER_CLI_ARGS,
+		        new String[] { "--logLevel=2" });
+		caps.setJavascriptEnabled(true);        
 		WebDriver retVal = getWebDriver();
 		if (null == retVal) {
 			OSinfo osinfo = new OSinfo();
 			EPlatform platform = osinfo.getOSname();
 			String driverPath = GlobalUtils.getDriverPath(); //NOPMD
-			
 			
 			switch (platform) {
 			case Windows_32:

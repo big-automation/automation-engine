@@ -26,10 +26,10 @@
 	<ate:operaDriver    />
 	<ate:htmlUnitDriver />
       -->
-	<ate:htmlUnitDriver />
+	<ate:chromeDriver   />
 	
 	<!-- here test case id has to be "testcase" -->
-	<ate:testCase id="testcase" testCaseName="cursorMove">
+	<ate:testCase id="testcase" testCaseName="cursorMove">	 	
 	 	
 		<ate:lastStep id="stepLastStep" stepName="stepLastStep"
 			stepDescription="last step close browser" targetStep="false" pageObject="poLastPage">

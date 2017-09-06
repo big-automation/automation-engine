@@ -15,12 +15,17 @@
 
 	<import resource="classpath:META-INF/logger-reporter.xml" />
 	<import resource="classpath:META-INF/page_base_bean.xml" />	
-	
+		
+	<ate:elementActionDef id="eadAssignValue" elementFind="efInput" elementAction="eaAssginValue" />
+	<ate:elementFindByTagName id="efInput" findByValue="input" />
+	<ate:assignValueAction id="eaAssginValue" dataValue="Cursor Move Test" />		
+		
 	<ate:elementActionDef id="eadCursorMove" elementFind="efTextArea" elementAction="eaCursorMove" />
 	<ate:elementFindByTagName id="efTextArea" findByValue="textarea" />
-	<ate:assignValueAction id="eaCursorMove" dataValue="helloworld /abcddde" />
-		
-	<ate:elementActionDef id="eadEnter" elementFind="efTextArea" elementAction="eaEnter" />
-	<ate:sendKeysAction id="eaEnter" dataValue="\n"	/>
+	<ate:mouseMoveToAction id="eaCursorMove" />
+	
+	<ate:elementActionDef id="eadSendValue" elementFind="efTextArea" elementAction="eaSendValue" />
+	<ate:elementFindByTagName id="efTextArea" findByValue="textarea" />
+	<ate:sendKeysAction id="eaSendValue" dataValue="Cursor Move Unit Test" />	
 	
 </beans>

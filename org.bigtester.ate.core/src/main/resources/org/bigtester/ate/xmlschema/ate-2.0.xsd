@@ -807,8 +807,6 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 
-
-
 	<xsd:complexType name="ElementFindByPartialLinkTextType">
 		<xsd:complexContent>
 			<xsd:extension base="beans:identifiedType">
@@ -816,8 +814,6 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
-
-
 
 	<xsd:complexType name="ElementFindByNameType">
 		<xsd:complexContent>
@@ -827,8 +823,6 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 
-
-
 	<xsd:complexType name="ElementFindByClassNameType">
 		<xsd:complexContent>
 			<xsd:extension base="beans:identifiedType">
@@ -836,8 +830,6 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
-
-
 
 	<xsd:complexType name="ElementFindByCssType">
 		<xsd:complexContent>
@@ -847,7 +839,6 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 
-
 	<xsd:complexType name="ElementFindByTagNameType">
 		<xsd:complexContent>
 			<xsd:extension base="beans:identifiedType">
@@ -855,10 +846,6 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
-
-
-
-
 
 	<!--************************* following for Element Action ************************* -->
 
@@ -967,11 +954,8 @@
 						<xsd:documentation xml:lang="en">
   							If there are multiple selections in the dropdown list, use comma to seperate each selected value.
   						</xsd:documentation>
-					</xsd:annotation>
-					
-  					
-				</xsd:attribute>
-				
+					</xsd:annotation>  					
+				</xsd:attribute>				
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -1102,7 +1086,6 @@
 	<xsd:element name="repeatStep" type="RepeatStepType" />
 	<xsd:element name="stepTypeServiceDefinition" type="StepTypeServiceDefType" />
 	<xsd:element name="stepTypeServiceReference" type="StepTypeServiceRefType" />
-
 	<xsd:element name="baseERValue" type="BaseERValueType" />
 <!-- 	<xsd:element name="stepExpectedResultValue" type="StepExpectedResultValueType" /> -->
 

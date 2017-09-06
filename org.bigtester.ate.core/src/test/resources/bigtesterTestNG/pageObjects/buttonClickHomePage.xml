@@ -20,7 +20,8 @@
 <ate:elementActionDef id="eadTestButtonClick" elementFind="efButton" elementAction="eaButtonClick" />
 	<ate:elementFindByTagName id="efButton"
 		findByValue="button" />
-	<ate:assignValueAction id="eaButtonClick"
-		dataValue="helloworld /abcddde" />
+	<ate:clickAction id="eaButtonClick"
+		  />
+	
 		
 </beans>

@@ -78,7 +78,9 @@ public class ClickActionTest extends AbstractBigtesterStepTest {
 		MyWebElement<?> buttonC = (MyWebElement<?>) getApplicationContext()
 				.getBean("eadTestButtonClick");
 		buttonC.doAction();
-		this.runElementTestStep(buttonC);		
+		
+		this.runElementTestStep(buttonC);
+		
 				
 		ITestObjectAction<?> moveActObj = (ITestObjectAction<?>) buttonC.getTestObjectAction();
 		if  (moveActObj == null) {
@@ -86,13 +88,15 @@ public class ClickActionTest extends AbstractBigtesterStepTest {
 		} else {			
 			IStepInputData moveInp = ((IElementAction) moveActObj).getDataValue();
 			
-			 if (moveInp == null) {
-				 Assert.assertTrue(false);
-			 } else {
-				 String expectedVal = moveInp.getStrDataValue();
-				 String actualVal = getMyDriver().getWebDriverInstance().findElements(new By.ByTagName("button")).get(0).getAttribute("value");
+			//IStepInputData moveInp = ((IElementAction) moveActObj).getDataValue();
+			 //if (moveInp == null) {
+			//	 Assert.assertTrue(false);
+			 //} else {
+				 //String expectedVal = moveInp.getStrDataValue();
+				 String expectedVal = "button2";
+				 String actualVal = getMyDriver().getWebDriverInstance().findElements(new By.ById("button")).get(0).getAttribute("name");
 				 Assert.assertTrue(expectedVal.equals(actualVal));
-			 }		
+			// }		
 		}				
 	}
 

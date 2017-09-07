@@ -250,22 +250,19 @@ public final class TestProjectRunner {
 		/******************************* following for Element Find ******************************/
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYXPATH, new FindByXpathBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYID, new FindByIdBeanDefinitionParser());
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYCLASSNAME, new FindByClassBeanDefinitionParser());	
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYCSS, new FindByCssBeanDefinitionParser());	
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYLINKTEXT, new FindByLinkTextBeanDefinitionParser());
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYPLINKTEXT, new FindByPartialLinkTextBeanDefinitionParser());
+		
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_BROWSERWINDOWFINDBYTITLE, new WindowFindByTitleBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_BROWSERWINDOWFINDBYOPENSEQUENCE, new WindowFindByOpenSequenceBeanDefinitionParser());
-		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYNAME, new FindByNameBeanDefinitionParser());	
-
-		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYCLASSNAME, new FindByClassBeanDefinitionParser());
-	
-		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYCSS, new FindByCssBeanDefinitionParser());
-	
-		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYLINKTEXT, new FindByLinkTextBeanDefinitionParser());
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYNAME, new FindByNameBeanDefinitionParser());		
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYTAGNAME, new FindByTagNameBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ALERTDIALOGFINDINCURRENTFOCUS, new AlertDialogFindInFocusBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_COOKIESFINDALL, new CookiesFindAllBeanDefinitionParser());
-		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_COOKIESFINDBYDOMAINNAME, new CookiesFindByDomainNameBeanDefinitionParser());
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_COOKIESFINDBYDOMAINNAME, new CookiesFindByDomainNameBeanDefinitionParser());		
 		
-		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYPLINKTEXT, new FindByPartialLinkTextBeanDefinitionParser());
-
-		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYTAGNAME, new FindByTagNameBeanDefinitionParser());		
 		/******************************* following for Element Action ******************************/
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTACTIONDEF, new ElementActionDefBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_CLICKACTION, new ClickActionBeanDefinitionParser());
@@ -337,10 +334,7 @@ public final class TestProjectRunner {
 			} catch (InstantiationException e) {
 				throw GlobalUtils.createNotInitializedException("class needs to provide a no argument constructor.", e);
 			}
-		}
-		
-		
-		
+		}		
 	}
 
 	/**
@@ -377,10 +371,7 @@ public final class TestProjectRunner {
 			} catch (InstantiationException e) {
 				throw GlobalUtils.createNotInitializedException("class needs to provide a no argument constructor.", e);
 			}
-		}
-		
-		
-		
+		}		
 	}
 
 }

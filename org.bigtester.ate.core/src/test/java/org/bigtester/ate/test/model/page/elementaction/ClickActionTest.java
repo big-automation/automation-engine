@@ -86,7 +86,7 @@ public class ClickActionTest extends AbstractBigtesterStepTest {
 		if  (moveActObj == null) {
 			Assert.assertTrue(false);
 		} else {			
-			IStepInputData moveInp = ((IElementAction) moveActObj).getDataValue();
+			//IStepInputData moveInp = ((IElementAction) moveActObj).getDataValue();
 			
 			//IStepInputData moveInp = ((IElementAction) moveActObj).getDataValue();
 			 //if (moveInp == null) {

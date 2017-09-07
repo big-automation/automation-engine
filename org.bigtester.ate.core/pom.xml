@@ -244,6 +244,7 @@
 			        <testFailureIgnore>true</testFailureIgnore>
 			    </configuration>
 			</plugin>
+			
 <!-- 
 			<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
@@ -358,6 +359,11 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+        	<groupId>io.appium</groupId>
+       	 	<artifactId>java-client</artifactId>
+        	<version>3.3.0</version>
 		</dependency>
 		<!-- <dependency> -->
 		<!-- <groupId>org.slf4j</groupId> -->

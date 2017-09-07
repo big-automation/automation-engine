@@ -70,6 +70,9 @@ public class MyIEDriver extends AbstractWebDriverBase implements IMyWebDriver {
 			// DesiredCapabilities ieCapabilities =
 			// DesiredCapabilities.internetExplorer();
 			// ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
+			
+			// Important: Link of configuration to run IE
+			//https://github.com/SeleniumHQ/selenium/wiki/InternetExplorerDriver#required-configuration
 
 			switch (platform) {
 				case Windows_32:

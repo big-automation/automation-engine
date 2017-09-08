@@ -394,6 +394,9 @@ public final class XsdElementConstants {
 	/** The Constant ELEMENT_CLICKACTION. */
 	public static final String ELEMENT_CLICKACTION = "clickAction";
 	
+	/** The Constant ELEMENT_DOUBLECLICKACTION. */
+	public static final String ELEMENT_DOUBLECLICKACTION = "doubleClickAction";
+
 	/** The Constant ELEMENT_CLEARTEXTACTION. */
 	public static final String ELEMENT_CLEARTEXTACTION = "clearTextAction";
 	

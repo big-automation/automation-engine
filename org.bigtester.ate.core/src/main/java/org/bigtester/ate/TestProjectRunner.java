@@ -49,6 +49,7 @@ import org.bigtester.ate.xmlschema.CaseTypeServiceBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.ChromeDriverBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.ClearTextActionBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.ClickActionBeanDefinitionParser;
+import org.bigtester.ate.xmlschema.DoubleClickActionBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.CookiesFindAllBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.CookiesFindByDomainNameBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.CursorMoveActionBeanDefinitionParser;
@@ -269,6 +270,7 @@ public final class TestProjectRunner {
 		/******************************* following for Element Action ******************************/
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTACTIONDEF, new ElementActionDefBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_CLICKACTION, new ClickActionBeanDefinitionParser());
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_DOUBLECLICKACTION, new DoubleClickActionBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_CLEARTEXTACTION, new ClearTextActionBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_MOUSEMOVETOACTION, new CursorMoveActionBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_SENDKEYSACTION, new SendKeysActionBeanDefinitionParser());

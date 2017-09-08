@@ -871,6 +871,15 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 
+	<xsd:complexType name="DoubleClickActionType">
+		<xsd:complexContent>
+			<xsd:extension base="beans:identifiedType">
+				<xsd:group ref="beans:beanElements" />
+				<xsd:attributeGroup ref="beans:beanAttributes"></xsd:attributeGroup>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
 	<xsd:complexType name="ClearTextActionType">
 		<xsd:complexContent>
 			<xsd:extension base="beans:identifiedType">
@@ -1127,6 +1136,7 @@
 	<xsd:element name="alertDialogAccept" type="AlertDialogAcceptLikeActionType" />
 	<xsd:element name="browserWindowSwitch" type="TestWindowsSwitchActionType" />
 	<xsd:element name="clickAction" type="ClickActionType" />
+	<xsd:element name="doubleClickAction" type="DoubleClickActionType" />
 	<xsd:element name="clearTextAction" type="ClearTextActionType" />
 	<xsd:element name="mouseMoveToAction" type="MouseMoveToActionType" />
 	<xsd:element name="sendKeysAction" type="SendKeysActionType" />

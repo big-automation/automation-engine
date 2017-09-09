@@ -34,8 +34,6 @@ import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-
-
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 // TODO: Auto-generated Javadoc
@@ -51,7 +49,6 @@ public class AbstractLockProtectedMultiWindowsHandler {
 	/** The lock. */
 	private final Object lock = new Object();
 	
-
 	/** The alerts. */
 	final protected List<AbstractAlertDialog> alerts = new ArrayList<AbstractAlertDialog>();
 
@@ -88,6 +85,7 @@ public class AbstractLockProtectedMultiWindowsHandler {
 			return mainWindowTitle2;
 		}
 	}
+	
 	/**
 	 * @return the mainWindowHandler
 	 */
@@ -258,6 +256,7 @@ public class AbstractLockProtectedMultiWindowsHandler {
 		}
 
 	}
+	
 	/**
 	 * @param myWd
 	 *            the myWd to set
@@ -276,7 +275,6 @@ public class AbstractLockProtectedMultiWindowsHandler {
 			return myWd2;
 		}
 	}
-	
 
 	/**
 	 * Reset windows.
@@ -289,12 +287,14 @@ public class AbstractLockProtectedMultiWindowsHandler {
 			this.mainWindowTitle = null;//NOPMD
 		}
 	}
+	
 	/**
 	 * @return the myWebD
 	 */
 	public WebDriver getDriver() {
 		return getMyWd().getWebDriverInstance();
 	}
+	
 	/**
 	 * @return the windows
 	 */
@@ -303,6 +303,7 @@ public class AbstractLockProtectedMultiWindowsHandler {
 			return windows;
 		}
 	}
+	
 	/**
 	 * @return the lock
 	 */

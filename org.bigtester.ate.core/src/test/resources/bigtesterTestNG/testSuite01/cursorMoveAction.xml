@@ -13,10 +13,9 @@
 	<!-- this registers beans annotated with @Aspect -->
 	<aop:aspectj-autoproxy />
 
-	<import resource="classpath:META-INF/logger-reporter.xml" />
 	<import resource="classpath:META-INF/page_base_bean.xml" />
 	<import resource="classpath:META-INF/case_base_bean.xml" />
-	<import resource="../pageObjects/assignValueHomePage.xml" />
+	<import resource="../pageObjects/cursorMoveHomePage.xml" />
 	<import resource="../pageObjects/lastPage.xml" />
 	
 	<!-- 
@@ -27,20 +26,15 @@
 	<ate:operaDriver    />
 	<ate:htmlUnitDriver />
       -->
-	<ate:htmlUnitDriver  />
+	<ate:chromeDriver   />
 	
 	<!-- here test case id has to be "testcase" -->
-	<ate:testCase id="testcase" testCaseName="assignValue">
-		<ate:elementStep id="testStepException" stepName="testStepException" targetStep="false" elementActionDef="eadAssignValue" optionalStep="true"></ate:elementStep>		
+	<ate:testCase id="testcase" testCaseName="cursorMove">	 	
+	 	
 		<ate:lastStep id="stepLastStep" stepName="stepLastStep"
 			stepDescription="last step close browser" targetStep="false" pageObject="poLastPage">
 		</ate:lastStep>
+
 	</ate:testCase>
 	
-	<!-- <ate:testCase id="testcase" testCaseName="cursorMove">		
-		<ate:elementStep id="testStepException" stepName="testStepException" targetStep="false" elementActionDef="eadCursorMove" optionalStep="true"></ate:elementStep>
-		<ate:lastStep id="stepLastStep" stepName="stepLastStep"
-			stepDescription="last step close browser" targetStep="false" pageObject="poLastPage">
-		</ate:lastStep>
-	</ate:testCase> -->
 </beans>

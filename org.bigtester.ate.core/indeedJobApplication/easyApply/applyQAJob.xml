@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:ate="http://www.bigtester.org/schema/ate" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   xmlns:ate="http://www.bigtester.org/schema/ate" 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
                            http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
                            http://www.springframework.org/schema/aop 
                            http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
@@ -19,16 +20,19 @@
 	<import resource="../pageObjects/applyNowPage.xml" />
 	<import resource="../pageObjects/lastPage.xml" />
 	
-	<!-- 
-	<ate:firefoxDriver  />  
-	<ate:chromeDriver   />
-	<ate:IEDriver       />
-	<ate:safariDriver   />
-	<ate:operaDriver    />
-	<ate:htmlUnitDriver />
-      -->
+	<!--
+	<ate:firefoxDriver    /> 
 	<ate:chromeDriver  preserveCookies="true" />
-
+	<ate:chromeDriver     />  
+	<ate:edgeDriver       />
+	<ate:phantomjsDriver  />
+	<ate:IEDriver         />
+	<ate:safariDriver     />
+	<ate:operaDriver      />
+	<ate:htmlUnitDriver   />
+      -->
+    <ate:chromeDriver     />
+    
 	<ate:testCase id="testcase" testCaseName="apply easily-apply job.">
 
 		<ate:homeStep id="stepOpenHomePage" stepName="stepOpenHomePage"
@@ -42,8 +46,7 @@
 				
 		<ate:elementStep id="stepClearWhereText"
 			stepDescription="clear where text" stepName="clearWhereText"
-			targetStep="false" elementActionDef="eadClearTextInWhere"
-			>
+			targetStep="false" elementActionDef="eadClearTextInWhere" >
 		</ate:elementStep>
 
 <!-- 		<ate:elementStep id="stepTypeInMontrealQC" -->
@@ -61,10 +64,10 @@
 			targetStep="false" elementActionDef="eadClickFindJobsButton"
 			pageObject="indeedCaHomepage">
 		</ate:elementStep>
+		
 		<ate:elementStep id="stepSortResultByDate"
 			stepDescription="stepSortResultByDate" stepName="stepSortResultByDate"
-			targetStep="false" elementActionDef="eadClickSortByDate"
-			>
+			targetStep="false" elementActionDef="eadClickSortByDate" >
 		</ate:elementStep>
 		
 		<ate:elementStep id="stepClickJobLink"
@@ -94,29 +97,24 @@
 		<ate:elementStep id="stepFilloutApplicantName"
 			stepDescription="stepFilloutApplicantName" stepName="stepFilloutApplicantName"
 			optionalStep="true"
-			targetStep="false" elementActionDef="eadFilloutApplicantName"
-			>
+			targetStep="false" elementActionDef="eadFilloutApplicantName" >
 		</ate:elementStep>
 
 		<ate:elementStep id="stepFilloutApplicantFirstName"
 			stepDescription="stepFilloutApplicantFirstName" stepName="stepFilloutApplicantFirstName"
 			targetStep="false" elementActionDef="eadFilloutApplicantFirstName"
 			optionalStep="true"
-			correlatedOptionalStepsUtilInclusive="stepFilloutApplicantLastName"
-			>
+			correlatedOptionalStepsUtilInclusive="stepFilloutApplicantLastName"	>
 		</ate:elementStep>
 		
 		<ate:elementStep id="stepFilloutApplicantLastName"
 			stepDescription="stepFilloutApplicantLastName" stepName="stepFilloutApplicantLastName"
-			targetStep="false" elementActionDef="eadFilloutApplicantLastName"
-			>
-		</ate:elementStep>
-		
+			targetStep="false" elementActionDef="eadFilloutApplicantLastName" >
+		</ate:elementStep>		
 
 		<ate:elementStep id="stepFilloutApplicantEmail"
 			stepDescription="stepFilloutApplicantEmail" stepName="stepFilloutApplicantEmail"
-			targetStep="false" elementActionDef="eadFilloutApplicantEmail"
-			>
+			targetStep="false" elementActionDef="eadFilloutApplicantEmail"	>
 		</ate:elementStep>
 
 		<ate:elementStep id="stepFilloutApplicantPHoneNumber"
@@ -162,15 +160,10 @@
 			>
 		</ate:elementStep>
 
-
 		<ate:elementStep id="stepSubmitResume"
 			stepDescription="stepSubmitResume" stepName="stepSubmitResume"
-			targetStep="false" elementActionDef="eadSubmitResume" optionalStep="true"
-			>
-		</ate:elementStep>
-		
-		
-			
+			targetStep="false" elementActionDef="eadSubmitResume" optionalStep="true" >
+		</ate:elementStep>			
 		
 		<ate:elementStep id="stepCloseApplyWindow"
 			stepDescription="stepCloseApplyWindow" stepName="stepCloseApplyWindow"

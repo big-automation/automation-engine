@@ -179,6 +179,7 @@ public class ApplicationLogger implements ApplicationContextAware {
 	 * @param joinPoint_p the join point_p
 	 * @param loggable the loggable
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	@Before(value = "@annotation(loggable)", argNames = "joinPoint_p, loggable")//NOPMD
 	public void logBeforeTestProject(final JoinPoint joinPoint_p,
 			TestProjectLoggable loggable) {
@@ -209,6 +210,7 @@ public class ApplicationLogger implements ApplicationContextAware {
 	 * @param joinPoint_p the join point_p
 	 * @param loggable the loggable
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	@AfterReturning(value = "@annotation(loggable)", argNames = "joinPoint_p, loggable")
 	public void logAfterTestProject(final JoinPoint joinPoint_p,
 			TestProjectLoggable loggable) {
@@ -238,6 +240,7 @@ public class ApplicationLogger implements ApplicationContextAware {
 	 * @param joinPoint_p the join point_p
 	 * @param loggable the loggable
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	@Before(value = "@annotation(loggable)", argNames = "joinPoint_p, loggable")
 	public void logBeforeTestCase(final JoinPoint joinPoint_p,
 			TestCaseLoggable loggable) {
@@ -268,6 +271,7 @@ public class ApplicationLogger implements ApplicationContextAware {
 	 * @param joinPoint_p the join point_p
 	 * @param loggable the loggable
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	@Before(value = "@annotation(loggable)", argNames = "joinPoint_p, loggable")
 	public void logBeforeTestStep(final JoinPoint joinPoint_p,
 			StepLoggable loggable) {
@@ -297,6 +301,7 @@ public class ApplicationLogger implements ApplicationContextAware {
 	 * @param joinPoint_p the join point_p
 	 * @param finderloggable the finderloggable
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	@Before(value = "@annotation(finderloggable)", argNames = "joinPoint_p, finderloggable")
 	public void logBeforeFinder(final JoinPoint joinPoint_p,
 			TestObjectFinderLoggable finderloggable) {
@@ -329,6 +334,7 @@ public class ApplicationLogger implements ApplicationContextAware {
 	 * @param finderloggable the finderloggable
 	 * @param retVal the ret val
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	@AfterReturning(value = "@annotation(finderloggable)", returning = "retVal", argNames = "joinPoint_p, finderloggable, retVal")
 	public void logAfterFinder(final JoinPoint joinPoint_p,
 			TestObjectFinderLoggable finderloggable, Object retVal) {
@@ -360,6 +366,7 @@ public class ApplicationLogger implements ApplicationContextAware {
 	 * @param joinPoint_p the join point_p
 	 * @param actionloggable the actionloggable
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	@Before(value = "@annotation(actionloggable)", argNames = "joinPoint_p, actionloggable")
 	public void logBeforeAction(final JoinPoint joinPoint_p,
 			ActionLoggable actionloggable) {
@@ -390,6 +397,7 @@ public class ApplicationLogger implements ApplicationContextAware {
 	 * @param joinPoint_p the join point_p
 	 * @param actionloggable the actionloggable
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	@AfterReturning(value = "@annotation(actionloggable)", argNames = "joinPoint_p, actionloggable")
 	public void logAfterAction(final JoinPoint joinPoint_p,
 			ActionLoggable actionloggable) {
@@ -420,6 +428,7 @@ public class ApplicationLogger implements ApplicationContextAware {
 	 * @param joinPoint the join point
 	 * @param loggable the loggable
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	@AfterReturning(value = "@annotation(loggable)", argNames = "joinPoint, loggable")
 	public void logAfterTestStep(final JoinPoint joinPoint,
 			StepLoggable loggable) {
@@ -449,6 +458,7 @@ public class ApplicationLogger implements ApplicationContextAware {
 	 * @param joinPoint_p the join point_p
 	 * @param loggable the loggable
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	@AfterReturning(value = "@annotation(loggable)", argNames = "joinPoint_p, loggable")
 	public void logAfterTestCase(final JoinPoint joinPoint_p,
 			TestCaseLoggable loggable) {

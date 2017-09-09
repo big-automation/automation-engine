@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:ate="http://www.bigtester.org/schema/ate" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   xmlns:ate="http://www.bigtester.org/schema/ate" 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
                            http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
                            http://www.springframework.org/schema/aop 
                            http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
@@ -29,7 +30,7 @@
 	<ate:operaDriver    />
 	<ate:htmlUnitDriver />
       -->
-	<ate:chromeDriver  preserveCookies="true" startArguments="--disable-web-security --allow-file-access-from-files"/>
+	<ate:sauceLabDriver  userName="wpbx" accessKey="9aeb4feb-8dce-4a44-aeed-1cda938e5d8a" />
 
 	<ate:testCase id="testcase" testCaseName="apply easily-apply job.">
 

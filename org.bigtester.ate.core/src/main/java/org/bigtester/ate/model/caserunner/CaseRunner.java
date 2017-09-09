@@ -61,7 +61,6 @@ import org.testng.TestRunner;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;//NOPMD, can't be deleted since this file will be used as a template to create runners
 import org.testng.internal.Utils;
 
 
@@ -202,6 +201,7 @@ public class CaseRunner implements IRunTestCase {
 	 * @param testData
 	 *            the test data
 	 */
+	@SuppressWarnings("null")
 	@BeforeMethod(alwaysRun = true)
 	public void testData(Method method, Object[] testData) { // NOPMD
 		String testCase;

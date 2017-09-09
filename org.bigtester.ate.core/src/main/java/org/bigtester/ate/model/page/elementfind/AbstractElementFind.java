@@ -158,6 +158,7 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public @Nullable <T> T getCapability(Class<T> type) {
 		if (this instanceof IElementFind) {
@@ -261,8 +262,10 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 									retVal = allElements.get(0);
 								} else if (intIndex == -1) {
 									retVal = allElements.get(allElements.size() - 1);
-								} else {
+								} else if (intIndex < allElements.size()){
 									retVal = allElements.get(intIndex);
+								} else {
+									throw new NoSuchElementException(findByValue.toString()); 
 								}
 								return retVal;
 								// return driver.findElement(findByValue);

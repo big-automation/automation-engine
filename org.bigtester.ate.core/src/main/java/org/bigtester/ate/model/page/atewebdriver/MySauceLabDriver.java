@@ -20,38 +20,67 @@
  *******************************************************************************/
 package org.bigtester.ate.model.page.atewebdriver;
 
-import org.eclipse.jdt.annotation.Nullable;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.Platform;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class MyHtmlUnitDriver defines ....
+ * The Class MyChromeDriver defines ....
  * 
  * @author Jun Yang
  */
-public class MyHtmlUnitDriver extends AbstractWebDriverBase implements IMyWebDriver {
+public class MySauceLabDriver extends MyRemoteDriver implements IMyWebDriver {
+
+	/** The caps. */
+	private String userName;
+	
+	/** The url. */
+	private String accesskey;
+	/**
+	 * Instantiates a new my Chrome driver.
+	 */
+	@SuppressWarnings("null")
+	public MySauceLabDriver(String userName, String accesskey, String browser) {
+		
+		super(browser, "", Platform.ANY.toString(), "https://" + userName + ":" + accesskey + "@ondemand.saucelabs.com:443/wd/hub");
+		this.setUserName(userName);
+		this.setAccesskey(accesskey);
+	}
+		
+	/**
+	 * Instantiates a new my Chrome driver.
+	 */
+	@SuppressWarnings("null")
+	public MySauceLabDriver() {		
+		super();		 		 
+	}	
 
 	/**
-	 * {@inheritDoc}
+	 * @return the userName
 	 */
-	@Override
-	@Nullable
-	public WebDriver getWebDriver() {
-		return super.getWebDriver();
+	public String getUserName() {
+		return userName;
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * @param userName the userName to set
 	 */
-	@Override
-	public WebDriver getWebDriverInstance() {
-		WebDriver retVal = getWebDriver();
-		if (null == retVal) {
-			retVal = new HtmlUnitDriver(true); //enable js by default
-			setWebDriver(retVal);
-		}		
-		return retVal;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
+	/**
+	 * @return the accesskey
+	 */
+	public String getAccesskey() {
+		return accesskey;
+	}
+
+	/**
+	 * @param accesskey the accesskey to set
+	 */
+	public void setAccesskey(String accesskey) {
+		this.accesskey = accesskey;
+	}
+
+	
 }

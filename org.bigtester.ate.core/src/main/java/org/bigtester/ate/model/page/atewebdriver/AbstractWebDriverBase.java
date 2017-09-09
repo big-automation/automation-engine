@@ -69,6 +69,7 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 	public  WebDriver getWebDriver() {
 		return webDriver;
 	}
+	
 	/**
 	 * Creates the driver.
 	 *
@@ -197,8 +198,6 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 	@SuppressWarnings("null")
 	public Optional<String> saveScreenShot() {
 		return saveScreenShot(Optional.ofNullable(getWebDriverInstance().getCurrentUrl()));
-	}
-	
-	
+	}	
 
 }

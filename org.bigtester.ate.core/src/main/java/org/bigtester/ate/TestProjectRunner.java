@@ -55,6 +55,7 @@ import org.bigtester.ate.xmlschema.CookiesFindAllBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.CookiesFindByDomainNameBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.CursorMoveActionBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.DropdownListSelectActionBeanDefinitionParser;
+import org.bigtester.ate.xmlschema.EdgeDriverBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.ElementActionDefBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.ElementStepBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.FileExportActionBeanDefinitionParser;
@@ -83,10 +84,13 @@ import org.bigtester.ate.xmlschema.MyWebElementBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.OperaDriverBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.PageElementExistBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.PagePropertyCorrectBeanDefinitionParser;
+import org.bigtester.ate.xmlschema.PhantomjsDriverBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.RegularPageBeanDefinitionParser;
+import org.bigtester.ate.xmlschema.RemoteDriverBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.RepeatStepBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.RunTimeDataHolderBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.SafariDriverBeanDefinitionParser;
+import org.bigtester.ate.xmlschema.SauceLabDriverBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.SendKeysActionBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.StepERValueBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.StepInputDataValueBeanDefinitionParser;
@@ -260,8 +264,7 @@ public final class TestProjectRunner {
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_LASTSTEP, new LastStepBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_BASEERVALUE, new BaseERValueBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_STEPEXPECTEDRESULTVALUE, new StepERValueBeanDefinitionParser());
-		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_STEPTYPESERVICEREFERENCE, new StepTypeReferenceBeanDefinitionParser());
-		
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_STEPTYPESERVICEREFERENCE, new StepTypeReferenceBeanDefinitionParser());		
 		
 		/******************************* following for Test Page ******************************/
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_BASEPAGEOBJECT, new BasePageObjectBeanDefinitionParser());
@@ -287,22 +290,19 @@ public final class TestProjectRunner {
 		/******************************* following for Element Find ******************************/
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYXPATH, new FindByXpathBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYID, new FindByIdBeanDefinitionParser());
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYCLASSNAME, new FindByClassBeanDefinitionParser());	
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYCSS, new FindByCssBeanDefinitionParser());	
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYLINKTEXT, new FindByLinkTextBeanDefinitionParser());
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYPLINKTEXT, new FindByPartialLinkTextBeanDefinitionParser());
+		
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_BROWSERWINDOWFINDBYTITLE, new WindowFindByTitleBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_BROWSERWINDOWFINDBYOPENSEQUENCE, new WindowFindByOpenSequenceBeanDefinitionParser());
-		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYNAME, new FindByNameBeanDefinitionParser());	
-
-		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYCLASSNAME, new FindByClassBeanDefinitionParser());
-	
-		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYCSS, new FindByCssBeanDefinitionParser());
-	
-		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYLINKTEXT, new FindByLinkTextBeanDefinitionParser());
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYNAME, new FindByNameBeanDefinitionParser());		
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYTAGNAME, new FindByTagNameBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ALERTDIALOGFINDINCURRENTFOCUS, new AlertDialogFindInFocusBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_COOKIESFINDALL, new CookiesFindAllBeanDefinitionParser());
-		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_COOKIESFINDBYDOMAINNAME, new CookiesFindByDomainNameBeanDefinitionParser());
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_COOKIESFINDBYDOMAINNAME, new CookiesFindByDomainNameBeanDefinitionParser());		
 		
-		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYPLINKTEXT, new FindByPartialLinkTextBeanDefinitionParser());
-
-		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTFINDBYTAGNAME, new FindByTagNameBeanDefinitionParser());		
 		/******************************* following for Element Action ******************************/
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ELEMENTACTIONDEF, new ElementActionDefBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_CLICKACTION, new ClickActionBeanDefinitionParser());
@@ -321,17 +321,19 @@ public final class TestProjectRunner {
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_FILEIMPORTACTION, new FileImportActionBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_FILESIMPORTACTION, new FilesImportActionBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_FILEEXPORTACTION, new FileExportActionBeanDefinitionParser());
-		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_FILESEXPORTACTION, new FilesExportActionBeanDefinitionParser());
-		
-		
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_FILESEXPORTACTION, new FilesExportActionBeanDefinitionParser());		
 		
 		/******************************* following for Webdriver ******************************/
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_FIREFOXDRIVER, new FirefoxDriverBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_CHROMEDRIVER, new ChromeDriverBeanDefinitionParser());
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_REMOTEDRIVER, new RemoteDriverBeanDefinitionParser());
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_SAUCELABDRIVER, new SauceLabDriverBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_IEDRIVER, new IEDriverBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_SAFARIDRIVER, new SafariDriverBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_OPERADRIVER, new OperaDriverBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_HTMLUNITDRIVER, new HtmlUnitDriverBeanDefinitionParser());
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_EDGEDRIVER, new EdgeDriverBeanDefinitionParser());
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_PHANTOMJSDRIVER, new PhantomjsDriverBeanDefinitionParser());
 		
 		Map<String, BeanDefinitionParser> userParsers = XsdNameSpaceParserRegistry.getNameSpaceHandlerRegistry();
 		for (Map.Entry<String, BeanDefinitionParser> parser : userParsers.entrySet()) {
@@ -372,10 +374,7 @@ public final class TestProjectRunner {
 			} catch (InstantiationException e) {
 				throw GlobalUtils.createNotInitializedException("class needs to provide a no argument constructor.", e);
 			}
-		}
-		
-		
-		
+		}		
 	}
 
 	/**
@@ -412,10 +411,7 @@ public final class TestProjectRunner {
 			} catch (InstantiationException e) {
 				throw GlobalUtils.createNotInitializedException("class needs to provide a no argument constructor.", e);
 			}
-		}
-		
-		
-		
+		}		
 	}
 
 }

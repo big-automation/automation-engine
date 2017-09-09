@@ -21,9 +21,7 @@
 package org.bigtester.ate.model.page.atewebdriver; //NOPMD
 
 import java.util.Iterator;
-
 import java.util.Set;
-
 import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.model.casestep.ITestCase; 
 import org.bigtester.ate.model.page.atewebdriver.exception.BrowserUnexpectedException;
@@ -631,8 +629,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 		this.testCase = testCase;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -641,8 +637,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 		// TODO Auto-generated method stub
 		
 	}
-
-
 
 	/**
 	 * {@inheritDoc}

@@ -18,6 +18,7 @@
 	<import resource="classpath:META-INF/logger-reporter.xml" />
 	<import resource="classpath:META-INF/page_base_bean.xml" />
 	<import resource="./loginForm.xml" />
+	
 	<ate:homePage id="poHomePage" homeUrl="http://www.bigtester.com" dataFile="bigtesterTest/pageObjects/homePage.data.xml"/>
 	
     <!-- myWebElement definition -->

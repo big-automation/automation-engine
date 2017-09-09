@@ -54,6 +54,7 @@ public class CucumberFeatureDataInjector {
 	 *            the feature data table
 	 * @return the list of data indexed by dataId
 	 */
+	@SuppressWarnings("null")
 	private List<RepeatStepElementInputData> mappingFeatureDataToDBIndexedData(
 			List<Map<String, String>> featureDataTable, String repeatStepName) {
 		

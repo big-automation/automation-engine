@@ -317,6 +317,7 @@ public class CaseRunner implements IRunTestCase {
 	/**
 	 * Tear down.
 	 */
+	@SuppressWarnings("null")
 	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
 		try {
@@ -367,6 +368,7 @@ public class CaseRunner implements IRunTestCase {
 	/**
 	 * @return the mainDriver
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public WebDriver getMainDriver() {
 		final WebDriver retVal = mainDriver.getWebDriverInstance();
 		if (null == retVal) {

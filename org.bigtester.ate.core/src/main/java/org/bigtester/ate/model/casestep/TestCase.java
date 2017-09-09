@@ -157,6 +157,7 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	 * @throws StepExecutionException
 	 * @throws PageValidationException
 	 */
+	@SuppressWarnings("null")
 	@TestCaseLoggable (level=ATELogLevel.INFO)
 	public void goSteps() throws StepExecutionException,
 			PageValidationException, IllegalStateException,
@@ -288,6 +289,7 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	 * @throws IllegalStateException the illegal state exception
 	 * @throws RuntimeDataException the runtime data exception
 	 */
+	@SuppressWarnings("null")
 	private void goSteps(String filteringStepName) throws StepExecutionException,
 			PageValidationException, IllegalStateException,
 			RuntimeDataException {
@@ -395,7 +397,7 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setApplicationContext(ApplicationContext applicationContext)
+	public void setApplicationContext(@SuppressWarnings("null") ApplicationContext applicationContext)
 			throws BeansException {
 		// TODO Auto-generated method stub
 		this.testCaseContext = applicationContext;
@@ -405,6 +407,7 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	/**
 	 * @return the testCaseContext
 	 */
+	@SuppressWarnings("null")
 	public ApplicationContext getTestCaseContext() {
 		return testCaseContext;
 	}

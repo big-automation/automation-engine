@@ -20,10 +20,8 @@
  *******************************************************************************/
 package org.bigtester.ate.model.cucumber;
 
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 
-// TODO: Auto-generated Javadoc
 /**
  * This class ActionNameValuePair defines ....
  * @author Peidong Hu

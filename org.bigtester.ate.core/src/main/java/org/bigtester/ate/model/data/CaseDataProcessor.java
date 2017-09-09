@@ -70,6 +70,7 @@ public class CaseDataProcessor implements BeanFactoryPostProcessor {
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("null")
 	@Override
 	public void postProcessBeanFactory(
 			@Nullable ConfigurableListableBeanFactory beanFactory) throws BeansException {

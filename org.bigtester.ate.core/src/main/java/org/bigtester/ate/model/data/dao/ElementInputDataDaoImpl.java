@@ -66,6 +66,7 @@ public class ElementInputDataDaoImpl extends BaseDaoImpl {
 	 * @param repeatStepName the repeat step name
 	 * @return the list
 	 */
+	@SuppressWarnings("null")
 	public List<RepeatStepElementInputData> refreshRepeatStepData(List<RepeatStepElementInputData> eids, String repeatStepName) {
 		this.getAllRepeatStepElementInputData(repeatStepName).forEach(eid->{
 			getDbEM().remove(eid);	
@@ -149,6 +150,7 @@ public class ElementInputDataDaoImpl extends BaseDaoImpl {
 	 * @return the eid
 	 * @throws TestDataException the test data exception
 	 */
+	@SuppressWarnings("null")
 	public ElementInputData getEid(String inputDataID) throws TestDataException {
 
 		List<ElementInputData> sERs = (List<ElementInputData>) getDbEM()

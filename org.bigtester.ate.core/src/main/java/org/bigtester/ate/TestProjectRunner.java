@@ -24,13 +24,11 @@ package org.bigtester.ate;//NOPMD
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.MalformedURLException;
 import java.sql.SQLException;
 import java.util.Map;
 import java.util.Set;
 
 import org.bigtester.ate.constant.GlobalConstants;
-import org.bigtester.ate.constant.StepResultStatus;
 import org.bigtester.ate.constant.XsdElementConstants;
 import org.bigtester.ate.model.data.TestDatabaseInitializer;
 import org.bigtester.ate.model.project.TestProject;
@@ -182,6 +180,7 @@ public final class TestProjectRunner {
 	public static void runTest(@Nullable final String testProjectXml) throws DatabaseUnitException, SQLException, IOException, ClassNotFoundException, ParseException  {
 		registerXsdNameSpaceParsers();
 		registerProblemHandlers();
+		@SuppressWarnings("null")
 		ApplicationContext context = loadTestProjectContext(testProjectXml);
 
 		initDB(context);
@@ -200,6 +199,7 @@ public final class TestProjectRunner {
 	  	((ConfigurableApplicationContext)context).close();
 	}
 	
+	@SuppressWarnings({ "null", "unused" })
 	public static void initDB(ApplicationContext testProjectContext) throws IOException, DatabaseUnitException, SQLException {
 		TestProject testplan = GlobalUtils
 				.findTestProjectBean(testProjectContext);

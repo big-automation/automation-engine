@@ -171,6 +171,7 @@ public class AbstractLockProtectedMultiWindowsHandler {
 	 *            the web d
 	 * @throws BrowserUnexpectedException 
 	 */
+	@SuppressWarnings("unlikely-arg-type")
 	public void refreshWindowsList(@Nullable WebDriver webD,
 			boolean refreshFrameFlag) throws BrowserUnexpectedException {
 		synchronized (lock) {

@@ -108,6 +108,7 @@ public class TestProject {
 	 *            the test project listener
 	 */
 	
+	@SuppressWarnings("null")
 	public TestProject(Resource globalInitXmlFile) {
 		this.globalInitXmlFile = globalInitXmlFile;
 	}
@@ -145,6 +146,7 @@ public class TestProject {
 	 * @throws IOException
 	 * @throws ParseException
 	 */
+	@SuppressWarnings("null")
 	@TestProjectLoggable (level=ATELogLevel.INFO)
 	public void runSuites() throws ClassNotFoundException, ParseException,
 			IOException {
@@ -200,6 +202,7 @@ public class TestProject {
 	 * @throws ParseException
 	 */
 	//@TestProjectLoggable (level=ATELogLevel.INFO)
+	@SuppressWarnings("null")
 	private void runSuites(String filteringSuiteName, String filteringTestCaseName) throws ClassNotFoundException, ParseException,
 			IOException {
 		if (testng.getTestListeners().stream().filter(listener->listener instanceof TestProjectListener).count()==0) {
@@ -361,6 +364,7 @@ public class TestProject {
 	/**
 	 * @return the filteringTestCaseName
 	 */
+	@SuppressWarnings("null")
 	public String getFilteringTestCaseName() {
 		return filteringTestCaseName;
 	}
@@ -375,6 +379,7 @@ public class TestProject {
 	/**
 	 * @return the filteringStepName
 	 */
+	@SuppressWarnings("null")
 	public String getFilteringStepName() {
 		return filteringStepName;
 	}
@@ -404,6 +409,7 @@ public class TestProject {
 	/**
 	 * @return the filteringTestSuiteName
 	 */
+	@SuppressWarnings("null")
 	public String getFilteringTestSuiteName() {
 		return filteringTestSuiteName;
 	}
@@ -418,6 +424,7 @@ public class TestProject {
 	/**
 	 * @return the cucumberDataTable
 	 */
+	@SuppressWarnings("null")
 	public List<Map<String,String>> getCucumberDataTable() {
 		return cucumberDataTable;
 	}

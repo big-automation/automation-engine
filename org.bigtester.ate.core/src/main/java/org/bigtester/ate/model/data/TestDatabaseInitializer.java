@@ -309,6 +309,7 @@ public class TestDatabaseInitializer {
 	/**
 	 * @return the datasets
 	 */
+	@SuppressWarnings("null")
 	public IDataSet[] getDatasets() {
 		return datasets;//NOPMD
 	}

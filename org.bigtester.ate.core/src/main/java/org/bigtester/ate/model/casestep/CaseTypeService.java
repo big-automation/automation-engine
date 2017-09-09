@@ -27,15 +27,14 @@ import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.constant.ExceptionMessage;
 import org.bigtester.ate.constant.StepResultStatus;
 import org.bigtester.ate.model.asserter.IExpectedResultAsserter;
-import org.bigtester.ate.model.casestep.ICucumberTestStep.CucumberStepType;
 import org.bigtester.ate.model.data.ICaseServiceParsedDataParser;
-import org.bigtester.ate.model.data.IDataParser; 
+import org.bigtester.ate.model.data.IDataParser;
 import org.bigtester.ate.model.data.IStepInputData;
 import org.bigtester.ate.model.data.exception.RuntimeDataException;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
 import org.bigtester.ate.model.page.exception.PageValidationException;
 import org.bigtester.ate.model.page.exception.StepExecutionException;
-import org.bigtester.ate.model.page.page.IPageObject; 
+import org.bigtester.ate.model.page.page.IPageObject;
 import org.eclipse.jdt.annotation.Nullable;
 import org.openqa.selenium.WebDriver;
 import org.springframework.context.ApplicationContext;
@@ -74,6 +73,7 @@ public class CaseTypeService extends TestCase implements ITestStep, ICucumberTes
 	/**
 	 * @param testCaseName
 	 */
+	@SuppressWarnings("null")
 	public CaseTypeService(String testCaseName, String testCaseFileName,
 			ITestCase parentTestCase) {
 		super(testCaseName);

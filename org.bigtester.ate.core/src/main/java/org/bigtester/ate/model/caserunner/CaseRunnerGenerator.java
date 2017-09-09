@@ -131,6 +131,7 @@ public class CaseRunnerGenerator {
 	 *            the number of test cases
 	 * @throws IOException
 	 */
+	@SuppressWarnings("null")
 	public CaseRunnerGenerator(List<TestSuite> suites) throws IOException {
 		this.suites = suites;
 		testCaseNameToGenerate = null;
@@ -154,6 +155,7 @@ public class CaseRunnerGenerator {
 	 * @param testCaseNameToGenerate the test case name to generate
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
+	@SuppressWarnings("null")
 	public CaseRunnerGenerator(List<TestSuite> suites, String testCaseNameToGenerate) throws IOException {
 		this.testCaseNameToGenerate = testCaseNameToGenerate;
 		
@@ -619,6 +621,7 @@ public class CaseRunnerGenerator {
 		/**
 		 * @return the methodName
 		 */
+		@SuppressWarnings("unused")
 		public String getMethodName() {
 			return methodName;
 		}

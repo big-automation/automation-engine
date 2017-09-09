@@ -52,10 +52,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	@Autowired
 	private ITestCase testCase;
 	
-	
-
-
-
 	/**
 	 * Gets the window on focus handle.
 	 *
@@ -390,23 +386,17 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 		throw GlobalUtils.createInternalError("web driver wrong state");
 	}
 
-
-
-
-
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public void afterChangeValueOf(@Nullable WebElement arg0,
-			@Nullable WebDriver arg1, CharSequence[] arg2) {//NOPMD
+			@Nullable WebDriver arg1, @SuppressWarnings("null") CharSequence[] arg2) {//NOPMD
 		try {
 			refreshWindowsList(arg1, false);
 		} catch (BrowserUnexpectedException e) {
 			retryRefreshWindows(getMyWd().getWebDriverInstance(), false);
 		}
-
-
 	}
 
 	/**
@@ -420,6 +410,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 			throw GlobalUtils.createInternalError("browser fatal error.", e1);//NOPMD
 		}
 	}
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -430,7 +421,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 		} catch (BrowserUnexpectedException e) {
 			retryRefreshWindows(getMyWd().getWebDriverInstance(), false);
 		}
-
 	}
 
 	/**
@@ -478,8 +468,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 		} catch (BrowserUnexpectedException e) {
 			retryRefreshWindows(getMyWd().getWebDriverInstance(), false);
 		}
-
-
 	}
 
 	/**
@@ -492,8 +480,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 		} catch (BrowserUnexpectedException e) {
 			retryRefreshWindows(getMyWd().getWebDriverInstance(), false);
 		}
-
-
 	}
 
 	/**
@@ -501,7 +487,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	 */
 	@Override
 	public void beforeChangeValueOf(@Nullable WebElement arg0,
-			@Nullable WebDriver arg1, CharSequence[] arg2) {//NOPMD
+			@Nullable WebDriver arg1, @SuppressWarnings("null") CharSequence[] arg2) {//NOPMD
 		// refreshWindowsList(arg1);
 
 	}
@@ -527,7 +513,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 //		} catch (BrowserUnexpectedException e) {
 //			retryRefreshWindows(getMyWd().getWebDriverInstance());
 //		}
-
 	}
 
 	/**
@@ -575,14 +560,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 
 	}
 
-
-
-
-
-
-
-
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -605,10 +582,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 		}
 
 	}
-
-
-
-
 
 	/**
 	 * @return the testCase
@@ -633,7 +606,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void afterNavigateRefresh(WebDriver arg0) {
+	public void afterNavigateRefresh(@SuppressWarnings("null") WebDriver arg0) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -642,7 +615,31 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void beforeNavigateRefresh(WebDriver arg0) {
+	public void beforeNavigateRefresh(@SuppressWarnings("null") WebDriver arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void afterAlertAccept(@SuppressWarnings("null") WebDriver arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void afterAlertDismiss(@SuppressWarnings("null") WebDriver arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void beforeAlertAccept(@SuppressWarnings("null") WebDriver arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void beforeAlertDismiss(@SuppressWarnings("null") WebDriver arg0) {
 		// TODO Auto-generated method stub
 		
 	}

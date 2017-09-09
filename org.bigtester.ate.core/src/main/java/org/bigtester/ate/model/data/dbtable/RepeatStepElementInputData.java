@@ -107,7 +107,8 @@ public class RepeatStepElementInputData extends ElementInputData implements Clon
     /**
      * {@inheritDoc}
      */
-    public Object clone() throws CloneNotSupportedException {
+    @SuppressWarnings("null")
+	public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
 }

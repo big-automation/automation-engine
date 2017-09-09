@@ -21,6 +21,7 @@
 package org.bigtester.ate.model.cucumber;
 
 import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -49,15 +50,13 @@ public class ActionNameValuePair {
 	/**
 	 * @return the actionName
 	 */
-	@NonNull
-	public String getActionName() {
+	public @Nullable String getActionName() {
 		return actionName;
 	}
 	/**
 	 * @return the value
 	 */
-	@NonNull
-	public String getValue() {
+	public @Nullable String getValue() {
 		return value;
 	}
 }

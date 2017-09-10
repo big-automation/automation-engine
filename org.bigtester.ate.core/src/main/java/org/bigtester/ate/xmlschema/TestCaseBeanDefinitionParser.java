@@ -65,6 +65,7 @@ public class TestCaseBeanDefinitionParser extends AbstractBeanDefinitionParser {
 		if (StringUtils.hasText(testCaseName))
 			factory.addConstructorArgValue(testCaseName);
 
+		@SuppressWarnings("null")
 		List<Element> testStepElements = (List<Element>) DomUtils
 				.getChildElements(element);
 
@@ -79,6 +80,7 @@ public class TestCaseBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	
 	
+	@SuppressWarnings({ "null", "unused" })
 	private static void parseTestStepComponents(List<Element> childElements,
 			BeanDefinitionBuilder factory, ParserContext parserContext) {
 		if (!childElements.isEmpty()) {

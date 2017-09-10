@@ -69,6 +69,7 @@ public class StepTypeService extends BaseTestStep implements ITestStep, IStepJum
 	 * @throws StepExecutionException
 	 * @throws PageValidationException
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	private void runSteps() throws StepExecutionException,
 			PageValidationException, RuntimeDataException {
 		

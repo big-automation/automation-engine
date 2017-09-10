@@ -269,6 +269,7 @@ public class JavaCodedStep extends BaseTestStep implements IJavaCodedStep,
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("null")
 	@StepLoggable(level = org.bigtester.ate.annotation.ATELogLevel.INFO)
 	@Override
 	public void doStep(@Nullable IStepJumpingEnclosedContainer jumpingContainer) throws StepExecutionException,

@@ -37,7 +37,6 @@
 		<property name="username">
 			<value>sa</value>
 		</property>
-
 		<property name="password">
 			<value></value>
 		</property>

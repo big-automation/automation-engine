@@ -122,6 +122,7 @@ public class ElementInputDataDaoImpl extends BaseDaoImpl {
 	 *            the input data id
 	 * @return the value
 	 */
+	@SuppressWarnings("null")
 	public String getValue(String inputDataID) throws TestDataException {
 
 		List<ElementInputData> sERs = (List<ElementInputData>) getDbEM()
@@ -179,6 +180,7 @@ public class ElementInputDataDaoImpl extends BaseDaoImpl {
 	 *            the input data id
 	 * @return the value
 	 */
+	@SuppressWarnings("null")
 	public String getValue(String inputDataID, String repeatStepName,
 			String repeatStepExternalLoopPath, int iteration)
 			throws RepeatTestDataException {
@@ -215,6 +217,7 @@ public class ElementInputDataDaoImpl extends BaseDaoImpl {
 	 *            the input data id
 	 * @return the value
 	 */
+	@SuppressWarnings("null")
 	public String getValue(String inputDataID, String repeatStepName,
 			int iteration)
 			throws RepeatTestDataException {

@@ -20,8 +20,6 @@
  *******************************************************************************/
 package org.bigtester.ate.model.cucumber;
 
-import org.eclipse.jdt.annotation.Nullable;
-
 /**
  * This class ActionNameValuePair defines ....
  * @author Peidong Hu
@@ -45,16 +43,18 @@ public class ActionNameValuePair {
 		this.actionName = actionName;
 		this.value = value;
 	}
+	
 	/**
 	 * @return the actionName
 	 */
-	public @Nullable String getActionName() {
+	public String getActionName() {
 		return actionName;
 	}
+	
 	/**
 	 * @return the value
 	 */
-	public @Nullable String getValue() {
+	public String getValue() {
 		return value;
 	}
 }

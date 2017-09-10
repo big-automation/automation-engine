@@ -112,6 +112,7 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	/**
 	 * Clean up asserters.
 	 */
+	@SuppressWarnings("null")
 	protected void cleanUpAsserters() {
 		for (int i = 0; i < getTestStepList().size(); i++) {
 			if (!getTestStepList().get(i).getExpectedResultAsserter().isEmpty()) {
@@ -289,7 +290,7 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	 * @throws IllegalStateException the illegal state exception
 	 * @throws RuntimeDataException the runtime data exception
 	 */
-	@SuppressWarnings("null")
+	@SuppressWarnings({ "null", "unused" })
 	private void goSteps(String filteringStepName) throws StepExecutionException,
 			PageValidationException, IllegalStateException,
 			RuntimeDataException {

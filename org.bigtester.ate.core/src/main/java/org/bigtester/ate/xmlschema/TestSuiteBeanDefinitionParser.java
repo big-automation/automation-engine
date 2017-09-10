@@ -62,6 +62,7 @@ public class TestSuiteBeanDefinitionParser extends
         	factory.addConstructorArgValue(testSuiteName);
         
         
+		@SuppressWarnings("null")
 		List<Element> suiteListElements = (List<Element>) DomUtils.getChildElementsByTagName(element, XsdElementConstants.ELEMENT_XMLTESTCASE);
         
         if (suiteListElements != null && !suiteListElements.isEmpty()) {
@@ -72,6 +73,7 @@ public class TestSuiteBeanDefinitionParser extends
         return factory.getBeanDefinition();
 	}
 	
+	@SuppressWarnings("null")
 	private static void parseXmlTestCaseComponents(List<Element> childElements, BeanDefinitionBuilder factory, ParserContext parserContext) {
         ManagedList<BeanDefinition> children = new ManagedList<BeanDefinition>(childElements.size());
         for (Element element : childElements) {

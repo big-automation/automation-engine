@@ -69,6 +69,7 @@ public class TestProjectBeanDefinitionParser extends
 		
 		factory.addConstructorArgValue(globalInitXml);
 
+		@SuppressWarnings("null")
 		List<Element> suiteListElements = (List<Element>) DomUtils
 				.getChildElementsByTagName(element,
 						XsdElementConstants.ELEMENT_TESTSUITE);
@@ -80,6 +81,7 @@ public class TestProjectBeanDefinitionParser extends
 		return factory.getBeanDefinition();
 	}
 
+	@SuppressWarnings("null")
 	private static void parseSuiteComponents(List<Element> childElements,
 			BeanDefinitionBuilder factory, ParserContext parserContext) {
 		ManagedList<BeanDefinition> children = new ManagedList<BeanDefinition>(

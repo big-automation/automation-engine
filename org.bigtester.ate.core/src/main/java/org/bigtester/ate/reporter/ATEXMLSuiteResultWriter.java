@@ -64,7 +64,8 @@ public class ATEXMLSuiteResultWriter {
     }
   }
 
-  public static Set<ITestResult> convertSuiteResultToTestResults(ISuiteResult suiteResult) {
+  @SuppressWarnings("null")
+public static Set<ITestResult> convertSuiteResultToTestResults(ISuiteResult suiteResult) {
 	  Set<ITestResult> testResults = Sets.newHashSet();
 	    ITestContext testContext = suiteResult.getTestContext();
 	    addAllTestResults(testResults, testContext.getPassedTests());
@@ -77,7 +78,8 @@ public class ATEXMLSuiteResultWriter {
 	    return testResults;
   }
   
-  public static List<TestStepResult> retrieveTestStepResults(ITestResult testResult) {
+  @SuppressWarnings("null")
+public static List<TestStepResult> retrieveTestStepResults(ITestResult testResult) {
 	  if (testResult.getAttribute(TestStepResult.STEPRESULTLIST) instanceof List<?>) {
 			@SuppressWarnings("unchecked")
 			List<TestStepResult> stepResults = (List<TestStepResult>) testResult
@@ -87,7 +89,8 @@ public class ATEXMLSuiteResultWriter {
 		 return new ArrayList<TestStepResult>();
 	 }
   }
-  private void writeAllToBuffer(XMLStringBuffer xmlBuffer, ISuiteResult suiteResult) {
+  @SuppressWarnings("null")
+private void writeAllToBuffer(XMLStringBuffer xmlBuffer, ISuiteResult suiteResult) {
     xmlBuffer.push(XMLReporterConfig.TAG_TEST, getSuiteResultAttributes(suiteResult));
     Set<ITestResult> testResults = Sets.newHashSet();
     ITestContext testContext = suiteResult.getTestContext();
@@ -102,7 +105,8 @@ public class ATEXMLSuiteResultWriter {
     xmlBuffer.pop();
   }
 
-  private static void addAllTestResults(Set<ITestResult> testResults, IResultMap resultMap) {
+  @SuppressWarnings("null")
+private static void addAllTestResults(Set<ITestResult> testResults, IResultMap resultMap) {
     if (resultMap != null) {
       // Sort the results chronologically before adding them
       List<ITestResult> allResults = new ArrayList<ITestResult>();
@@ -127,7 +131,8 @@ public class ATEXMLSuiteResultWriter {
     return new File(parentDir + File.separatorChar + suiteResultName);
   }
 
-  private Properties getSuiteResultAttributes(ISuiteResult suiteResult) {
+  @SuppressWarnings("null")
+private Properties getSuiteResultAttributes(ISuiteResult suiteResult) {
     Properties attributes = new Properties();
     ITestContext tc = suiteResult.getTestContext();
     attributes.setProperty(XMLReporterConfig.ATTR_NAME, tc.getName());
@@ -139,7 +144,8 @@ public class ATEXMLSuiteResultWriter {
     Map<String, List<ITestResult>> testsGroupedByClass = buildTestClassGroups(testResults);
     for (Map.Entry<String, List<ITestResult>> result : testsGroupedByClass.entrySet()) {
       Properties attributes = new Properties();
-      String className = result.getKey();
+      @SuppressWarnings("null")
+	String className = result.getKey();
       if (config.isSplitClassAndPackageNames()) {
         int dot = className.lastIndexOf('.');
         attributes.setProperty(XMLReporterConfig.ATTR_NAME,
@@ -150,7 +156,8 @@ public class ATEXMLSuiteResultWriter {
       }
 
       xmlBuffer.push(XMLReporterConfig.TAG_CLASS, attributes);
-      List<ITestResult> sortedResults = result.getValue();
+      @SuppressWarnings("null")
+	List<ITestResult> sortedResults = result.getValue();
       Collections.sort( sortedResults );
       for (ITestResult testResult : sortedResults) {
         addTestResult(xmlBuffer, testResult);
@@ -159,7 +166,8 @@ public class ATEXMLSuiteResultWriter {
     }
   }
 
-  private Map<String, List<ITestResult>> buildTestClassGroups(Set<ITestResult> testResults) {
+  @SuppressWarnings({ "unused", "null" })
+private Map<String, List<ITestResult>> buildTestClassGroups(Set<ITestResult> testResults) {
     Map<String, List<ITestResult>> map = Maps.newHashMap();
     for (ITestResult result : testResults) {
       String className = result.getTestClass().getName();
@@ -196,7 +204,8 @@ public class ATEXMLSuiteResultWriter {
   }
 
     
-  private String getStatusString(int testResultStatus) {
+  @SuppressWarnings("null")
+private String getStatusString(int testResultStatus) {
     switch (testResultStatus) {
       case ITestResult.SUCCESS:
         return "PASS";
@@ -210,7 +219,8 @@ public class ATEXMLSuiteResultWriter {
     return null;
   }
 
-  private Properties getTestResultAttributes(ITestResult testResult) {
+  @SuppressWarnings("null")
+private Properties getTestResultAttributes(ITestResult testResult) {	
     Properties attributes = new Properties();
     if (!testResult.getMethod().isTest()) {
       attributes.setProperty(XMLReporterConfig.ATTR_IS_CONFIG, "true");
@@ -227,7 +237,7 @@ public class ATEXMLSuiteResultWriter {
 
     attributes.setProperty(XMLReporterConfig.ATTR_METHOD_SIG, removeClassName(testResult.getMethod().toString()));
 
-    SimpleDateFormat format = new SimpleDateFormat(XMLReporterConfig.getTimestampFormat());
+    SimpleDateFormat format = new SimpleDateFormat(config.getTimestampFormat());
     String startTime = format.format(testResult.getStartMillis());
     String endTime = format.format(testResult.getEndMillis());
     attributes.setProperty(XMLReporterConfig.ATTR_STARTED_AT, startTime);
@@ -272,13 +282,15 @@ public class ATEXMLSuiteResultWriter {
     return attributes;
   }
 
-  private String removeClassName(String methodSignature) {
+  @SuppressWarnings("null")
+private String removeClassName(String methodSignature) {
     int firstParanthesisPos = methodSignature.indexOf("(");
     int dotAferClassPos = methodSignature.substring(0, firstParanthesisPos).lastIndexOf(".");
     return methodSignature.substring(dotAferClassPos + 1, methodSignature.length());
   }
 
-  public void addTestMethodParams(XMLStringBuffer xmlBuffer, ITestResult testResult) {
+  @SuppressWarnings("null")
+public void addTestMethodParams(XMLStringBuffer xmlBuffer, ITestResult testResult) {
     Object[] parameters = testResult.getParameters();
     if ((parameters != null) && (parameters.length > 0)) {
       xmlBuffer.push(XMLReporterConfig.TAG_PARAMS);
@@ -289,7 +301,8 @@ public class ATEXMLSuiteResultWriter {
     }
   }
 
-  private void addParameter(XMLStringBuffer xmlBuffer, Object parameter, int i) {
+  @SuppressWarnings({ "unused", "null" })
+private void addParameter(XMLStringBuffer xmlBuffer, Object parameter, int i) {
     Properties attrs = new Properties();
     attrs.setProperty(XMLReporterConfig.ATTR_INDEX, String.valueOf(i));
     xmlBuffer.push(XMLReporterConfig.TAG_PARAM, attrs);
@@ -318,15 +331,14 @@ public class ATEXMLSuiteResultWriter {
         xmlBuffer.pop();
       }
 
-      String[] stackTraces = Utils.stackTrace(exception, false);
-      if ((config.getStackTraceOutputMethod() & XMLReporterConfig.STACKTRACE_SHORT) == XMLReporterConfig
-              .STACKTRACE_SHORT) {
+      @SuppressWarnings("deprecation")
+	String[] stackTraces = Utils.stackTrace(exception, false);
+      if (config.getStackTraceOutput() == XMLReporterConfig.StackTraceLevels.SHORT) {
         xmlBuffer.push(XMLReporterConfig.TAG_SHORT_STACKTRACE);
         xmlBuffer.addCDATA(stackTraces[0]);
         xmlBuffer.pop();
       }
-      if ((config.getStackTraceOutputMethod() & XMLReporterConfig.STACKTRACE_FULL) == XMLReporterConfig
-              .STACKTRACE_FULL) {
+      if (config.getStackTraceOutput() == XMLReporterConfig.StackTraceLevels.FULL) {
         xmlBuffer.push(XMLReporterConfig.TAG_FULL_STACKTRACE);
         xmlBuffer.addCDATA(stackTraces[1]);
         xmlBuffer.pop();
@@ -336,7 +348,8 @@ public class ATEXMLSuiteResultWriter {
     }
   }
 
-  private void addTestResultOutput(XMLStringBuffer xmlBuffer, ITestResult testResult) {
+  @SuppressWarnings("null")
+private void addTestResultOutput(XMLStringBuffer xmlBuffer, ITestResult testResult) {
     // TODO: Cosmin - maybe a <line> element isn't indicated for each line
     xmlBuffer.push(XMLReporterConfig.TAG_REPORTER_OUTPUT);
     List<String> output = Reporter.getOutput(testResult);

@@ -8,6 +8,7 @@ import org.testng.ITestNGMethod;
 import org.testng.Reporter;
 import org.testng.internal.Utils;
 import org.testng.reporters.XMLReporterConfig;
+import org.testng.reporters.XMLReporterConfig.StackTraceLevels;
 import org.testng.reporters.XMLStringBuffer;
 import org.testng.xml.XmlSuite;
 
@@ -36,8 +37,10 @@ public class ATEXMLReporter implements IReporter {
 	public static final String FILE_NAME = "testng-results2.xml";
 
 	private final XMLReporterConfig config = new XMLReporterConfig();
+	@SuppressWarnings("null")
 	private XMLStringBuffer rootBuffer;
 
+	@SuppressWarnings("null")
 	@Override
 	public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites,
 			String outputDirectory) {
@@ -77,6 +80,7 @@ public class ATEXMLReporter implements IReporter {
 				null /* no prefix */);
 	}
 
+	@SuppressWarnings("null")
 	private void writeReporterOutput(XMLStringBuffer xmlBuffer) {
 		// TODO: Cosmin - maybe a <line> element isn't indicated for each line
 		xmlBuffer.push(XMLReporterConfig.TAG_REPORTER_OUTPUT);
@@ -126,6 +130,7 @@ public class ATEXMLReporter implements IReporter {
 		xmlBuffer.push(XMLReporterConfig.TAG_SUITE, getSuiteAttributes(suite));
 		writeSuiteGroups(xmlBuffer, suite);
 
+		@SuppressWarnings("null")
 		Map<String, ISuiteResult> results = suite.getResults();
 		ATEXMLSuiteResultWriter suiteResultWriter = new ATEXMLSuiteResultWriter(
 				config);
@@ -136,6 +141,7 @@ public class ATEXMLReporter implements IReporter {
 		xmlBuffer.pop();
 	}
 
+	@SuppressWarnings("null")
 	private void writeSuiteGroups(XMLStringBuffer xmlBuffer, ISuite suite) {
 		xmlBuffer.push(XMLReporterConfig.TAG_GROUPS);
 		Map<String, Collection<ITestNGMethod>> methodsByGroups = suite
@@ -163,6 +169,7 @@ public class ATEXMLReporter implements IReporter {
 		xmlBuffer.pop();
 	}
 
+	@SuppressWarnings("null")
 	private Properties getSuiteAttributes(ISuite suite) {
 		Properties props = new Properties();
 		props.setProperty(XMLReporterConfig.ATTR_NAME, suite.getName());
@@ -199,7 +206,7 @@ public class ATEXMLReporter implements IReporter {
 	public static void addDurationAttributes(XMLReporterConfig config,
 			Properties attributes, Date minStartDate, Date maxEndDate) {
 		SimpleDateFormat format = new SimpleDateFormat(
-				XMLReporterConfig.getTimestampFormat());
+				config.getTimestampFormat());
 		TimeZone utc = TimeZone.getTimeZone("UTC");
 		format.setTimeZone(utc);
 		String startTime = format.format(minStartDate);
@@ -230,14 +237,16 @@ public class ATEXMLReporter implements IReporter {
 		config.setFileFragmentationLevel(fileFragmentationLevel);
 	}
 
-	public int getStackTraceOutputMethod() {
-		return config.getStackTraceOutputMethod();
+	@SuppressWarnings("null")
+	public XMLReporterConfig.StackTraceLevels getStackTraceOutput() {
+		return config.getStackTraceOutput();
 	}
 
-	public void setStackTraceOutputMethod(int stackTraceOutputMethod) {
-		config.setStackTraceOutputMethod(stackTraceOutputMethod);
+	public void setStackTraceOutputMethod(StackTraceLevels none) {
+		config.setStackTraceOutput(none);
 	}
 
+	@SuppressWarnings("null")
 	public String getOutputDirectory() {
 		return config.getOutputDirectory();
 	}
@@ -262,8 +271,9 @@ public class ATEXMLReporter implements IReporter {
 		config.setSplitClassAndPackageNames(splitClassAndPackageNames);
 	}
 
-	public String getTimestampFormat() {
-		return XMLReporterConfig.getTimestampFormat();
+	@SuppressWarnings("null")
+	public String getTimestampFormat(XMLReporterConfig config) {
+		return config.getTimestampFormat();
 	}
 
 	public void setTimestampFormat(String timestampFormat) {
@@ -308,6 +318,5 @@ public class ATEXMLReporter implements IReporter {
 	public void setSuiteResults(Map<String, Map<String, ISuiteResult>> suiteResults) {
 		this.suiteResults = suiteResults;
 	}
-
 	
 }

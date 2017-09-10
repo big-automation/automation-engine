@@ -42,6 +42,7 @@ public class LogMessage {
 	 *
 	 * @return the error msg
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public String getErrorMsg() {
 		String retVal = messages.get(Level.ERROR);
 		if (null == retVal)
@@ -54,6 +55,7 @@ public class LogMessage {
 	 *
 	 * @return the warning msg
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public String getWarningMsg() {
 		String retVal = messages.get(Level.WARN);
 		if (null == retVal)
@@ -66,6 +68,7 @@ public class LogMessage {
 	 *
 	 * @return the info msg
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public String getInfoMsg() {
 		String retVal = messages.get(Level.INFO);
 		if (null == retVal)
@@ -78,6 +81,7 @@ public class LogMessage {
 	 *
 	 * @return the debug msg
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public String getDebugMsg() {
 		String retVal = messages.get(Level.DEBUG);
 		if (null == retVal)
@@ -90,6 +94,7 @@ public class LogMessage {
 	 *
 	 * @return the trace msg
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public String getTraceMsg() {
 		String retVal = messages.get(Level.TRACE);
 		if (null == retVal)
@@ -102,6 +107,7 @@ public class LogMessage {
 	 *
 	 * @param errorMsg the error msg
 	 */
+	@SuppressWarnings("null")
 	public LogMessage(String errorMsg) {
 		messages.put(Level.ERROR, errorMsg);
 
@@ -113,6 +119,7 @@ public class LogMessage {
 	 * @param errorMsg the error msg
 	 * @param warnMsg the warn msg
 	 */
+	@SuppressWarnings("null")
 	public LogMessage(String errorMsg, String warnMsg) {
 		messages.put(Level.ERROR, errorMsg);
 		messages.put(Level.WARN, warnMsg);
@@ -126,6 +133,7 @@ public class LogMessage {
 	 * @param warnMsg the warn msg
 	 * @param infoMsg the info msg
 	 */
+	@SuppressWarnings("null")
 	public LogMessage(String errorMsg, String warnMsg, String infoMsg) {
 		messages.put(Level.ERROR, errorMsg);
 		messages.put(Level.WARN, warnMsg);
@@ -141,6 +149,7 @@ public class LogMessage {
 	 * @param infoMsg the info msg
 	 * @param debugMsg the debug msg
 	 */
+	@SuppressWarnings("null")
 	public LogMessage(String errorMsg, String warnMsg, String infoMsg,
 			String debugMsg) {
 		messages.put(Level.ERROR, errorMsg);
@@ -158,6 +167,7 @@ public class LogMessage {
 	 * @param debugMsg the debug msg
 	 * @param traceMsg the trace msg
 	 */
+	@SuppressWarnings("null")
 	public LogMessage(String errorMsg, String warnMsg, String infoMsg,
 			String debugMsg, String traceMsg) {
 		messages.put(Level.ERROR, errorMsg);
@@ -173,6 +183,7 @@ public class LogMessage {
 	 * @param msg the msg
 	 * @param level the level
 	 */
+	@SuppressWarnings("null")
 	public LogMessage(String msg, ATELogLevel level) {
 		if (level == ATELogLevel.INFO)
 			messages.put(Level.INFO, msg);

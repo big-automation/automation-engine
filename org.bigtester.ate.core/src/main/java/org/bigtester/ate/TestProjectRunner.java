@@ -243,6 +243,7 @@ public final class TestProjectRunner {
 		return testProjectContext;
 
 	}
+	@SuppressWarnings("null")
 	private static void registerLegacyXsdNameSpaceParsers() {
 		/******************************* following for Test Project ******************************/
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_TESTPROJECT, new TestProjectBeanDefinitionParser());
@@ -350,9 +351,11 @@ public final class TestProjectRunner {
 	public static void registerXsdNameSpaceParsers() {
 		registerLegacyXsdNameSpaceParsers();
 		Reflections reflections = new Reflections("org.bigtester.ate");
+		@SuppressWarnings("null")
 		Set<Class<? extends IXsdBeanDefinitionParser>> subTypes = reflections.getSubTypesOf(IXsdBeanDefinitionParser.class);
 		for (Class<? extends IXsdBeanDefinitionParser> parser:subTypes) {
 			try {
+				@SuppressWarnings("null")
 				Object ins = parser.newInstance();
 				
 				Method getParser = parser.getDeclaredMethod("getParser");
@@ -380,6 +383,7 @@ public final class TestProjectRunner {
 	/**
 	 * Register problem handlers.
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	public static void registerProblemHandlers() {
 		Reflections reflections = new Reflections("org.bigtester.ate");
 		Set<Class<? extends IATEProblemHandler>> handlers = reflections.getSubTypesOf(IATEProblemHandler.class);

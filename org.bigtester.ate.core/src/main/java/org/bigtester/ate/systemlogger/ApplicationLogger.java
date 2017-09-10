@@ -159,6 +159,7 @@ public class ApplicationLogger implements ApplicationContextAware {
 			for (ProblemHandler hlr : genericBlbh)
 				Problomatic.addProblemHandlerForProblem(prb, hlr);
 
+			@SuppressWarnings("null")
 			Set<ProblemHandler> problemSpecificBlbh = ProblemHandlerRegistry
 					.getProblemAttachedProblemHandlers(prb);
 			for (ProblemHandler hlr : problemSpecificBlbh)

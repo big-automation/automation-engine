@@ -287,6 +287,7 @@ public class CaseRunner implements IRunTestCase {
 					throw (TestDataException) itr.getThrowable();
 				} else { // other test case bean creation errors. need to create
 					// another exception to handle it.
+					@SuppressWarnings("deprecation")
 					String[] fullST = Utils.stackTrace(fbe, false);
 					int TWO = 2; // NOPMD
 					if (fullST.length < TWO) {

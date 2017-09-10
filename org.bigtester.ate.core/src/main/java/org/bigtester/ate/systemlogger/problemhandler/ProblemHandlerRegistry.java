@@ -55,6 +55,7 @@ final public class ProblemHandlerRegistry {
 	 *
 	 * @return the all problem handlers
 	 */
+	@SuppressWarnings("null")
 	public static Set<ProblemHandler> getAllProblemHandlers() {
 		Set<ProblemHandler> retVal = new HashSet<ProblemHandler>();
 		for (Map.Entry<Class<?>, Set<ProblemHandler>> entry : throwableAttachedProblemHandlerRegistry
@@ -81,6 +82,7 @@ final public class ProblemHandlerRegistry {
 	 *            the attached prob
 	 * @return the problem attached problem handlers
 	 */
+	@SuppressWarnings("null")
 	public static Set<ProblemHandler> getProblemAttachedProblemHandlers(
 			Problem attachedProb) {
 		Set<ProblemHandler> retVal = new HashSet<ProblemHandler>();
@@ -108,6 +110,7 @@ final public class ProblemHandlerRegistry {
 	 *            the attached thr
 	 * @return the throwable attached problem handler
 	 */
+	@SuppressWarnings("null")
 	public static Set<ProblemHandler> getThrowableAttachedProblemHandler(
 			Throwable attachedThr) {
 		Set<ProblemHandler> retVal = new HashSet<ProblemHandler>();
@@ -126,6 +129,7 @@ final public class ProblemHandlerRegistry {
 	 * @param hlr
 	 *            the hlr
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public static void registerAttachedProblemHandler(Class<?> cls,
 			ProblemHandler hlr) {
 		Class<?> superCls = cls.getSuperclass();

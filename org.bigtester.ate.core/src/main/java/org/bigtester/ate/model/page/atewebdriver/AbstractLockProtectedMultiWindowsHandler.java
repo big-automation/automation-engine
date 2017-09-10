@@ -121,6 +121,7 @@ public class AbstractLockProtectedMultiWindowsHandler {
 	public List<AbstractAlertDialog> getAlerts() {
 		return alerts;
 	}
+	@SuppressWarnings("null")
 	private void removeClosedWindows() {
 		
 		boolean winRemoved = false;// NOPMD
@@ -157,6 +158,7 @@ public class AbstractLockProtectedMultiWindowsHandler {
 			this.getDriver().switchTo().window(currentWinHandle);
 		}
 	}
+	@SuppressWarnings("null")
 	private void refreshAlerts() {
 		for (int i = 0; i < alerts.size(); i++) {
 			if (alerts.get(i).isClosed())
@@ -171,7 +173,7 @@ public class AbstractLockProtectedMultiWindowsHandler {
 	 *            the web d
 	 * @throws BrowserUnexpectedException 
 	 */
-	@SuppressWarnings("unlikely-arg-type")
+	@SuppressWarnings({ "unlikely-arg-type", "null", "unused" })
 	public void refreshWindowsList(@Nullable WebDriver webD,
 			boolean refreshFrameFlag) throws BrowserUnexpectedException {
 		synchronized (lock) {

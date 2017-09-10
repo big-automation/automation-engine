@@ -145,6 +145,7 @@ abstract public class AbstractCucumberTestStepDefs {
 	 * @throws IOException
 	 * @throws ParseException
 	 */
+	@SuppressWarnings("null")
 	private StepResultStatus runStep(ApplicationContext context, AteProjectFilter executionFilter, 
 			List<Map<String, String>> featureDataTable,
 			ActionNameValuePair... actionNameValuePairs)

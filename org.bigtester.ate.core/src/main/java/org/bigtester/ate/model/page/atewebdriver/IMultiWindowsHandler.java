@@ -21,12 +21,10 @@
 package org.bigtester.ate.model.page.atewebdriver; //NOPMD
 
 import java.util.List;
-
 import org.bigtester.ate.model.page.atewebdriver.exception.BrowserUnexpectedException;
 import org.eclipse.jdt.annotation.Nullable;
 import org.openqa.selenium.WebDriver;
 
-// TODO: Auto-generated Javadoc
 /**
  * This class BrowserWindowsMonitor defines ....
  * 

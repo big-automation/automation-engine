@@ -129,6 +129,7 @@ public class BrowserWindow {
 	 * Refresh frames.
 	 * @throws BrowserUnexpectedException 
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	public void refreshFrames() throws BrowserUnexpectedException {
 		obtainWindowFocus();
 

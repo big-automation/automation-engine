@@ -124,6 +124,7 @@ public class RepeatStep extends BaseTestStep implements ITestStep, Cloneable {
 	 * @param stepName the step name
 	 * @return the step index
 	 */
+	@SuppressWarnings("null")
 	public static int getStepIndex(List<ITestStep> stepList, String stepName) {
 		int retVal = -1;
 		for (int i = 0; i < stepList.size(); i++) {
@@ -153,6 +154,7 @@ public class RepeatStep extends BaseTestStep implements ITestStep, Cloneable {
 		for (int i = 0; i < getTestCase().getTestStepList().size(); i++) {
 			if (i >= startIndex && i <= endIndex) {
 				repeatingStepIndexesInTestCase.add(i);
+				@SuppressWarnings("null")
 				ITestStep thisStep = getTestCase().getTestStepList().get(i);
 				repeatingSteps.add(thisStep);
 				// TODO in future version, We need to use the pubishevent to
@@ -209,6 +211,7 @@ public class RepeatStep extends BaseTestStep implements ITestStep, Cloneable {
 
 	}
 
+	@SuppressWarnings("null")
 	private void buildStepAssertersNeedRefresh() {
 		erValuesNeedRefresh.clear();
 		StepDataLogger sdl = GlobalUtils
@@ -227,6 +230,7 @@ public class RepeatStep extends BaseTestStep implements ITestStep, Cloneable {
 
 	}
 
+	@SuppressWarnings("null")
 	private void buildStepInputDatasNeedRefresh() {
 		dataValuesNeedRefresh.clear();
 		StepDataLogger sdl = GlobalUtils
@@ -244,6 +248,7 @@ public class RepeatStep extends BaseTestStep implements ITestStep, Cloneable {
 		}
 	}
 
+	@SuppressWarnings("null")
 	private void buildRepeatIndexes() {
 		repeatIndexValuesNeedRefresh.clear();
 		StepDataLogger sdl = GlobalUtils
@@ -266,6 +271,7 @@ public class RepeatStep extends BaseTestStep implements ITestStep, Cloneable {
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("null")
 	@StepLoggable(level = org.bigtester.ate.annotation.ATELogLevel.INFO)
 	@Override
 	public void doStep(@Nullable IStepJumpingEnclosedContainer jumpingContainer)
@@ -286,6 +292,7 @@ public class RepeatStep extends BaseTestStep implements ITestStep, Cloneable {
 	 * @throws StepExecutionException
 	 * @throws PageValidationException
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	private void repeatSteps(IStepJumpingEnclosedContainer jumpingContainer)
 			throws StepExecutionException, PageValidationException,
 			RuntimeDataException {

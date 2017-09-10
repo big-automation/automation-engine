@@ -54,6 +54,7 @@ import org.springframework.core.io.Resource;
 public class CaseDataProcessor implements BeanFactoryPostProcessor {
 
 	/** The all page names. */
+	@SuppressWarnings("null")
 	@Nullable
 	transient private String[] allPageNames;
 	
@@ -118,6 +119,7 @@ public class CaseDataProcessor implements BeanFactoryPostProcessor {
 	/**
 	 * @return the allPageNames
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public String[] getAllPageNames() {
 
 		final String[] allPageNames2 = allPageNames;

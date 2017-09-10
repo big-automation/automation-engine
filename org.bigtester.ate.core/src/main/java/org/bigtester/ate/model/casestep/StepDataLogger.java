@@ -77,6 +77,7 @@ public class StepDataLogger implements
 	 * @param data
 	 *            the data
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public void logData(Object data) {
 		//only dataholder used in a step is logged here.
 		if (null != currentExecutionStep) {
@@ -109,6 +110,7 @@ public class StepDataLogger implements
 	//
 	// }
 
+	@SuppressWarnings("null")
 	private boolean isAlreadyLoggedInRepeatStep(Object data) {
 		boolean alreadyLoggedInRepeatStep = false; // NOPMD
 
@@ -123,6 +125,7 @@ public class StepDataLogger implements
 		return alreadyLoggedInRepeatStep;
 	}
 
+	@SuppressWarnings("null")
 	private void logRepeatStepData(Object data, RepeatStep liveRepeat) {
 
 		if (!isAlreadyLoggedInRepeatStep(data)) {
@@ -310,6 +313,7 @@ public class StepDataLogger implements
 		return repeatStepDataRegistry;
 	}
 
+	@SuppressWarnings({ "null", "unused" })
 	private void resetRepeatIncrementalIndex(RepeatStep rStep) {
 		List<Object> onTheFlies = getRepeatStepDataRegistry().get(rStep);
 		if (null == onTheFlies)
@@ -322,6 +326,7 @@ public class StepDataLogger implements
 		}
 	}
 
+	@SuppressWarnings("null")
 	private void logRepeatStepDataRecursivelyInStepJumpingEnclosedContainer(
 			Map<ITestStep, List<Object>> stepDataRegistry, ITestStep step,
 			RepeatStep liveRepeatStep) {
@@ -349,6 +354,7 @@ public class StepDataLogger implements
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("null")
 	@Override
 	public void onApplicationEvent(@Nullable RepeatStepInOutEvent event) {
 		if (null == event)

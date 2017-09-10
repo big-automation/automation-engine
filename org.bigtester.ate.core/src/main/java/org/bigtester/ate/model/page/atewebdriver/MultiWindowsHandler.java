@@ -185,6 +185,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 		Iterator<BrowserWindow> itr = this.getWindows().iterator();
 		while(itr.hasNext()) {
 			
+			@SuppressWarnings("null")
 			BrowserWindow win = itr.next();
 		//for (BrowserWindow win : this.getWindows()) {
 			if (!openWindowHandle.equalsIgnoreCase(win.getWindowHandle()) && !win.isClosed()) {
@@ -205,6 +206,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 			
 		}
 		// deal with the windows not in the windows list
+		@SuppressWarnings("null")
 		Set<String> allWindowHandles = getDriver().getWindowHandles();
 		for (String currentWindowHandle : allWindowHandles) {
 			if (!currentWindowHandle.equals(openWindowHandle)) {
@@ -238,6 +240,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	 */
 	public boolean switchToWindowUsingTitle(String title) {
 		String currentWindow = getDriver().getWindowHandle(); // NOPMD
+		@SuppressWarnings("null")
 		Set<String> availableWindows = getDriver().getWindowHandles();
 		boolean switchSuccess;
 		if (availableWindows.isEmpty()) {
@@ -268,6 +271,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	@Nullable
 	public String retriveWindowHandleUsingTitle(String title) {
 		String currentWindow = getDriver().getWindowHandle(); // NOPMD
+		@SuppressWarnings("null")
 		Set<String> availableWindows = getDriver().getWindowHandles();
 		String retVal = null; // NOPMD
 		if (!availableWindows.isEmpty()) {
@@ -288,6 +292,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	/**
 	 * Focus on latest window.
 	 */
+	@SuppressWarnings("null")
 	public void focusOnLatestWindow() {
 		if (getWindows().isEmpty())
 			return;
@@ -301,6 +306,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	 *            the open sequence
 	 * @return the string
 	 */
+	@SuppressWarnings("null")
 	@Nullable
 	public String obtainWindowHandle(int openSequence) {
 		try {
@@ -322,6 +328,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	 *            the open sequence, indexed from 0
 	 * @return the abstract alert dialog
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	@Nullable
 	public AbstractAlertDialog obtainFocusOnAlertDialog(int openSequence) {
 		AbstractAlertDialog retVal;
@@ -343,6 +350,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	 *
 	 * @return the abstract alert dialog
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	@Nullable
 	public AbstractAlertDialog obtainFocusOnLatestAlertDialog() {
 		AbstractAlertDialog retVal;

@@ -50,6 +50,7 @@ BaseTestStepBeanDefinitionParser {
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("null")
 	@Override
 	protected AbstractBeanDefinition parseInternal(@Nullable Element element,
 			@Nullable ParserContext parserContext) {
@@ -81,6 +82,7 @@ BaseTestStepBeanDefinitionParser {
 	}
 
 
+	@SuppressWarnings({ "null", "unused" })
 	private static void parseTestStepComponents(List<Element> childElements,
 			BeanDefinition beanDef, ParserContext parserContext) {
 		ManagedList<BeanDefinition> children = new ManagedList<BeanDefinition>(//NOPMD

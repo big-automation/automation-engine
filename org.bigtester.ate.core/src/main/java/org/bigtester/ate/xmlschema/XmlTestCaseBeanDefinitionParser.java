@@ -62,9 +62,11 @@ AbstractBeanDefinitionParser {
         if (StringUtils.hasText(testCaseName)) {
         	factory.addConstructorArgValue( testCaseName);
         }
-        List<Element> dependencies = (List<Element>) DomUtils.getChildElementsByTagName(element, XsdElementConstants.ELEMENT_CASEDEPENDENCIES);
+        @SuppressWarnings("null")
+		List<Element> dependencies = (List<Element>) DomUtils.getChildElementsByTagName(element, XsdElementConstants.ELEMENT_CASEDEPENDENCIES);
         if (null != dependencies && dependencies.size() == 1) {
-	        List<Element> allDependencies = (List<Element>) DomUtils.getChildElementsByTagName(dependencies.get(0), XsdElementConstants.ELEMENT_CASEDEPENDENCY);
+	        @SuppressWarnings("null")
+			List<Element> allDependencies = (List<Element>) DomUtils.getChildElementsByTagName(dependencies.get(0), XsdElementConstants.ELEMENT_CASEDEPENDENCY);
 	        
 	        if (allDependencies != null && !allDependencies.isEmpty()) {
 	        	if (null == factory) throw GlobalUtils.createNotInitializedException("factory");
@@ -74,6 +76,7 @@ AbstractBeanDefinitionParser {
         return factory.getBeanDefinition();
     }
 	
+	@SuppressWarnings("null")
 	private static void parseCaseDependenciesInnerComponents(List<Element> allDependencies, BeanDefinitionBuilder factory, ParserContext parserContext) {
         ManagedList<BeanDefinition> children = new ManagedList<BeanDefinition>(allDependencies.size());
         for (Element element : allDependencies) {

@@ -202,7 +202,7 @@ public class TestProject {
 	 * @throws ParseException
 	 */
 	//@TestProjectLoggable (level=ATELogLevel.INFO)
-	@SuppressWarnings("null")
+	@SuppressWarnings({ "null", "deprecation" })
 	private void runSuites(String filteringSuiteName, String filteringTestCaseName) throws ClassNotFoundException, ParseException,
 			IOException {
 		if (testng.getTestListeners().stream().filter(listener->listener instanceof TestProjectListener).count()==0) {
@@ -216,7 +216,7 @@ public class TestProject {
 		}
 		if (testng.getTestListeners().stream().filter(listener->listener instanceof ATEXMLReporter).count()==0) {
 			ATEXMLReporter rng = new ATEXMLReporter();
-			rng.setStackTraceOutputMethod(XMLReporterConfig.STACKTRACE_NONE);
+			rng.setStackTraceOutputMethod(XMLReporterConfig.StackTraceLevels.NONE);
 			testng.addListener(rng);
 		}
 		//TODO Can be optimaized in cucumber run, no need to delete old suite cases in each step if it is belong to current test project

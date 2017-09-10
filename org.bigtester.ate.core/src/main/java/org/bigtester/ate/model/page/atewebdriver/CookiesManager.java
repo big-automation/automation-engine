@@ -76,6 +76,7 @@ public class CookiesManager extends PageModelBase implements IDiskFileOperation 
 	 * @param domain the domain
 	 * @param cookies the cookies
 	 */
+	@SuppressWarnings("null")
 	public CookiesManager(IMyWebDriver myWd, String domain, Set<Cookie> cookies) {
 		super(myWd);
 		this.domain = domain;
@@ -92,6 +93,7 @@ public class CookiesManager extends PageModelBase implements IDiskFileOperation 
 	 * @param myWd the my wd
 	 * @param cookies the cookies
 	 */
+	@SuppressWarnings("null")
 	public CookiesManager(IMyWebDriver myWd, Set<Cookie> cookies) {
 		super(myWd);
 		this.domain = "";

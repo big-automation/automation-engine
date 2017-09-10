@@ -613,7 +613,7 @@
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
-            <version>1.4.8</version>
+            <version>1.4.10</version>
         </dependency>
         <dependency>
 	        <groupId>org.mockito</groupId>
@@ -630,12 +630,7 @@
 			<groupId>com.jcabi</groupId>
 			<artifactId>jcabi-aether</artifactId>
 			<version>0.10.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.thoughtworks.xstream</groupId>
-			<artifactId>xstream</artifactId>
-			<version>1.4.8</version>
-		</dependency>
+		</dependency>		
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>

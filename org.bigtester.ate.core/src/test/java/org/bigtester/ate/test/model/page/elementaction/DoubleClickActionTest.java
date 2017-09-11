@@ -21,21 +21,13 @@
 package org.bigtester.ate.test.model.page.elementaction;
 
 import org.bigtester.ate.model.page.atewebdriver.exception.BrowserUnexpectedException;
-import org.bigtester.ate.model.page.elementaction.IElementAction;
-import org.bigtester.ate.model.page.elementaction.ITestObjectAction;
-import org.bigtester.ate.GlobalUtils;
-import org.bigtester.ate.model.data.IStepInputData;
 import org.bigtester.ate.model.data.exception.RuntimeDataException;
 import org.bigtester.ate.model.page.exception.PageValidationException;
 import org.bigtester.ate.model.page.exception.StepExecutionException;
 import org.bigtester.ate.model.page.page.MyWebElement;
 import org.bigtester.ate.test.BigtesterProjectTest;
-import org.openqa.selenium.By;
 import org.springframework.test.context.ContextConfiguration;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.bigtester.ate.test.AbstractBigtesterStepTest;
-import org.eclipse.jdt.annotation.Nullable;
 
 /**
  * 

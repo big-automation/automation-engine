@@ -77,6 +77,7 @@ public final class XsdElementConstants {
 	
 	/** The Constant PROP_TESTSUITE_TESTCASELIST. */
 	public static final String PROP_TESTSUITE_TESTCASELIST = "testCaseList";
+	
 
 	/** ***************************** following for Test Case *****************************. */
 	
@@ -106,9 +107,7 @@ public final class XsdElementConstants {
     /** The Constant PROP_TESTCASE_TESTSTEPLIST. */
 	public static final String PROP_TESTCASE_TESTSTEPLIST = "testStepList";
 	
-    /** ***************************** following for Test Step *****************************. */
-	
-	
+    /** ***************************** following for Test Step *****************************. */	
 	
 	/** The Constant ELEMENT_MYWEBELEMENT. */
 	public static final String ELEMENT_MYWEBELEMENT = "myWebElement";
@@ -202,6 +201,7 @@ public final class XsdElementConstants {
 	/** The Constant ATTR_ELEMENTSTEP_MYWEBELEMENT. */
 	public static final String ATTR_ELEMENTSTEP_MYWEBELEMENT = "myWebElement";
 	
+	
 	/** ***************************** following for Test Page *****************************. */
 	
 	/** The Constant ELEMENT_ID_MYBASEPAGEMODEL. */
@@ -254,6 +254,7 @@ public final class XsdElementConstants {
 	
 	/** The Constant ELEMENT_PAGEELEMENTEXISTENCE. */
 	public static final String ELEMENT_PAGEELEMENTEXISTENCE = "pageElementExistenceAsserter";
+	
 	
     /** ***************************** following for Test Data ***************************. */
 	
@@ -319,11 +320,33 @@ public final class XsdElementConstants {
 	
 	/** The Constant ATTR_RUNTIMEDATAHOLDER_PAGE. */
 	public static final String ATTR_RUNTIMEDATAHOLDER_PAGE = "page"; //NOPMD
+	
 			
 	/** ***************************** following for Element Find *****************************. */	
 	
 	/** The Constant ELEMENT_BASETESTSTEP. */
 	public static final String ELEMENT_ELEMENTFINDBYID = "elementFindById";
+	
+	/** The Constant ATTR_GENERICELEMENTFIND_FINDBYVALUE. */
+	public static final String ATTR_GENERICELEMENTFIND_FINDBYVALUE = "findByValue"; //NOPMD
+	
+	/** The Constant ATTR_GENERICELEMENTFIND_FINDBYClASSNAME. */
+	public static final String ELEMENT_ELEMENTFINDBYCLASSNAME = "elementFindByClassName";
+	
+	/** The Constant ATTR_GENERICELEMENTFIND_FINDBYNAME. */
+	public static final String ELEMENT_ELEMENTFINDBYNAME = "elementFindByName";
+	
+	/** The Constant ATTR_GENERICELEMENTFIND_FINDBYCSS. */
+    public static final String ELEMENT_ELEMENTFINDBYCSS = "elementFindByCss";
+    
+    /** The Constant ATTR_GENERICELEMENTFIND_FINDBYLINKTEXT. */
+    public static final String ELEMENT_ELEMENTFINDBYLINKTEXT = "elementFindByLinkText";
+    
+    /** The Constant ATTR_GENERICELEMENTFIND_FINDBYPARTIALLINKTEXT. */
+	public static final String ELEMENT_ELEMENTFINDBYPLINKTEXT = "elementFindByPartialLinkText";
+	
+	/** The Constant ATTR_GENERICELEMENTFIND_FINDBYTAGNAME. */
+	public static final String ELEMENT_ELEMENTFINDBYTAGNAME = "elementFindByTagName";
 	
 	/** The Constant ELEMENT_COOKIESFINDALL. */
 	public static final String ELEMENT_COOKIESFINDALL = "cookiesFindAll";
@@ -335,8 +358,7 @@ public final class XsdElementConstants {
 	public static final String ELEMENT_COOKIESFINDBYDOMAINNAME = "cookiesFindByDomainName";
 	
 	/** The Constant ELEMENT_COOKIEFINDBYCOOKIENAMEINDOMAIN. */
-	public static final String ELEMENT_COOKIEFINDBYCOOKIENAMEINDOMAIN = "cookieFindByCookieNameInDomain";//NOPMD
-	
+	public static final String ELEMENT_COOKIEFINDBYCOOKIENAMEINDOMAIN = "cookieFindByCookieNameInDomain";//NOPMD	
 	
 	/** The Constant ELEMENT_ELEMENTFINDBYXPATH. */
 	public static final String ELEMENT_ELEMENTFINDBYXPATH = "elementFindByXpath";
@@ -363,25 +385,11 @@ public final class XsdElementConstants {
 	public static final String ATTR_ELEMENTACTIONDEF_ELEMENTFIND = "elementFind";
 	
 	/** The Constant ATTR_ELEMENTFINDBYID_FINDBYVALUE. */
-	public static final String ATTR_ELEMENTFINDBYID_FINDBYVALUE = "findByValue";
+	public static final String ATTR_ELEMENTFINDBYID_FINDBYVALUE = "findByValue";	
 	
-	/** The Constant ATTR_GENERICELEMENTFIND_FINDBYVALUE. */
-	public static final String ATTR_GENERICELEMENTFIND_FINDBYVALUE = "findByValue"; //NOPMD
-	/** The Constant ATTR_GENERICELEMENTFIND_FINDBYClASSNAME. */
-	public static final String ELEMENT_ELEMENTFINDBYCLASSNAME = "elementFindByClassName";
-	/** The Constant ATTR_GENERICELEMENTFIND_FINDBYNAME. */
-	public static final String ELEMENT_ELEMENTFINDBYNAME = "elementFindByName";
-	/** The Constant ATTR_GENERICELEMENTFIND_FINDBYCSS. */
-    public static final String ELEMENT_ELEMENTFINDBYCSS = "elementFindByCss";
-    /** The Constant ATTR_GENERICELEMENTFIND_FINDBYLINKTEXT. */
-    public static final String ELEMENT_ELEMENTFINDBYLINKTEXT = "elementFindByLinkText";
-    /** The Constant ATTR_GENERICELEMENTFIND_FINDBYPARTIALLINKTEXT. */
-	public static final String ELEMENT_ELEMENTFINDBYPLINKTEXT = "elementFindByPartialLinkText";
-	/** The Constant ATTR_GENERICELEMENTFIND_FINDBYTAGNAME. */
-	public static final String ELEMENT_ELEMENTFINDBYTAGNAME = "elementFindByTagName";
-
 	/** The Constant ATTR_GENERICELEMENTFIND_INDEXOFSAMEELEMENTS. */
 	public static final String ATTR_GENERICELEMENTFIND_INDEXOFSAMEELEMENTS = "indexOfSameElements"; //NOPMD
+	
 
 	/** ***************************** following for Element Action *****************************. */
 	
@@ -471,6 +479,7 @@ public final class XsdElementConstants {
 
 	/** The Constant ATTR_ELEMENTACTIONDEF_ELEMENTACTION. */
 	public static final String ATTR_ELEMENTACTIONDEF_ELEMENTACTION = "elementAction"; //NOPMD
+	
 	
 	/** ***************************** following for Webdriver *****************************. */
 	

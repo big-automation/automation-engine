@@ -29,7 +29,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class MyFirefoxDriver defines ....
  * 

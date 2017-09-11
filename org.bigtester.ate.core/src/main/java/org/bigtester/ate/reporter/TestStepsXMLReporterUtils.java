@@ -83,6 +83,7 @@ public final class TestStepsXMLReporterUtils {
 	 * @param iCount
 	 *            the i
 	 */
+	@SuppressWarnings("null")
 	private static void addStep(XMLStringBuffer xmlBuffer, TestStepResult tsr,
 			int iCount) {
 		Properties attrs = new Properties();

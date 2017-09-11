@@ -35,7 +35,6 @@ import org.springframework.util.StringUtils;
 import org.w3c.dom.Element;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * This class SimpleDateFormatBeanDefinitionParser defines ....
  * 

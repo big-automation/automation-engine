@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
 
-<STEPERELEMENTEXISTENCE FirstTimeExecution= "Yes" ELEMENTFINDBY="ID" ELEMENTFINDBYVALUE="logo1" ASSERTPRIORITY="HIGH" PAGENAME="homepage" STEPERSETID="homePageVID" TESTDATACONTEXT_IDCOLUMN="5" />
-<STEPERELEMENTEXISTENCE FirstTimeExecution= "Yes"  ELEMENTFINDBY="ID" ELEMENTFINDBYVALUE="banner" ASSERTPRIORITY="MEDIUM" PAGENAME="homepage" STEPERSETID="homePageVID" TESTDATACONTEXT_IDCOLUMN="5" />
-<STEPERELEMENTEXISTENCE FirstTimeExecution= "Yes"  ELEMENTFINDBY="ID" ELEMENTFINDBYVALUE="search_phu" ASSERTPRIORITY="HIGH" PAGENAME="homepage" STEPERSETID="homePageVID" TESTDATACONTEXT_IDCOLUMN="5" />
-<STEPERELEMENTEXISTENCE FirstTimeExecution= "Yes"  ELEMENTFINDBY="LINKTEXT" ELEMENTFINDBYVALUE="https://ssl.req.gouv.qc.ca/slc0110_eng.html" ASSERTPRIORITY="HIGH" PAGENAME="homepage" STEPERSETID="2" TESTDATACONTEXT_IDCOLUMN="5" />
+<STEPERELEMENTEXISTENCE FirstTimeExecution= "Yes" ELEMENTFINDBY="ID" ELEMENTFINDBYVALUE="Privacy Policy" ASSERTPRIORITY="HIGH" PAGENAME="homepage" STEPERSETID="homePageVID" TESTDATACONTEXT_IDCOLUMN="5" />
+<STEPERELEMENTEXISTENCE FirstTimeExecution= "Yes" ELEMENTFINDBY="ID" ELEMENTFINDBYVALUE="Services Terms" ASSERTPRIORITY="HIGH" PAGENAME="homepage" STEPERSETID="homePageVID" TESTDATACONTEXT_IDCOLUMN="5" />
+<STEPERELEMENTEXISTENCE FirstTimeExecution= "Yes" ELEMENTFINDBY="ID" ELEMENTFINDBYVALUE="WebSite Terms" ASSERTPRIORITY="HIGH" PAGENAME="homepage" STEPERSETID="homePageVID" TESTDATACONTEXT_IDCOLUMN="5" />
+<!-- <STEPERELEMENTEXISTENCE FirstTimeExecution= "Yes"  ELEMENTFINDBY="LINKTEXT" ELEMENTFINDBYVALUE="https://ssl.req.gouv.qc.ca/slc0110_eng.html" ASSERTPRIORITY="HIGH" PAGENAME="homepage" STEPERSETID="2" TESTDATACONTEXT_IDCOLUMN="5" /> -->
 <!-- <STEPERELEMENTEXISTENCE FirstTimeExecution= "Yes"  ASSERTPROPERTY="Page_Title" ASSERTVALUE="My Page Title"	PAGENAME="homepage"	STEPERSETID="1"	TESTDATACONTEXT_IDCOLUMN="8" ASSERTPRIORITY="HIGH"/> -->
  
-<ElementInputData FirstTimeExecution= "Yes" stepEIDsetID="1" dataName="UserName" dataValue="peidonghu1x" testDataContext_idColumn="1" />
-<ElementInputData FirstTimeExecution= "Yes" stepEIDsetID="2" dataName="UserName" dataValue="peidonghu2x" testDataContext_idColumn="1" />
-<ElementInputData FirstTimeExecution= "Yes" stepEIDsetID="3" dataName="Password" dataValue="pa1x" testDataContext_idColumn="1" />
-<ElementInputData FirstTimeExecution= "Yes" stepEIDsetID="4" dataName="Password" dataValue="pa2x" testDataContext_idColumn="1" />
+<ElementInputData FirstTimeExecution= "Yes" stepEIDsetID="1" dataName="FirstName" dataValue="wei" testDataContext_idColumn="1" />
+<ElementInputData FirstTimeExecution= "Yes" stepEIDsetID="2" dataName="LastName" dataValue="shao" testDataContext_idColumn="1" />
+<ElementInputData FirstTimeExecution= "Yes" stepEIDsetID="3" dataName="Email" dataValue="stoneshao1973@gmail.com" testDataContext_idColumn="1" />
+<ElementInputData FirstTimeExecution= "Yes" stepEIDsetID="4" dataName="Phone1" dataValue="514" testDataContext_idColumn="1" />
+<ElementInputData FirstTimeExecution= "Yes" stepEIDsetID="5" dataName="Phone2" dataValue="659" testDataContext_idColumn="1" />
+<ElementInputData FirstTimeExecution= "Yes" stepEIDsetID="6" dataName="Phone3" dataValue="5789" testDataContext_idColumn="1" />
+<ElementInputData FirstTimeExecution= "Yes" stepEIDsetID="7" dataName="CompanyName" dataValue="John Abbott College" testDataContext_idColumn="1" />
+<ElementInputData FirstTimeExecution= "Yes" stepEIDsetID="8" dataName="NoteToUs" dataValue="Internship is continuting now" testDataContext_idColumn="1" />
 
 </dataset>

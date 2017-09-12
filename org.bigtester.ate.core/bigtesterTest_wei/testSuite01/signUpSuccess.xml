@@ -37,39 +37,47 @@
 		<ate:homeStep id="stepOpenBigtesterHomePage" stepName="stepOpenBigtesterHomePage"
 			stepDescription="open bigtester.com home step" targetStep="true" pageObject="poHomePage">
 		</ate:homeStep>
-		<ate:elementStep id="stepClickPrivacyPolicyLink"
-			stepDescription="Click privacy policy link" stepName="stepClickPrivacyPolicyLink" optionalStep="true"
-			targetStep="false" elementActionDef="eadClickPrivacyPolicy" pageObject="poHomePage">
+		<ate:elementStep id="stepUserTypeInFirstName"
+			stepDescription="type in public user first name" stepName="stepUserTypeInFirstName"
+			targetStep="false" elementActionDef="typeInFirstName" pageObject="poHomePage">
 		</ate:elementStep>
-		<ate:elementStep id="stepClickServicesTermsLink"
-			stepDescription="Click services terms link" stepName="stepClickServicesTermsLink" optionalStep="true"
-			targetStep="false" elementActionDef="eadClickServicesTerms" pageObject="poHomePage">
+		<ate:elementStep id="stepUserTypeInLastName"
+			stepDescription="type in public user last name" stepName="stepUserTypeInLastName"
+			targetStep="false" elementActionDef="typeInLastName" pageObject="poHomePage">
 		</ate:elementStep>
-		<ate:elementStep id="stepClickWebSiteTermsLink"
-			stepDescription="Click webSite terms link" stepName="stepClickWebSiteTermsLink" optionalStep="true"
-			targetStep="false" elementActionDef="eadClickWebSiteTerms" pageObject="poHomePage">
+		<ate:elementStep id="stepUserTypeInEmail"
+			stepDescription="type in public user email" stepName="stepUserTypeInEmail"
+			targetStep="false" elementActionDef="typeInEmail" pageObject="poHomePage">
 		</ate:elementStep>
-		<ate:elementStep id="stepUserLogintypeUsername"
-			stepDescription="type in public user name" stepName="stepUserLogintypeUsername"
-			targetStep="false" elementActionDef="eadTypeLoginUserName" pageObject="poHomePage">
+		<ate:elementStep id="stepUserTypeInPhone1"
+			stepDescription="type in public user phone number part 1" stepName="stepUserTypeInPhone1"
+			targetStep="false" elementActionDef="typeInPhone1" pageObject="poHomePage">
 		</ate:elementStep>
-		<ate:elementStep id="stepUserLoginTypePassword"
-			stepDescription="type in public user password" stepName="stepUserLoginTypePassword"
-			targetStep="false" elementActionDef="eadTypeLoginPassword" pageObject="poHomePage">
+		<ate:elementStep id="stepUserTypeInPhone2"
+			stepDescription="type in public user phone number part 2" stepName="stepUserTypeInPhone2"
+			targetStep="false" elementActionDef="typeInPhone2" pageObject="poHomePage">
 		</ate:elementStep>
-		<ate:elementStep id="publicLogin_clickLoginButton"
-			stepDescription="click Login button to log in" stepName="clickLoginButton"
-			targetStep="false" elementActionDef="eadClickLoginButton" pageObject="poHomePage">
+		<ate:elementStep id="stepUserTypeInPhone3"
+			stepDescription="type in public user phone number part 3" stepName="stepUserTypeInPhone3"
+			targetStep="false" elementActionDef="typeInPhone3" pageObject="poHomePage">
+		</ate:elementStep>
+		<ate:elementStep id="stepUserTypeInCompanyName"
+			stepDescription="type in public user company name" stepName="stepUserTypeInCompanyName"
+			targetStep="false" elementActionDef="typeInCompanyName" pageObject="poHomePage">
+		</ate:elementStep>
+		<ate:elementStep id="stepUserTypeInNoteToUs"
+			stepDescription="type in public user note to us" stepName="stepUserTypeInNoteToUs"
+			targetStep="false" elementActionDef="typeInNoteToUs" pageObject="poHomePage">
+		</ate:elementStep>
+		<ate:elementStep id="clickSubmitButton"
+			stepDescription="click submit button to submit" stepName="clickSubmitButton"
+			targetStep="false" elementActionDef="clickSubmit" pageObject="poHomePage">
 		<!-- 	<property name="expectedResultAsserter">
 				<list>
 					<ref bean="publicLoginDashBoardPropertyAsserter" />
 					<ref bean="publicLoginDashBoardElementExistenceAsserter" />
 				</list>
 			</property> -->
-		</ate:elementStep>
-		<ate:elementStep id="publicLogout_clickLogoutLink"
-			stepDescription="click Logout button to logout" stepName="clickLogoutButton"
-			targetStep="false" elementActionDef="eadClickLogoutButton" pageObject="poHomePage">
 		</ate:elementStep>
 		<ate:lastStep id="stepLaststep" stepName="stepLaststep"
 			stepDescription="last step close browser" targetStep="false" pageObject="poLastPage">

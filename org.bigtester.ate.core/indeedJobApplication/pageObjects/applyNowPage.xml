@@ -31,35 +31,35 @@
 	</ate:elementActionDef>
 	<ate:elementFindById id="efApplicantName"
 		findByValue="applicant.name"  />
-	<ate:sendKeysAction id="eaFilloutApplicantName" dataValue="Peidong Hu"/>
+	<ate:sendKeysAction id="eaFilloutApplicantName" dataValue="Chen Chen"/>
 	
 	<ate:elementActionDef id="eadFilloutApplicantFirstName"
 		elementFind="efApplicantFirstName" elementAction="eaFilloutApplicantFirstName">
 	</ate:elementActionDef>
 	<ate:elementFindById id="efApplicantFirstName"
 		findByValue="applicant.firstName"  />
-	<ate:sendKeysAction id="eaFilloutApplicantFirstName" dataValue="Peidong"/>
+	<ate:sendKeysAction id="eaFilloutApplicantFirstName" dataValue="Chen"/>
 	
 	<ate:elementActionDef id="eadFilloutApplicantLastName"
 		elementFind="efApplicantLastName" elementAction="eaFilloutApplicantLastName">
 	</ate:elementActionDef>
 	<ate:elementFindById id="efApplicantLastName"
 		findByValue="applicant.lastName"  />
-	<ate:sendKeysAction id="eaFilloutApplicantLastName" dataValue="Hu"/>
+	<ate:sendKeysAction id="eaFilloutApplicantLastName" dataValue="Chen"/>
 	
 	<ate:elementActionDef id="eadFilloutApplicantEmail"
 		elementFind="efApplicantEmail" elementAction="eaFilloutApplicantEmail">
 	</ate:elementActionDef>
 	<ate:elementFindById id="efApplicantEmail"
 		findByValue="applicant.email"  />
-	<ate:sendKeysAction id="eaFilloutApplicantEmail" dataValue="hupeidong@yahoo.com"/>
+	<ate:sendKeysAction id="eaFilloutApplicantEmail" dataValue="chencheninca@gmail.com"/>
 
 	<ate:elementActionDef id="eadFilloutApplicantPhoneNumber"
 		elementFind="efApplicantPhoneNumber" elementAction="eaFilloutApplicantPhoneNumber">
 	</ate:elementActionDef>
 	<ate:elementFindById id="efApplicantPhoneNumber"
 		findByValue="applicant.phoneNumber"  />
-	<ate:sendKeysAction id="eaFilloutApplicantPhoneNumber" dataValue="5148036688"/>
+	<ate:sendKeysAction id="eaFilloutApplicantPhoneNumber" dataValue="4389288646"/>
 	
 	<ate:elementActionDef id="eadApplyChooseFile"
 		elementFind="efApplyNowChooseFile" elementAction="eaApplyChooseFile">
@@ -67,7 +67,7 @@
 	<ate:elementFindById id="efApplyNowChooseFile"
 		findByValue="resume"  />
 	<ate:uploadFileAction id="eaApplyChooseFile"	
-		fileNameWithAbsolutePath="/home/peidong/peidonghu_resume_en_Selenium2.pdf" />
+		fileNameWithAbsolutePath="C:/Users/Public/ChenQA.pdf" />
 
 	<ate:elementActionDef id="eadFilloutMessage"
 		elementFind="efMessage" elementAction="eaMessageSent">

@@ -23,7 +23,6 @@
 	<name>Automation Test Engine Core</name>
 	<description>The Automation Test Engine Core project</description>
 	<url>http://maven.apache.org</url>
-
 	<licenses>
 		<license>
 			<name>Apache License, Version 2.0</name>
@@ -359,11 +358,6 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
-		</dependency>
-		<dependency>
-        	<groupId>io.appium</groupId>
-       	 	<artifactId>java-client</artifactId>
-        	<version>3.3.0</version>
 		</dependency>
 		<!-- <dependency> -->
 		<!-- <groupId>org.slf4j</groupId> -->

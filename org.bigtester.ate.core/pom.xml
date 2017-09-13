@@ -230,7 +230,7 @@
 						<configuration>
 							<mainClass>org.bigtester.ate.TestProjectRunner</mainClass>
 							<arguments>
-								<argument>indeedJobApplication/testproject.xml</argument>
+								<argument>bigtesterTest_wei/testproject.xml</argument>
 							</arguments>
 						</configuration>
 					</execution>

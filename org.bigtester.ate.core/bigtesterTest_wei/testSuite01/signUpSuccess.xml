@@ -20,6 +20,7 @@
 	<import resource="../pageObjects/privacyPolicyPage.xml" />
 	<import resource="../pageObjects/servicesTermsPage.xml" />
 	<import resource="../pageObjects/webSiteTermsPage.xml" />
+	<import resource="../pageObjects/signUpForm.xml" />
 	
 	<!-- 
 	<ate:firefoxDriver  />  

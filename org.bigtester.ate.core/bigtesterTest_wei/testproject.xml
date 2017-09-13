@@ -19,10 +19,10 @@
 <!-- 	<ate:GenericSystemLogger id="systemlogger"/> -->
 <!-- 	<ate:TestDatabaseInitializer id="dbInitializer"/> -->
 	
-	<ate:TestProject id="testproject" stepThinkTime="6" globalInitXmlFile="bigtesterTest/data.xml">
+	<ate:TestProject id="testproject" stepThinkTime="6" globalInitXmlFile="bigtesterTest_wei/data.xml">
 		<ate:TestSuite id="suite01" suiteName="suite01">
-		    <ate:XmlTestCase testCaseFilePathName="bigtesterTest/testSuite01/homePageValidation.xml" />
- 		    <ate:XmlTestCase testCaseFilePathName="bigtesterTest/testSuite01/signUpSuccess.xml" />
+		    <ate:XmlTestCase testCaseFilePathName="bigtesterTest_wei/testSuite01/homePageValidation.xml" />
+ 		    <ate:XmlTestCase testCaseFilePathName="bigtesterTest_wei/testSuite01/signUpSuccess.xml" />
 		</ate:TestSuite>
 	</ate:TestProject>
 </beans>

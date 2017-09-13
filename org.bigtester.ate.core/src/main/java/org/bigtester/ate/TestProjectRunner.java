@@ -201,22 +201,18 @@ public final class TestProjectRunner {
 	
 	@SuppressWarnings({ "null", "unused" })
 	public static void initDB(ApplicationContext testProjectContext) throws IOException, DatabaseUnitException, SQLException {
-		TestProject testplan = GlobalUtils
-				.findTestProjectBean(testProjectContext);
+		TestProject testplan = GlobalUtils.findTestProjectBean(testProjectContext);
 		//testplan.setAppCtx(testProjectContext);
 
 		TestDatabaseInitializer dbinit = (TestDatabaseInitializer) testProjectContext
 				.getBean(GlobalConstants.BEAN_ID_GLOBAL_DBINITIALIZER);
 		
-		if (dbinit.getSingleInitXmlFile() == null)
-			
-				dbinit.setSingleInitXmlFile(testplan.getGlobalInitXmlFile());
-			
+		if (dbinit.getSingleInitXmlFile() == null)			
+			dbinit.setSingleInitXmlFile(testplan.getGlobalInitXmlFile());			
 
 		// TODO add db initialization handler
-		if (dbinit.getDatasets() == null)
-			
-				dbinit.initializeGlobalDataFile(testProjectContext);
+		if (dbinit.getDatasets() == null)			
+			dbinit.initializeGlobalDataFile(testProjectContext);
 			
 	}
 	
@@ -229,20 +225,18 @@ public final class TestProjectRunner {
 	public static ApplicationContext loadTestProjectContext(final String testProjectXml) {
 		ApplicationContext testProjectContext;
 		if (StringUtils.isEmpty(testProjectXml) ) {
-			testProjectContext = new ClassPathXmlApplicationContext(
-					"testproject.xml");
+			testProjectContext = new ClassPathXmlApplicationContext("testproject.xml");
 		} else {
-			testProjectContext = new FileSystemXmlApplicationContext(
-					testProjectXml);
+			testProjectContext = new FileSystemXmlApplicationContext(testProjectXml);
 		}
 
-		TestProject testplan = GlobalUtils
-				.findTestProjectBean(testProjectContext);
+		TestProject testplan = GlobalUtils.findTestProjectBean(testProjectContext);
 		testplan.setAppCtx(testProjectContext);
 
 		return testProjectContext;
 
 	}
+	
 	@SuppressWarnings("null")
 	private static void registerLegacyXsdNameSpaceParsers() {
 		/******************************* following for Test Project ******************************/
@@ -364,8 +358,7 @@ public final class TestProjectRunner {
 				BeanDefinitionParser bDef =  (BeanDefinitionParser) getParser.invoke(ins,(Object[]) null);
 				String elementName = (String) getElementName.invoke(ins, (Object[])  null);
 				if (elementName == null || null == bDef) throw GlobalUtils.createNotInitializedException("elementname or beandefinition parser");
-				XsdNameSpaceParserRegistry.registerNameSpaceHandler(elementName, bDef);
-				
+				XsdNameSpaceParserRegistry.registerNameSpaceHandler(elementName, bDef);				
 			} catch (NoSuchMethodException | SecurityException e) {
 				throw GlobalUtils.createNotInitializedException("xsd name space parser", e);//NOPMD
 			} catch (IllegalAccessException e) {
@@ -402,8 +395,7 @@ public final class TestProjectRunner {
 					ProblemHandler hlr = (ProblemHandler) ins;
 					if (hlr == null) throw GlobalUtils.createInternalError("object conversion");
 					ProblemHandlerRegistry.registerAttachedProblemHandler(cls, hlr);
-				}
-				
+				}				
 			} catch (NoSuchMethodException | SecurityException e) {
 				throw GlobalUtils.createNotInitializedException("xsd name space parser", e);//NOPMD
 			} catch (IllegalAccessException e) {

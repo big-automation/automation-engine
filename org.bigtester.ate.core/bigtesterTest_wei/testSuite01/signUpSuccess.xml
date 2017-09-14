@@ -21,6 +21,8 @@
 	<import resource="../pageObjects/servicesTermsPage.xml" />
 	<import resource="../pageObjects/webSiteTermsPage.xml" />
 	<import resource="../pageObjects/signUpForm.xml" />
+	<import resource="../pageObjects/lastPage.xml" />
+	
 	
 	<!-- 
 	<ate:firefoxDriver  />  

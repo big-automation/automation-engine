@@ -14,6 +14,6 @@
 <ElementInputData FirstTimeExecution= "Yes" stepEIDsetID="5" dataName="Phone2" dataValue="659" testDataContext_idColumn="1" />
 <ElementInputData FirstTimeExecution= "Yes" stepEIDsetID="6" dataName="Phone3" dataValue="5789" testDataContext_idColumn="1" />
 <ElementInputData FirstTimeExecution= "Yes" stepEIDsetID="7" dataName="CompanyName" dataValue="John Abbott College" testDataContext_idColumn="1" />
-<ElementInputData FirstTimeExecution= "Yes" stepEIDsetID="8" dataName="NoteToUs" dataValue="Internship is continuting now" testDataContext_idColumn="1" />
+<ElementInputData FirstTimeExecution= "Yes" stepEIDsetID="8" dataName="NoteToUs" dataValue="Internship now" testDataContext_idColumn="1" />
 
 </dataset>

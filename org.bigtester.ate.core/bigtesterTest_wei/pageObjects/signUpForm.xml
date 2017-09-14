@@ -39,16 +39,17 @@
 	<ate:elementFindByXpath id="signUpLastName"	findByValue="//input[@name='lastName']" />
 	<ate:sendKeysAction id="signUpLastNameAction" dataValue="randomLastname" />
 
-    <!-- elementactiondef of clickEmailInput -->
+    <!-- elementactiondef of clickEmailInput 
 	<ate:elementActionDef id="clickEmailInput"   elementFind="signUpEmail" elementAction="signUpEmailClickAction" />
 	<ate:clickAction id="signUpEmailClickAction" />
-
+	-->
+    
     <!-- elementactiondef of typeInEmail -->
 	<ate:elementActionDef id="typeInEmail" elementFind="signUpEmail" elementAction="signUpEmailAction" />
 	<ate:elementFindByXpath id="signUpEmail" findByValue="//input[@id='email_register']" />
 	<ate:sendKeysAction id="signUpEmailAction" dataValue="randomEmail" />
 	
-	<!-- click Phone input box ate:elementActionDef definition -->
+	<!-- click Phone input box ate:elementActionDef definition 
 	<ate:elementActionDef id="clickPhoneInput1" elementFind="signUpPhone1" elementAction="phoneInputClick1"/>
 	<ate:clickAction id="phoneInputClick1" />
 	
@@ -57,6 +58,7 @@
 	
 	<ate:elementActionDef id="clickPhoneInput3" elementFind="signUpPhone3" elementAction="phoneInputClick3"/>
 	<ate:clickAction id="phoneInputClick3" />
+	-->
 	
 	<!-- elementactiondef of typeInPhone -->
 	<ate:elementActionDef id="typeInPhone1" elementFind="signUpPhone1" elementAction="signUpPhoneAction1" />

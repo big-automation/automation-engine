@@ -48,21 +48,22 @@
 <!-- 				<ate:ateXmlElementReference id="assert2" ateXmlElementID="homePagePropertyAsserter" /> -->
 			</ate:asserterReferences>
 		</ate:homeStep>
+		<!-- 
 		<ate:elementStep id="stepClickPrivacyPolicyLink"
 			stepDescription="Click privacy policy link" stepName="stepClickPrivacyPolicyLink" optionalStep="true"
-			targetStep="false" elementActionDef="eadClickPrivacyPolicy" pageObject="poHomePage">
+			targetStep="false" elementActionDef="eadClickPrivacyPolicy" pageObject="poPrivacyPolicyPage">
 		</ate:elementStep>
 		<ate:elementStep id="stepClickServicesTermsLink"
 			stepDescription="Click services terms link" stepName="stepClickServicesTermsLink" optionalStep="true"
-			targetStep="false" elementActionDef="eadClickServicesTerms" pageObject="poHomePage">
+			targetStep="false" elementActionDef="eadClickServicesTerms" pageObject="poServicesTermsPage">
 		</ate:elementStep>
 		<ate:elementStep id="stepClickWebSiteTermsLink"
 			stepDescription="Click webSite terms link" stepName="stepClickWebSiteTermsLink" optionalStep="true"
-			targetStep="false" elementActionDef="eadClickWebSiteTerms" pageObject="poHomePage">
+			targetStep="false" elementActionDef="eadClickWebSiteTerms" pageObject="poWebSiteTermsPage">
 		</ate:elementStep>
+		 -->
 		<ate:lastStep id="stepLastStep" stepName="stepLastStep"
-			stepDescription="last step close browser" targetStep="false"
-			pageObject="poLastPage">
+			stepDescription="last step close browser" targetStep="false" pageObject="poLastPage">
 		</ate:lastStep>
 
 	</ate:testCase>

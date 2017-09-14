@@ -22,7 +22,6 @@ package org.bigtester.ate.model.page.elementaction;
 
 import org.bigtester.ate.model.page.atewebdriver.AbstractAlertDialog;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class ITestWindowFinder defines ....

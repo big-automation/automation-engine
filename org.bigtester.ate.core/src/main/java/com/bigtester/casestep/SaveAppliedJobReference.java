@@ -45,7 +45,7 @@ import org.openqa.selenium.WebElement;
  *
  */
 public class SaveAppliedJobReference extends AbstractBaseJavaCodedStep
-		implements IJavaCodedStep {
+		                             implements IJavaCodedStep {
 
 	/** The Constant JOBREFERENCESSAVEFILE. */
 	final public static String JOBREFERENCESSAVEFILE = "temp_data/jobReferencesSaveFile"; 

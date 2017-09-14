@@ -39,8 +39,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class CaseDependencyBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class CaseDependencyBeanDefinitionParser extends	AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

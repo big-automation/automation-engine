@@ -20,7 +20,6 @@
  *******************************************************************************/
 package org.bigtester.ate.resultmaker;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,9 +55,8 @@ public class StepResultMaker {
 	 * Log.
 	 * 
 	 * @param joinPoint_p
-	 *            the join point_p
+     *        the join point_p
 	 */
-
 	@SuppressWarnings("unchecked")
 	@After("@annotation(org.bigtester.ate.annotation.StepLoggable)")
 	public void reportStepResult(final JoinPoint joinPoint_p) {
@@ -70,9 +68,8 @@ public class StepResultMaker {
 //		Object bts = xstream.fromXML(xml);
 		Object bts = joinPoint_p
 				.getTarget();
-		 if (bts == null) throw
-				 GlobalUtils.createInternalError("stepresultmaker log function.");
-		TestStepResult tsr = new TestStepResult(
+		 if (bts == null) throw GlobalUtils.createInternalError("stepresultmaker log function.");
+		 TestStepResult tsr = new TestStepResult(
 				((BaseTestStep) joinPoint_p.getTarget()).getStepName(), (ITestStep) bts);
 
 		ITestResult testResult = Reporter.getCurrentTestResult();

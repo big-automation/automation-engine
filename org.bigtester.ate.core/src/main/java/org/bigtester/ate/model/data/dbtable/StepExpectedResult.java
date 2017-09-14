@@ -30,7 +30,6 @@ import org.bigtester.ate.constant.EnumAssertPriority;
 import org.bigtester.ate.constant.EnumElementFindType;
 import org.eclipse.jdt.annotation.Nullable;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class StepResult defines ....
@@ -42,13 +41,10 @@ import org.eclipse.jdt.annotation.Nullable;
 @Table
 public class StepExpectedResult extends BaseTestDataTable {
 
-	/** The step er set id. */
-
-	
+	/** The steper set id. */	
 	@Column
 	@Nullable
 	private String stepERSetID; // NOPMD
-
 	
 	/**
 	 * @return the stepERSetID

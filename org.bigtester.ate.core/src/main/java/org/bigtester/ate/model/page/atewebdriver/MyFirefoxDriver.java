@@ -34,8 +34,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
  * 
  * @author Peidong Hu
  */
-public class MyFirefoxDriver extends AbstractWebDriverBase implements
-		IMyWebDriver {
+public class MyFirefoxDriver extends AbstractWebDriverBase implements IMyWebDriver {
 	
 	/** The GECKON Driver Name and Path. */	 
 	/** The Constant BROWSERNAME. */

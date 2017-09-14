@@ -40,8 +40,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class WindowFindByTitleBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class WindowFindByTitleBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

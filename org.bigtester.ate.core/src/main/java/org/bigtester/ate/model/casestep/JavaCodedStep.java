@@ -60,7 +60,6 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-
 public class JavaCodedStep extends BaseTestStep implements IJavaCodedStep,
 		IXsdBeanDefinitionParser {
 

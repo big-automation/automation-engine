@@ -35,8 +35,8 @@ import org.eclipse.jdt.annotation.Nullable;
  * 
  * @author Peidong Hu
  */
-public class AlertDialogAcceptLikeAction extends PageModelBase implements
-		IAlertDialogAction, ITestObjectActionImpl {
+public class AlertDialogAcceptLikeAction extends PageModelBase 
+                                         implements	IAlertDialogAction, ITestObjectActionImpl {
 
 	/**
 	 * @param myWd

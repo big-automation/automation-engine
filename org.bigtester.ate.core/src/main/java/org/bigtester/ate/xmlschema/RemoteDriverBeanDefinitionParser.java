@@ -39,8 +39,7 @@ import org.w3c.dom.Element;
  * @author Jun Yang
  *
  */
-public class RemoteDriverBeanDefinitionParser extends
-		AbstractSingleBeanDefinitionParser {
+public class RemoteDriverBeanDefinitionParser extends AbstractSingleBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

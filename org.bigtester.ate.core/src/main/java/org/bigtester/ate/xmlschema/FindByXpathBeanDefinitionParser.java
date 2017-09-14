@@ -20,7 +20,6 @@
  *******************************************************************************/
 package org.bigtester.ate.xmlschema;
 
-
 import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.model.page.elementfind.ElementFindByXpath;
 import org.eclipse.jdt.annotation.Nullable;
@@ -28,7 +27,6 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.xml.ParserContext;
 import org.w3c.dom.Element;
-
 
 // TODO: Auto-generated Javadoc
 /**

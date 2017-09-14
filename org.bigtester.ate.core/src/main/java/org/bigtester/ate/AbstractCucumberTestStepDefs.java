@@ -112,7 +112,7 @@ abstract public class AbstractCucumberTestStepDefs {
 		System.setProperty("logback-access.debug", "true");
 		// System.setProperty("org.jboss.logging.provider", "slf4j");
 		System.setProperty("org.jboss.logging.provider", "log4j");
-		System.setProperty("hsqldb.reconfig_logging", "false");
+		System.setProperty("hsqldb.reconfig_logging", "false");		
 	}
 	
 	/**

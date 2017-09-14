@@ -24,7 +24,6 @@ import java.util.Set;
 import java.util.TimeZone;
 import java.util.concurrent.ConcurrentHashMap;
 
-
 /**
  * The main entry for the XML generation operation
  * 

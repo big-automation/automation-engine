@@ -26,7 +26,6 @@ import java.util.Map;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
 import org.openqa.selenium.Cookie;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * The Interface IPageObjectAction defines ....

@@ -39,8 +39,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class StepERValueBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class StepERValueBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

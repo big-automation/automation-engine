@@ -33,8 +33,8 @@ import org.openqa.selenium.WebElement;
  * 
  * @author Peidong Hu
  */
-public class SendKeysAction extends BaseElementAction implements
-		IElementAction, ITestObjectActionImpl {
+public class SendKeysAction extends BaseElementAction 
+                            implements IElementAction, ITestObjectActionImpl {
 
 	/**
 	 * @param myWd

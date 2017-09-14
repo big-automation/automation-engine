@@ -44,8 +44,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Peidong Hu
  *
  */
-public abstract class AbstractExpectedResultAsserter implements
-		ApplicationContextAware,  ApplicationListener<RepeatDataRefreshEvent>{ // NOPMD
+public abstract class AbstractExpectedResultAsserter implements	ApplicationContextAware,ApplicationListener<RepeatDataRefreshEvent>{ // NOPMD
 	/** The result page. */
 	@Nullable
 	

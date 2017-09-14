@@ -43,8 +43,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class PageElementExistBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class PageElementExistBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

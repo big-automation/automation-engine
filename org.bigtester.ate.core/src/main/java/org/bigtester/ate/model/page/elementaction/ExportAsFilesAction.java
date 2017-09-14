@@ -33,8 +33,8 @@ import org.eclipse.jdt.annotation.Nullable;
  * 
  * @author Peidong Hu
  */
-public class ExportAsFilesAction extends PageModelBase implements
-		IFileAction, ITestObjectActionImpl {
+public class ExportAsFilesAction extends PageModelBase 
+                                 implements	IFileAction, ITestObjectActionImpl {
 
 	/**
 	 * @param myWd

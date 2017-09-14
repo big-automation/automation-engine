@@ -28,8 +28,6 @@ package org.bigtester.ate.model.page.atewebdriver;
  */
 public class OperaFeatureProfile extends AbstractBrowserFeatureProfile {
 
-	 
-
 	/**
 	 * {@inheritDoc}
 	 */

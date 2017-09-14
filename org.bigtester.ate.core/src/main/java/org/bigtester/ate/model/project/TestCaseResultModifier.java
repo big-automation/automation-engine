@@ -24,7 +24,6 @@ import org.eclipse.jdt.annotation.Nullable;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class TestCaseResultModifier defines ....

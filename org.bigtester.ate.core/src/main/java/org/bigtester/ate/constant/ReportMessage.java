@@ -37,5 +37,5 @@ public final class ReportMessage {
 	 */
 	private ReportMessage(){
 	    throw new AssertionError();
-	  }
+	}
 }

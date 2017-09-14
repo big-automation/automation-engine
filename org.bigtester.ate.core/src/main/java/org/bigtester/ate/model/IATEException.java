@@ -31,14 +31,12 @@ import org.eclipse.jdt.annotation.Nullable;
  */
 public interface IATEException {
 	
-	
 	/**
 	 * Gets the message.
 	 *
 	 * @return the message
 	 */
 	@Nullable String getMessage();
-	
 	
 	/**
 	 * Gets the ate problem.

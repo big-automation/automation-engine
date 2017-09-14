@@ -37,8 +37,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class StepTypeReferenceBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class StepTypeReferenceBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

@@ -35,8 +35,8 @@ import org.openqa.selenium.WebDriver;
  * 
  * @author Peidong Hu
  */
-public class TestWindowsCloseAction extends PageModelBase implements
-		ITestWindowAction, ITestObjectActionImpl {
+public class TestWindowsCloseAction extends PageModelBase 
+                                    implements ITestWindowAction, ITestObjectActionImpl {
 
 	/**
 	 * @param myWd

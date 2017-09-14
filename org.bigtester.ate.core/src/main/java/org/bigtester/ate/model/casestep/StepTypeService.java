@@ -43,12 +43,11 @@ import org.springframework.aop.support.AopUtils;
  * @author Peidong Hu
  *
  */
-public class StepTypeService extends BaseTestStep implements ITestStep, IStepJumpingEnclosedContainer, ICucumberTestStep {
-	
-	
+public class StepTypeService extends BaseTestStep 
+                             implements ITestStep, IStepJumpingEnclosedContainer, ICucumberTestStep {
+		
 	/** The step i ds. */
 	private List<ITestStep> stepSet = new ArrayList<ITestStep>();
-
 	
 	/**
 	 * {@inheritDoc}

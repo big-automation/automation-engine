@@ -34,8 +34,8 @@ import org.openqa.selenium.WebDriver;
  * 
  * @author Peidong Hu
  */
-public class TestWindowsSwitchAction extends PageModelBase implements
-		ITestWindowAction, ITestObjectActionImpl {
+public class TestWindowsSwitchAction extends PageModelBase 
+                                     implements	ITestWindowAction, ITestObjectActionImpl {
 
 	/**
 	 * @param myWd

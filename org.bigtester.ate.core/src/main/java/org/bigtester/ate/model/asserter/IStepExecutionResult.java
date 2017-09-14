@@ -24,9 +24,6 @@ import java.util.Map;
 
 import org.bigtester.ate.model.data.ItemCompareResult;
 
-
-
-
 // TODO: Auto-generated Javadoc
 /**
  * This class StepExecuteResult defines ....
@@ -34,7 +31,6 @@ import org.bigtester.ate.model.data.ItemCompareResult;
  *
  */
 public interface IStepExecutionResult {
-	
 	
 	/**
 	 * @return the comparedResult

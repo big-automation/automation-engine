@@ -45,8 +45,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class UploadFileActionBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class UploadFileActionBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

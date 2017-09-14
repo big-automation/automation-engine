@@ -20,7 +20,6 @@
  *******************************************************************************/
 package org.bigtester.ate.model.page.elementaction;
 
-
 import jodd.util.ArraysUtil;
 
 import org.bigtester.ate.GlobalUtils;
@@ -39,7 +38,6 @@ import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class CaseDataProcessor defines ....
@@ -48,8 +46,7 @@ import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProce
  *
  */
 
-public class SendKeysActionPostBeanProcessor implements
-		BeanDefinitionRegistryPostProcessor {
+public class SendKeysActionPostBeanProcessor implements	BeanDefinitionRegistryPostProcessor {
 
 	/** The bd reg. */
 	@Nullable

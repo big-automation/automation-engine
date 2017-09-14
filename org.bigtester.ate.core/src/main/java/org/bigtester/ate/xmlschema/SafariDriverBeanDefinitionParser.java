@@ -40,8 +40,7 @@ import org.w3c.dom.Element;
  * @author Jun Yang
  *
  */
-public class SafariDriverBeanDefinitionParser extends
-		AbstractSingleBeanDefinitionParser {
+public class SafariDriverBeanDefinitionParser extends AbstractSingleBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

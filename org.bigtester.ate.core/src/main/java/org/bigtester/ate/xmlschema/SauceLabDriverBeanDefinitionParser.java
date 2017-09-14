@@ -38,8 +38,7 @@ import org.w3c.dom.Element;
  * @author Jun Yang
  *
  */
-public class SauceLabDriverBeanDefinitionParser extends
-	RemoteDriverBeanDefinitionParser {
+public class SauceLabDriverBeanDefinitionParser extends	RemoteDriverBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

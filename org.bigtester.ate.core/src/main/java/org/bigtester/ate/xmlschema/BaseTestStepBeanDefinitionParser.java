@@ -39,7 +39,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.util.xml.DomUtils;
 import org.w3c.dom.Element;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class SimpleDateFormatBeanDefinitionParser defines ....
@@ -47,8 +46,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class BaseTestStepBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class BaseTestStepBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

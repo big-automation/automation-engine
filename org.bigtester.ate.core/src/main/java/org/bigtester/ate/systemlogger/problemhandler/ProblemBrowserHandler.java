@@ -39,8 +39,8 @@ import org.openqa.selenium.WebDriver;
  * @author Peidong Hu
  * 
  */
-public class ProblemBrowserHandler extends AbstractProblemHandler implements
-		ProblemHandler {
+public class ProblemBrowserHandler extends AbstractProblemHandler 
+                                   implements ProblemHandler {
 	
 	/** The my web driver. */
 	private final transient  IMyWebDriver myWebDriver;

@@ -40,8 +40,8 @@ import org.openqa.selenium.WebDriver;
  * @author Peidong Hu
  *
  */
-public class PagePropertyCorrectnessAsserter extends
-		AbstractExpectedResultAsserter implements IExpectedResultAsserter, IStepExecutionResult {
+public class PagePropertyCorrectnessAsserter extends AbstractExpectedResultAsserter 
+                                             implements IExpectedResultAsserter, IStepExecutionResult {
 	
 	/** The step er value. */
 	private StepErPagePropertyValue stepERValue;

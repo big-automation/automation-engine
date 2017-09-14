@@ -36,8 +36,8 @@ import org.openqa.selenium.WebDriver;
  * @author Peidong Hu
  *
  */
-public class CookiesFindAll extends BaseCookieFinderImpl implements
-		ICookieFinder, ITestObjectFinderImpl {
+public class CookiesFindAll extends BaseCookieFinderImpl 
+                            implements ICookieFinder, ITestObjectFinderImpl {
 
 	/**
 	 * {@inheritDoc}

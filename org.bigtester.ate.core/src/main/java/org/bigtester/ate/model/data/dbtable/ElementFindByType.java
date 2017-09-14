@@ -22,7 +22,6 @@ package org.bigtester.ate.model.data.dbtable;
 
 import org.eclipse.jdt.annotation.Nullable;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class ElementFindByType defines ....

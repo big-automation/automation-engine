@@ -20,7 +20,6 @@
  *******************************************************************************/
 package org.bigtester.ate.model.data.exception;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class StepExecutionException defines ....

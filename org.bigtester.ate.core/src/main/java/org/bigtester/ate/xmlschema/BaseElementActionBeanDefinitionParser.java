@@ -38,8 +38,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class BaseElementActionBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class BaseElementActionBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

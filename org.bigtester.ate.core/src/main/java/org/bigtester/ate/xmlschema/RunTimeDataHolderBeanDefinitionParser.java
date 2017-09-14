@@ -49,8 +49,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class RunTimeDataHolderBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class RunTimeDataHolderBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

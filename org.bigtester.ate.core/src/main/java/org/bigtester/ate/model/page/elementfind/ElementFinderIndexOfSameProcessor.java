@@ -34,7 +34,6 @@ import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class CaseDataProcessor defines ....
@@ -43,8 +42,7 @@ import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProce
  *
  */
 
-public class ElementFinderIndexOfSameProcessor implements
-		BeanDefinitionRegistryPostProcessor {
+public class ElementFinderIndexOfSameProcessor implements BeanDefinitionRegistryPostProcessor {
 
 	/** The bd reg. */
 	@Nullable

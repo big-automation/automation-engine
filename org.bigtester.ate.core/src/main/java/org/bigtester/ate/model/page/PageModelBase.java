@@ -24,7 +24,6 @@ import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
 
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * The Class AbstractPageModelBase defines ....

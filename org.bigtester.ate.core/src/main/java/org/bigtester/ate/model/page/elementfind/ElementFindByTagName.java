@@ -26,14 +26,14 @@ import org.bigtester.ate.model.page.atewebdriver.exception.BrowserUnexpectedExce
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class ElementFindByTagName defines ....
  * @author Grace Hu
  *
  */
-public class ElementFindByTagName extends AbstractElementFind implements IElementFind, ITestObjectFinderImpl{
+public class ElementFindByTagName extends AbstractElementFind 
+                                  implements IElementFind, ITestObjectFinderImpl{
 	/**
 	 * @param findByValue
 	 */

@@ -40,8 +40,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class StepInputDataValueBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class StepInputDataValueBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

@@ -40,8 +40,7 @@ import org.w3c.dom.Element;
 * @author Jun Yang
 *
 */
-public class PhantomjsDriverBeanDefinitionParser extends
-		AbstractSingleBeanDefinitionParser {
+public class PhantomjsDriverBeanDefinitionParser extends AbstractSingleBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

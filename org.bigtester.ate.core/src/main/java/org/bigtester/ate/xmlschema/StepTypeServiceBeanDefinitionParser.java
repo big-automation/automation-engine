@@ -44,8 +44,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class StepTypeServiceBeanDefinitionParser extends
-BaseTestStepBeanDefinitionParser {
+public class StepTypeServiceBeanDefinitionParser extends BaseTestStepBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

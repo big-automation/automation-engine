@@ -31,7 +31,6 @@ import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
  */
 public class BaseATECaseExecE extends AbstractATEException implements IATECaseExecException{
 
-
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 7308181663474968945L;
 

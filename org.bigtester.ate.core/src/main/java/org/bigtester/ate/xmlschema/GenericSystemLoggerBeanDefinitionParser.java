@@ -20,14 +20,12 @@
  *******************************************************************************/
 package org.bigtester.ate.xmlschema;
 
-
 import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.systemlogger.SystemLogger;
 import org.eclipse.jdt.annotation.Nullable;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.xml.AbstractSingleBeanDefinitionParser;
 import org.w3c.dom.Element;
-
 
 // TODO: Auto-generated Javadoc
 /**
@@ -36,8 +34,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class GenericSystemLoggerBeanDefinitionParser extends
-		AbstractSingleBeanDefinitionParser {
+public class GenericSystemLoggerBeanDefinitionParser extends AbstractSingleBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

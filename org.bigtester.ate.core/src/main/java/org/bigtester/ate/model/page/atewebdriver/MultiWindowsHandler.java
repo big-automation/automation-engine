@@ -44,8 +44,8 @@ import org.springframework.context.ApplicationListener;
  * @author Peidong Hu
  *
  */
-public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandler implements IMultiWindowsHandler,
-		WebDriverEventListener, ApplicationListener<AlertDialogAcceptedEvent> {
+public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandler 
+                                 implements IMultiWindowsHandler, WebDriverEventListener, ApplicationListener<AlertDialogAcceptedEvent> {
 	
 	/** The test case. */
 	@Nullable

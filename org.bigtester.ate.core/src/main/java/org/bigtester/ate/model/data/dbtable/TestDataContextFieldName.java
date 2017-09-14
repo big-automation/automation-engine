@@ -26,7 +26,6 @@ import javax.persistence.Table;
 
 import org.eclipse.jdt.annotation.Nullable;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class TestDataContextFieldName defines ....

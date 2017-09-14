@@ -23,7 +23,6 @@ package org.bigtester.ate.systemlogger;
 import org.bigtester.ate.systemlogger.problems.IATEProblem;
 import org.eclipse.jdt.annotation.Nullable;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class IProblemCreator defines ....
@@ -31,7 +30,6 @@ import org.eclipse.jdt.annotation.Nullable;
  *
  */
 public interface IATEProblemCreator {
-	
 	
 	/**
 	 * @param source

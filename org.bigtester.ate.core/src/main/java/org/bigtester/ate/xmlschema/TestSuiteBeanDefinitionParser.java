@@ -44,8 +44,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class TestSuiteBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class TestSuiteBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

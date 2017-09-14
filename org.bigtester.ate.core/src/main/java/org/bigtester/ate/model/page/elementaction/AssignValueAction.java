@@ -36,8 +36,8 @@ import org.openqa.selenium.WebElement;
  * 
  * @author Peidong Hu
  */
-public class AssignValueAction extends BaseElementAction implements
-		IElementAction, ITestObjectActionImpl {
+public class AssignValueAction extends BaseElementAction 
+                               implements IElementAction, ITestObjectActionImpl {
 
 	/**
 	 * The Enum ValueAssignmentMethod.

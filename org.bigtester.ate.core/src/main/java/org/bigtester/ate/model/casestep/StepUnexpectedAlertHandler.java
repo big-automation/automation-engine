@@ -28,7 +28,6 @@ import org.eclipse.jdt.annotation.Nullable;
 import org.openqa.selenium.UnhandledAlertException;
 import org.springframework.context.ApplicationListener;
 
-
 public class StepUnexpectedAlertHandler implements
 		ApplicationListener<StepUnexpectedAlertEvent> {
 

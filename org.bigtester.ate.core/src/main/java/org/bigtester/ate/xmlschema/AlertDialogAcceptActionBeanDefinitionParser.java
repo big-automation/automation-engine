@@ -38,8 +38,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class AlertDialogAcceptActionBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class AlertDialogAcceptActionBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

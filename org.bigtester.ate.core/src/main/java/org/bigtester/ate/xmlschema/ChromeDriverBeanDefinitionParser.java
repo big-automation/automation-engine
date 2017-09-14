@@ -39,8 +39,7 @@ import org.w3c.dom.Element;
  * @author Jun Yang
  *
  */
-public class ChromeDriverBeanDefinitionParser extends
-		AbstractSingleBeanDefinitionParser {
+public class ChromeDriverBeanDefinitionParser extends AbstractSingleBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

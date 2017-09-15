@@ -26,7 +26,6 @@
 		findByValue="//a[contains(@href,'sort=date')]"/>
 	<ate:clickAction id="eaDateClick" />
 
-
 	<ate:elementActionDef id="eadClickNonAdsJobLink"
 		elementFind="efNonAdsJobLink" elementAction="eaNonAdsJobLinkClick">
 	</ate:elementActionDef>
@@ -36,14 +35,12 @@
 	<ate:autoIncrementalDataHolder id="aidhNonAdsJobLinkIndex"
 		startValue="0" pacing="1" />
 
-
 	<ate:elementActionDef id="eadSwitchToApplyWindow"
 		elementFind="efApplyJobWindow" elementAction="eaSwitchToWindow2">
 	</ate:elementActionDef>
 	<ate:browserWindowFindByOpenSequence
 		id="efApplyJobWindow" openSequence="1" />
-	<ate:browserWindowSwitch id="eaSwitchToWindow2" />
-	
+	<ate:browserWindowSwitch id="eaSwitchToWindow2" />	
 
 	<ate:elementActionDef id="eadCloseApplyWindow"
 		elementFind="efApplyJobWindow" elementAction="eaCloseWindow2">

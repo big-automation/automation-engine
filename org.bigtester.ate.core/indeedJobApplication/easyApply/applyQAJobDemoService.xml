@@ -64,8 +64,7 @@
 			correlatedOptionalStepsUtilInclusive="stepSubmitResume">
 		</ate:elementStep>
 
-		<ate:stepTypeServiceReference id="stepSvcFilloutJob" stepTypeServiceDefinitionID="svcFilloutJob"/>
-		
+		<ate:stepTypeServiceReference id="stepSvcFilloutJob" stepTypeServiceDefinitionID="svcFilloutJob"/>		
 		
 		<ate:elementStep id="stepSubmitResume"
 			stepDescription="stepSubmitResume" stepName="stepSubmitResume"

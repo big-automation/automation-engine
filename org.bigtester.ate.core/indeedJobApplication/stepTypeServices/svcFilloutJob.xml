@@ -36,8 +36,7 @@
 			stepDescription="stepFilloutApplicantLastName" stepName="stepFilloutApplicantLastName"
 			targetStep="false" elementActionDef="eadFilloutApplicantLastName"
 			>
-		</ate:elementStep>
-		
+		</ate:elementStep>		
 
 		<ate:elementStep id="stepFilloutApplicantEmail"
 			stepDescription="stepFilloutApplicantEmail" stepName="stepFilloutApplicantEmail"

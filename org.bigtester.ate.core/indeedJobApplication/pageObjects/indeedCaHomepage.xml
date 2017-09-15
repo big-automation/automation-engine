@@ -56,8 +56,7 @@
 	<ate:elementActionDef id="eadImportCookies"
 		elementFind="efFindAllCookies" elementAction="eaImportFromFile">
 	</ate:elementActionDef>
-	<ate:cookiesFindAll id="efFindAllCookies"
-		 />
+	<ate:cookiesFindAll id="efFindAllCookies" />
 	<ate:fileImportAction id="eaImportFromFile"
 		fileNameWithAbsolutePath="cookies" fileNotFoundRaiseError="false" />
 

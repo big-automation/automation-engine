@@ -139,7 +139,6 @@ public class CaseTypeService extends TestCase implements ITestStep, ICucumberTes
 		return getTestCaseName();
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -183,14 +182,13 @@ public class CaseTypeService extends TestCase implements ITestStep, ICucumberTes
 
 			/* transfer all the dataholders value to parent test case */
 			for (int j = 0; j < getDataHolders().size(); j++) {
+				@SuppressWarnings("null")
 				IDataParser parentDataHolder = getDataHolders().get(j);
 				if (parentDataHolder instanceof ICaseServiceParsedDataParser) {
 					ICaseServiceParsedDataParser parentDataHolderTemp = (ICaseServiceParsedDataParser) parentDataHolder;
-					parentDataHolderTemp
-							.setStrDataValue(((IStepInputData) context
-									.getBean(parentDataHolderTemp
-											.getSubCaseMappedDataHolderID()))
-									.getStrDataValue());
+					parentDataHolderTemp.setStrDataValue(((IStepInputData) context.getBean(parentDataHolderTemp
+											                                               .getSubCaseMappedDataHolderID()))
+									                                                       .getStrDataValue());
 				}
 			}
 

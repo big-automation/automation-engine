@@ -16,9 +16,6 @@
 	<import resource="classpath:META-INF/page_base_bean.xml" />
 	<import resource="classpath:META-INF/case_base_bean.xml" />
 	<import resource="../pageObjects/homePage.xml" />
-	<import resource="../pageObjects/privacyPolicyPage.xml" />
-	<import resource="../pageObjects/servicesTermsPage.xml" />
-	<import resource="../pageObjects/webSiteTermsPage.xml" />
 	<import resource="../pageObjects/lastPage.xml" />
 
 	<!-- 
@@ -48,20 +45,7 @@
 <!-- 				<ate:ateXmlElementReference id="assert2" ateXmlElementID="homePagePropertyAsserter" /> -->
 			</ate:asserterReferences>
 		</ate:homeStep>
-		<!-- 
-		<ate:elementStep id="stepClickPrivacyPolicyLink"
-			stepDescription="Click privacy policy link" stepName="stepClickPrivacyPolicyLink" optionalStep="true"
-			targetStep="false" elementActionDef="eadClickPrivacyPolicy" pageObject="poPrivacyPolicyPage">
-		</ate:elementStep>
-		<ate:elementStep id="stepClickServicesTermsLink"
-			stepDescription="Click services terms link" stepName="stepClickServicesTermsLink" optionalStep="true"
-			targetStep="false" elementActionDef="eadClickServicesTerms" pageObject="poServicesTermsPage">
-		</ate:elementStep>
-		<ate:elementStep id="stepClickWebSiteTermsLink"
-			stepDescription="Click webSite terms link" stepName="stepClickWebSiteTermsLink" optionalStep="true"
-			targetStep="false" elementActionDef="eadClickWebSiteTerms" pageObject="poWebSiteTermsPage">
-		</ate:elementStep>
-		 -->
+		 
 		<ate:lastStep id="stepLastStep" stepName="stepLastStep"
 			stepDescription="last step close browser" targetStep="false" pageObject="poLastPage">
 		</ate:lastStep>

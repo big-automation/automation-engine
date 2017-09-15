@@ -19,7 +19,7 @@
 	<ate:regularPage id="poSignUpForm" />
 
 	
-	
+	<!-- 
 	<ate:runTimeDataHolder id="randomFirstname" dataHolderType="RandomAlphaText" randomInputLength="8"/>
 	<ate:runTimeDataHolder id="randomLastname" dataHolderType="RandomAlphaText" randomInputLength="14"/>
 	<ate:runTimeDataHolder id="randomEmail" dataHolderType="RandomEmail"/>
@@ -28,16 +28,17 @@
 	<ate:runTimeDataHolder id="randomPhone3" dataHolderType="RandomNumbers" randomInputLength="4" />
 	<ate:runTimeDataHolder id="randomCompanyname" dataHolderType="RandomAlphaText" randomInputLength="255"/>
 	<ate:runTimeDataHolder id="randomNoteToUs" dataHolderType="RandomAlphaText" randomInputLength="255"/>
+     -->
 
 	<!-- elementactiondef of typeInFirstname -->
 	<ate:elementActionDef id="typeInFirstName" elementFind="signUpFirstName" elementAction="signUpFirstNameAction" />
-	<ate:elementFindByXpath id="signUpFirstName" findByValue="//input[@name='firstName']" />
-	<ate:sendKeysAction id="signUpFirstNameAction" dataValue="randomFirstname" />
+	<ate:elementFindByXpath id="signUpFirstName" findByValue="//input[@name='Field1']" />
+	<ate:sendKeysAction id="signUpFirstNameAction" dataValue="wei" />
 	
 	<!-- elementactiondef of typeInLastname -->
 	<ate:elementActionDef id="typeInLastName" elementFind="signUpLastName" elementAction="signUpLastNameAction" />
-	<ate:elementFindByXpath id="signUpLastName"	findByValue="//input[@name='lastName']" />
-	<ate:sendKeysAction id="signUpLastNameAction" dataValue="randomLastname" />
+	<ate:elementFindByXpath id="signUpLastName"	findByValue="//input[@name='Field2']" />
+	<ate:sendKeysAction id="signUpLastNameAction" dataValue="shao" />
 
     <!-- elementactiondef of clickEmailInput 
 	<ate:elementActionDef id="clickEmailInput"   elementFind="signUpEmail" elementAction="signUpEmailClickAction" />
@@ -46,8 +47,8 @@
     
     <!-- elementactiondef of typeInEmail -->
 	<ate:elementActionDef id="typeInEmail" elementFind="signUpEmail" elementAction="signUpEmailAction" />
-	<ate:elementFindByXpath id="signUpEmail" findByValue="//input[@id='email_register']" />
-	<ate:sendKeysAction id="signUpEmailAction" dataValue="randomEmail" />
+	<ate:elementFindByXpath id="signUpEmail" findByValue="//input[@id='Field3']" />
+	<ate:sendKeysAction id="signUpEmailAction" dataValue="stoneshao1973@gmail.com" />
 	
 	<!-- click Phone input box ate:elementActionDef definition 
 	<ate:elementActionDef id="clickPhoneInput1" elementFind="signUpPhone1" elementAction="phoneInputClick1"/>
@@ -62,31 +63,31 @@
 	
 	<!-- elementactiondef of typeInPhone -->
 	<ate:elementActionDef id="typeInPhone1" elementFind="signUpPhone1" elementAction="signUpPhoneAction1" />
-	<ate:elementFindByXpath id="signUpPhone1" findByValue="//input[@id='phone']" />
-	<ate:sendKeysAction id="signUpPhoneAction1" dataValue="randomPhone1" />
+	<ate:elementFindByXpath id="signUpPhone1" findByValue="//input[@id='Field6']" />
+	<ate:sendKeysAction id="signUpPhoneAction1" dataValue="514" />
 	
 	<ate:elementActionDef id="typeInPhone2" elementFind="signUpPhone2" elementAction="signUpPhoneAction2" />
-	<ate:elementFindByXpath id="signUpPhone2" findByValue="//input[@id='phone']" />
-	<ate:sendKeysAction id="signUpPhoneAction2" dataValue="randomPhone2" />
+	<ate:elementFindByXpath id="signUpPhone2" findByValue="//input[@id='Field6-1']" />
+	<ate:sendKeysAction id="signUpPhoneAction2" dataValue="659" />
 	
 	<ate:elementActionDef id="typeInPhone3" elementFind="signUpPhone3" elementAction="signUpPhoneAction3" />
-	<ate:elementFindByXpath id="signUpPhone3" findByValue="//input[@id='phone']" />
-	<ate:sendKeysAction id="signUpPhoneAction3" dataValue="randomPhone3" />
+	<ate:elementFindByXpath id="signUpPhone3" findByValue="//input[@id='Field6-2']" />
+	<ate:sendKeysAction id="signUpPhoneAction3" dataValue="5789" />
 	
 	<!-- elementactiondef of typeInCompanyname -->
 	<ate:elementActionDef id="typeInCompanyName" elementFind="signUpCompanyName" elementAction="signUpCompanyNameAction" />
-	<ate:elementFindByXpath id="signUpCompanyName" findByValue="//input[@name='companyName']" />
-	<ate:sendKeysAction id="signUpCompanyNameAction" dataValue="randomCompanyname" />
+	<ate:elementFindByXpath id="signUpCompanyName" findByValue="//input[@name='Field7']" />
+	<ate:sendKeysAction id="signUpCompanyNameAction" dataValue="John Abbott College" />
 	
 	<!-- elementactiondef of typeInNoteToUs -->
 	<ate:elementActionDef id="typeInNoteToUs" elementFind="signUpNoteToUs" elementAction="signUpNoteToUsAction" />
-	<ate:elementFindByXpath id="signUpNoteToUs" findByValue="//input[@name='NoteToUs']" />
-	<ate:sendKeysAction id="signUpNoteToUsAction" dataValue="randomNoteToUs" />
+	<ate:elementFindByXpath id="signUpNoteToUs" findByValue="//input[@name='Field11']" />
+	<ate:sendKeysAction id="signUpNoteToUsAction" dataValue="Internship now" />
 
 
     <!-- click submit button def ate:elementActionDef definition -->
 	<ate:elementActionDef id="clickSubmit" elementFind="submitButton" elementAction="submitButtonClick"/>
-	<ate:elementFindByXpath id="submitButton" findByValue="//button[@id='register-submit-btn']" />
+	<ate:elementFindByXpath id="submitButton" findByValue="//button[@id='saveForm']" />
 	<ate:clickAction id="submitButtonClick" />
 
 </beans>

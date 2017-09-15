@@ -17,9 +17,6 @@
 	<import resource="classpath:META-INF/page_base_bean.xml" />
 	<import resource="classpath:META-INF/case_base_bean.xml" />
 	<import resource="../pageObjects/homePage.xml" />
-	<import resource="../pageObjects/privacyPolicyPage.xml" />
-	<import resource="../pageObjects/servicesTermsPage.xml" />
-	<import resource="../pageObjects/webSiteTermsPage.xml" />
 	<import resource="../pageObjects/signUpForm.xml" />
 	<import resource="../pageObjects/lastPage.xml" />
 	
@@ -44,6 +41,7 @@
 			stepDescription="type in public user first name" stepName="stepUserTypeInFirstName"
 			targetStep="false" elementActionDef="typeInFirstName" pageObject="poHomePage">
 		</ate:elementStep>
+		
 		<ate:elementStep id="stepUserTypeInLastName"
 			stepDescription="type in public user last name" stepName="stepUserTypeInLastName"
 			targetStep="false" elementActionDef="typeInLastName" pageObject="poHomePage">

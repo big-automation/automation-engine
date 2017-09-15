@@ -21,20 +21,6 @@
 	<ate:homePage id="poHomePage" homeUrl="http://www.bigtester.com" dataFile="bigtesterTest_wei/pageObjects/homePage.data.xml"/>
 
 	
-    <!-- myWebElement definition -->
-<!-- 
-    <ate:elementActionDef id="eadClickPrivacyPolicy" elementFind="efPrivacyPolicyLink" elementAction="eaPrivacyPolicyLinkClick" />
-	<ate:elementFindByXpath id="efPrivacyPolicyLink" findByValue="Privacy Policy" />
-	<ate:clickAction id="eaPrivacyPolicyLinkClick" />
-
-    <ate:elementActionDef id="eadClickServicesTerms" elementFind="efServicesTermsLink" elementAction="eaServicesTermsLinkClick" />
-	<ate:elementFindByXpath id="efServicesTermsLink" findByValue="Services Terms" />
-	<ate:clickAction id="eaServicesTermsLinkClick" />
-
-    <ate:elementActionDef id="eadClickWebSiteTerms" elementFind="efWebSiteTermsLink" elementAction="eaWebSiteTermsLinkClick" />
-	<ate:elementFindByXpath id="efWebSiteTermsLink" findByValue="WebSite Terms" />
-	<ate:clickAction id="eaWebSiteTermsLinkClick" />
- -->
 	<ate:elementActionDef id="eadSaveCookies" elementFind="efAllCookies" elementAction="eaExportAsFile" />
 	<ate:cookiesFindAll id="efAllCookies" />
 	<ate:fileExportAction id="eaExportAsFile"

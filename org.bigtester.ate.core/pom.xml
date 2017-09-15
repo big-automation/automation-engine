@@ -582,10 +582,16 @@
 	        <artifactId>mockito-all</artifactId>
 	        <version>2.0.2-beta</version>
         </dependency>
-		<dependency>
+		<!--  <dependency>-->
+       	<!--  	<groupId>io.appium</groupId>-->
+       	<!-- 		<artifactId>java-client</artifactId>-->
+        <!-- 		<version>5.0.3</version>-->
+ 		<!--</dependency>-->
+ 		<!-- Chen add for Appium  -->
+ 		<dependency>
        		<groupId>io.appium</groupId>
-       	 		<artifactId>java-client</artifactId>
-         		<version>3.3.0</version>
+       	 	<artifactId>java-client</artifactId>
+         	<version>5.0.3</version>
  		</dependency>
 	</dependencies>
 

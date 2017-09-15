@@ -35,7 +35,7 @@
 	<ate:testCase id="testcase" testCaseName="Bigtester home page test case">
 	
 		<ate:homeStep id="stepOpenBigtesterHomePage" stepName="stepOpenBigtesterHomePage"
-			stepDescription="open bigtester.com home step" targetStep="true" pageObject="poHomePage">
+			stepDescription="open bigtester.com home step" targetStep="false" pageObject="poHomePage">
 		</ate:homeStep>
 		<ate:elementStep id="stepUserTypeInFirstName"
 			stepDescription="type in public user first name" stepName="stepUserTypeInFirstName"

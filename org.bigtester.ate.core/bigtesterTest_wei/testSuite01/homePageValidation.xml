@@ -32,7 +32,7 @@
 	<ate:testCase id="testcase" testCaseName="Bigtester home page test case">
 
 		<ate:homeStep id="stepOpenBigtesterHomePage" stepName="stepOpenBigtesterHomePage"
-			stepDescription="open bigtester.com home step" targetStep="true"
+			stepDescription="open bigtester.com home step" targetStep="false"
 			pageObject="poHomePage">
 			<!-- <property name="expectedResultAsserter"> -->
 			<!-- <list> -->

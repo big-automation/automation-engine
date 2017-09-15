@@ -40,17 +40,17 @@
 	<ate:elementFindByXpath id="signUpLastName"	findByValue="//input[@name='Field2']" />
 	<ate:sendKeysAction id="signUpLastNameAction" dataValue="shao" />
 
-    <!-- elementactiondef of clickEmailInput 
+    <!-- elementactiondef of clickEmailInput -->
 	<ate:elementActionDef id="clickEmailInput"   elementFind="signUpEmail" elementAction="signUpEmailClickAction" />
 	<ate:clickAction id="signUpEmailClickAction" />
-	-->
+	
     
     <!-- elementactiondef of typeInEmail -->
 	<ate:elementActionDef id="typeInEmail" elementFind="signUpEmail" elementAction="signUpEmailAction" />
 	<ate:elementFindByXpath id="signUpEmail" findByValue="//input[@id='Field3']" />
 	<ate:sendKeysAction id="signUpEmailAction" dataValue="stoneshao1973@gmail.com" />
 	
-	<!-- click Phone input box ate:elementActionDef definition 
+	<!-- click Phone input box ate:elementActionDef definition -->
 	<ate:elementActionDef id="clickPhoneInput1" elementFind="signUpPhone1" elementAction="phoneInputClick1"/>
 	<ate:clickAction id="phoneInputClick1" />
 	
@@ -59,7 +59,7 @@
 	
 	<ate:elementActionDef id="clickPhoneInput3" elementFind="signUpPhone3" elementAction="phoneInputClick3"/>
 	<ate:clickAction id="phoneInputClick3" />
-	-->
+	
 	
 	<!-- elementactiondef of typeInPhone -->
 	<ate:elementActionDef id="typeInPhone1" elementFind="signUpPhone1" elementAction="signUpPhoneAction1" />
@@ -87,7 +87,7 @@
 
     <!-- click submit button def ate:elementActionDef definition -->
 	<ate:elementActionDef id="clickSubmit" elementFind="submitButton" elementAction="submitButtonClick"/>
-	<ate:elementFindByXpath id="submitButton" findByValue="//button[@id='saveForm']" />
+	<ate:elementFindByXpath id="submitButton" findByValue="//button[@name='saveForm']" />
 	<ate:clickAction id="submitButtonClick" />
 
 </beans>

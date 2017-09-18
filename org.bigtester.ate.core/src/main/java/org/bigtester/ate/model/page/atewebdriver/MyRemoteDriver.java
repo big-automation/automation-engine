@@ -79,6 +79,10 @@ public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDrive
 		if (!StringUtils.isEmpty(platform))
 			caps.get().setPlatform(Platform.valueOf(platform));
 		caps.get().setCapability("maxDuration", 10800);
+		caps.get().setCapability("commandTimeout", 600);
+		caps.get().setCapability("idleTimeout", 1000);
+		
+		
 		this.setUrl(url);
 	}
 		

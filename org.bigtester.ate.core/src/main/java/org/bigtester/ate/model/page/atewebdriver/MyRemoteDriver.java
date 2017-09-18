@@ -56,12 +56,14 @@ public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDrive
 		if (StringUtils.isEmpty(browserName)){
 			caps = Optional.of(DesiredCapabilities.chrome());
 			caps.get().setBrowserName("chrome");
+			caps.get().setVersion("55.0");
 		}
 		else {
 			switch (browserName) {
 			case "chrome":
 				caps = Optional.of(DesiredCapabilities.chrome());
 				caps.get().setBrowserName("chrome");
+				caps.get().setVersion("55.0");
 				break;
 			case "firefox":
 				caps = Optional.of(DesiredCapabilities.firefox());

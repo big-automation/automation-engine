@@ -17,7 +17,7 @@
 
 	<groupId>org.bigtester</groupId>
 	<artifactId>org.bigtester.ate.core</artifactId>
-	<version>0.1.5-SNAPSHOT</version>
+	<version>0.2.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Automation Test Engine Core</name>
@@ -100,6 +100,17 @@
 					<configuration>
 						<lifecycleMappingMetadata>
 							<pluginExecutions>
+								<pluginExecution>
+				                    <pluginExecutionFilter>
+				                        <groupId>org.apache.maven.plugins</groupId>
+				                        <artifactId>maven-enforcer-plugin</artifactId>
+				                        <versionRange>[1.0.0,)</versionRange>
+				                        <goals>
+				                           <goal>enforce</goal>
+				                        </goals>
+				                    </pluginExecutionFilter>
+				                    <action><ignore/></action>
+				                </pluginExecution>
 								<pluginExecution>
 									<pluginExecutionFilter>
 										<groupId>
@@ -238,6 +249,52 @@
 				</executions>
 			</plugin>
 			<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-shade-plugin</artifactId>
+			<version>2.3</version>
+			<executions>
+			<execution>
+			<phase>package</phase>
+			<goals>
+			<goal>shade</goal>
+			</goals>
+			<configuration>
+			<finalName>ate</finalName>
+			<shadedArtifactAttached>true</shadedArtifactAttached>
+			<shadedClassifierName>jar-with-dependencies</shadedClassifierName>
+			<transformers>
+			<transformer
+			implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+			<mainClass>org.bigtester.ate.TestProjectRunner</mainClass>
+			</transformer>
+			<transformer
+			implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+			<resource>META-INF/spring.handlers</resource>
+			</transformer>
+			<transformer
+			implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+			<resource>META-INF/spring.schemas</resource>
+			</transformer>
+			<transformer
+			implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+			<resource>META-INF/spring.tooling</resource>
+			</transformer>
+			</transformers>
+			<filters>
+			<filter>
+			<artifact>*:*</artifact>
+			<excludes>
+			<exclude>META-INF/*.SF</exclude>
+			<exclude>META-INF/*.DSA</exclude>
+			<exclude>META-INF/*.RSA</exclude>
+			</excludes>
+			</filter>
+			</filters>
+			</configuration>
+			</execution>
+			</executions>
+			</plugin> 
+			<plugin>		
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.20</version>
@@ -285,16 +342,37 @@
 		</plugins>
 	</build>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>4.3.8.Final</version>
-		</dependency>
+	<dependencies>		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>4.3.10.RELEASE</version>
+			<version>4.3.11.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>4.3.11.RELEASE</version>
+		</dependency>		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>4.3.11.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.3.11.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>4.3.11.RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.hsqldb</groupId>
@@ -304,41 +382,19 @@
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<version>6.9.8</version>
+			<version>6.11</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>3.5.3</version>
-		</dependency>
-		<dependency>
-			<groupId>org.reflections</groupId>
-			<artifactId>reflections</artifactId>
-			<version>0.9.10</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>4.3.10.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>4.3.10.RELEASE</version>
-			<exclusions>
-				<exclusion>
-					<groupId>commons-logging</groupId>
-					<artifactId>commons-logging</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+		</dependency>			
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-htmlunit-driver -->
 		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-htmlunit-driver</artifactId>
-			<version>2.52.0</version>
-		</dependency>
-
+		    <groupId>org.seleniumhq.selenium</groupId>
+		    <artifactId>selenium-htmlunit-driver</artifactId>
+		    <version>2.52.0</version>
+		</dependency>	
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
@@ -370,25 +426,15 @@
 			<artifactId>logback-access</artifactId>
 			<version>${logback.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aop</artifactId>
-			<version>4.3.10.RELEASE</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>log4j</groupId> -->
+<!-- 			<artifactId>log4j</artifactId> -->
+<!-- 			<version>1.2.17</version> -->
+<!-- 		</dependency> -->		
 		<dependency>
 			<groupId>com.jamonapi</groupId>
 			<artifactId>jamon</artifactId>
 			<version>2.81</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aspects</artifactId>
-			<version>4.3.10.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>cglib</groupId>
@@ -412,11 +458,10 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/commons-cli/commons-cli -->
 		<dependency>
-			<groupId>commons-cli</groupId>
-			<artifactId>commons-cli</artifactId>
-			<version>1.4</version>
+		    <groupId>commons-cli</groupId>
+		    <artifactId>commons-cli</artifactId>
+		    <version>1.4</version>
 		</dependency>
-
 		<!-- <dependency> -->
 		<!-- <groupId>net.xeon</groupId> -->
 		<!-- <artifactId>jspf.core</artifactId> -->
@@ -424,24 +469,19 @@
 		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.springframework.plugin</groupId>
-			<artifactId>spring-plugin-core</artifactId>
-			<version>1.2.0.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.plugin</groupId>
 			<artifactId>spring-plugin-integration</artifactId>
 			<version>1.0.0.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.plugin</groupId>
+			<artifactId>spring-plugin-core</artifactId>
+			<version>1.2.0.RELEASE</version>
+		</dependency>		
+		<dependency>
+			<groupId>org.springframework.plugin</groupId>
 			<artifactId>spring-plugin-metadata</artifactId>
 			<version>1.2.0.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>xml-apis</groupId>
-			<artifactId>xml-apis</artifactId>
-			<version>1.4.01</version>
-		</dependency>
+		</dependency>		
 		<dependency>
 			<groupId>org.codehaus.janino</groupId>
 			<artifactId>janino</artifactId>
@@ -460,7 +500,7 @@
 		<dependency>
 			<groupId>org.eclipse.jdt</groupId>
 			<artifactId>org.eclipse.jdt.annotation</artifactId>
-			<version>1.1.0</version>
+			<version>2.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.inject</groupId>
@@ -476,27 +516,17 @@
 			<groupId>com.lazerycode.selenium</groupId>
 			<artifactId>driver-binary-downloader-maven-plugin</artifactId>
 			<version>1.0.14</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.javaparser</groupId>
-			<artifactId>javaparser-core</artifactId>
-			<version>2.5.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jodd</groupId>
-			<artifactId>jodd</artifactId>
-			<version>3.3.8</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.aether</groupId>
-			<artifactId>aether-api</artifactId>
-			<version>1.1.0</version>
-		</dependency>
+		</dependency>		
 		<dependency>
 			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-aether-provider</artifactId>
 			<version>3.3.9</version>
 		</dependency>
+		<dependency>
+			<groupId>org.eclipse.aether</groupId>
+			<artifactId>aether-api</artifactId>
+			<version>1.1.0</version>
+		</dependency>		
 		<dependency>
 			<groupId>org.eclipse.aether</groupId>
 			<artifactId>aether-connector-basic</artifactId>
@@ -533,6 +563,11 @@
 			</exclusions>
 		</dependency>
 		<dependency>
+		    <groupId>org.apache.maven.wagon</groupId>
+		    <artifactId>wagon-provider-api</artifactId>
+		    <version>3.0.0</version>
+		</dependency>				
+		<dependency>
 			<groupId>org.apache.maven.wagon</groupId>
 			<artifactId>wagon-http-lightweight</artifactId>
 			<version>3.0.0</version>
@@ -554,24 +589,51 @@
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>4.3.5</version>
+			<version>4.5.3</version>
+		</dependency>
+        <dependency>
+            <groupId>com.jcabi</groupId>
+            <artifactId>jcabi-aether</artifactId>
+            <version>0.10.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.4.10</version>
+        </dependency>
+        <dependency>
+	        <groupId>org.mockito</groupId>
+	        <artifactId>mockito-all</artifactId>
+	        <version>2.0.2-beta</version>
+        </dependency>
+	    
+	    <!-- Begin of dependency that cannot change the version -->
+	    <dependency>
+			<groupId>com.github.javaparser</groupId>
+			<artifactId>javaparser-core</artifactId>
+			<version>2.5.1</version>
+		</dependency>
+	    <dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.3.8.Final</version>
 		</dependency>
 		<dependency>
-			<groupId>com.jcabi</groupId>
-			<artifactId>jcabi-aether</artifactId>
-			<version>0.10.1</version>
+			<groupId>org.jodd</groupId>
+			<artifactId>jodd</artifactId>
+			<version>3.3.8</version>
 		</dependency>
+	    <dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>0.9.10</version>
+		</dependency>	
 		<dependency>
-			<groupId>com.thoughtworks.xstream</groupId>
-			<artifactId>xstream</artifactId>
-			<version>1.4.8</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>2.0.2-beta</version>
-		</dependency>
-
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>1.4.01</version>
+		</dependency>		
+		<!-- end of dependency that cannot change the version -->		
 	</dependencies>
 
 </project>

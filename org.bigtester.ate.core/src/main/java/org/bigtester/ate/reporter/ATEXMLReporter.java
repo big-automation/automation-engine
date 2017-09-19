@@ -8,6 +8,7 @@ import org.testng.ITestNGMethod;
 import org.testng.Reporter;
 import org.testng.internal.Utils;
 import org.testng.reporters.XMLReporterConfig;
+import org.testng.reporters.XMLReporterConfig.StackTraceLevels;
 import org.testng.reporters.XMLStringBuffer;
 import org.testng.xml.XmlSuite;
 
@@ -193,7 +194,7 @@ public class ATEXMLReporter implements IReporter {
 	public static void addDurationAttributes(XMLReporterConfig config,
 			Properties attributes, Date minStartDate, Date maxEndDate) {
 		SimpleDateFormat format = new SimpleDateFormat(
-				XMLReporterConfig.getTimestampFormat());
+				config.getTimestampFormat());
 		TimeZone utc = TimeZone.getTimeZone("UTC");
 		format.setTimeZone(utc);
 		String startTime = format.format(minStartDate);
@@ -228,8 +229,8 @@ public class ATEXMLReporter implements IReporter {
 		return config.getStackTraceOutputMethod();
 	}
 
-	public void setStackTraceOutputMethod(int stackTraceOutputMethod) {
-		config.setStackTraceOutputMethod(stackTraceOutputMethod);
+	public void setStackTraceOutputMethod(StackTraceLevels none) {
+		config.setStackTraceOutput(none);
 	}
 
 	public String getOutputDirectory() {
@@ -257,7 +258,7 @@ public class ATEXMLReporter implements IReporter {
 	}
 
 	public String getTimestampFormat() {
-		return XMLReporterConfig.getTimestampFormat();
+		return config.getTimestampFormat();
 	}
 
 	public void setTimestampFormat(String timestampFormat) {

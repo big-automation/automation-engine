@@ -203,7 +203,7 @@ public class ATEXMLSuiteResultWriter {
 
     attributes.setProperty(XMLReporterConfig.ATTR_METHOD_SIG, removeClassName(testResult.getMethod().toString()));
 
-    SimpleDateFormat format = new SimpleDateFormat(XMLReporterConfig.getTimestampFormat());
+    SimpleDateFormat format = new SimpleDateFormat(config.getTimestampFormat());
     String startTime = format.format(testResult.getStartMillis());
     String endTime = format.format(testResult.getEndMillis());
     attributes.setProperty(XMLReporterConfig.ATTR_STARTED_AT, startTime);
@@ -295,14 +295,12 @@ public class ATEXMLSuiteResultWriter {
       }
 
       String[] stackTraces = Utils.stackTrace(exception, false);
-      if ((config.getStackTraceOutputMethod() & XMLReporterConfig.STACKTRACE_SHORT) == XMLReporterConfig
-              .STACKTRACE_SHORT) {
+      if (config.getStackTraceOutput() == XMLReporterConfig.StackTraceLevels.SHORT) {
         xmlBuffer.push(XMLReporterConfig.TAG_SHORT_STACKTRACE);
         xmlBuffer.addCDATA(stackTraces[0]);
         xmlBuffer.pop();
       }
-      if ((config.getStackTraceOutputMethod() & XMLReporterConfig.STACKTRACE_FULL) == XMLReporterConfig
-              .STACKTRACE_FULL) {
+      if (config.getStackTraceOutput() == XMLReporterConfig.StackTraceLevels.FULL) {
         xmlBuffer.push(XMLReporterConfig.TAG_FULL_STACKTRACE);
         xmlBuffer.addCDATA(stackTraces[1]);
         xmlBuffer.pop();

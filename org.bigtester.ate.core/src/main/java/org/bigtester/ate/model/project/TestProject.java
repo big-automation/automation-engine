@@ -129,7 +129,7 @@ public class TestProject {
 		testng.addListener(repeatStepResultModifier);
 
 		ATEXMLReporter rng = new ATEXMLReporter();
-		rng.setStackTraceOutputMethod(XMLReporterConfig.STACKTRACE_NONE);
+		rng.setStackTraceOutputMethod(XMLReporterConfig.StackTraceLevels.NONE);
 		testng.addListener(rng);
 		CaseRunnerGenerator crg = new CaseRunnerGenerator(this.getSuiteList());
 		crg.createCaseRunners();

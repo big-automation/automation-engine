@@ -26,6 +26,7 @@ import java.util.Optional;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -56,12 +57,14 @@ public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDrive
 		if (StringUtils.isEmpty(browserName)){
 			caps = Optional.of(DesiredCapabilities.chrome());
 			caps.get().setBrowserName("chrome");
+			caps.get().setVersion("55.0");
 		}
 		else {
 			switch (browserName) {
 			case "chrome":
 				caps = Optional.of(DesiredCapabilities.chrome());
 				caps.get().setBrowserName("chrome");
+				caps.get().setVersion("55.0");
 				break;
 			case "firefox":
 				caps = Optional.of(DesiredCapabilities.firefox());
@@ -76,7 +79,19 @@ public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDrive
 			caps.get().setVersion(version);
 		if (!StringUtils.isEmpty(platform))
 			caps.get().setPlatform(Platform.valueOf(platform));
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--start-maximized");
+		options.addArguments("--allow-file-access-from-files");
+		options.addArguments("--disable-web-security");
+		
+		caps.get().setCapability(ChromeOptions.CAPABILITY, options);
 		caps.get().setCapability("maxDuration", 10800);
+		caps.get().setCapability("commandTimeout", 600);
+		caps.get().setCapability("idleTimeout", 1000);
+		caps.get().setCapability("screenResolution", "1280x1024");
+		
+		
+		
 		this.setUrl(url);
 	}
 		

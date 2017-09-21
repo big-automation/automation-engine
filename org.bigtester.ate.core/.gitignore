@@ -13,3 +13,7 @@
 /testdata/
 /chromeUserData/
 /temp_data/
+
+/browserdriver/windows/
+/browserdriver/osx/
+/browserdriver/linux/

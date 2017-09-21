@@ -45,7 +45,6 @@ public class CalculatorTestingDemo {
     public void testCal() throws Exception {
         //locate the Text on the calculator by using By.Id() (use UIAutomator ResourceId )
     
-    	
     	WebElement one = driver.findElement(By.id("com.android.calculator2:id/digit_1"));
     	one.click();
     	WebElement plus = driver.findElement(By.id("com.android.calculator2:id/op_add"));

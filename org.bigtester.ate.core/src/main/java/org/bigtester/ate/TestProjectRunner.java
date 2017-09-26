@@ -47,6 +47,7 @@ import org.bigtester.ate.xmlschema.BasePageObjectBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.CaseDependencyBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.CaseTypeServiceBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.ChromeDriverBeanDefinitionParser;
+import org.bigtester.ate.xmlschema.AndroidDriverBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.ClearTextActionBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.ClickActionBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.DoubleClickActionBeanDefinitionParser;
@@ -291,6 +292,7 @@ public final class TestProjectRunner {
 		/******************************* following for Webdriver ******************************/
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_FIREFOXDRIVER, new FirefoxDriverBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_CHROMEDRIVER, new ChromeDriverBeanDefinitionParser());
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_ANDROIDDRIVER, new AndroidDriverBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_REMOTEDRIVER, new RemoteDriverBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_SAUCELABDRIVER, new SauceLabDriverBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_IEDRIVER, new IEDriverBeanDefinitionParser());

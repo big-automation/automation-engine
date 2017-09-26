@@ -1015,6 +1015,15 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 	
+	<xsd:complexType name="MyAndroidDriverType">
+		<xsd:complexContent>
+			<xsd:extension base="AbstractWebDriverBaseType">
+				<xsd:attribute name="preserveCookies" type="xsd:boolean" />
+				<xsd:attribute name="startArguments" type="xsd:string" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
 	<xsd:complexType name="MyRemoteDriverType">
 		<xsd:complexContent>
 			<xsd:extension base="AbstractWebDriverBaseType">
@@ -1151,6 +1160,7 @@
 
 	<xsd:element name="firefoxDriver" type="MyFirefoxDriverType" />
 	<xsd:element name="chromeDriver" type="MyChromeDriverType" />
+	<xsd:element name="androidDriver" type="MyAndroidDriverType" />
 	<xsd:element name="remoteDriver" type="MyRemoteDriverType" />
 	<xsd:element name="sauceLabDriver" type="MySauceLabDriverType" />
 	<xsd:element name="IEDriver" type="MyIEDriverType" />

@@ -20,225 +20,31 @@
  *******************************************************************************/
 package org.bigtester.ate.model.page.atewebdriver;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional; 
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.Android.AndroidDriver; 
-import org.openqa.selenium.Android.AndroidOptions;
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.Option; 
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
+import org.openqa.selenium.android.AndroidDriver;
 import org.bigtester.ate.GlobalUtils;
 import org.eclipse.jdt.annotation.Nullable;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class MyAndroidDriver defines ....
+ * The Class MyandroidDriver defines ....
  * 
- * @author Jun Yang
+ * @author Wei Shao
  */
 public class MyAndroidDriver extends AbstractWebDriverBase implements IMyWebDriver {
-
-	/** The browser profile. */
-	@Nullable
-	final private AndroidFeatureProfile browserProfile = new AndroidFeatureProfile(); //NOPMD
-	
-	/** The browsertypename. */
-	final public static String BROWSERTYPENAME = "Android"; 
+			
 	/** The Constant BROWSERNAME. */
-/*	private static final String BROWSERNAME = "android";*/
+	/*private static final String BROWSERNAME = "android";*/
 	/** The Constant BROWSERDRVNAME. */
 	private static final String BROWSERDRVNAME = "webdriver.android.driver";
 	/** The Constant BROWSERWIN32PATH. */
 	private static final String BROWSERWIN32PATH = "windows/android/32bit/";
 	/** The Constant BROWSERWIN64PATH. */
-	private static final String BROWSERWIN64PATH = "windows/android/64bit/";
-	/** The Constant BROWSERLINUX32PATH. */
-	private static final String BROWSERLINUX32PATH = "linux/android/32bit/";
-	/** The Constant BROWSERLINUX64PATH. */
-	private static final String BROWSERLINUX64PATH = "linux/android/64bit/";
-	/** The Constant BROWSEROSX32PATH. */
-	private static final String BROWSEROSX32PATH = "osx/android/32bit/";
-	/** The Constant BROWSEROSX32PATH. */
-	private static final String BROWSEROSX64PATH = "osx/android/64bit/";
+	private static final String BROWSERWIN64PATH = "windows/android/64bit/";	
 	/** The Constant BROWSERWINFILENAME. */
-	private static final String BROWSERWINFILENAME = "Androiddriver.exe";
-	/** The Constant BROWSERLINUXFILENAME. */
-	private static final String BROWSERLINUXFILENAME = "Androiddriver";
-	/** The Constant BROWSERMACFILENAME. */
-	private static final String BROWSER0SXFILENAME = "Androiddriver";
+	private static final String BROWSERWINFILENAME = "MicrosoftWebDriver.exe";	
 
-	
-	/**
-	 * Instantiates a new my Android driver.
-	 */
-	public MyAndroidDriver(boolean preserveCookiesOnExecutions) {
-		
-		super();
-		getBrowserProfile().setPreserveCookiesOnExecutions(preserveCookiesOnExecutions);
-		
-	}
-	
-	@SuppressWarnings({ "null", "unused" })
-	private CommandLine parseArgs (String argsStr){
-		// create the command line parser
-		CommandLineParser parser = new DefaultParser();
-
-		// create the Options
-		Options options = new Options();
-		options.addOption( "a", "all", false, "do not hide entries starting with ." );
-		options.addOption( "A", "almost-all", false, "do not list implied . and .." );
-		options.addOption( "b", "escape", false, "print octal escapes for nongraphic "
-		                                         + "characters" );
-		Option sizeOption = Option.builder()
-			    .longOpt( "block-size" )
-			    .desc( "use SIZE-byte blocks"  )
-			    .hasArg()
-			    .argName( "SIZE" )
-			    .build();
-		options.addOption( sizeOption );
-		options.addOption( "B", "ignore-backups", false, "do not list implied entried "
-		                                                 + "ending with ~");
-		options.addOption( "c", false, "with -lt: sort by, and show, ctime (time of last " 
-		                               + "modification of file status information) with "
-		                               + "-l:show ctime and sort by name otherwise: sort "
-		                               + "by ctime" );
-		options.addOption( "C", false, "list entries by columns" );
-
-		
-
-		
-			String[] args = argsStr.split("\\s+");
-			
-		    // parse the command line arguments
-		    Optional<CommandLine> line = Optional.empty();
-		    CommandLine retVal = line.get();
-		    try {
-				line = Optional.of(parser.parse( options, args ));
-			} catch (ParseException e) {
-				retVal = line.get();
-			}		    
-		    return retVal;	
-	}
-	
-	@SuppressWarnings("null")
-	private List<String> parseArgsIntoArray(String argsStr) {
-		List<String> retVal = new ArrayList<String>();
-		String[] args = argsStr.split("\\s+");
-		retVal = Arrays.asList(args);
-		return retVal;		
-	}
-	
-	/**
-	 * Instantiates a new my Android driver.
-	 *
-	 * @param preserveCookiesOnExecutions the preserve cookies on executions
-	 * @param startArguments the start arguments
-	 */
-
-	public MyAndroidDriver(boolean preserveCookiesOnExecutions, String startArguments) {
-		
-		super();
-		getBrowserProfile().setPreserveCookiesOnExecutions(preserveCookiesOnExecutions);
-		
-		getBrowserProfile().setStartArguments(parseArgsIntoArray(startArguments));		
-	}
-	
-	/**
-	 * Instantiates a new my Android driver.
-	 */
-	public MyAndroidDriver() {		
-		super();		 
-	}
-
-	/**
-	 * @return the browserProfile
-	 */
-
-	public   AndroidFeatureProfile  getBrowserProfile() {
-		final AndroidFeatureProfile  retVal = browserProfile;
-		if (null == retVal) {
-			throw new IllegalStateException(
-					"browserProfile is not correctly populated");
-		} else {
-			return retVal;
-		}
-	}
-
-	/**
-	 * Sets the Android driver system env.
-	 */
-	public static void setAndroidDriverSystemEnv() {
-		OSinfo osinfo = new OSinfo();
-		EPlatform platform = osinfo.getOSname();
-		String driverPath = GlobalUtils.getDriverPath(); //NOPMD
-		
-		switch (platform) {
-			case Windows_32:
-				/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "windows", BROWSERNAME, ReadXmlFile.VERSION);*/
-				if (driverPath == null)
-					System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
-							           + BROWSERWIN32PATH + BROWSERWINFILENAME);
-				else
-					System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
-							           + BROWSERWIN32PATH + BROWSERWINFILENAME);
-				break;
-			case Windows_64:
-				/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "windows", BROWSERNAME, ReadXmlFile.VERSION);*/
-				if (driverPath == null)
-					System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
-							           + BROWSERWIN64PATH + BROWSERWINFILENAME);	
-				else
-					System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
-							           + BROWSERWIN64PATH + BROWSERWINFILENAME);
-				break;
-			case Linux_32:
-				/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "linux", BROWSERNAME, ReadXmlFile.VERSION);*/
-				if (driverPath == null)
-					System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
-							           + BROWSERLINUX32PATH + BROWSERLINUXFILENAME);	
-				else
-					System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
-							           + BROWSERLINUX32PATH + BROWSERLINUXFILENAME);
-				break;
-			case Linux_64:
-				/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "linux", BROWSERNAME, ReadXmlFile.VERSION);*/
-				if (driverPath == null)
-					System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
-							           + BROWSERLINUX64PATH + BROWSERLINUXFILENAME);	
-				else
-					System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
-							           + BROWSERLINUX64PATH + BROWSERLINUXFILENAME);
-				break;
-			case Mac_OS_X_32:
-				/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "osx", BROWSERNAME, ReadXmlFile.VERSION);*/
-				if (driverPath == null)
-					System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
-							           + BROWSEROSX32PATH + BROWSER0SXFILENAME);
-				else 
-					System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
-							           + BROWSEROSX32PATH + BROWSER0SXFILENAME);				
-				break;
-			case Mac_OS_X_64:
-				/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "osx", BROWSERNAME, ReadXmlFile.VERSION);*/
-				if (driverPath == null)
-					System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
-							           + BROWSEROSX64PATH + BROWSER0SXFILENAME);	
-				else
-					System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
-							           + BROWSEROSX64PATH + BROWSER0SXFILENAME);
-				break;
-			default:
-				throw GlobalUtils.createNotInitializedException("operating system is not supported ");
-			}
-	}
-	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -246,6 +52,7 @@ public class MyAndroidDriver extends AbstractWebDriverBase implements IMyWebDriv
 	@Nullable
 	public WebDriver getWebDriver() {
 		return super.getWebDriver();
+
 	}
 
 	/**
@@ -255,16 +62,33 @@ public class MyAndroidDriver extends AbstractWebDriverBase implements IMyWebDriv
 	public WebDriver getWebDriverInstance() {
 		WebDriver retVal = getWebDriver();
 		if (null == retVal) {
-			setAndroidDriverSystemEnv();
-			AndroidOptions ops = new AndroidOptions();
-			ops.addArguments(getBrowserProfile().getStartArguments());
-			if (getBrowserProfile().isPreserveCookiesOnExecutions()) {
-				ops.addArguments("--user-data-dir="
-						+ getBrowserProfile().getTestCaseAndroidUserDataDir());
-			}
-			retVal = new AndroidDriver(ops);
+			OSinfo osinfo = new OSinfo();
+			EPlatform platform = osinfo.getOSname();
+			String driverPath = GlobalUtils.getDriverPath(); //NOPMD
+			
+			switch (platform) {
+				case Windows_32:
+					if (driverPath == null)
+						System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
+								           + BROWSERWIN32PATH + BROWSERWINFILENAME);
+					else
+						System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
+								           + BROWSERWIN32PATH + BROWSERWINFILENAME);
+					break;
+				case Windows_64:
+					if (driverPath == null)
+						System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
+								           + BROWSERWIN64PATH + BROWSERWINFILENAME);
+					else
+						System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
+								           + BROWSERWIN64PATH + BROWSERWINFILENAME);
+					break;
+				default:
+					throw GlobalUtils.createNotInitializedException("operating system is not supported ");
+			}				
+			retVal = new AndroidDriver();
 			setWebDriver(retVal);
-		}
+		}		
 		return retVal;
 	}
 

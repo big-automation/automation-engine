@@ -22,7 +22,6 @@ package org.bigtester.ate.xmlschema;
 
 import org.apache.commons.lang3.StringUtils;
 import org.bigtester.ate.GlobalUtils;
-import org.bigtester.ate.constant.XsdElementConstants;
 import org.bigtester.ate.model.page.atewebdriver.MyAndroidDriver;
 import org.eclipse.jdt.annotation.Nullable;
 import org.springframework.beans.factory.BeanDefinitionStoreException;
@@ -52,26 +51,14 @@ public class AndroidDriverBeanDefinitionParser extends
 	/**
 	 * {@inheritDoc}
 	 */
-	protected void doParse(@Nullable Element element,
-			@Nullable BeanDefinitionBuilder bean) {
-		// this will never be null since the schema explicitly requires that a
-		// value be supplied
-		if (bean == null || element == null)
-			throw GlobalUtils.createNotInitializedException("element and bean");
-		String preserveCookies = element
-				.getAttribute(XsdElementConstants.ATTR_AndroidDRIVER_PRESERVECOOKIES);
-		if (!StringUtils.isEmpty(preserveCookies)) {
-			bean.addConstructorArgValue(Boolean.parseBoolean(preserveCookies));
-		}
-		String startArguments = element
-				.getAttribute(XsdElementConstants.ATTR_AndroidDRIVER_START_ARGUMENTS);
-		if (!StringUtils.isEmpty(preserveCookies)) {
-			bean.addConstructorArgValue(startArguments);
-		}
-		
-
+	protected void doParse(@Nullable Element element, @Nullable BeanDefinitionBuilder bean) {
+		// this will never be null since the schema explicitly requires that a value be supplied
+	    if (bean ==null || element == null ) throw GlobalUtils.createNotInitializedException("element and bean");
+		    String profileName = element.getAttribute("profileName");
+		    if (!StringUtils.isEmpty(profileName)) {
+		       	bean.addConstructorArgValue(profileName);
+		    }
 	}
-
 	/**
 	 * (non-Javadoc)
 	 * 

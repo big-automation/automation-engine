@@ -22,7 +22,8 @@ package org.bigtester.ate.model.page.atewebdriver;
 
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.android.AndroidDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.bigtester.ate.GlobalUtils;
 import org.eclipse.jdt.annotation.Nullable;
 
@@ -86,7 +87,7 @@ public class MyAndroidDriver extends AbstractWebDriverBase implements IMyWebDriv
 				default:
 					throw GlobalUtils.createNotInitializedException("operating system is not supported ");
 			}				
-			retVal = new AndroidDriver();
+			retVal = new RemoteWebDriver(DesiredCapabilities.android());
 			setWebDriver(retVal);
 		}		
 		return retVal;

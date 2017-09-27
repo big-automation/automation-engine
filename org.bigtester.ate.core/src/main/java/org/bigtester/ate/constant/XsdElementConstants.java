@@ -510,7 +510,7 @@ public final class XsdElementConstants {
 	/** The Constant ATTR_ANDROIDDRIVER_PRESERVECOOKIES. */
 	public static final String ATTR_ANDROIDDRIVER_PRESERVECOOKIES = "preserveCookies";
 	
-	/** The Constant ATTR_CHROMEDRIVER_START_ARGUMENTS. */
+	/** The Constant ATTR_ANDROIDDRIVER_START_ARGUMENTS. */
 	public static final String ATTR_ANDROIDDRIVER_START_ARGUMENTS = "startArguments";
 	
 	/** The Constant ELEMENT_REMOTEDRIVER. */

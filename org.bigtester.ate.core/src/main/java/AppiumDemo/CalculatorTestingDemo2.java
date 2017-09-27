@@ -8,26 +8,47 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
- 
+
+import io.appium.java_client.android.AndroidDriver;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 /**
  * Created by Chen Chen 
  */
-public class CalculatorTestingDemo {
+public class CalculatorTestingDemo2 {
  
     WebDriver driver;
+    public static final String USERNAME = "chencheninca";
+    public static final String ACCESS_KEY = "aa7e009b-e265-48a1-9a7b-a4917d5f27b3";
+    public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
+    
  
     @BeforeClass
     public void setUp() throws MalformedURLException{
+    	
+    	DesiredCapabilities capabilities = new DesiredCapabilities();
+    	capabilities.setCapability("testobjectApiKey", "5A9C6A605A91413FA8266FB09272261F");
+    	
+        capabilities.setCapability("platformName", "Android");
+        capabilities.setCapability("deviceName", "LG Nexus 5X");
+        capabilities.setCapability("platformVersion", "7");
+        //capabilities.setCapability("app", "http://saucelabs.com/example_files/ContactManager.apk");
+        capabilities.setCapability("browserName", "");
+        //capabilities.setCapability(“phoneOnly”, true);
+        capabilities.setCapability("deviceOrientation", "portrait");
+        capabilities.setCapability("appiumVersion", "1.6.5");
+     
+        //WebDriver driver = new AndroidDriver<>(new URL(URL), capabilities);
+        
         //Set up desired capabilities and pass the Android app-activity
         //and app-package to Appium
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("BROWSER_NAME", "Android");
-        capabilities.setCapability("VERSION", "6.0");
-        capabilities.setCapability("deviceName","Android6");
-        capabilities.setCapability("platformName","Android");
-        capabilities.setCapability("device","Android");
+        //DesiredCapabilities capabilities = new DesiredCapabilities();
+        //capabilities.setCapability("BROWSER_NAME", "Android");
+       // capabilities.setCapability("VERSION", "6.0");
+        //capabilities.setCapability("deviceName","Android6");
+        //capabilities.setCapability("platformName","Android");
+        //capabilities.setCapability("device","Android");
         
         // This package name of your app (you can get it from apk info app)
         capabilities.setCapability("appPackage", "com.android.calculator2");
@@ -38,7 +59,7 @@ public class CalculatorTestingDemo {
         //Create RemoteWebDriver instance and connect to the Appium server
         //It will launch the Calculator App in Android Device using the configurations
         //specified in Desired Capabilities
-        driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        driver = new RemoteWebDriver(new URL("https://us1.appium.testobject.com/wd/hub"), capabilities);
     }
  
     @Test

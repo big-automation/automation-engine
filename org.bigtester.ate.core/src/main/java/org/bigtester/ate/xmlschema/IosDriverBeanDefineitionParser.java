@@ -45,7 +45,7 @@
  	/**
  	 * {@inheritDoc}
  	 */
- 	protected Class<MyAndroidDriver> getBeanClass(@Nullable Element element) {
+ 	protected Class<MyIosDriver> getBeanClass(@Nullable Element element) {
  		return MyAndroidDriver.class;
  	}
  

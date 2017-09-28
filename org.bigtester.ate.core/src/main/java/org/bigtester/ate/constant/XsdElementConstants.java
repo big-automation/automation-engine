@@ -475,7 +475,7 @@ public final class XsdElementConstants {
 	public static final String ELEMENT_CHROMEDRIVER = "chromeDriver";
 	
 	/** The Constant ELEMENT_ANDROIDRIVER. */
-	public static final String ELEMENT_ANDROIDRIVER = "androidDriver";
+	public static final String ELEMENT_ANDROIDDRIVER = "androidDriver";
 	
 	/** The Constant ATTR_CHROMEDRIVER_PRESERVECOOKIES. */
 	public static final String ATTR_CHROMEDRIVER_PRESERVECOOKIES = "preserveCookies";
@@ -484,6 +484,12 @@ public final class XsdElementConstants {
 	/** The Constant ATTR_CHROMEDRIVER_START_ARGUMENTS. */
 	public static final String ATTR_CHROMEDRIVER_START_ARGUMENTS = "startArguments";
 	
+	/** The Constant ATTR_ANDROIDDRIVER_PRESERVECOOKIES. */
+	 	public static final String ATTR_ANDROIDDRIVER_PRESERVECOOKIES = "preserveCookies";
+	 	
+	 	/** The Constant ATTR_CHROMEDRIVER_START_ARGUMENTS. */
+	 	public static final String ATTR_ANDROIDDRIVER_START_ARGUMENTS = "startArguments";
+	 
 	/** The Constant ELEMENT_REMOTEDRIVER. */
 	public static final String ELEMENT_REMOTEDRIVER = "remoteDriver";
 	

@@ -75,7 +75,7 @@ public class MyPhantomjsDriver extends AbstractWebDriverBase implements IMyWebDr
 	@Override
 	public WebDriver getWebDriverInstance() {
 		ArrayList<String> cliArgsCap = new ArrayList<String>();
-		DesiredCapabilities caps = DesiredCapabilities.phantomjs();
+		DesiredCapabilities caps = new DesiredCapabilities();
 		cliArgsCap.add("--web-security=false");		
 		/* To launch PhantomJS in Remote WebDriver mode at the intended PORT number 
 		cliArgsCap.add("--webdriver=4444"); */		

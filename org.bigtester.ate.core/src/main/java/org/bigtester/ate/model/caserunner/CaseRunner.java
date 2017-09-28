@@ -25,15 +25,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-
-
-
 import javax.xml.bind.annotation.XmlRootElement;
-
-
-
-
 import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.constant.LogbackTag;
 import org.bigtester.ate.model.casestep.ITestCase;
@@ -62,10 +54,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.internal.Utils;
-
-
-
-
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 // TODO: Auto-generated Javadoc

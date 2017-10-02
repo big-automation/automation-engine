@@ -37,6 +37,7 @@ import org.bigtester.ate.model.page.page.MyWebElement;
 import org.bigtester.ate.systemlogger.problems.IATECaseExecProblem;
 import org.bigtester.ate.systemlogger.problems.IATEProblem;
 import org.eclipse.jdt.annotation.Nullable;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 
@@ -76,7 +77,7 @@ public class ElementTestStep extends BaseTestStep implements IElementStep {
 		try {
 			getMyWebElement().doAction();
 			super.parseDataHolder();
-		} catch (NoSuchElementException | TimeoutException e) {
+		} catch (NoSuchElementException | ElementNotVisibleException | TimeoutException e ) {
 			StepExecutionException pve = new StepExecutionException(
 					ExceptionMessage.MSG_WEBELEMENT_NOTFOUND
 							+ ExceptionMessage.MSG_SEPERATOR + e.getMessage(),

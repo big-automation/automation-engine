@@ -355,6 +355,9 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 									} else {
 										throw new NoSuchElementException(findBy.toString()); 
 									}
+									if (!retVal.isDisplayed()){
+										throw new NoSuchElementException(findBy.toString() + " is invisible!");
+									} 
 									return retVal;
 								}
 							}
@@ -401,6 +404,9 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 				}
 			}
 			if (null != retValWE) {
+				if (!retValWE.isDisplayed()){
+					throw new NoSuchElementException(findBy.toString() + " is invisible!");
+				}
 				return retValWE;
 			}
 			throw new NoSuchElementException(findBy.toString());

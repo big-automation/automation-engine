@@ -77,7 +77,7 @@ public class ElementTestStep extends BaseTestStep implements IElementStep {
 		try {
 			getMyWebElement().doAction();
 			super.parseDataHolder();
-		} catch (NoSuchElementException | ElementNotVisibleException | TimeoutException e ) {
+		} catch (NoSuchElementException | TimeoutException e ) {
 			StepExecutionException pve = new StepExecutionException(
 					ExceptionMessage.MSG_WEBELEMENT_NOTFOUND
 							+ ExceptionMessage.MSG_SEPERATOR + e.getMessage(),

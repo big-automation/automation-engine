@@ -181,6 +181,7 @@ public final class XsdElementConstants {
 	/** The Constant ATTR_TESTSTEP_OPTIONALSTEPUTILINCLUSIVE. */
 	public static final String ATTR_TESTSTEP_CORRELATEDOPTIONALSTEPSUTILINCLUSIVE = "correlatedOptionalStepsUtilInclusive";//NOPMD
 	
+	public static final String ATTR_TESTSTEP_SUCCESSCONDITIONALLYJUMPTOSTEP = "successConditionallyJumpToStep";
 	/** The Constant ATTR_TESTSTEP_STEPNAME. */
 	public static final String ATTR_TESTSTEP_STEPNAME = "stepName";
 	

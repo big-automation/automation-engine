@@ -59,6 +59,11 @@ public interface ITestStep {
 	 * @return the correlated optional steps util inclusive index
 	 */
 	int getCorrelatedOptionalStepsUtilInclusiveIndex(IStepJumpingEnclosedContainer jumpingContainer);
+	
+	int getSuccessConditionallyJumpToStepIndex(IStepJumpingEnclosedContainer jumpingContainer);
+	
+	String getSuccessConditionallyJumpToStep();
+
 	/**
 	 * Checks if is optional step.
 	 *

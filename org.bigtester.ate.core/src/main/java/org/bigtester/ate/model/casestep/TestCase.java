@@ -167,6 +167,15 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer{
 				currentTestStepTmp.doStep(this);// NOPMD
 				currentTestStepTmp.setStepResultStatus(StepResultStatus.PASS);
 				setCurrentTestStep(currentTestStepTmp);
+				int successConditonalJumpToStepIndex = currentTestStepTmp.getSuccessConditionallyJumpToStepIndex(this); //NOPMD
+				if (AopUtils.getTargetClass(currentTestStepTmp) == RepeatStep.class)
+					currentTestStepTmp
+							.setStepResultStatus(StepResultStatus.NEUTRAL);
+				
+				if (successConditonalJumpToStepIndex > i) {
+					i = successConditonalJumpToStepIndex-1;// NOPMD
+
+				}
 			} catch (Exception e) { // NOPMD
 				setCurrentTestStep(currentTestStepTmp);
 				IATEProblem prob;

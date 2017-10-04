@@ -371,8 +371,8 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 					myWebDriver.getMultiWindowsHandler().retryRefreshWindows(myWebDriver.getWebDriverInstance(), true);
 				}
 				
-				for (WindowFrame winfr : winOnFocus.getVisibleFrames()) {
-
+				//for (WindowFrame winfr : winOnFocus.getVisibleFrames()) {
+				for (WindowFrame winfr : winOnFocus.getAllFrames()) {
 					try {
 						if (null == winfr)
 							throw GlobalUtils.createInternalError(

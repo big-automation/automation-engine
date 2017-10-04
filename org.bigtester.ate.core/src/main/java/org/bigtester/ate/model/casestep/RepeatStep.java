@@ -354,6 +354,18 @@ public class RepeatStep extends BaseTestStep implements ITestStep, Cloneable {
 											.getStepName() + ", in iteration:"
 									+ iteration + " of step:"
 									+ this.getStepName(), this.getClass());
+					
+					int successConditionJumpToStepIndex = -1;// NOPMD
+					
+					successConditionJumpToStepIndex = currentTestStepTmp
+								.getSuccessConditionallyJumpToStepIndex((IStepJumpingEnclosedContainer) GlobalUtils
+										.getTargetObject(getTestCase())); // NOPMD
+					if (successConditionJumpToStepIndex > repeatingStepIndexesInTestCase
+							.get(i)) {
+						i = repeatingStepIndexesInTestCase
+								.indexOf(successConditionJumpToStepIndex)-1;// NOPMD
+						
+					}
 				} catch (Exception e) { // NOPMD
 					IATEProblem prob;
 					if (e instanceof IATEProblemCreator) {// NOPMD

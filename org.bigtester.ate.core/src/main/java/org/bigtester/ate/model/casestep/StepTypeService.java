@@ -91,6 +91,15 @@ public class StepTypeService extends BaseTestStep implements ITestStep, IStepJum
 				
 				if (currentTestStepTmp.isCorrectedOnTheFly()) 
 					currentTestStepTmp.setStepResultStatus(StepResultStatus.PASS);
+				int successConditonalJumpToStepIndex = currentTestStepTmp.getSuccessConditionallyJumpToStepIndex(this); //NOPMD
+				if (AopUtils.getTargetClass(currentTestStepTmp) == RepeatStep.class)
+					currentTestStepTmp
+							.setStepResultStatus(StepResultStatus.NEUTRAL);
+				
+				if (successConditonalJumpToStepIndex > i) {
+					i = successConditonalJumpToStepIndex-1;// NOPMD
+
+				}
 				IATEProblem prob;
 				if (e instanceof IATEProblemCreator) {//NOPMD
 					prob = ((IATEProblemCreator) e).getAteProblem();

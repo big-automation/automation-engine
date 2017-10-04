@@ -281,6 +281,7 @@ public class JavaCodedStep extends BaseTestStep implements IJavaCodedStep,
 			
 			BeanUtils.copyProperties(this, this.userJavaStep);
 			LogbackWriter.writeDebugInfo("correlatedOptionalStepsUtilInclusiveIndex is copied with value:" + this.getUserJavaStep().getCorrelatedOptionalStepsUtilInclusiveIndex(jumpingContainer), JavaCodedStep.class);
+			LogbackWriter.writeDebugInfo("successConditionallyJumpToStepIndex is copied with value:" + this.getUserJavaStep().getSuccessConditionallyJumpToStepIndex(jumpingContainer), JavaCodedStep.class);
 
 			getUserJavaStep().doStep(jumpingContainer);
 			getUserJavaStep().doStep(myWebDriver2, jumpingContainer);

@@ -85,6 +85,10 @@ public class BaseTestStepBeanDefinitionParser extends
 					.getAttribute(XsdElementConstants.ATTR_TESTSTEP_CORRELATEDOPTIONALSTEPSUTILINCLUSIVE);
 			bDef.getPropertyValues().addPropertyValue(
 					XsdElementConstants.ATTR_TESTSTEP_CORRELATEDOPTIONALSTEPSUTILINCLUSIVE, optionalStepUntilInclusive);
+			String successJumpTo = element
+					.getAttribute(XsdElementConstants.ATTR_TESTSTEP_SUCCESSCONDITIONALLYJUMPTOSTEP);
+			bDef.getPropertyValues().addPropertyValue(
+					XsdElementConstants.ATTR_TESTSTEP_SUCCESSCONDITIONALLYJUMPTOSTEP, successJumpTo);
 		}
 		bDef.getPropertyValues().addPropertyValue(
 				XsdElementConstants.ATTR_TESTSTEP_OPTIONALSTEP, optional);

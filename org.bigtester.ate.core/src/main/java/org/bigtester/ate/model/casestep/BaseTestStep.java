@@ -95,6 +95,10 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 
 	/** The optional step inclusive. */
 	private String correlatedOptionalStepsUtilInclusive = "";// NOPMD
+	
+	private String successConditionallyJumpToStep = "";// NOPMD
+	
+	private int successConditionallyJumpToStepIndex = -1;
 
 	/** The correlated optional steps util inclusive index. */
 	private int correlatedOptionalStepsUtilInclusiveIndex = -1;// NOPMD
@@ -198,6 +202,41 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 		return correlatedOptionalStepsUtilInclusiveIndex;
 
 	}
+	
+	public int getSuccessConditionallyJumpToStepIndex(IStepJumpingEnclosedContainer stepJumpingEnclosedContainer) {
+		if (-1 == successConditionallyJumpToStepIndex
+				&& !StringUtils
+						.isEmpty(this.getSuccessConditionallyJumpToStep())) {
+
+			setOptionalStep(true);
+			int startIndex = -1;// NOPMD
+			int endIndex = -1;// NOPMD
+			for (int index = 0; index < stepJumpingEnclosedContainer.getContainerStepList().size(); index++) {
+				if (startIndex == -1
+						&& stepJumpingEnclosedContainer.getContainerStepList().get(index)
+								.getStepName() == getStepName()) {
+					startIndex = index;// NOPMD
+				}
+				if (stepJumpingEnclosedContainer.getContainerStepList().get(index).getStepName() == this.getSuccessConditionallyJumpToStep()) {
+					endIndex = index;
+					break;
+				}
+			}
+			if (startIndex == -1 || endIndex == -1 || endIndex < startIndex)
+				throw GlobalUtils
+						.createInternalError("parameter success conditional jump to step not correctly populated");
+			for (int index2 = startIndex; index2 <= endIndex; index2++) {
+				stepJumpingEnclosedContainer.getContainerStepList().get(index2)
+						.setOptionalStep(true);
+			}
+			this.setSuccessConditionallyJumpToStepIndex(endIndex);
+
+		}
+
+		return this.getSuccessConditionallyJumpToStepIndex();
+
+	}
+
 
 	/**
 	 * Gets the data holders.
@@ -557,6 +596,43 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 	 */
 	public void setCorrectedOnTheFly(boolean correctedOnTheFly) {
 		this.correctedOnTheFly = correctedOnTheFly;
+	}
+
+	/**
+	 * @return the successConditionallyJumpToStep
+	 */
+	public String getSuccessConditionallyJumpToStep() {
+		return successConditionallyJumpToStep;
+	}
+
+	/**
+	 * @param successConditionallyJumpToStep the successConditionallyJumpToStep to set
+	 */
+	public void setSuccessConditionallyJumpToStep(
+			String successConditionallyJumpToStep) {
+		this.successConditionallyJumpToStep = successConditionallyJumpToStep;
+	}
+
+	/**
+	 * @return the correlatedOptionalStepsUtilInclusiveIndex
+	 */
+	public int getCorrelatedOptionalStepsUtilInclusiveIndex() {
+		return correlatedOptionalStepsUtilInclusiveIndex;
+	}
+
+	/**
+	 * @return the successConditionallyJumpToStepIndex
+	 */
+	public int getSuccessConditionallyJumpToStepIndex() {
+		return successConditionallyJumpToStepIndex;
+	}
+
+	/**
+	 * @param successConditionallyJumpToStepIndex the successConditionallyJumpToStepIndex to set
+	 */
+	public void setSuccessConditionallyJumpToStepIndex(
+			int successConditionallyJumpToStepIndex) {
+		this.successConditionallyJumpToStepIndex = successConditionallyJumpToStepIndex;
 	}
 
 //	/**

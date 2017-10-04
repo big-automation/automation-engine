@@ -57,6 +57,8 @@ public class BrowserWindow {
 
 	/** The frames. */
 	final private List<WindowFrame> visibleFrames = new ArrayList<WindowFrame>();
+	
+	final private List<WindowFrame> allFrames = new ArrayList<WindowFrame>();
 
 	/** The last success element find frame chain. */
 	final private List<WindowFrame> lastSuccessElementFindFrameChain = new ArrayList<WindowFrame>();
@@ -139,15 +141,17 @@ public class BrowserWindow {
 						.tagName("iframe"));
 				int index;
 				this.visibleFrames.clear();
+				this.allFrames.clear();
 				for (index = 0; index < iframes.size(); index++) {
 					WebElement iframe = iframes.get(index);
 					if (null == iframe)
 						throw GlobalUtils.createInternalError("web driver");
-					if (!iframe.isDisplayed()) {
-						continue;
-					}
+					
 					WindowFrame winF = new WindowFrame(index, myWd.getWebDriverInstance(), iframe);
-					this.visibleFrames.add(winF);
+					if (iframe.isDisplayed()) {
+						this.visibleFrames.add(winF);
+					}
+					this.allFrames.add(winF);
 					switchToDefaultContent();
 					winF.refreshChildFrames();
 				}
@@ -158,12 +162,13 @@ public class BrowserWindow {
 					WebElement frame = frames.get(indexj);
 					if (null == frame)
 						throw GlobalUtils.createInternalError("web driver");
-					if (!frame.isDisplayed()) {
-						continue;
-					}
+					
 					WindowFrame winF = new WindowFrame(indexj + index,
 							myWd.getWebDriverInstance(), frame);
-					this.visibleFrames.add(winF);
+					if (frame.isDisplayed()) {
+						this.visibleFrames.add(winF);
+					}
+					this.allFrames.add(winF);
 					switchToDefaultContent();
 					winF.refreshChildFrames();
 				}
@@ -246,6 +251,13 @@ public class BrowserWindow {
 	 */
 	public void setClosed(boolean closed) {
 		this.closed = closed;
+	}
+
+	/**
+	 * @return the allFrames
+	 */
+	public List<WindowFrame> getAllFrames() {
+		return allFrames;
 	}
 
 	

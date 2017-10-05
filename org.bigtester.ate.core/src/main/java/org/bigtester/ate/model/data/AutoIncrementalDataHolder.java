@@ -45,6 +45,8 @@ public class AutoIncrementalDataHolder extends
 	
 	/** The end value. */
 	private int endValue = Integer.MAX_VALUE;
+	
+	private boolean manualFeeded = false;
 
 	/**
 	 * Instantiates a new auto incremental data holder.
@@ -56,6 +58,18 @@ public class AutoIncrementalDataHolder extends
 		super();
 		this.startValue = startValue;
 		this.pacing = pacing;
+		Integer tmp = Integer.valueOf(startValue);
+		if (null == tmp)
+			throw GlobalUtils.createInternalError("java vm integer conversion");
+		else
+			setOnTheFlyData(tmp);
+	}
+	
+	public AutoIncrementalDataHolder(int startValue, int pacing, boolean manualFeeded) {
+		super();
+		this.startValue = startValue;
+		this.pacing = pacing;
+		this.manualFeeded = manualFeeded;
 		Integer tmp = Integer.valueOf(startValue);
 		if (null == tmp)
 			throw GlobalUtils.createInternalError("java vm integer conversion");
@@ -90,6 +104,8 @@ public class AutoIncrementalDataHolder extends
 
 		if (arg0 == null)
 			return;// NOPMD
+		if (this.manualFeeded)
+			return;//NOPMD
 		RepeatStep currentRepeatStep = ((RepeatStep) arg0.getSource());
 		if (!(currentRepeatStep).getRepeatIndexValuesNeedRefresh().contains(this))
 			return;
@@ -146,6 +162,20 @@ public class AutoIncrementalDataHolder extends
 	public void resetIndex() {
 		setOnTheFlyData(0);
 		
+	}
+
+	/**
+	 * @return the manualFeeded
+	 */
+	public boolean isManualFeeded() {
+		return manualFeeded;
+	}
+
+	/**
+	 * @param manualFeeded the manualFeeded to set
+	 */
+	public void setManualFeeded(boolean manualFeeded) {
+		this.manualFeeded = manualFeeded;
 	}
 	
 	

@@ -123,6 +123,7 @@ public class ElementFinderIndexOfSameProcessor implements
 
 					definitionBuilder.addConstructorArgValue(intDataValue);
 					definitionBuilder.addConstructorArgValue(1);
+					definitionBuilder.addConstructorArgValue(true);
 
 					idstr = (String) elementFinderDef.getAttribute("id")
 							+ "_elementfinderIndexOfSameElements_ID";

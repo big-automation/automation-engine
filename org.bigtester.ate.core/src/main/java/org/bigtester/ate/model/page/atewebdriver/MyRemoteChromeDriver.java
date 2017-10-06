@@ -20,7 +20,19 @@
  *******************************************************************************/
 package org.bigtester.ate.model.page.atewebdriver;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Optional; 
+
 import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.LocalFileDetector;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.apache.commons.lang3.StringUtils;
+import org.bigtester.ate.GlobalUtils;
+import org.eclipse.jdt.annotation.Nullable;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -28,27 +40,20 @@ import org.openqa.selenium.Platform;
  * 
  * @author Jun Yang
  */
-public class MySauceLabDriver extends MyRemoteDriver implements IMyWebDriver {
+public class MyRemoteChromeDriver extends MyRemoteDriver implements IMyWebDriver {
 
-	/** The caps. */
-	private String userName;
-	
-	/** The url. */
-	private String accesskey;
 	/**
 	 * Instantiates a new my Chrome driver.
 	 */
-	public MySauceLabDriver(String userName, String accesskey) {
+	public MyRemoteChromeDriver(String url) {
 		
-		super("chrome", "55", Platform.ANY.toString(), "https://" + userName + ":" + accesskey + "@ondemand.saucelabs.com:443/wd/hub");
-		this.setUserName(userName);
-		this.setAccesskey(accesskey);
+		super("chrome", null, null, url);
 	}
 		
 	/**
 	 * Instantiates a new my Chrome driver.
 	 */
-	public MySauceLabDriver() {
+	public MyRemoteChromeDriver() {
 		
 		super();
 		 
@@ -56,38 +61,5 @@ public class MySauceLabDriver extends MyRemoteDriver implements IMyWebDriver {
 	}
 
 	
-		
-	
 
-	
-
-	/**
-	 * @return the userName
-	 */
-	public String getUserName() {
-		return userName;
-	}
-
-	/**
-	 * @param userName the userName to set
-	 */
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	/**
-	 * @return the accesskey
-	 */
-	public String getAccesskey() {
-		return accesskey;
-	}
-
-	/**
-	 * @param accesskey the accesskey to set
-	 */
-	public void setAccesskey(String accesskey) {
-		this.accesskey = accesskey;
-	}
-
-	
 }

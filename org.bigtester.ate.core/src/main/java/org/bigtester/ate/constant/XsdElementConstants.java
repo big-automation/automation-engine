@@ -501,6 +501,8 @@ public final class XsdElementConstants {
 	
 	/** The Constant ELEMENT_SAUCELABDRIVER. */
 	public static final String ELEMENT_SAUCELABDRIVER = "sauceLabDriver";
+	public static final String ELEMENT_REMOTECHROMEDRIVER = "remoteChromeDriver";
+	public static final String ATTR_REMOTECHROMEDRIVER_URL = "url";
 	
 	/** The Constant ATTR_SAUCELABDRIVER_USERNAME. */
 	public static final String ATTR_SAUCELABDRIVER_USERNAME = "userName";

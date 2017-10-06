@@ -1042,6 +1042,16 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
+	
+	<xsd:complexType name="MyRemoteChromeDriverType">
+		<xsd:complexContent>
+			<xsd:extension base="MyRemoteDriverType">
+<!-- 				<xsd:attribute name="url" type="xsd:string" /> -->
+				
+				
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
 
 	<xsd:complexType name="MyIEDriverType">
 		<xsd:complexContent>
@@ -1146,6 +1156,8 @@
 	<xsd:element name="firefoxDriver" type="MyFirefoxDriverType" />
 	<xsd:element name="chromeDriver" type="MyChromeDriverType" />
 	<xsd:element name="remoteDriver" type="MyRemoteDriverType" />
+	<xsd:element name="remoteChromeDriver" type="MyRemoteChromeDriverType" />
+	
 	<xsd:element name="sauceLabDriver" type="MySauceLabDriverType" />
 	<xsd:element name="IEDriver" type="MyIEDriverType" />
 	<xsd:element name="safariDriver" type="MySafariDriverType" />

@@ -40,7 +40,14 @@ public class MySauceLabDriver extends MyRemoteDriver implements IMyWebDriver {
 	 */
 	public MySauceLabDriver(String userName, String accesskey) {
 		
-		super("chrome", "55", Platform.ANY.toString(), "https://" + userName + ":" + accesskey + "@ondemand.saucelabs.com:443/wd/hub");
+		super("chrome", "43", Platform.ANY.toString(), "https://" + userName + ":" + accesskey + "@ondemand.saucelabs.com:443/wd/hub");
+		this.setUserName(userName);
+		this.setAccesskey(accesskey);
+	}
+	
+	public MySauceLabDriver( String browserName, String version, String userName, String accesskey) {
+		
+		super(browserName, version, Platform.ANY.toString(), "https://" + userName + ":" + accesskey + "@ondemand.saucelabs.com:443/wd/hub");
 		this.setUserName(userName);
 		this.setAccesskey(accesskey);
 	}

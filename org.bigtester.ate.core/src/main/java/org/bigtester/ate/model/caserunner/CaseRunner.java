@@ -225,7 +225,9 @@ public class CaseRunner implements IRunTestCase {
 		String[] configFiles = {testParams.getTestFilename()};
 		context = new FileSystemXmlApplicationContext(configFiles, testParams.getTestProject().getAppCtx());
 		IMyWebDriver myWebD = (IMyWebDriver) GlobalUtils
-				.findMyWebDriver(context);
+				.findMyWebDriver(context);		
+		myWebD.getWebDriverInstance();
+		myWebD.getMultiWindowsHandler();
 		mainDriver = myWebD;
 		myTestCase = GlobalUtils.findTestCaseBean(getContext());
 		getMyTestCase().setStepThinkTime(testParams.getStepThinkTime());

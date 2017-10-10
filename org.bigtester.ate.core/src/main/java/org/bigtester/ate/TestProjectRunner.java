@@ -47,6 +47,8 @@ import org.bigtester.ate.xmlschema.BasePageObjectBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.CaseDependencyBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.CaseTypeServiceBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.ChromeDriverBeanDefinitionParser;
+import org.bigtester.ate.xmlschema.SauceLabAndroidDriverBeanDefinitionParser;
+//import org.bigtester.ate.xmlschema.SauceLabAndroidDriverBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.ClearTextActionBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.ClickActionBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.CookiesFindAllBeanDefinitionParser;
@@ -292,6 +294,7 @@ public final class TestProjectRunner {
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_CHROMEDRIVER, new ChromeDriverBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_REMOTEDRIVER, new RemoteDriverBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_SAUCELABDRIVER, new SauceLabDriverBeanDefinitionParser());
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_SAUCELABANDROIDDRIVER, new SauceLabAndroidDriverBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_IEDRIVER, new IEDriverBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_SAFARIDRIVER, new SafariDriverBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_OPERADRIVER, new OperaDriverBeanDefinitionParser());

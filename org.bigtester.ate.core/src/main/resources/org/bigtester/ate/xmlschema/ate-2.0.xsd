@@ -1049,7 +1049,15 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
-
+   <xsd:complexType name="MySauceLabAndroidDriverType">
+		<xsd:complexContent>
+			<xsd:extension base="MyRemoteDriverType">
+				<xsd:attribute name="userName" type="xsd:string" />
+				<xsd:attribute name="accessKey" type="xsd:string" />
+				
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
 	<xsd:complexType name="MyIEDriverType">
 		<xsd:complexContent>
 			<xsd:extension base="AbstractWebDriverBaseType">
@@ -1155,6 +1163,7 @@
 	<xsd:element name="remoteDriver" type="MyRemoteDriverType" />
 	<xsd:element name="androidDriver" type="MyAndroidDriverType" />
 	<xsd:element name="sauceLabDriver" type="MySauceLabDriverType" />
+	<xsd:element name="sauceLabAndroidDriver" type="MySauceLabAndroidDriverType" />
 	<xsd:element name="IEDriver" type="MyIEDriverType" />
 	<xsd:element name="safariDriver" type="MySafariDriverType" />
 	<xsd:element name="operaDriver" type="MyOperaDriverType" />

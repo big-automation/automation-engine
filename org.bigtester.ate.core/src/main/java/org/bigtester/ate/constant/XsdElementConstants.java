@@ -477,6 +477,9 @@ public final class XsdElementConstants {
 	/** The Constant ELEMENT_ANDROIDRIVER. */
 	public static final String ELEMENT_ANDROIDDRIVER = "androidDriver";
 	
+	/** The Constant ELEMENT_ANDROIDRIVER. */
+	public static final String ELEMENT_SAUCELABANDROIDDRIVER = "saucelabAndroidDriver";
+	
 	/** The Constant ATTR_CHROMEDRIVER_PRESERVECOOKIES. */
 	public static final String ATTR_CHROMEDRIVER_PRESERVECOOKIES = "preserveCookies";
 	

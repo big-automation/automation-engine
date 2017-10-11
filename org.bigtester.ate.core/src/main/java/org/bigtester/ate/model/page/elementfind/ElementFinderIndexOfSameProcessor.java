@@ -99,7 +99,7 @@ public class ElementFinderIndexOfSameProcessor implements
 
 			if (null == dataValue) {
 				throw new IllegalStateException(
-						"Spring Container sendKeyActionValue initialization error");
+						"Spring Container field value initialization error");
 			} else {
 				try {
 					beanFactory.getBeanDefinition(dataValue);
@@ -126,7 +126,7 @@ public class ElementFinderIndexOfSameProcessor implements
 					definitionBuilder.addConstructorArgValue(true);
 
 					idstr = (String) elementFinderDef.getAttribute("id")
-							+ "_elementfinderIndexOfSameElements_ID";
+							+ "_elementfinderIndexOfSameElements_ID_" + intDataValue ;
 
 					getBdReg().registerBeanDefinition(idstr,
 							definitionBuilder.getBeanDefinition());

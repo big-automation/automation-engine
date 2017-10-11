@@ -46,7 +46,8 @@ public class AutoIncrementalDataHolder extends
 	/** The end value. */
 	private int endValue = Integer.MAX_VALUE;
 	
-	private boolean manualFeeded = false;
+	/** The manual feeded. */
+	private boolean manualFeeded;
 
 	/**
 	 * Instantiates a new auto incremental data holder.

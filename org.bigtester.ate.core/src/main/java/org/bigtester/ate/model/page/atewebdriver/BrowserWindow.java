@@ -20,7 +20,6 @@
  *******************************************************************************/
 package org.bigtester.ate.model.page.atewebdriver;
 
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -107,18 +106,16 @@ public class BrowserWindow {
 
 	/**
 	 * Maximize.
-	 * @throws MalformedURLException 
 	 */
-	public void maximize() throws MalformedURLException {
+	public void maximize() {
 		obtainWindowFocus();
 		myWd.getWebDriverInstance().manage().window().maximize();
 	}
 
 	/**
 	 * Close.
-	 * @throws MalformedURLException 
 	 */
-	public void close() throws MalformedURLException {
+	public void close() {
 		try {
 			obtainWindowFocus();
 			myWd.getWebDriverInstance().close();
@@ -131,9 +128,8 @@ public class BrowserWindow {
 	/**
 	 * Refresh frames.
 	 * @throws BrowserUnexpectedException 
-	 * @throws MalformedURLException 
 	 */
-	public void refreshFrames() throws BrowserUnexpectedException, MalformedURLException {
+	public void refreshFrames() throws BrowserUnexpectedException {
 		obtainWindowFocus();
 
 		for (int i = 0; i < BrowserWindow.MAXFRAMEREFRESHTRYCOUNT; i++) {
@@ -182,9 +178,8 @@ public class BrowserWindow {
 
 	/**
 	 * Obtain focus.
-	 * @throws MalformedURLException 
 	 */
-	public void obtainWindowFocus() throws MalformedURLException {
+	public void obtainWindowFocus() {
 		myWd.getWebDriverInstance().switchTo().window(getWindowHandle());
 	}
 
@@ -197,9 +192,8 @@ public class BrowserWindow {
 
 	/**
 	 * @return the myWd
-	 * @throws MalformedURLException 
 	 */
-	public WebDriver getMyWd() throws MalformedURLException {
+	public WebDriver getMyWd() {
 		return myWd.getWebDriverInstance();
 	}
 

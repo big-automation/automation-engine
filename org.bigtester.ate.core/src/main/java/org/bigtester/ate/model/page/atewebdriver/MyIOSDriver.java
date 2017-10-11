@@ -26,7 +26,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.ios.IOSDriver;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.bigtester.ate.GlobalUtils;
@@ -63,10 +62,9 @@ public class MyIOSDriver extends AbstractWebDriverBase implements IMyWebDriver {
 
 	/**
 	 * {@inheritDoc}
-	 * @throws MalformedURLException 
 	 */
 	@Override
-	public WebDriver getWebDriverInstance() throws MalformedURLException {
+	public WebDriver getWebDriverInstance() {
 		WebDriver retVal = getWebDriver();
 		if (null == retVal) {
 			OSinfo osinfo = new OSinfo();

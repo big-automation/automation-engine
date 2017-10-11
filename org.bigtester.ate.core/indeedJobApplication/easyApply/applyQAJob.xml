@@ -31,7 +31,7 @@
 	<ate:operaDriver      />
 	<ate:htmlUnitDriver   />
       -->
-    <ate:chromeDriver    />
+    <ate:IOSDriver    />
     
 	<ate:testCase id="testcase" testCaseName="apply easily-apply job.">
 

@@ -480,6 +480,9 @@ public final class XsdElementConstants {
 	/** The Constant ELEMENT_ANDROIDDRIVER. */
 	public static final String ELEMENT_ANDROIDDRIVER = "androidDriver";
 	
+	/** The Constant ELEMENT_IOSDRIVER. */
+	public static final String ELEMENT_IOSDRIVER = "IOSDriver";
+
 	/** The Constant ELEMENT_SAUCELABDRIVER. */
 	public static final String ELEMENT_SAUCELABDRIVER = "sauceLabDriver";
 	
@@ -507,6 +510,12 @@ public final class XsdElementConstants {
 	/** The Constant ATTR_CHROMEDRIVER_START_ARGUMENTS. */
 	public static final String ATTR_CHROMEDRIVER_START_ARGUMENTS = "startArguments";
 	
+	/** The Constant ATTR_IOSDRIVER_PRESERVECOOKIES. */
+	public static final String ATTR_IOSDRIVER_PRESERVECOOKIES = "preserveCookies";
+	
+	/** The Constant ATTR_IOSDRIVER_START_ARGUMENTS. */
+	public static final String ATTR_IOSDRIVER_START_ARGUMENTS = "startArguments";
+
 	/** The Constant ATTR_ANDROIDDRIVER_PRESERVECOOKIES. */
 	public static final String ATTR_ANDROIDDRIVER_PRESERVECOOKIES = "preserveCookies";
 	

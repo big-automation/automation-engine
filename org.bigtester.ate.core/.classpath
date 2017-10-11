@@ -35,5 +35,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/weishao/Downloads/java-client-4.1.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

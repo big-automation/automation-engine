@@ -20,6 +20,7 @@
  *******************************************************************************/
 package org.bigtester.ate.model.page.atewebdriver;
 
+import java.net.MalformedURLException;
 import java.util.Optional;
 
 import org.eclipse.jdt.annotation.Nullable;
@@ -37,8 +38,9 @@ public interface IMyWebDriver {
 	 * Creates the driver.
 	 *
 	 * @return the web driver
+	 * @throws MalformedURLException 
 	 */
-	WebDriver getWebDriverInstance();
+	WebDriver getWebDriverInstance() throws MalformedURLException;
 	
 	/**
 	 * Gets the webdriver.
@@ -59,15 +61,17 @@ public interface IMyWebDriver {
 	 *
 	 * @param pathFileName the path file name
 	 * @return the string
+	 * @throws MalformedURLException 
 	 */
-	Optional<String> saveScreenShot(Optional<String> pathFileName);
+	Optional<String> saveScreenShot(Optional<String> pathFileName) throws MalformedURLException;
 	
 	/**
 	 * Save screen shot.
 	 *
 	 * @return the optional
+	 * @throws MalformedURLException 
 	 */
-	Optional<String> saveScreenShot();
+	Optional<String> saveScreenShot() throws MalformedURLException;
 	
 
 }

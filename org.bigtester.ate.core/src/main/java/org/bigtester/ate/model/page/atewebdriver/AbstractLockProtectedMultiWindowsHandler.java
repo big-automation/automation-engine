@@ -20,6 +20,7 @@
  *******************************************************************************/
 package org.bigtester.ate.model.page.atewebdriver;
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -122,7 +123,7 @@ public class AbstractLockProtectedMultiWindowsHandler {
 	public List<AbstractAlertDialog> getAlerts() {
 		return alerts;
 	}
-	private void removeClosedWindows() {
+	private void removeClosedWindows() throws MalformedURLException {
 		
 		boolean winRemoved = false;// NOPMD
 		String currentWinHandle = "";
@@ -171,10 +172,11 @@ public class AbstractLockProtectedMultiWindowsHandler {
 	 * @param webD
 	 *            the web d
 	 * @throws BrowserUnexpectedException 
+	 * @throws MalformedURLException 
 	 */
 	@SuppressWarnings("unlikely-arg-type")
 	public void refreshWindowsList(@Nullable WebDriver webD,
-			boolean refreshFrameFlag) throws BrowserUnexpectedException {
+			boolean refreshFrameFlag) throws BrowserUnexpectedException, MalformedURLException {
 		synchronized (lock) {
 //			try {
 //				//Thread.sleep(2);
@@ -288,8 +290,9 @@ public class AbstractLockProtectedMultiWindowsHandler {
 	}
 	/**
 	 * @return the myWebD
+	 * @throws MalformedURLException 
 	 */
-	public WebDriver getDriver() {
+	public WebDriver getDriver() throws MalformedURLException {
 		return getMyWd().getWebDriverInstance();
 	}
 	/**

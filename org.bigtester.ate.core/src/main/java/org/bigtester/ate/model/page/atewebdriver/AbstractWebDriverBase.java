@@ -27,6 +27,7 @@ import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.ProxySelector;
 import java.util.Calendar;
 import java.util.Optional;
@@ -74,8 +75,9 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 	 * Creates the driver.
 	 *
 	 * @return the web driver
+	 * @throws MalformedURLException 
 	 */
-	abstract public WebDriver getWebDriverInstance();
+	abstract public WebDriver getWebDriverInstance() throws MalformedURLException;
 	/**
 	 * Sets the web driver.
 	 *
@@ -180,9 +182,10 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 
 	/**
 	 * {@inheritDoc}
+	 * @throws MalformedURLException 
 	 */
 	@SuppressWarnings("null")
-	public Optional<String> saveScreenShot(Optional<String> pathFileName) {
+	public Optional<String> saveScreenShot(Optional<String> pathFileName) throws MalformedURLException {
 		String filename = generateRandomFilename(pathFileName
 				.orElse(getWebDriverInstance().getCurrentUrl()));
 		if (createScreenCaptureJPEG(filename)) {
@@ -194,9 +197,10 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 	
 	/**
 	 * {@inheritDoc}
+	 * @throws MalformedURLException 
 	 */
 	@SuppressWarnings("null")
-	public Optional<String> saveScreenShot() {
+	public Optional<String> saveScreenShot() throws MalformedURLException {
 		return saveScreenShot(Optional.ofNullable(getWebDriverInstance().getCurrentUrl()));
 	}	
 

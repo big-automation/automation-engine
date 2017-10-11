@@ -37,6 +37,8 @@ public class MyAndroidDriver extends AbstractWebDriverBase implements IMyWebDriv
 			
 	/** The Constant BROWSERNAME. */
 	/*private static final String BROWSERNAME = "android";*/
+	/** The browsertypename. */
+	final public static String BROWSERTYPENAME = "Android"; 
 	/** The Constant BROWSERDRVNAME. */
 	private static final String BROWSERDRVNAME = "webdriver.android.driver";
 	/** The Constant BROWSERWIN32PATH. */
@@ -44,7 +46,11 @@ public class MyAndroidDriver extends AbstractWebDriverBase implements IMyWebDriv
 	/** The Constant BROWSERWIN64PATH. */
 	private static final String BROWSERWIN64PATH = "windows/android/64bit/";	
 	/** The Constant BROWSERWINFILENAME. */
-	private static final String BROWSERWINFILENAME = "MicrosoftWebDriver.exe";	
+	private static final String BROWSERWINFILENAME = "Androiddriver.exe";	
+	/** The Constant BROWSERLINUXFILENAME. */
+	private static final String BROWSERLINUXFILENAME = "Androiddriver";
+	/** The Constant BROWSERMACFILENAME. */
+	private static final String BROWSER0SXFILENAME = "Androiddriver";
 
 	/**
 	 * {@inheritDoc}

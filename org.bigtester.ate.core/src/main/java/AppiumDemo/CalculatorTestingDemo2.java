@@ -43,12 +43,6 @@ public class CalculatorTestingDemo2 {
         
         //Set up desired capabilities and pass the Android app-activity
         //and app-package to Appium
-        //DesiredCapabilities capabilities = new DesiredCapabilities();
-        //capabilities.setCapability("BROWSER_NAME", "Android");
-       // capabilities.setCapability("VERSION", "6.0");
-        //capabilities.setCapability("deviceName","Android6");
-        //capabilities.setCapability("platformName","Android");
-        //capabilities.setCapability("device","Android");
         
         // This package name of your app (you can get it from apk info app)
         capabilities.setCapability("appPackage", "com.android.calculator2");

@@ -26,7 +26,7 @@ import org.openqa.selenium.Platform;
 /**
  * The Class MyChromeDriver defines ....
  * 
- * @author Jun Yang
+ * @author Chen Chen
  */
 public class MySauceLabAndroidDriver extends MyRemoteDriver implements IMyWebDriver {
 

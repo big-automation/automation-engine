@@ -161,7 +161,7 @@ public class AutoIncrementalDataHolder extends
 	 */
 	@Override
 	public void resetIndex() {
-		setOnTheFlyData(0);
+		setOnTheFlyData(this.startValue);
 		
 	}
 

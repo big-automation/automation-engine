@@ -69,8 +69,13 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 	 *
 	 * @return the finding parameters logging value
 	 */
+	@SuppressWarnings("null")
 	public String getFindingParametersLoggingValue() {
-		return "findByValue = " + findByValue;
+		String indexStr = "";
+		if (!(indexOfSameElements==null || indexOfSameElements.getOnTheFlyData()==null )) {
+			indexStr = ", indexOfSameElements = " + indexOfSameElements.getOnTheFlyData().toString();
+		}
+		return "findByValue = " + findByValue + indexStr;
 	}
 	
 	/**

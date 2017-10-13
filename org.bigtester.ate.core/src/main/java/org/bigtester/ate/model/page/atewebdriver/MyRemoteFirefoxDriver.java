@@ -72,7 +72,7 @@ public class MyRemoteFirefoxDriver extends MyRemoteDriver implements IMyWebDrive
 	 */
 	@Override
 	protected Class<?> getBeanClass(@Nullable Element element) {
-		return MyRemoteChromeDriver.class;
+		return MyRemoteFirefoxDriver.class;
 	}
 
 	/**

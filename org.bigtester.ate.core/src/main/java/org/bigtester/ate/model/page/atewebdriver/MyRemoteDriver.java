@@ -38,7 +38,7 @@ import org.eclipse.jdt.annotation.Nullable;
 /**
  * The Class MyChromeDriver defines ....
  * 
- * @author Jun Yang
+ * @author Peidong Hu
  */
 public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDriver {
 

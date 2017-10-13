@@ -392,13 +392,37 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	}
 
 
-
-
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void beforeChangeValueOf(WebElement element, WebDriver driver,
+			CharSequence[] keysToSend) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
+	public void afterChangeValueOf(WebElement element, WebDriver driver,
+			CharSequence[] keysToSend) {
+		try {
+			refreshWindowsList(driver, false);
+		} catch (BrowserUnexpectedException e) {
+			retryRefreshWindows(getMyWd().getWebDriverInstance(), false);
+		}
+
+		
+	}
+
+	
+
+
+	/**
+	 * {@inheritDoc}
+	 */
 	public void afterChangeValueOf(@Nullable WebElement arg0,
 			@Nullable WebDriver arg1 ) {
 		try {
@@ -497,7 +521,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public void beforeChangeValueOf(@Nullable WebElement arg0,
 			@Nullable WebDriver arg1 ) {
 		// refreshWindowsList(arg1);
@@ -649,5 +672,42 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	
+	public void afterAlertAccept(WebDriver arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	
+	public void afterAlertDismiss(WebDriver arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	
+	public void beforeAlertAccept(WebDriver arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	
+	public void beforeAlertDismiss(WebDriver arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 	 
 }

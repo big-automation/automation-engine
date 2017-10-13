@@ -17,7 +17,7 @@
 
 	<groupId>org.bigtester</groupId>
 	<artifactId>org.bigtester.ate.core</artifactId>
-	<version>0.1.5.2-SNAPSHOT</version>
+	<version>0.1.6-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Automation Test Engine Core</name>
@@ -314,7 +314,7 @@ mvn com.lazerycode.selenium:driver-binary-downloader-maven-plugin:selenium -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>2.53.0</version>
+			<version>3.0.1</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.reflections</groupId>

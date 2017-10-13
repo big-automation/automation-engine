@@ -88,9 +88,10 @@ public class MyFirefoxDriver extends AbstractWebDriverBase implements
 			if (null == bPro) {
 				retVal = new FirefoxDriver();
 			} else {
+				//TODO need to change for selenium 3
 				FirefoxBinary binary = new FirefoxBinary();
 				binary.addCommandLineOptions("-no-remote");
-				retVal = new FirefoxDriver(binary, bPro.getProfile());
+				retVal = new FirefoxDriver();
 			}
 			setWebDriver(retVal);
 

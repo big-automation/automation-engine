@@ -77,7 +77,9 @@ public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDrive
 		if (!StringUtils.isEmpty(platform))
 			caps.get().setPlatform(Platform.valueOf(platform));
 		caps.get().setCapability("maxDuration", 10800);
-		caps.get().setCapability("screenResolution", "1920x1080");
+		caps.get().setCapability("screenResolution", "1024x768");
+		caps.get().setCapability("takesScreenshot", false);
+		caps.get().setCapability("takesElementScreenshot", false);
 		if (!StringUtils.isEmpty(version))
 			caps.get().setVersion(version);
 		this.setUrl(url);

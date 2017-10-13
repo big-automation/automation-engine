@@ -159,7 +159,7 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 	 */
 	public void createWait(WebDriver driver) {
 		wait = new FluentWait<WebDriver>(driver)
-				.withTimeout(30, TimeUnit.SECONDS)
+				.withTimeout(15, TimeUnit.SECONDS)
 				.pollingEvery(5, TimeUnit.SECONDS)
 				.ignoring(NoSuchElementException.class);
 	}

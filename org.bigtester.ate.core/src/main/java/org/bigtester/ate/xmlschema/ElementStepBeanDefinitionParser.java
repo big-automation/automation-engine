@@ -70,6 +70,10 @@ public class ElementStepBeanDefinitionParser extends
 					bDef.getConstructorArgumentValues().addGenericArgumentValue(
 							new RuntimeBeanReference(ead), MyWebElement.class.getName());
 				}
+				boolean findOnlyOnPreviousFrame = Boolean.parseBoolean(element.getAttribute(XsdElementConstants.ATTR_ELEMENTSTEP_SEARCHONLYONPREVIOUSSUCCESSIFRAME));
+		        
+		        bDef.getPropertyValues().addPropertyValue(XsdElementConstants.ATTR_ELEMENTSTEP_SEARCHONLYONPREVIOUSSUCCESSIFRAME, findOnlyOnPreviousFrame);
+		        
 				
 //		String pageObject = element
 //				.getAttribute(XsdElementConstants.ATTR_BASETESTSTEP_PAGEOBJECT);

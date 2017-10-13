@@ -59,6 +59,8 @@ public class BaseElementFinderBeanDefinitionParser extends
         if (StringUtils.hasText(findbyValue))
         	bDef.getConstructorArgumentValues().addGenericArgumentValue(findbyValue);
         
+        
+        
         String strIndex = element.getAttribute(XsdElementConstants.ATTR_GENERICELEMENTFIND_INDEXOFSAMEELEMENTS);
         if (StringUtils.hasText(strIndex)) {
         	bDef.getPropertyValues().addPropertyValue(XsdElementConstants.ATTR_GENERICELEMENTFIND_INDEXOFSAMEELEMENTS, new RuntimeBeanReference(strIndex));

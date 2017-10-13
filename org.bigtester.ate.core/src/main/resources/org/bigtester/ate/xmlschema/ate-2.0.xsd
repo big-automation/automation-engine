@@ -214,6 +214,7 @@
 						</xsd:appinfo>
 					</xsd:annotation>
 				</xsd:attribute>
+				<xsd:attribute name="searchOnlyOnPreviousSuccessIFrame" type="xsd:boolean" />
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -672,6 +673,7 @@
 		<xsd:complexContent>
 			<xsd:extension base="beans:identifiedType">
 				<xsd:attribute name="findByValue" type="xsd:string" />
+				
 				<xsd:attribute name="indexOfSameElements" type="xsd:string">
 					<xsd:annotation>
 						<xsd:appinfo>
@@ -681,6 +683,7 @@
 						</xsd:appinfo>
 					</xsd:annotation>
 				</xsd:attribute>
+				
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>

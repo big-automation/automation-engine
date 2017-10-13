@@ -48,4 +48,7 @@ public interface IElementFind extends ITestObjectFinder<WebElement>{
 	 * @return the find by value
 	 */
 	String getFindByValue();
+	
+	void setSearchOnlyOnPreviousSuccessIFrame(boolean searchOnlyOnPreviousSuccessIFrame);
+	
 }

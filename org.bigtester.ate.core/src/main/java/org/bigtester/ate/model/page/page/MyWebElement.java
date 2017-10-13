@@ -27,6 +27,7 @@ import org.bigtester.ate.model.page.atewebdriver.exception.BrowserUnexpectedExce
 import org.bigtester.ate.model.page.elementaction.ITestObjectAction;
 import org.bigtester.ate.model.page.elementaction.ITestObjectActionImpl;
 import org.bigtester.ate.model.page.elementaction.TestObjectAction;
+import org.bigtester.ate.model.page.elementfind.IElementFind;
 import org.bigtester.ate.model.page.elementfind.ITestObjectFinder;
 import org.bigtester.ate.model.page.elementfind.ITestObjectFinderImpl;
 import org.bigtester.ate.model.page.elementfind.TestObjectFinder;
@@ -100,6 +101,7 @@ public class MyWebElement<T> extends PageModelBase {
 			throw GlobalUtils.createNotInitializedException("test object action.");
 		} else {
 			try {
+				
 				testObjectAction2.doAction(testObjectFinder.doFind(getMyWd()));
 			} catch (UnexpectedTagNameException ute) {
 				throw new NoSuchElementException("Html element found by ate has different tag name.", ute);

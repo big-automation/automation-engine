@@ -362,6 +362,10 @@ public final class XsdElementConstants {
 	
 	/** The Constant ATTR_GENERICELEMENTFIND_FINDBYVALUE. */
 	public static final String ATTR_GENERICELEMENTFIND_FINDBYVALUE = "findByValue"; //NOPMD
+	
+	/** The Constant ATTR_GENERICELEMENTFIND_SEARCHONLYONPREVIOUSSUCCESSIFRAME. */
+	public static final String ATTR_ELEMENTSTEP_SEARCHONLYONPREVIOUSSUCCESSIFRAME = "searchOnlyOnPreviousSuccessIFrame"; //NOPMD
+	
 	/** The Constant ATTR_GENERICELEMENTFIND_FINDBYClASSNAME. */
 	public static final String ELEMENT_ELEMENTFINDBYCLASSNAME = "elementFindByClassName";
 	/** The Constant ATTR_GENERICELEMENTFIND_FINDBYNAME. */

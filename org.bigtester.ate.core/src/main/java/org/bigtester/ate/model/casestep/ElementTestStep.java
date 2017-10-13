@@ -31,13 +31,14 @@ import org.bigtester.ate.constant.ExceptionMessage;
 import org.bigtester.ate.model.asserter.IExpectedResultAsserter;
 import org.bigtester.ate.model.data.exception.RuntimeDataException;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
+import org.bigtester.ate.model.page.elementfind.IElementFind;
 import org.bigtester.ate.model.page.exception.PageValidationException;
 import org.bigtester.ate.model.page.exception.StepExecutionException;
 import org.bigtester.ate.model.page.page.MyWebElement;
 import org.bigtester.ate.systemlogger.problems.IATECaseExecProblem;
 import org.bigtester.ate.systemlogger.problems.IATEProblem;
 import org.eclipse.jdt.annotation.Nullable;
-import org.openqa.selenium.ElementNotVisibleException;
+//import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 
@@ -49,6 +50,7 @@ import org.openqa.selenium.TimeoutException;
  */
 public class ElementTestStep extends BaseTestStep implements IElementStep {
 
+	private boolean searchOnlyOnPreviousSuccessIFrame = false;
 	/** The my web element. */
 
 	protected MyWebElement<?> myWebElement;
@@ -75,6 +77,9 @@ public class ElementTestStep extends BaseTestStep implements IElementStep {
 		//if (null == jumpingContainer) jumpingContainer = (IStepJumpingEnclosedContainer) getTestCase();
 
 		try {
+			if (getMyWebElement().getTestObjectFinder() instanceof IElementFind) {
+				((IElementFind) getMyWebElement().getTestObjectFinder()).setSearchOnlyOnPreviousSuccessIFrame(this.searchOnlyOnPreviousSuccessIFrame);
+			}
 			getMyWebElement().doAction();
 			super.parseDataHolder();
 		} catch (NoSuchElementException | TimeoutException e ) {
@@ -151,6 +156,21 @@ public class ElementTestStep extends BaseTestStep implements IElementStep {
 	 */
 	public void setMyWebElement(final MyWebElement<?> myWebElement) {
 		this.myWebElement = myWebElement;
+	}
+
+	/**
+	 * @return the searchOnlyOnPreviousSuccessIFrame
+	 */
+	public boolean isSearchOnlyOnPreviousSuccessIFrame() {
+		return searchOnlyOnPreviousSuccessIFrame;
+	}
+
+	/**
+	 * @param searchOnlyOnPreviousSuccessIFrame the searchOnlyOnPreviousSuccessIFrame to set
+	 */
+	public void setSearchOnlyOnPreviousSuccessIFrame(
+			boolean searchOnlyOnPreviousSuccessIFrame) {
+		this.searchOnlyOnPreviousSuccessIFrame = searchOnlyOnPreviousSuccessIFrame;
 	}
 
 	

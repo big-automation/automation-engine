@@ -19,7 +19,8 @@
 
 		<ate:elementStep id="stepTypeInSearchKeyWordQA"
 			stepDescription="type in search key word QA" stepName="typeInSearchKeyWordQA"
-			optionalStep="false" targetStep="false" elementActionDef="eadTypeInSearchKeyWordQA">
+			optionalStep="false" targetStep="false" elementActionDef="eadTypeInSearchKeyWordQA"
+			searchOnlyOnPreviousSuccessIFrame="true">
 		</ate:elementStep>
 				
 		<ate:elementStep id="stepClearWhereText"

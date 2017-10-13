@@ -58,6 +58,9 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 	@Nullable
 	private IOnTheFlyData<Integer> indexOfSameElements;
 
+	/** The search only on previous i frame. */
+	private transient boolean searchOnlyOnPreviousSuccessIFrame = false;//NOPMD
+	
 	/** The wait. */
 	@Nullable
 	transient protected Wait<WebDriver> wait;
@@ -114,6 +117,7 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 	public AbstractElementFind(String findByValue) {
 		super();
 		this.findByValue = findByValue;
+		
 	}
 
 	/**
@@ -369,6 +373,10 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 						});
 
 			} catch (NoSuchElementException | TimeoutException error) {
+				if (!winOnFocus.getLastSuccessElementFindFrameChain().isEmpty() && this.searchOnlyOnPreviousSuccessIFrame) {
+					//only search on previoius success iframe
+					throw error;
+				}
 				winOnFocus.getCurrentElementFindFrameChain().clear();
 				try {
 					myWebDriver.getMultiWindowsHandler().refreshWindowsList(myWebDriver.getWebDriverInstance(), true);
@@ -418,4 +426,20 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 		}
 	}
 
+	/**
+	 * @return the searchOnlyOnPreviousSuccessIFrame
+	 */
+	public boolean isSearchOnlyOnPreviousSuccessIFrame() {
+		return searchOnlyOnPreviousSuccessIFrame;
+	}
+
+	/**
+	 * @param searchOnlyOnPreviousSuccessIFrame the searchOnlyOnPreviousSuccessIFrame to set
+	 */
+	public void setSearchOnlyOnPreviousSuccessIFrame(
+			boolean searchOnlyOnPreviousSuccessIFrame) {
+		this.searchOnlyOnPreviousSuccessIFrame = searchOnlyOnPreviousSuccessIFrame;
+	}
+
+	
 }

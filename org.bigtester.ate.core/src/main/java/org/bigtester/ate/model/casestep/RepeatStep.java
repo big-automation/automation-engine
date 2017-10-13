@@ -368,7 +368,7 @@ public class RepeatStep extends BaseTestStep implements ITestStep, Cloneable {
 						i = repeatingStepIndexesInTestCase
 								.indexOf(successConditionJumpToStepIndex)-1;// NOPMD
 						
-					} else {
+					} else if (successConditionJumpToStepIndex>repeatingStepIndexesInTestCase.get(repeatingStepIndexesInTestCase.size()-1)){
 						successConditionJumpingStepIndex = i;
 						i = repeatingStepIndexesInTestCase.size()-1;
 					}

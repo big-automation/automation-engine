@@ -64,6 +64,9 @@ public class MyAndroidDriver extends AbstractWebDriverBase implements IMyWebDriv
 	 */
 	@Override
 	public WebDriver getWebDriverInstance() {
+		
+		
+		
 		WebDriver retVal = getWebDriver();
 		if (null == retVal) {
 			OSinfo osinfo = new OSinfo();

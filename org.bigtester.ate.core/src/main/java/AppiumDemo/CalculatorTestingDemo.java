@@ -1,4 +1,12 @@
+/*******************************************************************************
+ * ATE, Automation Test Engine
+ *
+ * Copyright 2014, Montreal PROT, or individual contributors as
+ * By Chen Chen This is a AppiumDemo on Local machine + appium 1.6.5 desktop and Android Emulator
+ *******************************************************************************/
 package AppiumDemo;
+
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

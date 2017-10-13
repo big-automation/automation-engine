@@ -1,5 +1,6 @@
 package AppiumDemo;
 
+import org.bigtester.ate.model.page.atewebdriver.MySauceLabAndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,15 +32,16 @@ public class CalculatorTestingDemo2 {
     	capabilities.setCapability("testobjectApiKey", "5A9C6A605A91413FA8266FB09272261F");
     	
         capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("deviceName", "LG Nexus 5X");
-        capabilities.setCapability("platformVersion", "7");
+        //capabilities.setCapability("deviceName", "LG Nexus 5X");
+        capabilities.setCapability("deviceName", "Android6");
+        capabilities.setCapability("platformVersion", "6");
         //capabilities.setCapability("app", "http://saucelabs.com/example_files/ContactManager.apk");
         capabilities.setCapability("browserName", "");
         //capabilities.setCapability(“phoneOnly”, true);
         capabilities.setCapability("deviceOrientation", "portrait");
         capabilities.setCapability("appiumVersion", "1.6.5");
      
-        //WebDriver driver = new AndroidDriver<>(new URL(URL), capabilities);
+        WebDriver driver = new AndroidDriver<>(new URL(URL), capabilities);
         
         //Set up desired capabilities and pass the Android app-activity
         //and app-package to Appium
@@ -53,7 +55,9 @@ public class CalculatorTestingDemo2 {
         //Create RemoteWebDriver instance and connect to the Appium server
         //It will launch the Calculator App in Android Device using the configurations
         //specified in Desired Capabilities
-        driver = new RemoteWebDriver(new URL("https://us1.appium.testobject.com/wd/hub"), capabilities);
+        //driver = new RemoteWebDriver(new URL("https://us1.appium.testobject.com/wd/hub"), capabilities);
+        
+        //driver = new MySauceLabAndroidDriver(new URL("https://us1.appium.testobject.com/wd/hub"), capabilities);
     }
  
     @Test

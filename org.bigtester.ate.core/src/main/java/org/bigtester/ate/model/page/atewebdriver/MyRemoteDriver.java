@@ -68,6 +68,10 @@ public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDrive
 				caps = Optional.of(DesiredCapabilities.firefox());
 				caps.get().setBrowserName("firefox");
 				break;
+			case "IOS":
+				caps = Optional.of(DesiredCapabilities.iphone());
+				caps.get().setBrowserName("IOS");
+				break;
 			default:
 				break;
 			}

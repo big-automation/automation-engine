@@ -26,6 +26,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.ios.IOSDriver;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.bigtester.ate.GlobalUtils;
@@ -40,7 +41,7 @@ import org.eclipse.jdt.annotation.Nullable;
 public class MyIOSDriver extends AbstractWebDriverBase implements IMyWebDriver {
 			
 	/** The Constant BROWSERNAME. */
-	/*private static final String BROWSERNAME = "IOS";*/
+	//private static final String BROWSERNAME = "IOS";
 	/** The Constant BROWSERDRVNAME. */
 	private static final String BROWSERDRVNAME = "webdriver.IOS.driver";
 	/** The Constant BROWSEROSX32PATH. */
@@ -48,8 +49,11 @@ public class MyIOSDriver extends AbstractWebDriverBase implements IMyWebDriver {
 	/** The Constant BROWSEROSX32PATH. */
 	private static final String BROWSEROSX64PATH = "osx/IOS/64bit/";
 	/** The Constant BROWSERMACFILENAME. */
-	private static final String BROWSER0SXFILENAME = "IOSdriver";
+	private static final String BROWSER0SXFILENAME = "IOSDriver";
 	
+	public static final String USERNAME = "stoneshao";
+	public static final String ACCESS_KEY = "e14f0b8b-66db-4071-9a92-b7c05763f813";
+	public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
 	/**
 	 * {@inheritDoc}
 	 */
@@ -63,8 +67,10 @@ public class MyIOSDriver extends AbstractWebDriverBase implements IMyWebDriver {
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings({ "null", "rawtypes" })
 	@Override
 	public WebDriver getWebDriverInstance() {
+		
 		WebDriver retVal = getWebDriver();
 		if (null == retVal) {
 			OSinfo osinfo = new OSinfo();
@@ -72,7 +78,7 @@ public class MyIOSDriver extends AbstractWebDriverBase implements IMyWebDriver {
 			String driverPath = GlobalUtils.getDriverPath(); //NOPMD
 			
 			switch (platform) {
-				case Windows_32:
+				case Mac_OS_X_32:
 					if (driverPath == null)
 						System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
 								           + BROWSEROSX32PATH + BROWSER0SXFILENAME);
@@ -80,7 +86,7 @@ public class MyIOSDriver extends AbstractWebDriverBase implements IMyWebDriver {
 						System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
 								           + BROWSEROSX32PATH + BROWSER0SXFILENAME);
 					break;
-				case Windows_64:
+				case Mac_OS_X_64:
 					if (driverPath == null)
 						System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
 								           + BROWSEROSX64PATH + BROWSER0SXFILENAME);
@@ -93,16 +99,20 @@ public class MyIOSDriver extends AbstractWebDriverBase implements IMyWebDriver {
 			}			
 			
 			DesiredCapabilities capabilities = new DesiredCapabilities();
-			
 			capabilities.setCapability("platformName", "iOS");
-			capabilities.setCapability("deviceName", "iPhone 8");
-			capabilities.setCapability("platformVersion", "11.0");
+			capabilities.setCapability("deviceName", "iPhone 6");
+			capabilities.setCapability("platformVersion", "8.4");
 			capabilities.setCapability("app", "https://s3.amazonaws.com/appium/TestApp8.4.app.zip");
 			capabilities.setCapability("browserName", "");
 			capabilities.setCapability("deviceOrientation", "portrait");
 			capabilities.setCapability("appiumVersion", "1.6.5");
 
-			retVal = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+			try {
+				retVal = new IOSDriver(new URL(URL), capabilities);
+			} catch (MalformedURLException e) {
+				System.out.println("The url is not well formed: " + URL);
+				e.printStackTrace();
+			}
 			
 			setWebDriver(retVal);
 		}		

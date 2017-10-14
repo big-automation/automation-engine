@@ -32,6 +32,7 @@ import org.bigtester.ate.model.casestep.ITestCase;
 import org.bigtester.ate.model.data.TestParameters;
 import org.bigtester.ate.model.data.exception.TestDataException;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
+import org.bigtester.ate.model.page.atewebdriver.exception.BrowserUnexpectedException;
 import org.bigtester.ate.model.project.IRunTestCase;
 import org.bigtester.ate.model.project.TestProjectListener;
 import org.bigtester.ate.systemlogger.LogbackWriter;
@@ -226,8 +227,13 @@ public class CaseRunner implements IRunTestCase {
 		context = new FileSystemXmlApplicationContext(configFiles, testParams.getTestProject().getAppCtx());
 		IMyWebDriver myWebD = (IMyWebDriver) GlobalUtils
 				.findMyWebDriver(context);		
-		myWebD.getWebDriverInstance();
-		myWebD.getMultiWindowsHandler();
+		WebDriver webD = myWebD.getWebDriverInstance();
+		try {
+			myWebD.getMultiWindowsHandler().refreshWindowsList(webD,false);
+		} catch (BrowserUnexpectedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		mainDriver = myWebD;
 		myTestCase = GlobalUtils.findTestCaseBean(getContext());
 		getMyTestCase().setStepThinkTime(testParams.getStepThinkTime());

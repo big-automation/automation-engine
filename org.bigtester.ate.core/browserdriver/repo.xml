@@ -88,10 +88,10 @@
                     <hashtype>sha1</hashtype>
                 </bitrate>                
             </version>
-            <version id="2.32">                
+            <version id="2.33">                
                 <bitrate thirtytwobit="true">
-                    <filelocation>https://chromedriver.storage.googleapis.com/2.32/chromedriver_linux32.zip</filelocation>
-                    <hash>870aa548ba0df1d71cf092fd9238178f0a29a36c</hash>
+                    <filelocation>https://chromedriver.storage.googleapis.com/2.33/chromedriver_linux32.zip</filelocation>
+                    <hash>cca39f74c1ddd2f2d7afd36f41a9f0db7be88dcf</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>

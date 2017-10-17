@@ -34,6 +34,7 @@ import java.util.stream.Collectors;
 
 import org.bigtester.ate.constant.StepResultStatus;
 import org.bigtester.ate.model.cucumber.ActionNameValuePair;
+import org.bigtester.ate.model.cucumber.CucumberFilter;
 import org.bigtester.ate.model.project.TestProject;
 import org.bigtester.ate.model.testresult.TestStepResult;
 import org.bigtester.ate.reporter.ATEXMLReporter;
@@ -55,58 +56,9 @@ import cucumber.api.Scenario;
  */
 
 abstract public class AbstractCucumberTestStepDefs {
+	
 	/** The test project context. */
-	private ApplicationContext testProjectContext;
-	/**
-	 * The Class AteProjectFilter.
-	 *
-	 * @author Peidong Hu
-	 */
-	public class AteProjectFilter{
-		
-		/** The suite name. */
-		final private String suiteName;
-		
-		/** The case name. */
-		final private String caseName;
-		
-		/** The step name. */
-		final private String stepName;
-		
-		/**
-		 * Instantiates a new ate project filter.
-		 *
-		 * @param suiteName the suite name
-		 * @param caseName the case name
-		 * @param stepName the step name
-		 */
-		public AteProjectFilter(String suiteName, String caseName, String stepName) {
-			this.suiteName = suiteName;
-			this.caseName = caseName;
-			this.stepName = stepName;
-		}
-		
-		/**
-		 * @return the suiteName
-		 */
-		public String getSuiteName() {
-			return suiteName;
-		}
-		
-		/**
-		 * @return the caseName
-		 */
-		public String getCaseName() {
-			return caseName;
-		}
-		
-		/**
-		 * @return the stepName
-		 */
-		public String getStepName() {
-			return stepName;
-		}
-	}
+	private ApplicationContext testProjectContext;	
 	
 	static { // runs when the main class is loaded.
 		System.setProperty("logback-access.debug", "true");
@@ -147,15 +99,15 @@ abstract public class AbstractCucumberTestStepDefs {
 	 * @throws ParseException
 	 */
 	@SuppressWarnings("null")
-	private StepResultStatus runStep(ApplicationContext context, AteProjectFilter executionFilter, 
+	private StepResultStatus runStep(ApplicationContext context, CucumberFilter executionFilter, 
 									List<Map<String, String>> featureDataTable,
 									ActionNameValuePair... actionNameValuePairs)
 	{
 		StepResultStatus retVal = StepResultStatus.FAIL;
 		TestProject testProj = GlobalUtils.findTestProjectBean(context);
-		testProj.setFilteringTestCaseName(executionFilter.getCaseName());
-		testProj.setFilteringStepName(executionFilter.stepName);
-		testProj.setFilteringTestSuiteName(executionFilter.suiteName);
+		ArrayList<CucumberFilter> filter = testProj.getProjectFilter();
+		filter.add(executionFilter);
+		testProj.setProjectFilter(filter);		
 		testProj.setCucumberDataTable(featureDataTable);
 		if (actionNameValuePairs.length > 0)
 			testProj.setCucumberActionNameValuePairs(new ArrayList<ActionNameValuePair>(
@@ -208,7 +160,7 @@ abstract public class AbstractCucumberTestStepDefs {
 		String testSuiteName = getScenario().getId().substring(0,
 				getScenario().getId().indexOf(";"));			
 
-		retVal = runStep(new AteProjectFilter(testSuiteName, testCaseName, ateStepName), testProjectXml, 
+		retVal = runStep(new CucumberFilter(testSuiteName, testCaseName, ateStepName), testProjectXml, 
 				new ArrayList<Map<String, String>>());
 		
 		return retVal;
@@ -222,7 +174,7 @@ abstract public class AbstractCucumberTestStepDefs {
 	 * @param actionNameValuePairs the action name value pairs
 	 * @return the step result status
 	 */
-	protected StepResultStatus runCucumberStep(AteProjectFilter executionFilter, List<Map<String, String>> featureDataTable,
+	protected StepResultStatus runCucumberStep(CucumberFilter executionFilter, List<Map<String, String>> featureDataTable,
 			ActionNameValuePair... actionNameValuePairs) 
 	{
 		String testProjectXml = this.getAteGlueTestProjectXmlFilePath();
@@ -239,7 +191,7 @@ abstract public class AbstractCucumberTestStepDefs {
 	 * @return the step result status
 	 */
 	@SuppressWarnings("null")
-	protected StepResultStatus runCucumberStep(AteProjectFilter executionFilter,
+	protected StepResultStatus runCucumberStep(CucumberFilter executionFilter,
 								    	       ActionNameValuePair... actionNameValuePairs) 
 	{
 		String testProjectXml = this.getAteGlueTestProjectXmlFilePath();			
@@ -255,7 +207,7 @@ abstract public class AbstractCucumberTestStepDefs {
 	 * @return the step result status
 	 */
 	@SuppressWarnings("null")
-	protected StepResultStatus runCucumberStep(AteProjectFilter executionFilter) 
+	protected StepResultStatus runCucumberStep(CucumberFilter executionFilter) 
 	{
 		String testProjectXml = this.getAteGlueTestProjectXmlFilePath();
 		return runStep(executionFilter, testProjectXml, 
@@ -275,7 +227,7 @@ abstract public class AbstractCucumberTestStepDefs {
 	 * @throws ClassNotFoundException
 	 * @throws ParseException
 	 */
-	private StepResultStatus runStep(AteProjectFilter executionFilter,
+	private StepResultStatus runStep(CucumberFilter executionFilter,
 									final String testProjectXml,
 									List<Map<String, String>> featureDataTable,
 									ActionNameValuePair... actionNameValuePairs)

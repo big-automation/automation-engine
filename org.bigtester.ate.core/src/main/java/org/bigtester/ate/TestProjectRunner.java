@@ -129,6 +129,7 @@ public final class TestProjectRunner {
 	private TestProjectRunner() {
 		
 	}
+	
 	/**
 	 * The main method.
 	 * 
@@ -163,8 +164,7 @@ public final class TestProjectRunner {
 	 */
 	private static void runTest(ApplicationContext context) throws ClassNotFoundException, ParseException, IOException {
 		TestProject testProj = GlobalUtils.findTestProjectBean(context);
-		testProj.runSuites();
-		
+		testProj.runSuites();		
 	}
 	
 	/**
@@ -212,8 +212,7 @@ public final class TestProjectRunner {
 
 		// TODO add db initialization handler
 		if (dbinit.getDatasets() == null)			
-			dbinit.initializeGlobalDataFile(testProjectContext);
-			
+			dbinit.initializeGlobalDataFile(testProjectContext);			
 	}
 	
 	/**
@@ -234,7 +233,6 @@ public final class TestProjectRunner {
 		testplan.setAppCtx(testProjectContext);
 
 		return testProjectContext;
-
 	}
 	
 	@SuppressWarnings("null")

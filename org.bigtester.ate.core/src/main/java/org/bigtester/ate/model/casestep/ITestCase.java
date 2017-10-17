@@ -73,11 +73,8 @@ public interface ITestCase {
 	 * @throws PageValidationException
 	 */
 	@TestCaseLoggable(level = ATELogLevel.INFO)
-	void goSteps() throws StepExecutionException,
-	PageValidationException, IllegalStateException,
-	RuntimeDataException;
-	
-	
+	void goSteps() throws StepExecutionException, PageValidationException, 
+	                      IllegalStateException, RuntimeDataException;	
 
 	/**
 	 * Gets the test case name.

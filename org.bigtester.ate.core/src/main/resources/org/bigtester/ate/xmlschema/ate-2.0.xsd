@@ -110,7 +110,6 @@
 		<xsd:complexContent>
 			<xsd:extension base="beans:identifiedType">
 				<!-- Here we re-use Spring elements and attributes -->
-
 				<xsd:choice maxOccurs="unbounded">
 					<xsd:element ref="caseTypeService" minOccurs="0"
 						maxOccurs="unbounded" />
@@ -122,7 +121,6 @@
 					<xsd:element ref="repeatStep" minOccurs="0" maxOccurs="unbounded" />
 					<xsd:element ref="lastStep" minOccurs="1" maxOccurs="unbounded" />
 				</xsd:choice>
-
 				<xsd:attribute name="testCaseName" type="xsd:string"
 					use="required" />
 			</xsd:extension>
@@ -130,13 +128,13 @@
 	</xsd:complexType>
 	
     <xsd:simpleType name="CucumberStepType">
-						<xsd:restriction base="xsd:string">
-							<xsd:enumeration value="GIVEN" />
-							<xsd:enumeration value="WHEN" />
-							<xsd:enumeration value="THEN" />
-							<xsd:enumeration value="HOOK" />
-							<xsd:enumeration value="BACKGROUND" />
-						</xsd:restriction>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="GIVEN" />
+			<xsd:enumeration value="WHEN" />
+			<xsd:enumeration value="THEN" />
+			<xsd:enumeration value="HOOK" />
+			<xsd:enumeration value="BACKGROUND" />
+		</xsd:restriction>
 	</xsd:simpleType>
 	
 	<xsd:complexType name="CaseTypeServiceType">
@@ -168,23 +166,20 @@
 
 	<xsd:complexType name="BaseTestStepType" abstract="true">
 		<xsd:complexContent>
-			<xsd:extension base="beans:identifiedType">
-				
+			<xsd:extension base="beans:identifiedType">				
 				<!-- Here we re-use Spring elements and attributes -->
-<!-- 				<xsd:group ref="beans:beanElements" /> -->
-				
+<!-- 				<xsd:group ref="beans:beanElements" /> -->				
 <!-- 				<xsd:attributeGroup ref="beans:beanAttributes" /> -->
 				<xsd:choice minOccurs="0" maxOccurs="1">
-						<xsd:element ref="asserterReferences" />
-					</xsd:choice>
+					<xsd:element ref="asserterReferences" />
+				</xsd:choice>
 				<xsd:attribute name="targetStep" type="xsd:boolean"
 					use="required" />
 				<xsd:attribute name="optionalStep" type="xsd:boolean" />
 				<xsd:attribute name="correlatedOptionalStepsUtilInclusive"
 					type="xsd:string" />
 				<xsd:attribute name="stepName" type="xsd:string" use="required" />
-				<xsd:attribute name="stepDescription" type="xsd:string" />
-				
+				<xsd:attribute name="stepDescription" type="xsd:string" />				
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -229,7 +224,7 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 
-<xsd:complexType name="JavaCodedStepType">
+	<xsd:complexType name="JavaCodedStepType">
 		<xsd:complexContent>
 			<xsd:extension base="BaseTestStepType">
 				<xsd:attribute name="elementActionDef" type="xsd:string"
@@ -289,13 +284,10 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 
-
 	<xsd:complexType name="StepTypeServiceDefType">
 		<xsd:complexContent>
 			<xsd:extension base="beans:identifiedType">
-
 				<xsd:choice maxOccurs="unbounded">
-
 					<xsd:element ref="homeStep" minOccurs="0" maxOccurs="unbounded" />
 					<xsd:element ref="elementStep" minOccurs="1" maxOccurs="unbounded" />
 					<xsd:element ref="lastStep" minOccurs="0" maxOccurs="unbounded" />
@@ -630,7 +622,6 @@
 							<xsd:enumeration value="RandomNumbers" />
 							<xsd:enumeration value="RandomTextNumbers" />
 							<xsd:enumeration value="RandomEmail" />
-
 						</xsd:restriction>
 					</xsd:simpleType>
 				</xsd:attribute>
@@ -746,7 +737,6 @@
 	<xsd:complexType name="CookiesFindAllType">
 		<xsd:complexContent>
 			<xsd:extension base="beans:identifiedType">
-
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -769,7 +759,6 @@
 				<xsd:attributeGroup ref="beans:beanAttributes"></xsd:attributeGroup>
 				<xsd:attribute name="fileNameWithAbsolutePath" type="xsd:string"
 					use="required" />
-
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -781,7 +770,6 @@
 				<xsd:attributeGroup ref="beans:beanAttributes"></xsd:attributeGroup>
 				<xsd:attribute name="folderNameWithAbsolutePath" type="xsd:string"
 					use="required" />
-
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -805,7 +793,6 @@
 				<xsd:attributeGroup ref="beans:beanAttributes"></xsd:attributeGroup>
 				<xsd:attribute name="folderNameWithAbsolutePath" type="xsd:string"
 					use="required" />
-
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>

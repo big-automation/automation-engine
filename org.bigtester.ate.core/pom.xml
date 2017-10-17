@@ -609,8 +609,8 @@
 <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-java -->
 		<dependency>
 		    <groupId>info.cukes</groupId>
-		    <artifactId>cucumber-java</artifactId>
-		    <version>1.2.5</version>
+		    <artifactId>cucumber-core</artifactId>
+		    <version>1.2.4</version>
 	    </dependency>
 	    <dependency>
 		    <groupId>com.codeborne</groupId>

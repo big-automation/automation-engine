@@ -28,6 +28,7 @@ import org.bigtester.ate.annotation.ATELogLevel;
 import org.bigtester.ate.annotation.TestCaseLoggable;
 import org.bigtester.ate.constant.StepResultStatus;
 import org.bigtester.ate.model.AbstractATEException;
+import org.bigtester.ate.model.cucumber.CucumberFilter;
 import org.bigtester.ate.model.data.BaseInputDataValue;
 import org.bigtester.ate.model.data.IStepInputData;
 import org.bigtester.ate.model.data.exception.RuntimeDataException;
@@ -59,6 +60,7 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	/** The current web driver. */
 	@Nullable
 	private IMyWebDriver currentWebDriver;
+	
 	/** The test case name. */
 	private String testCaseName;
 
@@ -67,8 +69,7 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 
 	/** The current test step. */
 	@Nullable
-	private ITestStep currentTestStep;
-	
+	private ITestStep currentTestStep;	
 
 	/** The test step list. */
 	@Nullable
@@ -83,6 +84,7 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	@Nullable
 	@XStreamOmitField
 	private ApplicationContext testCaseContext;
+	
 	/**
 	 * Instantiates a new test case.
 	 *
@@ -91,7 +93,6 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	 */
 	public TestCase(String testCaseName) {
 		this.testCaseName = testCaseName;
-
 	}
 
 	/**
@@ -116,12 +117,8 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	protected void cleanUpAsserters() {
 		for (int i = 0; i < getTestStepList().size(); i++) {
 			if (!getTestStepList().get(i).getExpectedResultAsserter().isEmpty()) {
-				getTestStepList()
-						.get(i)
-						.getExpectedResultAsserter()
-						.removeAll(
-								getTestStepList().get(i)
-										.getExpectedResultAsserter());
+				getTestStepList().get(i).getExpectedResultAsserter().removeAll(
+					getTestStepList().get(i).getExpectedResultAsserter());
 			}
 		}
 	}
@@ -134,8 +131,7 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	public List<ITestStep> getTestStepList() throws IllegalStateException {
 		final List<ITestStep> testStepList2 = testStepList;
 		if (null == testStepList2) {
-			throw new IllegalStateException(
-					"Test Step List was not successfully initialized by ApplicationContext");
+			throw new IllegalStateException("Test Step List was not successfully initialized by ApplicationContext");
 		} else {
 			return testStepList2;
 		}
@@ -160,9 +156,9 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	 */
 	@SuppressWarnings("null")
 	@TestCaseLoggable (level=ATELogLevel.INFO)
-	public void goSteps() throws StepExecutionException,
-			PageValidationException, IllegalStateException,
-			RuntimeDataException {
+	public void goSteps() throws StepExecutionException, PageValidationException, IllegalStateException,
+			                     RuntimeDataException 
+	{
 		if (getParentTestProject().getCucumberActionNameValuePairs()!=null) {
 			getParentTestProject().getCucumberActionNameValuePairs().forEach(pair->{
 				Object bea = this.getTestCaseContext().getBean(pair.getActionName());
@@ -178,7 +174,7 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 				}
 			});
 		}
-		goSteps(getParentTestProject().getFilteringStepName());
+		goSteps(getParentTestProject().getProjectFilter());
 	}
 
 	/**
@@ -208,8 +204,7 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	public ITestStep getCurrentTestStep() throws IllegalStateException {
 		final ITestStep currentTestStep2 = currentTestStep;
 		if (null == currentTestStep2) {
-			throw new IllegalStateException(
-					"Current Test Step was not successfully initialized by ate");
+			throw new IllegalStateException("Current Test Step was not successfully initialized by ate");
 		} else {
 			return currentTestStep2;
 		}
@@ -233,8 +228,7 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	public IMyWebDriver getCurrentWebDriver() throws IllegalStateException {
 		final IMyWebDriver currentWebDriver2 = currentWebDriver;
 		if (null == currentWebDriver2) {
-			throw new IllegalStateException(
-					"Current web driver was not successfully initialized by ate");
+			throw new IllegalStateException("Current web driver was not successfully initialized by ate");
 		} else {
 			return currentWebDriver2;
 		}
@@ -256,8 +250,7 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	public TestProject getParentTestProject() {
 		final TestProject parentTestProject2 = parentTestProject;
 		if (parentTestProject2 == null) {
-			throw GlobalUtils
-					.createNotInitializedException("parent test project");
+			throw GlobalUtils.createNotInitializedException("parent test project");
 		} else {
 			return parentTestProject2;
 		}
@@ -275,11 +268,9 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<ITestStep> getContainerStepList() {
-		
+	public List<ITestStep> getContainerStepList() {		
 		return getTestStepList();
 	}
-
 	
 	/**
 	 * Go steps.
@@ -291,45 +282,45 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	 * @throws RuntimeDataException the runtime data exception
 	 */
 	@SuppressWarnings({ "null", "unused" })
-	private void goSteps(String filteringStepName) throws StepExecutionException,
-			PageValidationException, IllegalStateException,
-			RuntimeDataException {
+	private void goSteps(List<CucumberFilter> filter) throws StepExecutionException, PageValidationException, IllegalStateException,
+			                                              RuntimeDataException 
+	{
 		int startIndex=0;
 		int endIndex = getTestStepList().size()-1;
-		if (filteringStepName!=null ) {
-			List<ITestStep> filteredSteps = getTestStepList().stream().filter(tStep->tStep.getStepName().equalsIgnoreCase(filteringStepName) ).collect(Collectors.toList());
-			if (filteredSteps.size()==1) {//NOPMD
-				if ( GlobalUtils.getTargetObject(filteredSteps.get(0)) instanceof RepeatStep) {
-					RepeatStep rStep = (RepeatStep) GlobalUtils.getTargetObject(filteredSteps.get(0));
-					startIndex = RepeatStep.getStepIndex(getTestStepList(), rStep.getStartStepName());
-					endIndex = getTestStepList().indexOf(filteredSteps.get(0));
+		for(CucumberFilter f : filter) {
+			if (f.getStepName()!= null ) {
+				List<ITestStep> filteredSteps = getTestStepList().stream().filter(tStep->tStep.getStepName()
+						                        .equalsIgnoreCase(f.getStepName()) ).collect(Collectors.toList());
+				if (filteredSteps.size() == 1) {//NOPMD
+					if ( GlobalUtils.getTargetObject(filteredSteps.get(0)) instanceof RepeatStep) {
+						RepeatStep rStep = (RepeatStep) GlobalUtils.getTargetObject(filteredSteps.get(0));
+						startIndex = RepeatStep.getStepIndex(getTestStepList(), rStep.getStartStepName());
+						endIndex = getTestStepList().indexOf(filteredSteps.get(0));
+					} else {
+						startIndex = getTestStepList().indexOf(filteredSteps.get(0));
+						endIndex = getTestStepList().indexOf(filteredSteps.get(0));
+					}
+				} else if (filteredSteps.size() > 1){//NOPMD
+					if ( GlobalUtils.getTargetObject(filteredSteps.get(0)) instanceof RepeatStep) {
+						throw GlobalUtils.createInternalError("there are more than 1 same named (repeat) steps in xml implementation.");
+					} else {
+						throw GlobalUtils.createInternalError("there are more than 1 same named steps in xml implementation.");
+					}				
 				} else {
-					startIndex = getTestStepList().indexOf(filteredSteps.get(0));
-					endIndex = getTestStepList().indexOf(filteredSteps.get(0));
+					throw GlobalUtils.createInternalError("there are 0 step name found in xml implementation.");
 				}
-			} else if (filteredSteps.size()>1){//NOPMD
-				if ( GlobalUtils.getTargetObject(filteredSteps.get(0)) instanceof RepeatStep) {
-					throw GlobalUtils.createInternalError("there are more than 1 same named (repeat) steps in xml implementation.");
-				} else {
-					throw GlobalUtils.createInternalError("there are more than 1 same named steps in xml implementation.");
-				}
-				
-			} else {
-				throw GlobalUtils.createInternalError("there are 0 step name found in xml implementation.");
 			}
 		}
-		for (int i = startIndex; i <= endIndex; i++) {
-			
+		
+		for (int i = startIndex; i <= endIndex; i++) {			
 			ITestStep currentTestStepTmp = getTestStepList().get(i);
 
 			if (null == currentTestStepTmp) {
 				throw new IllegalStateException(
-						"Test Step List was not successfully initialized by ApplicationContext at list index"
-								+ i);
+					"Test Step List was not successfully initialized by ApplicationContext at list index" + i);
 			} else {
 				setCurrentTestStep(currentTestStepTmp);
 			}
-
 			try {
 				currentTestStepTmp.doStep(this);// NOPMD
 				currentTestStepTmp.setStepResultStatus(StepResultStatus.PASS);
@@ -342,11 +333,9 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 					ITestStep exceptionRaisingStep = ((AbstractATEException) e).getOriginalStepRaisingException();
 					if (prob == null) {
 						if (null == exceptionRaisingStep)
-							prob = ((IATEProblemCreator) e)
-								.initAteProblemInstance(currentTestStepTmp);
+							prob = ((IATEProblemCreator) e).initAteProblemInstance(currentTestStepTmp);
 						else
-							prob = ((IATEProblemCreator) e)
-							.initAteProblemInstance(exceptionRaisingStep);
+							prob = ((IATEProblemCreator) e).initAteProblemInstance(exceptionRaisingStep);
 					} 
 					boolean optionalStepRaisingException = false;//NOPMD
 					if (exceptionRaisingStep != null)
@@ -354,42 +343,34 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 					if (!prob.isFatalProblem() && prob.getStepIndexSkipTo() > -1) { // NOPMD
 						i = prob.getStepIndexSkipTo(); // NOPMD
 						if (AopUtils.getTargetClass(currentTestStepTmp) == RepeatStep.class)
-							currentTestStepTmp
-									.setStepResultStatus(StepResultStatus.NEUTRAL);
+							currentTestStepTmp.setStepResultStatus(StepResultStatus.NEUTRAL);
 						else
-							currentTestStepTmp
-									.setStepResultStatus(StepResultStatus.SKIP);
+							currentTestStepTmp.setStepResultStatus(StepResultStatus.SKIP);
 					} else if (!prob.isFatalProblem() && optionalStepRaisingException) {
 						int correlatedOptionalStepsUtilInclusiveIndex = -1;//NOPMD
 						if (exceptionRaisingStep != null)
 							correlatedOptionalStepsUtilInclusiveIndex = exceptionRaisingStep.getCorrelatedOptionalStepsUtilInclusiveIndex(this); //NOPMD
 						if (AopUtils.getTargetClass(currentTestStepTmp) == RepeatStep.class)
-							currentTestStepTmp
-									.setStepResultStatus(StepResultStatus.NEUTRAL);
+							currentTestStepTmp.setStepResultStatus(StepResultStatus.NEUTRAL);
 						else
-							currentTestStepTmp
-									.setStepResultStatus(StepResultStatus.SKIP);
+							currentTestStepTmp.setStepResultStatus(StepResultStatus.SKIP);
 						if (correlatedOptionalStepsUtilInclusiveIndex > i) {
 							i = correlatedOptionalStepsUtilInclusiveIndex;// NOPMD
-
 						}
 					} else {
 						Reporter.getCurrentTestResult().setThrowable(e);
-						throw e;
-						
+						throw e;						
 					}
 				} else {
-						Reporter.getCurrentTestResult().setThrowable(e);
-						throw e;
-				}
-				
+					Reporter.getCurrentTestResult().setThrowable(e);
+					throw e;
+				}				
 			}
 
 			if (stepThinkTime > 0) {
 				ThinkTime thinkTimer = new ThinkTime(stepThinkTime);
 				thinkTimer.setTimer();
 			}
-
 		}
 		Reporter.getCurrentTestResult().setThrowable(null);
 	}
@@ -401,8 +382,7 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	public void setApplicationContext(@SuppressWarnings("null") ApplicationContext applicationContext)
 			throws BeansException {
 		// TODO Auto-generated method stub
-		this.testCaseContext = applicationContext;
-		
+		this.testCaseContext = applicationContext;		
 	}
 
 	/**

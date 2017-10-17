@@ -38,7 +38,6 @@ import org.springframework.context.ApplicationListener;
 public interface IRepeatStepExecutionLogger extends
 		ApplicationListener<RepeatStepInOutEvent> {
 
-
 	/**
 	 * Gets the current repeat step path.
 	 *
@@ -61,22 +60,16 @@ public interface IRepeatStepExecutionLogger extends
 	/**
 	 * @return the currentExecutionTree
 	 */
-	@Nullable DefaultTreeModel getCurrentExecutionTree();
-	
+	@Nullable DefaultTreeModel getCurrentExecutionTree();	
 
 	/**
 	 * @return the currentExecutionNode
 	 */
-	@Nullable RepeatStepExecutionLoggerNode getRepeatStepExternalNode() ;
-
-	
+	@Nullable RepeatStepExecutionLoggerNode getRepeatStepExternalNode();	
 
 	/**
 	 * @return the currentRepeatStepNode
 	 */
 	@Nullable
-	RepeatStepExecutionLoggerNode getCurrentRepeatStepNode() ;
-
-
-
+	RepeatStepExecutionLoggerNode getCurrentRepeatStepNode();
 }

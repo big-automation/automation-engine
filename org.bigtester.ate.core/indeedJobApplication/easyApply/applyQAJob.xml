@@ -31,7 +31,7 @@
 	<ate:operaDriver      />
 	<ate:htmlUnitDriver   />
       -->
-    <ate:chromeDriver     />
+    <ate:sauceLabDriver  userName="wpbx" accessKey="9aeb4feb-8dce-4a44-aeed-1cda938e5d8a" />
     
 	<ate:testCase id="testcase" testCaseName="apply easily-apply job.">
 

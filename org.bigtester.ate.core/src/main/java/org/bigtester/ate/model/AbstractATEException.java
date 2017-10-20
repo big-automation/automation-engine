@@ -1,5 +1,5 @@
 /*******************************************************************************
- * ATE, Automation Test Engine
+ * ATE, Automation Test Engine 
  *
  * Copyright 2014, Montreal PROT, or individual contributors as
  * indicated by the @author tags or express copyright attribution

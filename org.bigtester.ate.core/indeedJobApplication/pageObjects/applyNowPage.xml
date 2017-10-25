@@ -32,7 +32,7 @@
 		findByValue="applicant.name"  />
 	<ate:sendKeysAction id="eaFilloutApplicantName" dataValue="Peidong Hu"/>
 	
-	<ate:elementActionDef id="eadFilloutApplicantFirstName"
+	<!-- <ate:elementActionDef id="eadFilloutApplicantFirstName"
 		elementFind="efApplicantFirstName" elementAction="eaFilloutApplicantFirstName">
 	</ate:elementActionDef>
 	<ate:elementFindById id="efApplicantFirstName"
@@ -44,7 +44,7 @@
 	</ate:elementActionDef>
 	<ate:elementFindById id="efApplicantLastName"
 		findByValue="applicant.lastName"  />
-	<ate:sendKeysAction id="eaFilloutApplicantLastName" dataValue="Hu"/>
+	<ate:sendKeysAction id="eaFilloutApplicantLastName" dataValue="Hu"/> -->
 	
 	<ate:elementActionDef id="eadFilloutApplicantEmail"
 		elementFind="efApplicantEmail" elementAction="eaFilloutApplicantEmail">

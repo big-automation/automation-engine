@@ -135,7 +135,6 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 		this.multiWindowsHandler = multiWindowsHandler;
 	}
 	
-	@SuppressWarnings("null")//NOPMD
 	private String generateRandomFilename(String filename) {
 		Calendar cld = Calendar.getInstance();
 		filename=filename.trim();
@@ -165,7 +164,6 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 		return retVal;
 	}
 
-	@SuppressWarnings("null")
 	private BufferedImage getScreenAsBufferedImage() throws AWTException {
 		BufferedImage img = null;
 
@@ -181,7 +179,6 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 	/**
 	 * {@inheritDoc}
 	 */
-	@SuppressWarnings("null")
 	public Optional<String> saveScreenShot(Optional<String> pathFileName) {
 		String filename = generateRandomFilename(pathFileName
 				.orElse(getWebDriverInstance().getCurrentUrl()));
@@ -195,7 +192,6 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 	/**
 	 * {@inheritDoc}
 	 */
-	@SuppressWarnings("null")
 	public Optional<String> saveScreenShot() {
 		return saveScreenShot(Optional.ofNullable(getWebDriverInstance().getCurrentUrl()));
 	}	

@@ -185,7 +185,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 		Iterator<BrowserWindow> itr = this.getWindows().iterator();
 		while(itr.hasNext()) {
 			
-			@SuppressWarnings("null")
 			BrowserWindow win = itr.next();
 		//for (BrowserWindow win : this.getWindows()) {
 			if (!openWindowHandle.equalsIgnoreCase(win.getWindowHandle()) && !win.isClosed()) {
@@ -206,7 +205,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 			
 		}
 		// deal with the windows not in the windows list
-		@SuppressWarnings("null")
 		Set<String> allWindowHandles = getDriver().getWindowHandles();
 		for (String currentWindowHandle : allWindowHandles) {
 			if (!currentWindowHandle.equals(openWindowHandle)) {
@@ -240,7 +238,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	 */
 	public boolean switchToWindowUsingTitle(String title) {
 		String currentWindow = getDriver().getWindowHandle(); // NOPMD
-		@SuppressWarnings("null")
 		Set<String> availableWindows = getDriver().getWindowHandles();
 		boolean switchSuccess;
 		if (availableWindows.isEmpty()) {
@@ -271,7 +268,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	@Nullable
 	public String retriveWindowHandleUsingTitle(String title) {
 		String currentWindow = getDriver().getWindowHandle(); // NOPMD
-		@SuppressWarnings("null")
 		Set<String> availableWindows = getDriver().getWindowHandles();
 		String retVal = null; // NOPMD
 		if (!availableWindows.isEmpty()) {
@@ -292,7 +288,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	/**
 	 * Focus on latest window.
 	 */
-	@SuppressWarnings("null")
 	public void focusOnLatestWindow() {
 		if (getWindows().isEmpty())
 			return;
@@ -306,7 +301,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	 *            the open sequence
 	 * @return the string
 	 */
-	@SuppressWarnings("null")
 	@Nullable
 	public String obtainWindowHandle(int openSequence) {
 		try {
@@ -399,7 +393,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	 */
 	@Override
 	public void afterChangeValueOf(@Nullable WebElement arg0,
-			@Nullable WebDriver arg1, @SuppressWarnings("null") CharSequence[] arg2) {//NOPMD
+			@Nullable WebDriver arg1, CharSequence[] arg2) {//NOPMD
 		try {
 			refreshWindowsList(arg1, false);
 		} catch (BrowserUnexpectedException e) {
@@ -495,7 +489,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	 */
 	@Override
 	public void beforeChangeValueOf(@Nullable WebElement arg0,
-			@Nullable WebDriver arg1, @SuppressWarnings("null") CharSequence[] arg2) {//NOPMD
+			@Nullable WebDriver arg1, CharSequence[] arg2) {//NOPMD
 		// refreshWindowsList(arg1);
 
 	}
@@ -614,7 +608,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void afterNavigateRefresh(@SuppressWarnings("null") WebDriver arg0) {
+	public void afterNavigateRefresh(WebDriver arg0) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -623,31 +617,31 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void beforeNavigateRefresh(@SuppressWarnings("null") WebDriver arg0) {
+	public void beforeNavigateRefresh(WebDriver arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void afterAlertAccept(@SuppressWarnings("null") WebDriver arg0) {
+	public void afterAlertAccept(WebDriver arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void afterAlertDismiss(@SuppressWarnings("null") WebDriver arg0) {
+	public void afterAlertDismiss(WebDriver arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void beforeAlertAccept(@SuppressWarnings("null") WebDriver arg0) {
+	public void beforeAlertAccept(WebDriver arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void beforeAlertDismiss(@SuppressWarnings("null") WebDriver arg0) {
+	public void beforeAlertDismiss(WebDriver arg0) {
 		// TODO Auto-generated method stub
 		
 	}

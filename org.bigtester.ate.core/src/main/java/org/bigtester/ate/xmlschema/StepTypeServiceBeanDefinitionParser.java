@@ -49,7 +49,6 @@ public class StepTypeServiceBeanDefinitionParser extends BaseTestStepBeanDefinit
 	/**
 	 * {@inheritDoc}
 	 */
-	@SuppressWarnings("null")
 	@Override
 	protected AbstractBeanDefinition parseInternal(@Nullable Element element,
 			@Nullable ParserContext parserContext) {

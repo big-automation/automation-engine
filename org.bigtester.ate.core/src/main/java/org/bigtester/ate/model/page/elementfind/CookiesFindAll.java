@@ -46,7 +46,6 @@ public class CookiesFindAll extends BaseCookieFinderImpl
 	public CookiesManager doFind(IMyWebDriver myWebDriver)
 			throws NoSuchElementException {
 		WebDriver webD = myWebDriver.getWebDriverInstance();
-		@SuppressWarnings("null")
 		Set<Cookie> coos = webD.manage().getCookies();
 		if (null == coos)
 			coos = new HashSet<Cookie>();

@@ -66,7 +66,6 @@ public class ElementInputDataDaoImpl extends BaseDaoImpl {
 	 * @param repeatStepName the repeat step name
 	 * @return the list
 	 */
-	@SuppressWarnings("null")
 	public List<RepeatStepElementInputData> refreshRepeatStepData(List<RepeatStepElementInputData> eids, String repeatStepName) {
 		this.getAllRepeatStepElementInputData(repeatStepName).forEach(eid->{
 			getDbEM().remove(eid);	
@@ -122,7 +121,6 @@ public class ElementInputDataDaoImpl extends BaseDaoImpl {
 	 *            the input data id
 	 * @return the value
 	 */
-	@SuppressWarnings("null")
 	public String getValue(String inputDataID) throws TestDataException {
 
 		List<ElementInputData> sERs = (List<ElementInputData>) getDbEM()
@@ -151,7 +149,6 @@ public class ElementInputDataDaoImpl extends BaseDaoImpl {
 	 * @return the eid
 	 * @throws TestDataException the test data exception
 	 */
-	@SuppressWarnings("null")
 	public ElementInputData getEid(String inputDataID) throws TestDataException {
 
 		List<ElementInputData> sERs = (List<ElementInputData>) getDbEM()
@@ -180,7 +177,6 @@ public class ElementInputDataDaoImpl extends BaseDaoImpl {
 	 *            the input data id
 	 * @return the value
 	 */
-	@SuppressWarnings("null")
 	public String getValue(String inputDataID, String repeatStepName,
 			String repeatStepExternalLoopPath, int iteration)
 			throws RepeatTestDataException {
@@ -217,7 +213,6 @@ public class ElementInputDataDaoImpl extends BaseDaoImpl {
 	 *            the input data id
 	 * @return the value
 	 */
-	@SuppressWarnings("null")
 	public String getValue(String inputDataID, String repeatStepName,
 			int iteration)
 			throws RepeatTestDataException {

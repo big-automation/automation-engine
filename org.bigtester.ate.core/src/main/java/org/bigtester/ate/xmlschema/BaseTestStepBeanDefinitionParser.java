@@ -107,10 +107,8 @@ public class BaseTestStepBeanDefinitionParser extends AbstractBeanDefinitionPars
 					new RuntimeBeanReference(testcaseParentName));
 		}
 		
-        @SuppressWarnings("null")
 		List<Element> asserterReferences = (List<Element>) DomUtils.getChildElementsByTagName(element, "asserterReferences");
         if (null != asserterReferences && asserterReferences.size() == 1) {
-	        @SuppressWarnings("null")
 			List<Element> allReferences = (List<Element>) DomUtils.getChildElementsByTagName(asserterReferences.get(0), "ateXmlElementReference");
 	        
 	        if (allReferences != null && !allReferences.isEmpty()) {
@@ -122,7 +120,7 @@ public class BaseTestStepBeanDefinitionParser extends AbstractBeanDefinitionPars
         return (AbstractBeanDefinition) bDef;
       
 	}
-	@SuppressWarnings({ "null", "unused" })
+	
 	private static void parseAsserterComponents(List<Element> childElements,
 			BeanDefinition beanDef, ParserContext parserContext) {
 		ManagedList<BeanDefinition> children = new ManagedList<BeanDefinition>(//NOPMD

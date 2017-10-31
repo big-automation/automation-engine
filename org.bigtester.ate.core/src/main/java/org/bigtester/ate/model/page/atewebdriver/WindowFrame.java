@@ -156,7 +156,6 @@ public class WindowFrame {
 	 * Refresh child frames.
 	 * @throws PageFrameRefreshException 
 	 */
-	@SuppressWarnings("null")
 	public void refreshChildFrames() {
 		try {
 			obtainFrameFocus();

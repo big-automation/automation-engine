@@ -113,12 +113,11 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	/**
 	 * Clean up asserters.
 	 */
-	@SuppressWarnings("null")
 	protected void cleanUpAsserters() {
 		for (int i = 0; i < getTestStepList().size(); i++) {
 			if (!getTestStepList().get(i).getExpectedResultAsserter().isEmpty()) {
-				getTestStepList().get(i).getExpectedResultAsserter().removeAll(
-					getTestStepList().get(i).getExpectedResultAsserter());
+	            getTestStepList().get(i).getExpectedResultAsserter().removeAll(
+                    getTestStepList().get(i).getExpectedResultAsserter());
 			}
 		}
 	}
@@ -154,7 +153,6 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	 * @throws StepExecutionException
 	 * @throws PageValidationException
 	 */
-	@SuppressWarnings("null")
 	@TestCaseLoggable (level=ATELogLevel.INFO)
 	public void goSteps() throws StepExecutionException, PageValidationException, IllegalStateException,
 			                     RuntimeDataException 
@@ -309,7 +307,7 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 				} else {
 					throw GlobalUtils.createInternalError("there are 0 step name found in xml implementation.");
 				}
-			}
+			}	
 		}
 		
 		for (int i = startIndex; i <= endIndex; i++) {			
@@ -365,13 +363,14 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 					Reporter.getCurrentTestResult().setThrowable(e);
 					throw e;
 				}				
-			}
+			}			
 
 			if (stepThinkTime > 0) {
 				ThinkTime thinkTimer = new ThinkTime(stepThinkTime);
 				thinkTimer.setTimer();
 			}
 		}
+	    
 		Reporter.getCurrentTestResult().setThrowable(null);
 	}
 
@@ -379,7 +378,7 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setApplicationContext(@SuppressWarnings("null") ApplicationContext applicationContext)
+	public void setApplicationContext(ApplicationContext applicationContext)
 			throws BeansException {
 		// TODO Auto-generated method stub
 		this.testCaseContext = applicationContext;		
@@ -388,7 +387,6 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer, Appli
 	/**
 	 * @return the testCaseContext
 	 */
-	@SuppressWarnings("null")
 	public ApplicationContext getTestCaseContext() {
 		return testCaseContext;
 	}

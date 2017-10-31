@@ -121,7 +121,6 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 	private boolean correctedOnTheFly;
 	
 	/** The cucumber step type. */
-	@SuppressWarnings("null")
 	private CucumberStepType cucumberStepType;
 	
 	/**

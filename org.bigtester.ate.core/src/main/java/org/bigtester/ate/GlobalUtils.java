@@ -220,7 +220,6 @@ public class GlobalUtils implements ApplicationContextAware {
 	 * @throws NoSuchBeanDefinitionException
 	 *             the no such bean definition exception
 	 */
-	@SuppressWarnings("null")
 	public static @Nullable Map<String, AbstractRunTimeInputDataHolder> findRunTimeDataHolderBeans(
 			ApplicationContext appCtx) throws NoSuchBeanDefinitionException {
 		return appCtx.getBeansOfType(AbstractRunTimeInputDataHolder.class);
@@ -282,7 +281,6 @@ public class GlobalUtils implements ApplicationContextAware {
 	 *            the app ctx
 	 * @return the case data files
 	 */
-	@SuppressWarnings("null")
 	@Nullable
 	public static List<Resource> getCaseDataFiles(ApplicationContext appCtx) {
 		Map<String, Homepage> homepages = appCtx.getBeansOfType(Homepage.class,
@@ -318,7 +316,6 @@ public class GlobalUtils implements ApplicationContextAware {
 	 *            the app ctx
 	 * @return the case data files
 	 */
-	@SuppressWarnings("null")
 	@Nullable
 	public static List<Resource> getCaseDataFiles() {
 		Map<String, Homepage> homepages = GlobalUtils.getApx().getBeansOfType(Homepage.class,

@@ -85,7 +85,7 @@ public class TestProject {
 	
 	/** The filtering test case name. */
 	@Nullable
-	private ArrayList<CucumberFilter> testProjectFilter = new ArrayList<>();
+	private ArrayList<CucumberFilter> testProjectTestCaseFilter = new ArrayList<>();
 	
 	/** The filtering step name. */
 	//@Nullable
@@ -110,7 +110,6 @@ public class TestProject {
 	 * @param testProjectListener
 	 *            the test project listener
 	 */	
-	@SuppressWarnings("null")
 	public TestProject(Resource globalInitXmlFile) {
 		this.globalInitXmlFile = globalInitXmlFile;
 	}
@@ -146,12 +145,11 @@ public class TestProject {
 	 * @throws IOException
 	 * @throws ParseException
 	 */
-	@SuppressWarnings("null")
 	@TestProjectLoggable (level=ATELogLevel.INFO)
 	public void runSuites() throws ClassNotFoundException, ParseException,
 			IOException {
 		//cucumberDataInjector.inject("test", "test1");
-		this.runSuites(this.testProjectFilter);
+		this.runSuites(this.testProjectTestCaseFilter);
 //
 //		final TestProjectListener tla = new TestProjectListener(this);
 //		final TestCaseResultModifier repeatStepResultModifier = new TestCaseResultModifier();
@@ -363,16 +361,15 @@ public class TestProject {
 	/**
 	 * @return the testProjectfilter
 	 */
-	@SuppressWarnings("null")
 	public ArrayList<CucumberFilter> getProjectFilter() {
-		return testProjectFilter;
+		return testProjectTestCaseFilter;
 	}
 
 	/**
 	 * set the testProjectfilter
 	 */
 	public void setProjectFilter(ArrayList<CucumberFilter> filter) {
-		testProjectFilter = filter;
+		testProjectTestCaseFilter = filter;
 	}
 	
 	/**
@@ -385,7 +382,6 @@ public class TestProject {
 	/**
 	 * @return the filteringTestCaseName
 	 */
-	//@SuppressWarnings("null")
 	//public String getFilteringTestCaseName() {
 	//	return filteringTestCaseName;
 	//}
@@ -400,7 +396,6 @@ public class TestProject {
 	/**
 	 * @return the filteringStepName
 	 */
-	//@SuppressWarnings("null")
 	//public String getFilteringStepName() {
 	//	return filteringStepName;
 	//}
@@ -430,7 +425,6 @@ public class TestProject {
 	/**
 	 * @return the filteringTestSuiteName
 	 */
-	//@SuppressWarnings("null")
 	//public String getFilteringTestSuiteName() {
 	//	return filteringTestSuiteName;
 	//}
@@ -445,7 +439,6 @@ public class TestProject {
 	/**
 	 * @return the cucumberDataTable
 	 */
-	@SuppressWarnings("null")
 	public List<Map<String,String>> getCucumberDataTable() {
 		return cucumberDataTable;
 	}

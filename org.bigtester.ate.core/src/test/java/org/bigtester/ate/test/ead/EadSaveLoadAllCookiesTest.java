@@ -75,7 +75,6 @@ public class EadSaveLoadAllCookiesTest extends BigtesterProjectTest {
 		WebDriver webDriver = getMyDriver().getWebDriverInstance();
 
 		webDriver.manage().deleteAllCookies();
-		@SuppressWarnings("null")
 		Set<Cookie> emptyCookies = webDriver.manage().getCookies();
 		Assert.assertEquals(emptyCookies.size(), 0);
 
@@ -84,7 +83,6 @@ public class EadSaveLoadAllCookiesTest extends BigtesterProjectTest {
 						"stepOpenBigtesterHomePage"));
 		homeStep.doStep(null);
 
-		@SuppressWarnings("null")
 		Set<Cookie> homepageCookies = webDriver.manage().getCookies();
 		Assert.assertTrue(!homepageCookies.isEmpty());
 
@@ -119,7 +117,6 @@ public class EadSaveLoadAllCookiesTest extends BigtesterProjectTest {
 				.getBean("eadLoadCookies");
 		testEad.doAction();
 
-		@SuppressWarnings("null")
 		Set<Cookie> loadedCookies = webDriver.manage().getCookies();
 		Assert.assertTrue(!originalCookies.isEmpty());
 		Assert.assertEquals(originalCookies, loadedCookies);

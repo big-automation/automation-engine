@@ -72,7 +72,6 @@ public class TestDatabaseInitializer {
 	final private List<InputStream> initXmlFiles = new ArrayList<InputStream>();
 
 	/** The datasets. */
-	@SuppressWarnings("null")
 	@Nullable
 	transient private IDataSet[] datasets;// NOPMD
 
@@ -103,7 +102,6 @@ public class TestDatabaseInitializer {
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	@SuppressWarnings("null")
 	public void setInitXmlFiles(List<Resource> initXmlFile) throws IOException {
 		getInitXmlFiles().clear();
 		for (int i = 0; i < initXmlFile.size(); i++) {
@@ -127,7 +125,6 @@ public class TestDatabaseInitializer {
 	 * @throws MalformedURLException
 	 *             the malformed url exception
 	 */
-	@SuppressWarnings("null")
 	public void initializeGlobalDataFile(ApplicationContext context)
 			throws DatabaseUnitException, SQLException, MalformedURLException {
 		DataSource datas = GlobalUtils.findDataSourceBean(context);
@@ -319,7 +316,6 @@ public class TestDatabaseInitializer {
 	/**
 	 * @param datasets the datasets to set
 	 */
-	@SuppressWarnings("null")
 	public void setDatasets(IDataSet[] datasets) {//NOPMD
 		this.datasets = datasets;
 	}

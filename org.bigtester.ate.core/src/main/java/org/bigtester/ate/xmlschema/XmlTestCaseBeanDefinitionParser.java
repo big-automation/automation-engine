@@ -61,10 +61,8 @@ public class XmlTestCaseBeanDefinitionParser extends AbstractBeanDefinitionParse
         if (StringUtils.hasText(testCaseName)) {
         	factory.addConstructorArgValue( testCaseName);
         }
-        @SuppressWarnings("null")
 		List<Element> dependencies = (List<Element>) DomUtils.getChildElementsByTagName(element, XsdElementConstants.ELEMENT_CASEDEPENDENCIES);
         if (null != dependencies && dependencies.size() == 1) {
-	        @SuppressWarnings("null")
 			List<Element> allDependencies = (List<Element>) DomUtils.getChildElementsByTagName(dependencies.get(0), XsdElementConstants.ELEMENT_CASEDEPENDENCY);
 	        
 	        if (allDependencies != null && !allDependencies.isEmpty()) {
@@ -75,7 +73,6 @@ public class XmlTestCaseBeanDefinitionParser extends AbstractBeanDefinitionParse
         return factory.getBeanDefinition();
     }
 	
-	@SuppressWarnings("null")
 	private static void parseCaseDependenciesInnerComponents(List<Element> allDependencies, BeanDefinitionBuilder factory, ParserContext parserContext) {
         ManagedList<BeanDefinition> children = new ManagedList<BeanDefinition>(allDependencies.size());
         for (Element element : allDependencies) {

@@ -110,7 +110,6 @@ public class StepDataLogger implements
 	//
 	// }
 
-	@SuppressWarnings("null")
 	private boolean isAlreadyLoggedInRepeatStep(Object data) {
 		boolean alreadyLoggedInRepeatStep = false; // NOPMD
 
@@ -125,7 +124,6 @@ public class StepDataLogger implements
 		return alreadyLoggedInRepeatStep;
 	}
 
-	@SuppressWarnings("null")
 	private void logRepeatStepData(Object data, RepeatStep liveRepeat) {
 
 		if (!isAlreadyLoggedInRepeatStep(data)) {
@@ -326,7 +324,6 @@ public class StepDataLogger implements
 		}
 	}
 
-	@SuppressWarnings("null")
 	private void logRepeatStepDataRecursivelyInStepJumpingEnclosedContainer(
 			Map<ITestStep, List<Object>> stepDataRegistry, ITestStep step,
 			RepeatStep liveRepeatStep) {
@@ -354,7 +351,6 @@ public class StepDataLogger implements
 	/**
 	 * {@inheritDoc}
 	 */
-	@SuppressWarnings("null")
 	@Override
 	public void onApplicationEvent(@Nullable RepeatStepInOutEvent event) {
 		if (null == event)

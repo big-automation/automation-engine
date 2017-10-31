@@ -180,7 +180,6 @@ public final class TestProjectRunner {
 	public static void runTest(@Nullable final String testProjectXml) throws DatabaseUnitException, SQLException, IOException, ClassNotFoundException, ParseException  {
 		registerXsdNameSpaceParsers();
 		registerProblemHandlers();
-		@SuppressWarnings("null")
 		ApplicationContext context = loadTestProjectContext(testProjectXml);
 
 		initDB(context);
@@ -235,7 +234,6 @@ public final class TestProjectRunner {
 		return testProjectContext;
 	}
 	
-	@SuppressWarnings("null")
 	private static void registerLegacyXsdNameSpaceParsers() {
 		/******************************* following for Test Project ******************************/
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_TESTPROJECT, new TestProjectBeanDefinitionParser());
@@ -343,11 +341,9 @@ public final class TestProjectRunner {
 	public static void registerXsdNameSpaceParsers() {
 		registerLegacyXsdNameSpaceParsers();
 		Reflections reflections = new Reflections("org.bigtester.ate");
-		@SuppressWarnings("null")
 		Set<Class<? extends IXsdBeanDefinitionParser>> subTypes = reflections.getSubTypesOf(IXsdBeanDefinitionParser.class);
 		for (Class<? extends IXsdBeanDefinitionParser> parser:subTypes) {
 			try {
-				@SuppressWarnings("null")
 				Object ins = parser.newInstance();
 				
 				Method getParser = parser.getDeclaredMethod("getParser");

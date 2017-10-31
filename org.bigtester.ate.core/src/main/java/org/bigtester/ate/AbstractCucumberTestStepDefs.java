@@ -84,7 +84,6 @@ abstract public class AbstractCucumberTestStepDefs {
 	/**
 	 * Instantiates a new abstract cucumber test step defs.
 	 */
-	@SuppressWarnings("null")
 	public AbstractCucumberTestStepDefs() 
 	{
 		TestProjectRunner.registerXsdNameSpaceParsers();
@@ -98,7 +97,6 @@ abstract public class AbstractCucumberTestStepDefs {
 	 * @throws IOException
 	 * @throws ParseException
 	 */
-	@SuppressWarnings("null")
 	private StepResultStatus runStep(ApplicationContext context, CucumberFilter executionFilter, 
 									List<Map<String, String>> featureDataTable,
 									ActionNameValuePair... actionNameValuePairs)
@@ -107,7 +105,6 @@ abstract public class AbstractCucumberTestStepDefs {
 		TestProject testProj = GlobalUtils.findTestProjectBean(context);
 		ArrayList<CucumberFilter> filter = testProj.getProjectFilter();
 		filter.add(executionFilter);
-		testProj.setProjectFilter(filter);		
 		testProj.setCucumberDataTable(featureDataTable);
 		if (actionNameValuePairs.length > 0)
 			testProj.setCucumberActionNameValuePairs(new ArrayList<ActionNameValuePair>(
@@ -150,7 +147,6 @@ abstract public class AbstractCucumberTestStepDefs {
 	 * @param ateStepName the ate step name
 	 * @return the string
 	 */
-	@SuppressWarnings("null")
 	protected StepResultStatus runCucumberStep(String ateStepName) 
 	{
 		String testProjectXml = this.getAteGlueTestProjectXmlFilePath();
@@ -190,7 +186,6 @@ abstract public class AbstractCucumberTestStepDefs {
 	 * @param actionNameValuePairs the action name value pairs
 	 * @return the step result status
 	 */
-	@SuppressWarnings("null")
 	protected StepResultStatus runCucumberStep(CucumberFilter executionFilter,
 								    	       ActionNameValuePair... actionNameValuePairs) 
 	{
@@ -206,7 +201,6 @@ abstract public class AbstractCucumberTestStepDefs {
 	 * @param executionFilter the execution filter
 	 * @return the step result status
 	 */
-	@SuppressWarnings("null")
 	protected StepResultStatus runCucumberStep(CucumberFilter executionFilter) 
 	{
 		String testProjectXml = this.getAteGlueTestProjectXmlFilePath();
@@ -262,7 +256,6 @@ abstract public class AbstractCucumberTestStepDefs {
 	/**
 	 * Close ate execution context.
 	 */
-	@SuppressWarnings("null")
 	protected void closeAteExecutionContext() {
 		if (testProjectContext != null) {
 			((ConfigurableApplicationContext) testProjectContext).close();

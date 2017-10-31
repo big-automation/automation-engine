@@ -73,7 +73,6 @@ public class CaseTypeService extends TestCase implements ITestStep, ICucumberTes
 	/**
 	 * @param testCaseName
 	 */
-	@SuppressWarnings("null")
 	public CaseTypeService(String testCaseName, String testCaseFileName,
 			ITestCase parentTestCase) {
 		super(testCaseName);
@@ -182,7 +181,6 @@ public class CaseTypeService extends TestCase implements ITestStep, ICucumberTes
 
 			/* transfer all the dataholders value to parent test case */
 			for (int j = 0; j < getDataHolders().size(); j++) {
-				@SuppressWarnings("null")
 				IDataParser parentDataHolder = getDataHolders().get(j);
 				if (parentDataHolder instanceof ICaseServiceParsedDataParser) {
 					ICaseServiceParsedDataParser parentDataHolderTemp = (ICaseServiceParsedDataParser) parentDataHolder;

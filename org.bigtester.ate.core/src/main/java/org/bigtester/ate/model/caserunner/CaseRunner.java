@@ -190,7 +190,6 @@ public class CaseRunner implements IRunTestCase {
 	 * @param testData
 	 *            the test data
 	 */
-	@SuppressWarnings("null")
 	@BeforeMethod(alwaysRun = true)
 	public void testData(Method method, Object[] testData) { // NOPMD
 		String testCase;
@@ -231,8 +230,7 @@ public class CaseRunner implements IRunTestCase {
 		try {
 			myWebD.getMultiWindowsHandler().refreshWindowsList(webD,false);
 		} catch (BrowserUnexpectedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			myWebD.getMultiWindowsHandler().retryRefreshWindows(webD, false);
 		}
 		mainDriver = myWebD;
 		myTestCase = GlobalUtils.findTestCaseBean(getContext());
@@ -314,7 +312,6 @@ public class CaseRunner implements IRunTestCase {
 	/**
 	 * Tear down.
 	 */
-	@SuppressWarnings("null")
 	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
 		try {

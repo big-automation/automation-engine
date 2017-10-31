@@ -45,7 +45,6 @@ public class CaseTypeServiceBeanDefinitionParser extends AbstractBeanDefinitionP
 	/**
 	 * {@inheritDoc}
 	 */
-	@SuppressWarnings("null")
 	@Override
 	protected @Nullable AbstractBeanDefinition parseInternal(@Nullable Element element,
 			@Nullable ParserContext parserContext) {

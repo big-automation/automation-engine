@@ -36,10 +36,8 @@ public class ATEXMLReporter implements IReporter {
 	public static final String FILE_NAME = "testng-results2.xml";
 
 	private final XMLReporterConfig config = new XMLReporterConfig();
-	@SuppressWarnings("null")
 	private XMLStringBuffer rootBuffer;
 
-	@SuppressWarnings("null")
 	@Override
 	public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites,
 			String outputDirectory) {
@@ -79,7 +77,6 @@ public class ATEXMLReporter implements IReporter {
 				null /* no prefix */);
 	}
 
-	@SuppressWarnings("null")
 	private void writeReporterOutput(XMLStringBuffer xmlBuffer) {
 		// TODO: Cosmin - maybe a <line> element isn't indicated for each line
 		xmlBuffer.push(XMLReporterConfig.TAG_REPORTER_OUTPUT);
@@ -129,7 +126,6 @@ public class ATEXMLReporter implements IReporter {
 		xmlBuffer.push(XMLReporterConfig.TAG_SUITE, getSuiteAttributes(suite));
 		writeSuiteGroups(xmlBuffer, suite);
 
-		@SuppressWarnings("null")
 		Map<String, ISuiteResult> results = suite.getResults();
 		ATEXMLSuiteResultWriter suiteResultWriter = new ATEXMLSuiteResultWriter(
 				config);
@@ -140,7 +136,6 @@ public class ATEXMLReporter implements IReporter {
 		xmlBuffer.pop();
 	}
 
-	@SuppressWarnings("null")
 	private void writeSuiteGroups(XMLStringBuffer xmlBuffer, ISuite suite) {
 		xmlBuffer.push(XMLReporterConfig.TAG_GROUPS);
 		Map<String, Collection<ITestNGMethod>> methodsByGroups = suite
@@ -168,7 +163,6 @@ public class ATEXMLReporter implements IReporter {
 		xmlBuffer.pop();
 	}
 
-	@SuppressWarnings("null")
 	private Properties getSuiteAttributes(ISuite suite) {
 		Properties props = new Properties();
 		props.setProperty(XMLReporterConfig.ATTR_NAME, suite.getName());
@@ -236,7 +230,6 @@ public class ATEXMLReporter implements IReporter {
 		config.setFileFragmentationLevel(fileFragmentationLevel);
 	}
 
-	@SuppressWarnings("null")
 	public XMLReporterConfig.StackTraceLevels getStackTraceOutput() {
 		return config.getStackTraceOutput();
 	}
@@ -245,7 +238,6 @@ public class ATEXMLReporter implements IReporter {
 		config.setStackTraceOutput(none);
 	}
 
-	@SuppressWarnings("null")
 	public String getOutputDirectory() {
 		return config.getOutputDirectory();
 	}
@@ -270,7 +262,6 @@ public class ATEXMLReporter implements IReporter {
 		config.setSplitClassAndPackageNames(splitClassAndPackageNames);
 	}
 
-	@SuppressWarnings("null")
 	public String getTimestampFormat(XMLReporterConfig config) {
 		return config.getTimestampFormat();
 	}

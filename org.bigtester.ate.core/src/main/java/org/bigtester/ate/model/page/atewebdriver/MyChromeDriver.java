@@ -127,7 +127,6 @@ public class MyChromeDriver extends AbstractWebDriverBase implements IMyWebDrive
 		    return retVal;	
 	}
 	
-	@SuppressWarnings("null")
 	private List<String> parseArgsIntoArray(String argsStr) {
 		List<String> retVal = new ArrayList<String>();
 		String[] args = argsStr.split("\\s+");
@@ -257,7 +256,9 @@ public class MyChromeDriver extends AbstractWebDriverBase implements IMyWebDrive
 		if (null == retVal) {
 			setChromeDriverSystemEnv();
 			ChromeOptions ops = new ChromeOptions();
-			ops.addArguments(getBrowserProfile().getStartArguments());
+            if (getBrowserProfile().getStartArguments().size() > 0) {		
+                ops.addArguments(getBrowserProfile().getStartArguments());		
+            }
 			if (getBrowserProfile().isPreserveCookiesOnExecutions()) {
 				ops.addArguments("--user-data-dir="
 						+ getBrowserProfile().getTestCaseChromeUserDataDir());

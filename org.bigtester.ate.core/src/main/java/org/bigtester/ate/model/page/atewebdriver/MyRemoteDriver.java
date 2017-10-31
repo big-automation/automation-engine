@@ -42,7 +42,6 @@ import org.eclipse.jdt.annotation.Nullable;
 public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDriver {
 
 	/** The caps. */
-	@SuppressWarnings("null")
 	private Optional<DesiredCapabilities> caps = Optional.empty();
 	
 	/** The url. */
@@ -50,7 +49,6 @@ public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDrive
 	/**
 	 * Instantiates a new my Chrome driver.
 	 */
-	@SuppressWarnings("null")
 	public MyRemoteDriver(String browserName, String version, String platform, String url) {
 		
 		super();
@@ -84,7 +82,6 @@ public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDrive
 	/**
 	 * Instantiates a new my Chrome driver.
 	 */
-	@SuppressWarnings("null")
 	public MyRemoteDriver() {		
 		super();		 
 	}	
@@ -101,7 +98,6 @@ public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDrive
 	/**
 	 * {@inheritDoc}
 	 */
-	@SuppressWarnings("null")
 	@Override
 	public WebDriver getWebDriverInstance() {
 		WebDriver retVal = getWebDriver();

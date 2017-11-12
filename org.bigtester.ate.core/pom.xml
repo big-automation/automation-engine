@@ -169,7 +169,7 @@
 			<plugin>
 				<groupId>com.lazerycode.selenium</groupId>
 				<artifactId>driver-binary-downloader-maven-plugin</artifactId>
-				<version>1.0.14</version>
+				<version>1.0.16</version>
 				<configuration>
 					<!-- root directory that downloaded driver binaries will be stored in -->
 					<rootStandaloneServerDirectory>browserdriver</rootStandaloneServerDirectory>
@@ -384,7 +384,7 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>3.6.0</version>
+			<version>3.7.1</version>
 		</dependency>			
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-htmlunit-driver -->
 		<dependency>
@@ -512,7 +512,7 @@
 		<dependency>
 			<groupId>com.lazerycode.selenium</groupId>
 			<artifactId>driver-binary-downloader-maven-plugin</artifactId>
-			<version>1.0.14</version>
+			<version>1.0.16</version>
 		</dependency>		
 		<dependency>
 			<groupId>org.apache.maven</groupId>

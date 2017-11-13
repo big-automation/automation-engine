@@ -87,11 +87,6 @@
 		<ate:elementStep id="stepClickSignUp"
 			stepDescription="click Sign Up" stepName="clickSignUp"
 			targetStep="true" elementActionDef="clickSignUp" pageObject="publicLoginPage">
-			<property name="expectedResultAsserter">
-				<list>
-					<ref bean="publicRegisterSuccessAsserter" />
-				</list>
-			</property>
 			
 		</ate:elementStep>
 		<ate:lastStep id="mylaststep" stepName="mylaststep"

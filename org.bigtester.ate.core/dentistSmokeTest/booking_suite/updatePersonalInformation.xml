@@ -51,12 +51,7 @@
 		<ate:elementStep id="publicLogin_clickLoginButton"
 			stepDescription="click Login button to log in" stepName="clickLoginButton"
 			targetStep="true" elementActionDef="clickLoginButtonWE" pageObject="publicLoginDashBoard">
-			<property name="expectedResultAsserter">
-				<list>
-<!-- 					<ref bean="publicLoginDashBoardPropertyAsserter" /> -->
-					<ref bean="publicLoginDashBoardElementExistenceAsserter" />
-				</list>
-			</property>
+			
 		</ate:elementStep>
 		
 		<ate:elementStep id="moveMouseToPersonalInformationTab"
@@ -79,11 +74,7 @@
 		<ate:elementStep id="clickSavePersonalInfoButton"
 			stepDescription="clickSavePersonalInfoButton" stepName="clickSavePersonalInfoButton"
 			targetStep="true" elementActionDef="clickSavePersonalInfoButtonDef">
-			<property name="expectedResultAsserter">
-			<list>
-				<ref bean="savePersonalInfoElementExistenceAsserter"/>
-			</list>
-			</property>
+			
 		</ate:elementStep>
 		
 		<ate:elementStep id="publicLogin_clickLogoutLink"

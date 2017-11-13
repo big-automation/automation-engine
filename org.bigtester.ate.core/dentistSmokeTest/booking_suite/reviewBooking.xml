@@ -50,12 +50,10 @@
 		<ate:elementStep id="publicLogin_clickLoginButton"
 			stepDescription="click Login button to log in" stepName="clickLoginButton"
 			targetStep="true" elementActionDef="clickLoginButtonWE" pageObject="publicLoginDashBoard">
-			<property name="expectedResultAsserter">
-				<list>
-<!-- 					<ref bean="publicLoginDashBoardPropertyAsserter" /> -->
-					<ref bean="publicLoginDashBoardElementExistenceAsserter" />
-				</list>
-			</property>
+			<ate:asserterReferences>
+				<ate:ateXmlElementReference id="publicLoginDashBoardElementExistenceAsserterRef" ateXmlElementID="publicLoginDashBoardElementExistenceAsserter"/>
+			</ate:asserterReferences>
+			
 		</ate:elementStep>
 		<ate:elementStep id="publicClickAppointment"
 			stepDescription="click on my appointment tab" stepName="publicClickAppointment"

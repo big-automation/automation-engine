@@ -44,8 +44,11 @@ public class ImportFromFilesAction extends PageModelBase implements
 		super(myWd);
 	}
 
+	/**
+	 * Instantiates a new import from files action.
+	 */
 	public ImportFromFilesAction() {
-	
+		super();
 	}
 
 	

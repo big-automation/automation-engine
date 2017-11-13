@@ -41,7 +41,11 @@ public class RegularPage extends BasePageObject implements IPageObject{
 	public RegularPage(IMyWebDriver myWd) {
 		super(myWd);
 	}
-	public RegularPage() {
+	
+	/**
+	 * Instantiates a new regular page.
+	 */
+	public RegularPage() {//NOPMD
 		
 	}
 	

@@ -10,5 +10,12 @@ import org.openqa.selenium.WebDriver;
  *
  */
 public interface IMyWebDriver2 extends IMyWebDriver {
+	
+	/**
+	 * Gets the web driver instance.
+	 *
+	 * @param forceToNew the force to new
+	 * @return the web driver instance
+	 */
 	WebDriver getWebDriverInstance(boolean forceToNew);
 }

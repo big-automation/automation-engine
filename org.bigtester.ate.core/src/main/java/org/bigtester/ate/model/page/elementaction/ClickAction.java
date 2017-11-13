@@ -43,8 +43,11 @@ public class ClickAction extends BaseElementAction implements
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * Instantiates a new click action.
+	 */
 	public ClickAction() {
-		
+		super();
 		// TODO Auto-generated constructor stub
 	}
 

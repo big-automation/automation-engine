@@ -60,8 +60,19 @@ public interface ITestStep {
 	 */
 	int getCorrelatedOptionalStepsUtilInclusiveIndex(IStepJumpingEnclosedContainer jumpingContainer);
 	
+	/**
+	 * Gets the success conditionally jump to step index.
+	 *
+	 * @param jumpingContainer the jumping container
+	 * @return the success conditionally jump to step index
+	 */
 	int getSuccessConditionallyJumpToStepIndex(IStepJumpingEnclosedContainer jumpingContainer);
 	
+	/**
+	 * Gets the success conditionally jump to step.
+	 *
+	 * @return the success conditionally jump to step
+	 */
 	String getSuccessConditionallyJumpToStep();
 
 	/**

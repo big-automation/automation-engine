@@ -273,10 +273,17 @@ public class CaseTypeService extends TestCase implements ITestStep { // NOPMD
 		// TODO add optionalStepUtil parameter for caseTypeService
 		return "";
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public int getSuccessConditionallyJumpToStepIndex(IStepJumpingEnclosedContainer jumpingContainer) {
 		return -1;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public String getSuccessConditionallyJumpToStep() {
 		return "";
 	}

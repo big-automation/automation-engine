@@ -202,7 +202,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 					checkCloseWindowAlert(win.getWindowHandle());// test if there is alert. if no, refresh windows list
 				} catch (NoAlertPresentException noAlert) {
 					refreshWindowsList(getDriver(), false);
-					if (this.getWindows().size()>1)
+					if (this.getWindows().size()>1) //NOPMD
 						itr = this.getWindows().iterator();
 					else
 						break;
@@ -399,7 +399,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	 */
 	@Override
 	public void beforeChangeValueOf(WebElement element, WebDriver driver,
-			CharSequence[] keysToSend) {
+			CharSequence[] keysToSend) {//NOPMD
 		// TODO Auto-generated method stub
 		
 	}
@@ -409,7 +409,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	 */
 	@Override
 	public void afterChangeValueOf(WebElement element, WebDriver driver,
-			CharSequence[] keysToSend) {
+			CharSequence[] keysToSend) {//NOPMD
 		try {
 			refreshWindowsList(driver, false);
 		} catch (BrowserUnexpectedException e) {
@@ -436,6 +436,9 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public void retryRefreshWindows(WebDriver driver, boolean refreshFrames) {
 		this.resetWindows();
 		try {

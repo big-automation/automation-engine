@@ -67,14 +67,14 @@ public class MyWebElement<T> extends PageModelBase {
 			ITestObjectAction<T> testObjectActionTmp = new TestObjectAction(iElmAction).getCapability(ITestObjectAction.class); 
 			if (null == testObjectActionTmp) {
 				throw GlobalUtils
-						.createNotInitializedException("test object finder");
+						.createNotInitializedException("test object finder"); //NOPMD
 			} else {
 				testObjectAction = testObjectActionTmp;
 			}
 		} 
 		ITestObjectFinder<T> testObjectFinderTmp = new TestObjectFinder(iElmFind).getCapability(ITestObjectFinder.class); 
 		if (null == testObjectFinderTmp) {
-			throw GlobalUtils.createNotInitializedException("test object finder");
+			throw GlobalUtils.createNotInitializedException("test object finder");//NOPMD
 		} else {
 			testObjectFinder = testObjectFinderTmp;
 		}
@@ -88,7 +88,7 @@ public class MyWebElement<T> extends PageModelBase {
 	 */
 	public MyWebElement(final ITestObjectFinderImpl iElmFind,
 			@Nullable final ITestObjectActionImpl iElmAction) {
-		
+		super();
 		if (null == iElmAction) {
 			testObjectAction = null; //NOPMD
 		} else {

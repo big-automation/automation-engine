@@ -56,6 +56,13 @@ public class StepInputDataValue extends BaseInputDataValue implements IStepInput
 		this.dataValueID = dataValueID;
 		initDataValue (dataValueID);
 	}
+	
+	/**
+	 * Instantiates a new step input data value.
+	 *
+	 * @param dataValueID the data value id
+	 * @throws TestDataException the test data exception
+	 */
 	public StepInputDataValue(
 			String dataValueID) throws TestDataException {
 		super("");
@@ -63,8 +70,13 @@ public class StepInputDataValue extends BaseInputDataValue implements IStepInput
 		//initDataValue (dataValueID);
 	}
 
+	/**
+	 * Inits the.
+	 *
+	 * @throws TestDataException the test data exception
+	 */
 	@PostConstruct
-	private void init() throws TestDataException {
+	public void init() throws TestDataException {
 		initDataValue(dataValueID);
 	}
 	

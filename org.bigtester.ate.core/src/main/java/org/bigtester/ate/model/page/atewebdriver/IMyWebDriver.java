@@ -54,6 +54,11 @@ public interface IMyWebDriver {
 	 */
 	IMultiWindowsHandler getMultiWindowsHandler();
 
+	/**
+	 * Sets the multi windows handler.
+	 *
+	 * @param multiWindowsHandler the new multi windows handler
+	 */
 	void setMultiWindowsHandler(IMultiWindowsHandler multiWindowsHandler);
 	/**
 	 * Save screen shot. if pathFileName supplied,

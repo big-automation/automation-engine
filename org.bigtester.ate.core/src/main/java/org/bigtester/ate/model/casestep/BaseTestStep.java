@@ -98,7 +98,8 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 	
 	private String successConditionallyJumpToStep = "";// NOPMD
 	
-	private int successConditionallyJumpToStepIndex = -1;
+	/** The success conditionally jump to step index. */
+	private int successConditionallyJumpToStepIndex = -1;//NOPMD
 
 	/** The correlated optional steps util inclusive index. */
 	private int correlatedOptionalStepsUtilInclusiveIndex = -1;// NOPMD
@@ -203,6 +204,12 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 
 	}
 	
+	/**
+	 * Gets the success conditionally jump to step index.
+	 *
+	 * @param stepJumpingEnclosedContainer the step jumping enclosed container
+	 * @return the success conditionally jump to step index
+	 */
 	public int getSuccessConditionallyJumpToStepIndex(IStepJumpingEnclosedContainer stepJumpingEnclosedContainer) {
 		if (-1 == successConditionallyJumpToStepIndex
 				&& !StringUtils
@@ -631,7 +638,7 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 	 * @param successConditionallyJumpToStepIndex the successConditionallyJumpToStepIndex to set
 	 */
 	public void setSuccessConditionallyJumpToStepIndex(
-			int successConditionallyJumpToStepIndex) {
+			int successConditionallyJumpToStepIndex) {//NOPMD
 		this.successConditionallyJumpToStepIndex = successConditionallyJumpToStepIndex;
 	}
 

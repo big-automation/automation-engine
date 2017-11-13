@@ -67,7 +67,11 @@ public class PageModelBase {//NOPMD
 	public PageModelBase(IMyWebDriver myWd) {
 		this.myWd = myWd;
 	}
+	
+	/**
+	 * Instantiates a new page model base.
+	 */
 	public PageModelBase() {
-		
+		super();
 	}
 }

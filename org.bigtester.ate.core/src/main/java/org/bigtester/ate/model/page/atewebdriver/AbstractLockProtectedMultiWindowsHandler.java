@@ -36,7 +36,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.util.StringUtils;
 
-import com.sun.jna.platform.unix.X11.Window;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 // TODO: Auto-generated Javadoc
@@ -50,7 +49,7 @@ public class AbstractLockProtectedMultiWindowsHandler {
 	final private List<BrowserWindow> windows = new ArrayList<BrowserWindow>();
 	
 	/** The lock. */
-	private final Object lock = new Object();
+	private transient final Object lock = new Object();
 	
 
 	/** The alerts. */
@@ -75,7 +74,7 @@ public class AbstractLockProtectedMultiWindowsHandler {
 	/**
 	 * Instantiates a new abstract lock protected multi windows handler.
 	 */
-	public AbstractLockProtectedMultiWindowsHandler() {
+	public AbstractLockProtectedMultiWindowsHandler() { //NOPMD
 		// TODO Auto-generated constructor stub
 	}
 	/**
@@ -141,13 +140,13 @@ public class AbstractLockProtectedMultiWindowsHandler {
 //			}
 //		}
 		for (Iterator<BrowserWindow> winItr=windows.iterator(); winItr.hasNext();) {
-			BrowserWindow bw = winItr.next();
-			if (bw.isClosed()) {
+			BrowserWindow bwin = winItr.next();
+			if (bwin.isClosed()) {
 				winItr.remove();
 				winRemoved = true;
 			} else {
 				try {
-					this.getDriver().switchTo().window(bw.getWindowHandle());
+					this.getDriver().switchTo().window(bwin.getWindowHandle());
 				} catch (NoSuchWindowException noWinE) {
 					winItr.remove();
 					winRemoved = true;
@@ -280,6 +279,9 @@ public class AbstractLockProtectedMultiWindowsHandler {
 	}
 	
 
+	/**
+	 * Reset windows.
+	 */
 	protected void resetWindows() {
 		synchronized(lock) {
 			windows.clear();

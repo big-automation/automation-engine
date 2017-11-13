@@ -305,7 +305,7 @@ public class RepeatStep extends BaseTestStep implements ITestStep, Cloneable {
 			for (int i = 0; i < repeatingStepIndexesInTestCase.size(); i++) {
 				LogbackWriter.writeDebugInfo(
 						"run step (index:" + i + "), in iteration:" + iteration
-								+ " of step:" + this.getStepName(),
+								+ " of step:" + this.getStepName(), //NOPMD
 						this.getClass());// NOPMD
 				ITestStep currentTestStepTmp = getTestCase().getTestStepList()
 						.get(repeatingStepIndexesInTestCase.get(i));

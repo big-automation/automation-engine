@@ -29,6 +29,7 @@ import java.util.Map;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.bigtester.ate.GlobalUtils;
+import org.bigtester.ate.TestProjectRunner;
 import org.bigtester.ate.constant.LogbackTag;
 import org.bigtester.ate.model.casestep.ITestCase;
 import org.bigtester.ate.model.data.TestParameters;
@@ -36,7 +37,6 @@ import org.bigtester.ate.model.data.exception.TestDataException;
 import org.bigtester.ate.model.page.atewebdriver.IMultiWindowsHandler;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver2;
-import org.bigtester.ate.model.page.atewebdriver.MySauceLabDriver;
 import org.bigtester.ate.model.project.IRunTestCase;
 import org.bigtester.ate.model.project.TestProjectListener;
 import org.bigtester.ate.systemlogger.LogbackWriter;
@@ -46,7 +46,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.UnreachableBrowserException;
 import org.springframework.beans.FatalBeanException;
 import org.springframework.beans.factory.BeanCreationException;
-import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -222,6 +221,27 @@ public class CaseRunner implements IRunTestCase {
 	public String getTestName() {
 		return this.getCurrentExecutingTCName();
 	}
+	
+	private IMyWebDriver prepareWebDriver(TestParameters testParams, ApplicationContext testCaseContext) {
+		IMyWebDriver myWebD;
+		if (testParams.getTestProject().getMyWebDriver().isPresent()) {
+			myWebD = testParams.getTestProject().getMyWebDriver().get();
+			//BeanDefinitionBuilder builder = BeanDefinitionBuilder.rootBeanDefinition(MySauceLabDriver.class);
+			  
+			DefaultListableBeanFactory factory = (DefaultListableBeanFactory) ((ConfigurableApplicationContext)testCaseContext).getBeanFactory();
+			  
+			  factory.removeBeanDefinition(TestProjectRunner.MULTIPLE_WINDOW_HANDLER);
+			  IMultiWindowsHandler winHandler = (IMultiWindowsHandler) GlobalUtils.getTargetObject(testParams.getTestProject().getAppCtx().getBean(TestProjectRunner.MULTIPLE_WINDOW_HANDLER));
+			  
+			  myWebD.setMultiWindowsHandler(winHandler);
+			  factory.registerSingleton(TestProjectRunner.MY_WEB_DRIVER, myWebD);
+			  factory.registerSingleton(TestProjectRunner.MULTIPLE_WINDOW_HANDLER, myWebD.getMultiWindowsHandler());
+		} else {
+			myWebD = (IMyWebDriver) GlobalUtils
+				.findMyWebDriver(testCaseContext);
+		}
+		return myWebD;
+	}
 
 	/**
 	 * Test runner1.
@@ -237,22 +257,8 @@ public class CaseRunner implements IRunTestCase {
 		// ApplicationContext context;
 		try {
 			context = new FileSystemXmlApplicationContext(testname);
-			IMyWebDriver myWebD;
-			if (testParams.getTestProject().getMyWebDriver().isPresent()) {
-				myWebD = testParams.getTestProject().getMyWebDriver().get();
-				//BeanDefinitionBuilder builder = BeanDefinitionBuilder.rootBeanDefinition(MySauceLabDriver.class);
-				  DefaultListableBeanFactory factory = (DefaultListableBeanFactory) ((ConfigurableApplicationContext)context).getBeanFactory();
-				  //factory.registerBeanDefinition("MyWebDriver2", builder.getBeanDefinition());
-				  factory.removeBeanDefinition("multiWindowsHandler");
-				  IMultiWindowsHandler winHandler = (IMultiWindowsHandler) GlobalUtils.getTargetObject(testParams.getTestProject().getAppCtx().getBean("multiWindowsHandler"));
-				  myWebD.setMultiWindowsHandler(winHandler);
-				  ((ConfigurableApplicationContext)context).getBeanFactory().registerSingleton("MyWebDriver2", myWebD);
-				  ((ConfigurableApplicationContext)context).getBeanFactory().registerSingleton("multiWindowsHandler", myWebD.getMultiWindowsHandler());
-			} else {
-				myWebD = (IMyWebDriver) GlobalUtils
-					.findMyWebDriver(context);
-			}
-
+			
+			IMyWebDriver myWebD = prepareWebDriver(testParams, context);
 			if (myWebD instanceof IMyWebDriver2)
 				mainDriver = ((IMyWebDriver2)myWebD).getWebDriverInstance(true);
 			else
@@ -267,18 +273,7 @@ public class CaseRunner implements IRunTestCase {
 			if (fbe.getCause() instanceof FileNotFoundException) {
 				context = new ClassPathXmlApplicationContext(testname);
 
-				IMyWebDriver myWebD;
-				if (testParams.getTestProject().getMyWebDriver().isPresent()) {
-					myWebD = testParams.getTestProject().getMyWebDriver().get();
-					//BeanDefinitionBuilder builder = BeanDefinitionBuilder.rootBeanDefinition(MySauceLabDriver.class);
-					  DefaultListableBeanFactory factory = (DefaultListableBeanFactory) ((ConfigurableApplicationContext)context).getBeanFactory();
-					  factory.removeBeanDefinition("multiWindowsHandler");
-					  ((ConfigurableApplicationContext)context).getBeanFactory().registerSingleton("MyWebDriver2", myWebD);
-					  ((ConfigurableApplicationContext)context).getBeanFactory().registerSingleton("multiWindowsHandler", myWebD.getMultiWindowsHandler());
-				} else {
-					myWebD = (IMyWebDriver) GlobalUtils
-						.findMyWebDriver(context);
-				}
+				IMyWebDriver myWebD = prepareWebDriver(testParams, context);
 				if (myWebD instanceof IMyWebDriver2)
 					mainDriver = ((IMyWebDriver2)myWebD).getWebDriverInstance(true);
 				else

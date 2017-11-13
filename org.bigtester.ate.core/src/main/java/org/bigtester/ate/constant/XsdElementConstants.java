@@ -181,7 +181,8 @@ public final class XsdElementConstants {
 	/** The Constant ATTR_TESTSTEP_OPTIONALSTEPUTILINCLUSIVE. */
 	public static final String ATTR_TESTSTEP_CORRELATEDOPTIONALSTEPSUTILINCLUSIVE = "correlatedOptionalStepsUtilInclusive";//NOPMD
 	
-	public static final String ATTR_TESTSTEP_SUCCESSCONDITIONALLYJUMPTOSTEP = "successConditionallyJumpToStep";
+	/** The Constant ATTR_TESTSTEP_SUCCESSCONDITIONALLYJUMPTOSTEP. */
+	public static final String ATTR_TESTSTEP_SUCCESSCONDITIONALLYJUMPTOSTEP = "successConditionallyJumpToStep"; //NOPMD
 	/** The Constant ATTR_TESTSTEP_STEPNAME. */
 	public static final String ATTR_TESTSTEP_STEPNAME = "stepName";
 	
@@ -505,7 +506,11 @@ public final class XsdElementConstants {
 	
 	/** The Constant ELEMENT_SAUCELABDRIVER. */
 	public static final String ELEMENT_SAUCELABDRIVER = "sauceLabDriver";
+	
+	/** The Constant ELEMENT_REMOTECHROMEDRIVER. */
 	public static final String ELEMENT_REMOTECHROMEDRIVER = "remoteChromeDriver";
+	
+	/** The Constant ATTR_REMOTECHROMEDRIVER_URL. */
 	public static final String ATTR_REMOTECHROMEDRIVER_URL = "url";
 	
 	/** The Constant ATTR_SAUCELABDRIVER_USERNAME. */

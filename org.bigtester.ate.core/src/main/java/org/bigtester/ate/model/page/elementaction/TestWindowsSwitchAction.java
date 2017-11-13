@@ -44,8 +44,11 @@ public class TestWindowsSwitchAction extends PageModelBase implements
 		super(myWd);
 	}
 	
-	public TestWindowsSwitchAction() {
-		
+	/**
+	 * Instantiates a new test windows switch action.
+	 */
+	public TestWindowsSwitchAction() {//NOPMD
+		super();
 	}
 
 	

@@ -65,7 +65,10 @@ public class BasePageObject extends PageModelBase {
 	@Nullable
 	private String pageTitle;
 	
-	public BasePageObject() {
+	/**
+	 * Instantiates a new base page object.
+	 */
+	public BasePageObject() { //NOPMD
 		
 	}
 	/**

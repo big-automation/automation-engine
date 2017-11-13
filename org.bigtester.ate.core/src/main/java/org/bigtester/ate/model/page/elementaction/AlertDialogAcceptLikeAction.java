@@ -44,8 +44,12 @@ public class AlertDialogAcceptLikeAction extends PageModelBase implements
 	public AlertDialogAcceptLikeAction(IMyWebDriver myWd) {
 		super(myWd);
 	}
+	
+	/**
+	 * Instantiates a new alert dialog accept like action.
+	 */
 	public AlertDialogAcceptLikeAction() {
-		
+		super();	
 	}
 
 	

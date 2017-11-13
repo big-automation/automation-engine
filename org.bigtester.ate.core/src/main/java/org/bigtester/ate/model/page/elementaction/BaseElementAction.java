@@ -51,8 +51,12 @@ public class BaseElementAction extends PageModelBase{
 		super(myWd);
 		// TODO Auto-generated constructor stub
 	}
+	
+	/**
+	 * Instantiates a new base element action.
+	 */
 	public BaseElementAction() {
-		
+		super();
 		// TODO Auto-generated constructor stub
 	}
 	

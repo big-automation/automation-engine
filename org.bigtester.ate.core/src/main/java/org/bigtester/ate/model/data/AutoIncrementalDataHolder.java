@@ -61,11 +61,18 @@ public class AutoIncrementalDataHolder extends
 		this.pacing = pacing;
 		Integer tmp = Integer.valueOf(startValue);
 		if (null == tmp)
-			throw GlobalUtils.createInternalError("java vm integer conversion");
+			throw GlobalUtils.createInternalError("java vm integer conversion");//NOPMD
 		else
 			setOnTheFlyData(tmp);
 	}
 	
+	/**
+	 * Instantiates a new auto incremental data holder.
+	 *
+	 * @param startValue the start value
+	 * @param pacing the pacing
+	 * @param manualFeeded the manual feeded
+	 */
 	public AutoIncrementalDataHolder(int startValue, int pacing, boolean manualFeeded) {
 		super();
 		this.startValue = startValue;

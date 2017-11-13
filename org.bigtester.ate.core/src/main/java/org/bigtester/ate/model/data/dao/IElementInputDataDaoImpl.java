@@ -77,7 +77,7 @@ public interface IElementInputDataDaoImpl {
 	 *            the input data id
 	 * @return the value
 	 */
-	public String getValue(String inputDataID, String repeatStepName,
+	String getValue(String inputDataID, String repeatStepName,
 			int iteration)
 			throws RepeatTestDataException;
 }

@@ -42,8 +42,11 @@ public class DoubleClickAction extends BaseElementAction implements IElementActi
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * Instantiates a new double click action.
+	 */
 	public DoubleClickAction() {
-		
+		super();
 	}
 
 	/**

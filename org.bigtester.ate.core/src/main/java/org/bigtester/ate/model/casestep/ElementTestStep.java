@@ -50,7 +50,8 @@ import org.openqa.selenium.TimeoutException;
  */
 public class ElementTestStep extends BaseTestStep implements IElementStep {
 
-	private boolean searchOnlyOnPreviousSuccessIFrame = false;
+	/** The search only on previous success i frame. */
+	private boolean searchOnlyOnPreviousSuccessIFrame = false; //NOPMD
 	/** The my web element. */
 
 	protected MyWebElement<?> myWebElement;

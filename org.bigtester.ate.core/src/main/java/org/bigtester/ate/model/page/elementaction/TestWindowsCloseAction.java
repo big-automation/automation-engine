@@ -45,8 +45,11 @@ public class TestWindowsCloseAction extends PageModelBase implements
 		super(myWd);
 	}
 
-	public TestWindowsCloseAction() {
-		
+	/**
+	 * Instantiates a new test windows close action.
+	 */
+	public TestWindowsCloseAction() {//NOPMD
+		super();
 	}
 	/**
 	 * {@inheritDoc}

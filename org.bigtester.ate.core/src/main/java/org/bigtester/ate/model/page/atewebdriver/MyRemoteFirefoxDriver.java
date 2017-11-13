@@ -21,7 +21,6 @@
 package org.bigtester.ate.model.page.atewebdriver;
 
 import org.bigtester.ate.GlobalUtils;
-import org.bigtester.ate.model.casestep.JavaCodedStep.JavaCodedStepNameSpaceParser;
 import org.bigtester.ate.xmlschema.IXsdBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.RemoteDriverBeanDefinitionParser;
 import org.eclipse.jdt.annotation.Nullable;
@@ -64,6 +63,12 @@ public class MyRemoteFirefoxDriver extends MyRemoteDriver implements IMyWebDrive
 		 
 		 
 	}
+	
+	/**
+	 * The Class RemoteFirefoxDriverNameSpaceParser.
+	 *
+	 * @author Peidong Hu
+	 */
 	public class RemoteFirefoxDriverNameSpaceParser extends
 	RemoteDriverBeanDefinitionParser {
 

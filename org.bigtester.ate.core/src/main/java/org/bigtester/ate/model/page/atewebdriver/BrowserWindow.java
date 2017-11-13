@@ -58,6 +58,7 @@ public class BrowserWindow {
 	/** The frames. */
 	final private List<WindowFrame> visibleFrames = new ArrayList<WindowFrame>();
 	
+	/** The all frames. */
 	final private List<WindowFrame> allFrames = new ArrayList<WindowFrame>();
 
 	/** The last success element find frame chain. */

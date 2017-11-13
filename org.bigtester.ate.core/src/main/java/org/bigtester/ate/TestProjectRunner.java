@@ -128,6 +128,12 @@ import com.github.javaparser.ParseException;
  */
 public final class TestProjectRunner {
 
+	/** The Constant MULTIPLE_WINDOW_HANDLER. */
+	public final static String MULTIPLE_WINDOW_HANDLER = "multiWindowsHandler";
+	
+	/** The Constant MY_WEB_DRIVER. */
+	public final static String MY_WEB_DRIVER = "MyWebDriver2";
+	
 	private TestProjectRunner() {
 
 	}

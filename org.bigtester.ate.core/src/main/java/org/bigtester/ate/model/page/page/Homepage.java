@@ -49,7 +49,7 @@ public class Homepage extends BasePageObject implements IHomepage{
 	 * @param myWd
 	 */
 	public Homepage(String homeUrl) {
-		
+		super();
 		this.homeUrl = homeUrl;
 	}
 	/**

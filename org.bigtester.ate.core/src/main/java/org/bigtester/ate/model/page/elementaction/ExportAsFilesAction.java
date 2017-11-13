@@ -42,8 +42,12 @@ public class ExportAsFilesAction extends PageModelBase implements
 	public ExportAsFilesAction(IMyWebDriver myWd) {
 		super(myWd);
 	}
+	
+	/**
+	 * Instantiates a new export as files action.
+	 */
 	public ExportAsFilesAction() {
-
+		super();
 	}
 
 	

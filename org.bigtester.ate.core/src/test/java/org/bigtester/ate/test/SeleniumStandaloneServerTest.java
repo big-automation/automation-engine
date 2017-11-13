@@ -1,8 +1,6 @@
 package org.bigtester.ate.test;
 
 
-import com.thoughtworks.selenium.DefaultSelenium;
-import com.thoughtworks.selenium.Selenium;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

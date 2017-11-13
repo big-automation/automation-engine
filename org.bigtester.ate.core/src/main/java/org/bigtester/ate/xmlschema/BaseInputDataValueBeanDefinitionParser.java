@@ -54,12 +54,12 @@ public class BaseInputDataValueBeanDefinitionParser extends
         BeanDefinitionHolder holder = parserContext.getDelegate().parseBeanDefinitionElement(element);
         BeanDefinition bDef = holder.getBeanDefinition();
         bDef.setBeanClassName(BaseInputDataValue.class.getName());
-        String elementDataDao = element
-				.getAttribute(XsdElementConstants.ATTR_BASEINPUTDATAVALUE_ELEMENTDATADAO);
-		if (StringUtils.hasText(elementDataDao)) {
-			bDef.getConstructorArgumentValues().addGenericArgumentValue(
-					new RuntimeBeanReference(elementDataDao));
-		}
+//        String elementDataDao = element
+//				.getAttribute(XsdElementConstants.ATTR_BASEINPUTDATAVALUE_ELEMENTDATADAO);
+//		if (StringUtils.hasText(elementDataDao)) {
+//			bDef.getConstructorArgumentValues().addGenericArgumentValue(
+//					new RuntimeBeanReference(elementDataDao));
+//		}
 		parserContext.getRegistry().registerBeanDefinition(element.getAttribute("id"), bDef);
         return (AbstractBeanDefinition) bDef;
       

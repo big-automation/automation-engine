@@ -41,6 +41,10 @@ public class DoubleClickAction extends BaseElementAction implements IElementActi
 		super(myWd);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public DoubleClickAction() {
+		
+	}
 
 	/**
      * {@inheritDoc}

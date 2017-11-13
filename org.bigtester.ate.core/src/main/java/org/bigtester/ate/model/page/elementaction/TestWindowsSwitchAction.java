@@ -43,6 +43,10 @@ public class TestWindowsSwitchAction extends PageModelBase implements
 	public TestWindowsSwitchAction(IMyWebDriver myWd) {
 		super(myWd);
 	}
+	
+	public TestWindowsSwitchAction() {
+		
+	}
 
 	
 	/**

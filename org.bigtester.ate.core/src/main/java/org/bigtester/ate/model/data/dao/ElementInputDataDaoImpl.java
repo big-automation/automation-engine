@@ -40,7 +40,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  */
 @Transactional
-public class ElementInputDataDaoImpl extends BaseDaoImpl {
+public class ElementInputDataDaoImpl extends BaseDaoImpl implements IElementInputDataDaoImpl {
 
 	/**
 	 * Save.

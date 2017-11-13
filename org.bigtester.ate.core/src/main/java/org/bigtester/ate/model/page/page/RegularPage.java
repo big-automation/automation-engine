@@ -41,6 +41,8 @@ public class RegularPage extends BasePageObject implements IPageObject{
 	public RegularPage(IMyWebDriver myWd) {
 		super(myWd);
 	}
-
+	public RegularPage() {
+		
+	}
 	
 }

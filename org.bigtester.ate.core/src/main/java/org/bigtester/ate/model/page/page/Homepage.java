@@ -46,6 +46,13 @@ public class Homepage extends BasePageObject implements IHomepage{
 		this.homeUrl = homeUrl;
 	}
 	/**
+	 * @param myWd
+	 */
+	public Homepage(String homeUrl) {
+		
+		this.homeUrl = homeUrl;
+	}
+	/**
 	 * Sets the home url.
 	 * 
 	 * @param homeUrl

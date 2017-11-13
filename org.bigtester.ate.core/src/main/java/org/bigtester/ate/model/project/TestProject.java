@@ -23,11 +23,13 @@ package org.bigtester.ate.model.project; //NOPMD
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.annotation.ATELogLevel;
 import org.bigtester.ate.annotation.TestProjectLoggable;
 import org.bigtester.ate.model.caserunner.CaseRunnerGenerator;
+import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
 import org.bigtester.ate.reporter.ATEXMLReporter;
 import org.eclipse.jdt.annotation.Nullable;
 import org.springframework.context.ApplicationContext;
@@ -58,6 +60,12 @@ public class TestProject {
 	@XStreamOmitField
 	private ApplicationContext appCtx;
 
+	/** The my web driver. */
+	@Nullable
+	@XStreamOmitField
+	private Optional<IMyWebDriver> myWebDriver = Optional.empty();
+
+	
 	/** The global init xmlfiles. */
 	private Resource globalInitXmlFile;
 
@@ -259,6 +267,20 @@ public class TestProject {
 			}
 		} 
 		return retVal;
+	}
+
+	/**
+	 * @return the myWebDriver
+	 */
+	public Optional<IMyWebDriver> getMyWebDriver() {
+		return myWebDriver;
+	}
+
+	/**
+	 * @param myWebDriver the myWebDriver to set
+	 */
+	public void setMyWebDriver(Optional<IMyWebDriver> myWebDriver) {
+		this.myWebDriver = myWebDriver;
 	}
 
 }

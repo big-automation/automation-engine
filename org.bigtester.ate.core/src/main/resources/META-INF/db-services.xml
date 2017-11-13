@@ -16,10 +16,6 @@
 
 	<context:annotation-config />
 
-	<bean id="_DaoParent" class="org.bigtester.ate.model.data.dao.BaseDaoImpl" abstract="true" />
-	
-	<bean id="elementInputDataDao" class="org.bigtester.ate.model.data.dao.ElementInputDataDaoImpl" />
-	<bean id="StepERDao" class="org.bigtester.ate.model.data.dao.StepExpectedResultDaoImpl" parent="_DaoParent"/>
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -65,4 +61,10 @@
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
+	
+		<bean id="_DaoParent" class="org.bigtester.ate.model.data.dao.BaseDaoImpl" abstract="true" />
+	
+	<bean id="elementInputDataDao" class="org.bigtester.ate.model.data.dao.ElementInputDataDaoImpl" />
+	<bean id="StepERDao" class="org.bigtester.ate.model.data.dao.StepExpectedResultDaoImpl" parent="_DaoParent"/>
+	
 </beans>

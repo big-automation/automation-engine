@@ -42,6 +42,12 @@ public class ClearTextAction extends BaseElementAction implements
 		super(myWd);
 		// TODO Auto-generated constructor stub
 	}
+	public ClearTextAction() {
+		
+	}
+	
+	
+	
 
 	/**
 	 * {@inheritDoc}

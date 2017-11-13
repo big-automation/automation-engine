@@ -70,7 +70,10 @@ public class AssignValueAction extends BaseElementAction implements
 		super(myWd);
 		setDataValue(dataValue);
 	}
-
+	public AssignValueAction(IStepInputData dataValue) {
+	
+		setDataValue(dataValue);
+	}
 	/**
 	 * {@inheritDoc}
 	 */

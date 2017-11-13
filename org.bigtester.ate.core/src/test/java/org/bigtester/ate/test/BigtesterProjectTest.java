@@ -37,7 +37,7 @@ import org.testng.annotations.BeforeClass;
  * @author Peidong Hu
  *
  */
-@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testproject.xml" })
+//@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testproject.xml" })
 public class BigtesterProjectTest extends BaseATETest {
 
 	/** The my driver. */

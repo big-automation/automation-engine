@@ -37,6 +37,7 @@ import org.openqa.selenium.remote.UnreachableBrowserException;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Lazy;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -51,6 +52,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	/** The test case. */
 	@Nullable
 	@Autowired
+	@Lazy
 	private ITestCase testCase;
 	
 	

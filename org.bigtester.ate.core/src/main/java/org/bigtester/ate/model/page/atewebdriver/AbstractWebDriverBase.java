@@ -38,6 +38,7 @@ import org.eclipse.jdt.annotation.Nullable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
@@ -57,6 +58,7 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 	/** The browser windows monitor. */
 	@Nullable
 	@Autowired
+	@Lazy
 	private IMultiWindowsHandler multiWindowsHandler;
 	
 	

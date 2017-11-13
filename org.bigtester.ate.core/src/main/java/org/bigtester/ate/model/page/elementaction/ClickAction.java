@@ -42,6 +42,11 @@ public class ClickAction extends BaseElementAction implements
 		super(myWd);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public ClickAction() {
+		
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * {@inheritDoc}

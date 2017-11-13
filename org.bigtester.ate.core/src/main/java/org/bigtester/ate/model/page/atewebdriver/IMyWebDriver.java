@@ -28,46 +28,47 @@ import org.openqa.selenium.WebDriver;
 // TODO: Auto-generated Javadoc
 /**
  * The Interface IMyWebDriver defines ....
- * 
+ *
  * @author Peidong Hu
  */
 public interface IMyWebDriver {
-	
+
 	/**
 	 * Creates the driver.
 	 *
 	 * @return the web driver
 	 */
 	WebDriver getWebDriverInstance();
-	
+
 	/**
 	 * Gets the webdriver.
-	 * 
+	 *
 	 * @return the webdriver
 	 */
 	@Nullable WebDriver getWebDriver();
-	
+
 	/**
 	 * Gets the browser windows monitor.
 	 *
 	 * @return the browser windows monitor
 	 */
 	IMultiWindowsHandler getMultiWindowsHandler();
-	
+
+	void setMultiWindowsHandler(IMultiWindowsHandler multiWindowsHandler);
 	/**
-	 * Save screen shot. if pathFileName supplied, 
+	 * Save screen shot. if pathFileName supplied,
 	 *
 	 * @param pathFileName the path file name
 	 * @return the string
 	 */
 	Optional<String> saveScreenShot(Optional<String> pathFileName);
-	
+
 	/**
 	 * Save screen shot.
 	 *
 	 * @return the optional
 	 */
 	Optional<String> saveScreenShot();
-	
+
 
 }

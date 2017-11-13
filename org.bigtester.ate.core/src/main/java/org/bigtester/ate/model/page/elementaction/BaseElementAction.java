@@ -51,6 +51,10 @@ public class BaseElementAction extends PageModelBase{
 		super(myWd);
 		// TODO Auto-generated constructor stub
 	}
+	public BaseElementAction() {
+		
+		// TODO Auto-generated constructor stub
+	}
 	
 	/**
 	 * Gets the action parameters logging value.

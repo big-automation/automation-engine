@@ -27,7 +27,6 @@ import org.bigtester.ate.model.page.atewebdriver.exception.BrowserUnexpectedExce
 import org.bigtester.ate.model.page.elementaction.ITestObjectAction;
 import org.bigtester.ate.model.page.elementaction.ITestObjectActionImpl;
 import org.bigtester.ate.model.page.elementaction.TestObjectAction;
-import org.bigtester.ate.model.page.elementfind.IElementFind;
 import org.bigtester.ate.model.page.elementfind.ITestObjectFinder;
 import org.bigtester.ate.model.page.elementfind.ITestObjectFinderImpl;
 import org.bigtester.ate.model.page.elementfind.TestObjectFinder;
@@ -58,9 +57,38 @@ public class MyWebElement<T> extends PageModelBase {
 	 * @param iElmAction
 	 *            the ea
 	 */
+	@Deprecated
 	public MyWebElement(final ITestObjectFinderImpl iElmFind,
 			@Nullable final ITestObjectActionImpl iElmAction, IMyWebDriver myWd) {
 		super(myWd);
+		if (null == iElmAction) {
+			testObjectAction = null; //NOPMD
+		} else {
+			ITestObjectAction<T> testObjectActionTmp = new TestObjectAction(iElmAction).getCapability(ITestObjectAction.class); 
+			if (null == testObjectActionTmp) {
+				throw GlobalUtils
+						.createNotInitializedException("test object finder");
+			} else {
+				testObjectAction = testObjectActionTmp;
+			}
+		} 
+		ITestObjectFinder<T> testObjectFinderTmp = new TestObjectFinder(iElmFind).getCapability(ITestObjectFinder.class); 
+		if (null == testObjectFinderTmp) {
+			throw GlobalUtils.createNotInitializedException("test object finder");
+		} else {
+			testObjectFinder = testObjectFinderTmp;
+		}
+	}
+	
+	/**
+	 * Instantiates a new my web element.
+	 *
+	 * @param iElmFind the i elm find
+	 * @param iElmAction the i elm action
+	 */
+	public MyWebElement(final ITestObjectFinderImpl iElmFind,
+			@Nullable final ITestObjectActionImpl iElmAction) {
+		
 		if (null == iElmAction) {
 			testObjectAction = null; //NOPMD
 		} else {

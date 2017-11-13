@@ -39,8 +39,13 @@ public class ImportFromFilesAction extends PageModelBase implements
 	/**
 	 * @param myWd
 	 */
+	
 	public ImportFromFilesAction(IMyWebDriver myWd) {
 		super(myWd);
+	}
+
+	public ImportFromFilesAction() {
+	
 	}
 
 	

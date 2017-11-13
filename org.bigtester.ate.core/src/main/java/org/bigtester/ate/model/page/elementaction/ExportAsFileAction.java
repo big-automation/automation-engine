@@ -72,6 +72,11 @@ public class ExportAsFileAction extends PageModelBase implements
 		if (StringUtils.isEmpty(fileName)) throw GlobalUtils.createNotInitializedException("export file name");
 		this.fileNameWithAbsolutePath = fileName;
 	}
+	public ExportAsFileAction( String fileName) {
+		
+		if (StringUtils.isEmpty(fileName)) throw GlobalUtils.createNotInitializedException("export file name");
+		this.fileNameWithAbsolutePath = fileName;
+	}
 
 	
 	/**

@@ -56,6 +56,11 @@ public class DropdownListSelectAction extends BaseElementAction implements
 		super(myWd);
 		this.selections = selections;
 	}
+	
+	public DropdownListSelectAction(String selections) {
+		
+		this.selections = selections;
+	}
 
 	/**
 	 * {@inheritDoc}

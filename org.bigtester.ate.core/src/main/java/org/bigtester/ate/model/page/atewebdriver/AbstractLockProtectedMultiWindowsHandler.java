@@ -33,6 +33,7 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.util.StringUtils;
 
 import com.sun.jna.platform.unix.X11.Window;
@@ -60,6 +61,7 @@ public class AbstractLockProtectedMultiWindowsHandler {
 	@XStreamOmitField
 	@Nullable
 	@Autowired
+	@Lazy
 	protected IMyWebDriver myWd;
 
 	/** The main window handler. */

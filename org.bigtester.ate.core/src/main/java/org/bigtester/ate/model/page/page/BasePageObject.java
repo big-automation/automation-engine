@@ -65,6 +65,9 @@ public class BasePageObject extends PageModelBase {
 	@Nullable
 	private String pageTitle;
 	
+	public BasePageObject() {
+		
+	}
 	/**
 	 * @param myWd
 	 */

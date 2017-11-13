@@ -45,7 +45,9 @@ public class TestWindowsCloseAction extends PageModelBase implements
 		super(myWd);
 	}
 
-	
+	public TestWindowsCloseAction() {
+		
+	}
 	/**
 	 * {@inheritDoc}
 	 */

@@ -22,10 +22,10 @@
 		<ate:TestSuite id="easyApply" suiteName="easyApply">
 		<ate:XmlTestCase
 				testCaseFilePathName="indeedJobApplication/easyApply/applyQAJobPassExample.xml" />
-		<ate:XmlTestCase
+		<!-- <ate:XmlTestCase
 				testCaseFilePathName="indeedJobApplication/easyApply/applyQAJobServiceDemo.xml" />
 			<ate:XmlTestCase
-				testCaseFilePathName="indeedJobApplication/easyApply/applyQAJob.xml" />
+				testCaseFilePathName="indeedJobApplication/easyApply/applyQAJob.xml" /> -->
 <!-- 			<ate:XmlTestCase -->
 <!-- 				testCaseFilePathName="dentistSmokeTest/backend_login/adminRegistration.xml" /> -->
 		</ate:TestSuite>

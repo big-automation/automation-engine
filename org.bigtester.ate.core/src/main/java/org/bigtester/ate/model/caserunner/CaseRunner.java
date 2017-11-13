@@ -316,6 +316,8 @@ public class CaseRunner implements IRunTestCase {
 
 				}
 			} else {
+				LogbackWriter
+				.writeSysError(this.getClass(), fbe);
 				throw fbe;
 			}
 		}

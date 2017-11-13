@@ -73,8 +73,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-		<slf4j.version>1.7.12</slf4j.version>
-		<logback.version>1.1.3</logback.version>
+		<slf4j.version>1.7.25</slf4j.version>
+		<logback.version>1.1.11</logback.version>
 	</properties>
 	<build>
 		<pluginManagement>
@@ -326,6 +326,17 @@ mvn com.lazerycode.selenium:driver-binary-downloader-maven-plugin:selenium -->
 			<artifactId>spring-test</artifactId>
 			<version>4.2.2.RELEASE</version>
 		</dependency>
+		<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-core</artifactId>
+	<version>4.2.2.RELEASE</version>
+	<exclusions>
+	  <exclusion>
+		<groupId>commons-logging</groupId>
+		<artifactId>commons-logging</artifactId>
+	  </exclusion>
+	</exclusions>
+</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>

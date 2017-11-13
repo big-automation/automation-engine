@@ -7,7 +7,7 @@
 			</Pattern>
 		</encoder>
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-			<level>ERROR</level>
+			<level>DEBUG</level>
 		</filter>
 	</appender>
 	<appender name="SystemLog"
@@ -25,7 +25,7 @@
 
 		</rollingPolicy>
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-			<level>ERROR</level>
+			<level>TRACE</level>
 		</filter>
 		<filter class="ch.qos.logback.core.filter.EvaluatorFilter">
 
@@ -78,9 +78,7 @@
 		</filter>
 	</appender>
 
-	<logger name="org.bigtester" level="ALL">
-
-	</logger>
+	<logger name="org.bigtester" level="ALL"/>	
 	<root level="ALL">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="SystemLog" />

@@ -150,6 +150,7 @@ public final class TestProjectRunner {
 	 */
 	public static void main(final String... args) throws DatabaseUnitException, SQLException, IOException, ClassNotFoundException, ParseException {
 
+		try {
 		if (args.length > 2 )                          //NOPMD
 			throw GlobalUtils.createNotInitializedException("Only support two arguments");
 		if (args.length > 1 ) {                        //NOPMD
@@ -160,6 +161,9 @@ public final class TestProjectRunner {
 		}
 		else {
 			runTest("");
+		}
+		} catch (Throwable thr) {
+			thr.printStackTrace();
 		}
 	}
 

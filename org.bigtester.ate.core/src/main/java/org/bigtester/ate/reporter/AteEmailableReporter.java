@@ -158,7 +158,7 @@ public class AteEmailableReporter implements IReporter {
       Set<String> allSuiteCaseFNames = suite.getTestCaseList().stream().map(testC->testC.getTestCaseFilePathName()).collect(Collectors.toSet());
       List<ITestResult> thisSuiteTestCases = allTestCasesResult.stream().filter(testCase->allSuiteCaseFNames.contains(testCase.getName())).collect(Collectors.toList());
       
-      thisSuiteTestCases.stream().sorted(Comparator.comparing(ITestResult::getStartMillis));
+      thisSuiteTestCases = thisSuiteTestCases.stream().sorted(Comparator.comparing(ITestResult::getStartMillis)).collect(Collectors.toList());
       for (ITestResult testCaseResult : thisSuiteTestCases) {
     	  printCaseResult(testCaseResult, suite.getSuiteName());
         

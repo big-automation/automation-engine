@@ -31,6 +31,7 @@ import org.bigtester.ate.annotation.TestProjectLoggable;
 import org.bigtester.ate.model.caserunner.CaseRunnerGenerator;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
 import org.bigtester.ate.reporter.ATEXMLReporter;
+import org.bigtester.ate.reporter.AteEmailableReporter;
 import org.eclipse.jdt.annotation.Nullable;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
@@ -138,7 +139,9 @@ public class TestProject {
 
 		ATEXMLReporter rng = new ATEXMLReporter();
 		rng.setStackTraceOutputMethod(XMLReporterConfig.STACKTRACE_NONE);
+		AteEmailableReporter emailReport = new AteEmailableReporter();
 		testng.addListener(rng);
+		testng.addListener(emailReport);
 		CaseRunnerGenerator crg = new CaseRunnerGenerator(this.getSuiteList());
 		crg.createCaseRunners();
 		if (0 == crg.loadCaseRunnerClasses()) {

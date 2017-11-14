@@ -19,6 +19,9 @@
  * limitations under the License.
  *******************************************************************************/
 package org.bigtester.ate.reporter;
+import org.bigtester.ate.model.project.TestProject;
+import org.bigtester.ate.model.project.TestProjectListener;
+import org.bigtester.ate.model.project.TestSuite;
 import org.testng.IInvokedMethod;
 import org.testng.IReporter;
 import org.testng.IResultMap;
@@ -29,9 +32,13 @@ import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.Reporter;
+import org.testng.TestRunner;
 import org.testng.collections.Lists;
+import org.testng.collections.Sets;
 import org.testng.internal.Utils;
 import org.testng.log4testng.Logger;
+import org.testng.reporters.XMLReporterConfig;
+import org.testng.reporters.XMLStringBuffer;
 import org.testng.xml.XmlSuite;
 
 import java.io.BufferedWriter;
@@ -41,12 +48,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Reported designed to render self-contained HTML top down view of a testing
@@ -74,6 +84,8 @@ public class AteEmailableReporter implements IReporter {
   /** Creates summary of the run */
   @Override
   public void generateReport(List<XmlSuite> xml, List<ISuite> suites, String outdir) {
+	  
+	  TestProject testProj = this.getTestProject(suites.get(0).getResults().entrySet().iterator().next().getValue().getTestContext());
     try {
       m_out = createWriter(outdir);
     }
@@ -82,9 +94,9 @@ public class AteEmailableReporter implements IReporter {
       return;
     }
     startHtml(m_out);
-    generateSuiteSummaryReport(suites);
-    generateMethodSummaryReport(suites);
-    generateMethodDetailReport(suites);
+    generateSuiteSummaryReport(suites, testProj);
+    generateMethodSummaryReport(suites, testProj);
+    //generateMethodDetailReport(suites);
     endHtml(m_out);
     m_out.flush();
     m_out.close();
@@ -95,34 +107,62 @@ public class AteEmailableReporter implements IReporter {
     return new PrintWriter(new BufferedWriter(new FileWriter(new File(outdir,
         "ate-emailable-report.html"))));
   }
+  
+  
+  private Set<ITestResult> getAllTestResults(ISuiteResult suiteResult) {
+	    
+	    Set<ITestResult> testResults = Sets.newHashSet();
+	    ITestContext testContext = suiteResult.getTestContext();
+	    addAllTestResults(testResults, testContext.getPassedTests());
+	    addAllTestResults(testResults, testContext.getFailedTests());
+	    addAllTestResults(testResults, testContext.getSkippedTests());
+	    addAllTestResults(testResults, testContext.getPassedConfigurations());
+	    addAllTestResults(testResults, testContext.getSkippedConfigurations());
+	    addAllTestResults(testResults, testContext.getFailedConfigurations());
+	    addAllTestResults(testResults, testContext.getFailedButWithinSuccessPercentageTests());
+	    return testResults;
+	    
+	  }
+
+	  private void addAllTestResults(Set<ITestResult> testResults, IResultMap resultMap) {
+	    if (resultMap != null) {
+	      // Sort the results chronologically before adding them
+	      List<ITestResult> allResults = new ArrayList<ITestResult>();
+	      allResults.addAll(resultMap.getAllResults());
+
+	      Collections.sort(new ArrayList<>(allResults), new Comparator<ITestResult>() {
+	        @Override
+	        public int compare(ITestResult o1, ITestResult o2) {
+	          return (int) (o1.getStartMillis() - o2.getStartMillis());
+	        }
+	      });
+
+	      testResults.addAll(allResults);
+	    }
+	  }
+
 
   /** Creates a table showing the highlights of each test method with links to the method details */
-  protected void generateMethodSummaryReport(List<ISuite> suites) {
+  protected void generateMethodSummaryReport(List<ISuite> suites, TestProject testProject) {
     m_methodIndex = 0;
     startResultSummaryTable("methodOverview");
     int testIndex = 1;
-    for (ISuite suite : suites) {
-      if(suites.size()>1) {
-        titleRow(suite.getName(), 5);
+    ISuiteResult testResult = suites.iterator().next().getResults().values().iterator().next();
+    
+    List<ITestNGMethod> allTestCases = Arrays.asList(testResult.getTestContext().getAllTestMethods());
+    Set<ITestResult> allTestCasesResult = getAllTestResults(testResult);
+    testProject.getSuiteList().forEach(suite-> {
+      
+    	titleRow(suite.getSuiteName() + " Suite", 6);
+      
+      Set<String> allSuiteCaseFNames = suite.getTestCaseList().stream().map(testC->testC.getTestCaseFilePathName()).collect(Collectors.toSet());
+      List<ITestResult> thisSuiteTestCases = allTestCasesResult.stream().filter(testCase->allSuiteCaseFNames.contains(testCase.getName())).collect(Collectors.toList());
+      
+      for (ITestResult testCaseResult : thisSuiteTestCases) {
+    	  printCaseResult(testCaseResult, suite.getSuiteName());
+        
       }
-      Map<String, ISuiteResult> r = suite.getResults();
-      for (ISuiteResult r2 : r.values()) {
-        ITestContext testContext = r2.getTestContext();
-        String testName = testContext.getName();
-        m_testIndex = testIndex;
-        resultSummary(suite, testContext.getFailedConfigurations(), testName,
-            "failed", " (configuration methods)");
-        resultSummary(suite, testContext.getFailedTests(), testName, "failed",
-            "");
-        resultSummary(suite, testContext.getSkippedConfigurations(), testName,
-            "skipped", " (configuration methods)");
-        resultSummary(suite, testContext.getSkippedTests(), testName,
-            "skipped", "");
-        resultSummary(suite, testContext.getPassedTests(), testName, "passed",
-            "");
-        testIndex++;
-      }
-    }
+    });
     m_out.println("</table>");
   }
 
@@ -145,6 +185,33 @@ public class AteEmailableReporter implements IReporter {
     }
   }
 
+  private void printCaseResult(ITestResult caseResult, String suiteName) {
+	  StringBuffer buff = new StringBuffer();
+	  String status = "SUCEESS";
+	  switch (caseResult.getStatus()) {
+	  case -1: status = "CREATED";
+	  	break;
+	  case 2: status = "FAILURE";
+	  break;
+	  case 3: status = "SKIP";
+	  break;
+	  case 16: status = "STARTED";
+	  break;
+	  case 4: status = "SUCESS_PERCENTAGE_FAILURE";
+	  break;
+	  default:
+		  	status = "SUCESS";
+	  }
+	  buff.append("<tr><td>" + suiteName + "</td><td>" + caseResult.getName() + "</td><td>" 
+			  + caseResult.getMethod().getMethodName() + "</td><td>" 
+			  + status + "</td><td>"
+			  + caseResult.getStartMillis() + "</td><td>"
+			  + (caseResult.getEndMillis() - caseResult.getStartMillis()) + "</td></tr>");
+	  m_out.print(buff);
+	  
+	  
+  }
+  
   /**
    * @param tests
    */
@@ -224,8 +291,8 @@ public class AteEmailableReporter implements IReporter {
   /** Starts and defines columns result summary table */
   private void startResultSummaryTable(String style) {
     tableStart(style, "summary");
-    m_out.println("<tr><th>Class</th>"
-            + "<th>Method</th><th># of<br/>Scenarios</th><th>Start</th><th>Time<br/>(ms)</th></tr>");
+    m_out.println("<tr><th>Suite</th>"
+            + "<th>TestCase</th><th>TestFunction</td><th>Status</th><th>Start</th><th>Time<br/>(ms)</th></tr>");
     m_row = 0;
   }
 
@@ -357,17 +424,21 @@ public class AteEmailableReporter implements IReporter {
     return result;
   }
 
-  public void generateSuiteSummaryReport(List<ISuite> suites) {
+  private TestProject getTestProject(ITestContext testContext) {
+	  return ((TestProjectListener)((TestRunner)testContext).getTestListeners().stream().filter(listener->listener instanceof TestProjectListener).collect(Collectors.toList()).get(0)).getMytp();
+  }
+  
+  public void generateSuiteSummaryReport(List<ISuite> suites, TestProject testProj) {
     tableStart("testOverview", null);
     m_out.print("<tr>");
-    tableColumnStart("Test");
-    tableColumnStart("Methods<br/>Passed");
-    tableColumnStart("Scenarios<br/>Passed");
+    tableColumnStart("Test Suites");
+    tableColumnStart("Passed");
+    //tableColumnStart("Scenarios<br/>Passed");
     tableColumnStart("# skipped");
     tableColumnStart("# failed");
     tableColumnStart("Total<br/>Time");
-    tableColumnStart("Included<br/>Groups");
-    tableColumnStart("Excluded<br/>Groups");
+    //tableColumnStart("Included<br/>Groups");
+    //tableColumnStart("Excluded<br/>Groups");
     m_out.println("</tr>");
     NumberFormat formatter = new DecimalFormat("#,##0.0");
     int qty_tests = 0;
@@ -386,13 +457,13 @@ public class AteEmailableReporter implements IReporter {
       for (ISuiteResult r : tests.values()) {
         qty_tests += 1;
         ITestContext overview = r.getTestContext();
-        startSummaryRow(overview.getName());
+        startSummaryRow(testProj.getSuiteList());
         int q = getMethodSet(overview.getPassedTests(), suite).size();
         qty_pass_m += q;
         summaryCell(q,Integer.MAX_VALUE);
-        q = overview.getPassedTests().size();
-        qty_pass_s += q;
-        summaryCell(q,Integer.MAX_VALUE);
+        //q = overview.getPassedTests().size();
+        //qty_pass_s += q;
+        //summaryCell(q,Integer.MAX_VALUE);
         q = getMethodSet(overview.getSkippedTests(), suite).size();
         qty_skip += q;
         summaryCell(q,0);
@@ -404,8 +475,8 @@ public class AteEmailableReporter implements IReporter {
         summaryCell(formatter.format(
             (overview.getEndDate().getTime() - overview.getStartDate().getTime()) / 1000.)
             + " seconds", true);
-        summaryCell(overview.getIncludedGroups());
-        summaryCell(overview.getExcludedGroups());
+        //summaryCell(overview.getIncludedGroups());
+        //summaryCell(overview.getExcludedGroups());
         m_out.println("</tr>");
         m_testIndex++;
       }
@@ -440,6 +511,13 @@ public class AteEmailableReporter implements IReporter {
             + "><td style=\"text-align:left;padding-right:2em\"><a href=\"#t"
             + m_testIndex + "\">" + label + "</a>"
             + "</td>");
+  }
+  
+  private void startSummaryRow(List<TestSuite> ateSuites) {
+	    m_row += 1;
+	    String cellContents = ateSuites.stream().map(suite->suite.getSuiteName()).collect(Collectors.joining("<br/>"));
+	    m_out.print("<tr><td style=\"text-align:left;padding-right:2em\">" + cellContents
+	            + "</td>");
   }
 
   private void summaryCell(int v,int maxexpected) {

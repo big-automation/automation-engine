@@ -149,20 +149,21 @@ public class AteEmailableReporter implements IReporter {
     int testIndex = 1;
     ISuiteResult testResult = suites.iterator().next().getResults().values().iterator().next();
     
-    List<ITestNGMethod> allTestCases = Arrays.asList(testResult.getTestContext().getAllTestMethods());
+    //List<ITestNGMethod> allTestCases = Arrays.asList(testResult.getTestContext().getAllTestMethods());
     Set<ITestResult> allTestCasesResult = getAllTestResults(testResult);
-    testProject.getSuiteList().forEach(suite-> {
+    for (TestSuite suite : testProject.getSuiteList()){
       
     	titleRow(suite.getSuiteName() + " Suite", 6);
       
       Set<String> allSuiteCaseFNames = suite.getTestCaseList().stream().map(testC->testC.getTestCaseFilePathName()).collect(Collectors.toSet());
       List<ITestResult> thisSuiteTestCases = allTestCasesResult.stream().filter(testCase->allSuiteCaseFNames.contains(testCase.getName())).collect(Collectors.toList());
       
+      thisSuiteTestCases.stream().sorted(Comparator.comparing(ITestResult::getStartMillis));
       for (ITestResult testCaseResult : thisSuiteTestCases) {
     	  printCaseResult(testCaseResult, suite.getSuiteName());
         
       }
-    });
+    };
     m_out.println("</table>");
   }
 

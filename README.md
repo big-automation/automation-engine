@@ -2,7 +2,7 @@
 
 Automation-Test-Engine (ATE) is an engine to parse and execute test case(s) driven by key words or AI machine learning powered web element recognizer.
 
-It is an open source tool built for system level testing, NOT for developer unit testing. 
+It is an open source tool built for system level or end2end testing, NOT for developer unit testing. 
 
 It's the first tool that has solved the conflict of easy-to-use vs. code maintainability, which exists in most of the system QA automation tools on the market including QTP, Functional Tester and Test Complete, etc. It's very common for those tools' users to deal with the difficulty of choosing between recording (easy-to-use) and heavy programming (high level coding skills needed) strategies. 
 

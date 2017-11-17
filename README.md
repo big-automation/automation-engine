@@ -1,6 +1,6 @@
 # Welcome to Automation-Test-Engine (ATE)
 
-Automation-Test-Engine (ATE) is an engine to parse and execute test case(s) powered by AI web element recognizer.
+Automation-Test-Engine (ATE) is an engine to parse and execute test case(s) powered by xml file based key words or AI machine learning powered web element recognizer.
 
 Current verion of ATE is an open source tool built on top of Selenium for system level testing, NOT for developer unit testing. 
 

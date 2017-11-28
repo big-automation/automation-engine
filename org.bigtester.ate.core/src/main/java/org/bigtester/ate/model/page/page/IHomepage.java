@@ -29,6 +29,13 @@ package org.bigtester.ate.model.page.page;
 public interface IHomepage extends IPageObject {
 	
 	/**
+	 * Gets the home url.
+	 *
+	 * @return the home url
+	 */
+	String getHomeUrl();
+	
+	/**
 	 * Start homepage.
 	 */
 	void startHomepage();

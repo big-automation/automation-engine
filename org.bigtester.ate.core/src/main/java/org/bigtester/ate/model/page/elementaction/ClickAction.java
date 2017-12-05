@@ -32,8 +32,8 @@ import org.openqa.selenium.WebElement;
  * 
  * @author Peidong Hu
  */
-public class ClickAction extends BaseElementAction implements
-		IElementAction, ITestObjectActionImpl {
+public class ClickAction extends BaseElementAction 
+                         implements	IElementAction, ITestObjectActionImpl {
 
 	/**
 	 * @param myWd

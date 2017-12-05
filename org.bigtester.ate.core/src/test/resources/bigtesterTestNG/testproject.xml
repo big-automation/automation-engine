@@ -20,7 +20,8 @@
 		<ate:TestSuite id="suite01" suiteName="suite01">
 <!-- 		    <ate:XmlTestCase testCaseFilePathName="src/test/resources/bigtesterTestNG/testSuite01/homePageValidation.xml" /> -->
 <!-- 		    <ate:XmlTestCase testCaseFilePathName="src/test/resources/bigtesterTestNG/testSuite01/loginSuccess.xml" /> -->
- 			<ate:XmlTestCase testCaseFilePathName="src/test/resources/bigtesterTestNG/testSuite01/unexpectedAlertHandling.xml" /> 
+ 			<!-- <ate:XmlTestCase testCaseFilePathName="src/test/resources/bigtesterTestNG/testSuite01/unexpectedAlertHandling.xml" /> -->
+ 			<ate:XmlTestCase testCaseFilePathName="src/test/resources/bigtesterTestNG/testSuite01/cursorMoveAction.xml" /> 
 		</ate:TestSuite>
 	</ate:TestProject>
 </beans>

@@ -35,8 +35,8 @@ import org.eclipse.jdt.annotation.Nullable;
  * 
  * @author Peidong Hu
  */
-public class AlertDialogAcceptLikeAction extends PageModelBase implements
-		IAlertDialogAction, ITestObjectActionImpl {
+public class AlertDialogAcceptLikeAction extends PageModelBase 
+                                         implements	IAlertDialogAction, ITestObjectActionImpl {
 
 	/**
 	 * @param myWd
@@ -49,6 +49,7 @@ public class AlertDialogAcceptLikeAction extends PageModelBase implements
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("unchecked")
 	public @Nullable <T> T getCapability(Class<T> type) {
 		if (this instanceof IAlertDialogAction) {
 			return (T) this; //NOPMD

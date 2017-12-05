@@ -37,7 +37,8 @@ import org.openqa.selenium.WebDriver;
  * @author Peidong Hu
  *
  */
-public class CookiesFindByDomainName extends BaseCookieFinderImpl implements ICookieFinder, ITestObjectFinderImpl{
+public class CookiesFindByDomainName extends BaseCookieFinderImpl 
+                                     implements ICookieFinder, ITestObjectFinderImpl{
 
 	/**
 	 * Instantiates a new test window find by title.

@@ -37,8 +37,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class RepeatStepBeanDefinitionParser extends
-		BaseTestStepBeanDefinitionParser {
+public class RepeatStepBeanDefinitionParser extends	BaseTestStepBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

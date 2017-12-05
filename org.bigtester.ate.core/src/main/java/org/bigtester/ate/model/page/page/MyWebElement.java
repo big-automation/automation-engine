@@ -63,6 +63,7 @@ public class MyWebElement<T> extends PageModelBase {
 		if (null == iElmAction) {
 			testObjectAction = null; //NOPMD
 		} else {
+			@SuppressWarnings("unchecked")
 			ITestObjectAction<T> testObjectActionTmp = new TestObjectAction(iElmAction).getCapability(ITestObjectAction.class); 
 			if (null == testObjectActionTmp) {
 				throw GlobalUtils
@@ -71,6 +72,7 @@ public class MyWebElement<T> extends PageModelBase {
 				testObjectAction = testObjectActionTmp;
 			}
 		} 
+		@SuppressWarnings("unchecked")
 		ITestObjectFinder<T> testObjectFinderTmp = new TestObjectFinder(iElmFind).getCapability(ITestObjectFinder.class); 
 		if (null == testObjectFinderTmp) {
 			throw GlobalUtils.createNotInitializedException("test object finder");

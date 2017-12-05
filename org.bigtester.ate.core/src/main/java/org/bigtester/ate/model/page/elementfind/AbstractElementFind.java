@@ -158,6 +158,7 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public @Nullable <T> T getCapability(Class<T> type) {
 		if (this instanceof IElementFind) {
@@ -231,6 +232,7 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 	 *            the find by value
 	 * @return the web element
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	@Nullable
 	protected WebElement findThroughFrames(BrowserWindow win,
 			WindowFrame winFrame, Wait<WebDriver> wait, final By findByValue) {
@@ -261,8 +263,10 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 									retVal = allElements.get(0);
 								} else if (intIndex == -1) {
 									retVal = allElements.get(allElements.size() - 1);
-								} else {
+								} else if (intIndex < allElements.size()){
 									retVal = allElements.get(intIndex);
+								} else {
+									throw new NoSuchElementException(findByValue.toString()); 
 								}
 								return retVal;
 								// return driver.findElement(findByValue);
@@ -304,6 +308,7 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 	 * @return the web element
 	 * @throws BrowserUnexpectedException 
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	protected WebElement findElement(final By findBy, IMyWebDriver myWebDriver) throws BrowserUnexpectedException {
 		WebDriver webD = myWebDriver.getWebDriver();
 		if (null == webD) {

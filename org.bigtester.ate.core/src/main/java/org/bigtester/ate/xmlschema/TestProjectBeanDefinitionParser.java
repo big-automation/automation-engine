@@ -42,8 +42,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class TestProjectBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class TestProjectBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

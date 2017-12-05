@@ -35,8 +35,8 @@ import org.eclipse.jdt.annotation.Nullable;
  * 
  * @author Peidong Hu
  */
-public class ExportAsFileAction extends PageModelBase implements
-		IFileAction, ITestObjectActionImpl {
+public class ExportAsFileAction extends PageModelBase 
+                                implements IFileAction, ITestObjectActionImpl {
 	
 	/** The file name with absolute path. */
 	private String fileNameWithAbsolutePath;
@@ -50,7 +50,6 @@ public class ExportAsFileAction extends PageModelBase implements
 		return fileNameWithAbsolutePath;
 	}
 
-
 	/**
 	 * Sets the file name with absolute path.
 	 *
@@ -59,7 +58,6 @@ public class ExportAsFileAction extends PageModelBase implements
 	public void setFileNameWithAbsolutePath(String fileNameWithAbsolutePath) {
 		this.fileNameWithAbsolutePath = fileNameWithAbsolutePath;
 	}
-
 
 	/**
 	 * Instantiates a new export as file action.

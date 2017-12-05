@@ -31,7 +31,6 @@ import org.springframework.beans.factory.xml.AbstractBeanDefinitionParser;
 import org.springframework.beans.factory.xml.ParserContext;
 import org.w3c.dom.Element;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class SimpleDateFormatBeanDefinitionParser defines ....
@@ -39,8 +38,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class LastPageBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class LastPageBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

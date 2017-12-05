@@ -32,8 +32,8 @@ import org.openqa.selenium.interactions.Actions;
  * 
  * @author Peidong Hu
  */
-public class CursorMoveAction extends BaseElementAction implements
-		IElementAction, ITestObjectActionImpl  {
+public class CursorMoveAction extends BaseElementAction 
+                              implements IElementAction, ITestObjectActionImpl  {
 
 	/**
 	 * @param myWd

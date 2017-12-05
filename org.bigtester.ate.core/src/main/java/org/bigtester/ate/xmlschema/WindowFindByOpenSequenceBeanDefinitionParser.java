@@ -40,8 +40,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class WindowFindByOpenSequenceBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class WindowFindByOpenSequenceBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

@@ -19,6 +19,7 @@
  * limitations under the License.
  *******************************************************************************/
 package org.bigtester.ate.model.page.atewebdriver;
+
 import java.io.File;
 import java.io.PrintStream;
 import java.util.Iterator;

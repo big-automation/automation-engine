@@ -44,8 +44,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class TestSuiteBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class TestSuiteBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}
@@ -61,7 +60,6 @@ public class TestSuiteBeanDefinitionParser extends
         if (StringUtils.hasText(testSuiteName))
         	factory.addConstructorArgValue(testSuiteName);
         
-        
 		List<Element> suiteListElements = (List<Element>) DomUtils.getChildElementsByTagName(element, XsdElementConstants.ELEMENT_XMLTESTCASE);
         
         if (suiteListElements != null && !suiteListElements.isEmpty()) {
@@ -70,7 +68,7 @@ public class TestSuiteBeanDefinitionParser extends
         }
         
         return factory.getBeanDefinition();
-	}
+	}	
 	
 	private static void parseXmlTestCaseComponents(List<Element> childElements, BeanDefinitionBuilder factory, ParserContext parserContext) {
         ManagedList<BeanDefinition> children = new ManagedList<BeanDefinition>(childElements.size());

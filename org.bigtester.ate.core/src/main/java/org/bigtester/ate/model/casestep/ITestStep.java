@@ -59,6 +59,7 @@ public interface ITestStep {
 	 * @return the correlated optional steps util inclusive index
 	 */
 	int getCorrelatedOptionalStepsUtilInclusiveIndex(IStepJumpingEnclosedContainer jumpingContainer);
+	
 	/**
 	 * Checks if is optional step.
 	 *
@@ -72,17 +73,19 @@ public interface ITestStep {
 	 * @param optionalStep the new optional step
 	 */
 	void setOptionalStep(boolean optionalStep);
+	
 	/**
 	 * Checks if is page validation.
 	 *
 	 * @return true, if is page validation
 	 */
 	boolean isPageValidation();
+	
 	/**
 	 * Gets the page object.
 	 *
 	 * @return the page object
-	 */
+	 */	
 	@Nullable
 	IPageObject getPageObject();
 	
@@ -90,17 +93,16 @@ public interface ITestStep {
 	 * Gets the my web driver.
 	 *
 	 * @return the my web driver
-	 */
+	 */	
 	@Nullable
 	IMyWebDriver getMyWebDriver();
+	
 	/**
 	 * Gets the step name.
 	 * 
 	 * @return the stepName
-	 */
-	
-	String getStepName();
-	
+	 */	
+	String getStepName();	
 	
 	/**
 	 * Gets the step description.
@@ -137,14 +139,15 @@ public interface ITestStep {
 //	 *
 //	 * @return the on the fly data holders
 //	 */
-//	
 //	List<IOnTheFlyData<?>> getOnTheFlyDataHolders();
+	
 	/**
 	 * Checks if is element step.
 	 *
 	 * @return true, if is element step
 	 */
 	boolean isElementStepFlag();
+	
 	/**
 	 * Do step.
 	 * @throws RuntimeDataException 
@@ -166,15 +169,12 @@ public interface ITestStep {
 	 *
 	 * @return the step result status, default is FAIL
 	 */
-	StepResultStatus getStepResultStatus();
-	
+	StepResultStatus getStepResultStatus();	
 	
 	/**
 	 * @return the correctedOnTheFly
 	 */
-	boolean isCorrectedOnTheFly() ;
-
-
+	boolean isCorrectedOnTheFly();
 
 	/**
 	 * @param correctedOnTheFly the correctedOnTheFly to set

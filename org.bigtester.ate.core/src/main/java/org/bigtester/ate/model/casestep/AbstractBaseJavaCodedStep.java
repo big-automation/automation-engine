@@ -20,7 +20,6 @@
  *******************************************************************************/
 package org.bigtester.ate.model.casestep;
 
-
 import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.model.data.exception.RuntimeDataException;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
@@ -35,8 +34,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author Peidong Hu
  *
  */
-
-abstract public class AbstractBaseJavaCodedStep extends BaseTestStep{
+abstract public class AbstractBaseJavaCodedStep extends BaseTestStep {
 	
 	/** The my web driver. */
 	@Autowired

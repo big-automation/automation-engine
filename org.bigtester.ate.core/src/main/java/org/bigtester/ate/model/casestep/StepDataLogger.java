@@ -77,6 +77,7 @@ public class StepDataLogger implements
 	 * @param data
 	 *            the data
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public void logData(Object data) {
 		//only dataholder used in a step is logged here.
 		if (null != currentExecutionStep) {
@@ -310,6 +311,7 @@ public class StepDataLogger implements
 		return repeatStepDataRegistry;
 	}
 
+	@SuppressWarnings({ "null", "unused" })
 	private void resetRepeatIncrementalIndex(RepeatStep rStep) {
 		List<Object> onTheFlies = getRepeatStepDataRegistry().get(rStep);
 		if (null == onTheFlies)

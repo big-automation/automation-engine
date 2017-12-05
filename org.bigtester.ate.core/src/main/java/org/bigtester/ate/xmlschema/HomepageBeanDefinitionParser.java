@@ -32,7 +32,6 @@ import org.springframework.beans.factory.xml.ParserContext;
 import org.springframework.util.StringUtils;
 import org.w3c.dom.Element;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class SimpleDateFormatBeanDefinitionParser defines ....
@@ -40,8 +39,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class HomepageBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class HomepageBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

@@ -33,6 +33,7 @@ public class BaseAlertDialogFinderImpl extends AbstractTestObjectFinderImpl {
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	@Nullable
 	public <T> T getCapability(Class<T> type) {

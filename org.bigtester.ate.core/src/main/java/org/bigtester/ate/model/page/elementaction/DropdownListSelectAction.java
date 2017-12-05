@@ -20,7 +20,6 @@
  *******************************************************************************/
 package org.bigtester.ate.model.page.elementaction;
 
-
 import org.bigtester.ate.annotation.ATELogLevel;
 import org.bigtester.ate.annotation.ActionLoggable;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
@@ -34,15 +33,11 @@ import org.openqa.selenium.support.ui.Select;
  * 
  * @author Peidong Hu
  */
-public class DropdownListSelectAction extends BaseElementAction implements
-		IElementAction, ITestObjectActionImpl {
-
-	
-	
+public class DropdownListSelectAction extends BaseElementAction 
+                                      implements IElementAction, ITestObjectActionImpl {
 	
 	/** The selections. */
 	final private String selections;
-
 	
 	/**
 	 * Instantiates a new assign value action.

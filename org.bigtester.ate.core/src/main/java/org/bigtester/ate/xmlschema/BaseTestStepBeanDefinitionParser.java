@@ -39,7 +39,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.util.xml.DomUtils;
 import org.w3c.dom.Element;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class SimpleDateFormatBeanDefinitionParser defines ....
@@ -47,8 +46,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class BaseTestStepBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class BaseTestStepBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}
@@ -109,9 +107,9 @@ public class BaseTestStepBeanDefinitionParser extends
 					new RuntimeBeanReference(testcaseParentName));
 		}
 		
-        List<Element> asserterReferences = (List<Element>) DomUtils.getChildElementsByTagName(element, "asserterReferences");
+		List<Element> asserterReferences = (List<Element>) DomUtils.getChildElementsByTagName(element, "asserterReferences");
         if (null != asserterReferences && asserterReferences.size() == 1) {
-	        List<Element> allReferences = (List<Element>) DomUtils.getChildElementsByTagName(asserterReferences.get(0), "ateXmlElementReference");
+			List<Element> allReferences = (List<Element>) DomUtils.getChildElementsByTagName(asserterReferences.get(0), "ateXmlElementReference");
 	        
 	        if (allReferences != null && !allReferences.isEmpty()) {
 	        	parseAsserterComponents(allReferences , bDef, parserContext);
@@ -122,6 +120,7 @@ public class BaseTestStepBeanDefinitionParser extends
         return (AbstractBeanDefinition) bDef;
       
 	}
+	
 	private static void parseAsserterComponents(List<Element> childElements,
 			BeanDefinition beanDef, ParserContext parserContext) {
 		ManagedList<BeanDefinition> children = new ManagedList<BeanDefinition>(//NOPMD

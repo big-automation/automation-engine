@@ -44,8 +44,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class StepTypeServiceBeanDefinitionParser extends
-BaseTestStepBeanDefinitionParser {
+public class StepTypeServiceBeanDefinitionParser extends BaseTestStepBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}
@@ -81,6 +80,7 @@ BaseTestStepBeanDefinitionParser {
 	}
 
 
+	@SuppressWarnings({ "null", "unused" })
 	private static void parseTestStepComponents(List<Element> childElements,
 			BeanDefinition beanDef, ParserContext parserContext) {
 		ManagedList<BeanDefinition> children = new ManagedList<BeanDefinition>(//NOPMD

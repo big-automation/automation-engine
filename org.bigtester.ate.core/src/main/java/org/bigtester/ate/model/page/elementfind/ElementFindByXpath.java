@@ -20,7 +20,6 @@
  *******************************************************************************/
 package org.bigtester.ate.model.page.elementfind;
 
-
 import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
 import org.bigtester.ate.model.page.atewebdriver.exception.BrowserUnexpectedException;
@@ -34,7 +33,8 @@ import org.openqa.selenium.WebElement;
  *
  */
 
-public class ElementFindByXpath extends AbstractElementFind implements IElementFind, ITestObjectFinderImpl {
+public class ElementFindByXpath extends AbstractElementFind 
+                                implements IElementFind, ITestObjectFinderImpl {
 	/**
 	 * @param findByValue
 	 */

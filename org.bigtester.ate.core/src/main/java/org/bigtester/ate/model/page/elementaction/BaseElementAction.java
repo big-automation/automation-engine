@@ -20,12 +20,10 @@
  *******************************************************************************/
 package org.bigtester.ate.model.page.elementaction;
 
-
 import org.bigtester.ate.model.data.IStepInputData;
 import org.bigtester.ate.model.page.PageModelBase;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
 import org.eclipse.jdt.annotation.Nullable;
-
 
 // TODO: Auto-generated Javadoc
 /**
@@ -104,6 +102,7 @@ public class BaseElementAction extends PageModelBase{
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("unchecked")
 	public @Nullable <T> T getCapability(Class<T> type) {
 		if (this instanceof IElementAction) {
 			return (T) this; //NOPMD

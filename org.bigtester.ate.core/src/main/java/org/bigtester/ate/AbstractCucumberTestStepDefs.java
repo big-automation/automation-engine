@@ -32,11 +32,9 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.testng.ITestResult;
-import org.bigtester.ate.constant.GlobalConstants;
 import org.bigtester.ate.constant.StepResultStatus;
 import org.bigtester.ate.model.cucumber.ActionNameValuePair;
-import org.bigtester.ate.model.data.TestDatabaseInitializer;
+import org.bigtester.ate.model.cucumber.CucumberFilter;
 import org.bigtester.ate.model.project.TestProject;
 import org.bigtester.ate.model.testresult.TestStepResult;
 import org.bigtester.ate.reporter.ATEXMLReporter;
@@ -44,9 +42,7 @@ import org.bigtester.ate.reporter.ATEXMLSuiteResultWriter;
 import org.dbunit.DatabaseUnitException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
-import org.springframework.util.StringUtils;
+import org.testng.ITestResult;
 
 import com.github.javaparser.ParseException;
 
@@ -60,65 +56,17 @@ import cucumber.api.Scenario;
  */
 
 abstract public class AbstractCucumberTestStepDefs {
-	/** The test project context. */
-	private ApplicationContext testProjectContext;
-	/**
-	 * The Class AteProjectFilter.
-	 *
-	 * @author Peidong Hu
-	 */
-	public class AteProjectFilter{
-		
-		/** The suite name. */
-		final private String suiteName;
-		
-		/** The case name. */
-		final private String caseName;
-		
-		/** The step name. */
-		final private String stepName;
-		
-		/**
-		 * Instantiates a new ate project filter.
-		 *
-		 * @param suiteName the suite name
-		 * @param caseName the case name
-		 * @param stepName the step name
-		 */
-		public AteProjectFilter(String suiteName, String caseName, String stepName) {
-			this.suiteName = suiteName;
-			this.caseName = caseName;
-			this.stepName = stepName;
-		}
-		/**
-		 * @return the suiteName
-		 */
-		public String getSuiteName() {
-			return suiteName;
-		}
-		/**
-		 * @return the caseName
-		 */
-		public String getCaseName() {
-			return caseName;
-		}
-		/**
-		 * @return the stepName
-		 */
-		public String getStepName() {
-			return stepName;
-		}
-	}
 	
-
+	/** The test project context. */
+	private ApplicationContext testProjectContext;	
 	
 	static { // runs when the main class is loaded.
 		System.setProperty("logback-access.debug", "true");
 		// System.setProperty("org.jboss.logging.provider", "slf4j");
 		System.setProperty("org.jboss.logging.provider", "log4j");
-		System.setProperty("hsqldb.reconfig_logging", "false");
-
+		System.setProperty("hsqldb.reconfig_logging", "false");		
 	}
+	
 	/**
 	 * Gets the scenario.
 	 *
@@ -136,10 +84,10 @@ abstract public class AbstractCucumberTestStepDefs {
 	/**
 	 * Instantiates a new abstract cucumber test step defs.
 	 */
-	public AbstractCucumberTestStepDefs() {
+	public AbstractCucumberTestStepDefs() 
+	{
 		TestProjectRunner.registerXsdNameSpaceParsers();
 		TestProjectRunner.registerProblemHandlers();
-
 	}
 
 	/**
@@ -149,15 +97,14 @@ abstract public class AbstractCucumberTestStepDefs {
 	 * @throws IOException
 	 * @throws ParseException
 	 */
-	private StepResultStatus runStep(ApplicationContext context, AteProjectFilter executionFilter, 
-			List<Map<String, String>> featureDataTable,
-			ActionNameValuePair... actionNameValuePairs)
-			 {
+	private StepResultStatus runStep(ApplicationContext context, CucumberFilter executionFilter, 
+									List<Map<String, String>> featureDataTable,
+									ActionNameValuePair... actionNameValuePairs)
+	{
 		StepResultStatus retVal = StepResultStatus.FAIL;
 		TestProject testProj = GlobalUtils.findTestProjectBean(context);
-		testProj.setFilteringTestCaseName(executionFilter.getCaseName());
-		testProj.setFilteringStepName(executionFilter.stepName);
-		testProj.setFilteringTestSuiteName(executionFilter.suiteName);
+		ArrayList<CucumberFilter> filter = testProj.getProjectFilter();
+		filter.add(executionFilter);
 		testProj.setCucumberDataTable(featureDataTable);
 		if (actionNameValuePairs.length > 0)
 			testProj.setCucumberActionNameValuePairs(new ArrayList<ActionNameValuePair>(
@@ -200,17 +147,17 @@ abstract public class AbstractCucumberTestStepDefs {
 	 * @param ateStepName the ate step name
 	 * @return the string
 	 */
-	protected StepResultStatus runCucumberStep(String ateStepName) {
+	protected StepResultStatus runCucumberStep(String ateStepName) 
+	{
 		String testProjectXml = this.getAteGlueTestProjectXmlFilePath();
 		StepResultStatus retVal = StepResultStatus.FAIL;
 		
-			String testCaseName = getScenario().getName();
-			String testSuiteName = getScenario().getId().substring(0,
-					getScenario().getId().indexOf(";"));
-			
+		String testCaseName = getScenario().getName();
+		String testSuiteName = getScenario().getId().substring(0,
+				getScenario().getId().indexOf(";"));			
 
-			retVal = runStep(new AteProjectFilter(testSuiteName, testCaseName, ateStepName), testProjectXml, 
-					new ArrayList<Map<String, String>>());
+		retVal = runStep(new CucumberFilter(testSuiteName, testCaseName, ateStepName), testProjectXml, 
+				new ArrayList<Map<String, String>>());
 		
 		return retVal;
 	};
@@ -223,12 +170,10 @@ abstract public class AbstractCucumberTestStepDefs {
 	 * @param actionNameValuePairs the action name value pairs
 	 * @return the step result status
 	 */
-	protected StepResultStatus runCucumberStep(AteProjectFilter executionFilter, List<Map<String, String>> featureDataTable,
-			ActionNameValuePair... actionNameValuePairs) {
+	protected StepResultStatus runCucumberStep(CucumberFilter executionFilter, List<Map<String, String>> featureDataTable,
+			ActionNameValuePair... actionNameValuePairs) 
+	{
 		String testProjectXml = this.getAteGlueTestProjectXmlFilePath();
-		
-		
-
 		return runStep(executionFilter, testProjectXml, 
 					featureDataTable, actionNameValuePairs);
 		
@@ -241,11 +186,10 @@ abstract public class AbstractCucumberTestStepDefs {
 	 * @param actionNameValuePairs the action name value pairs
 	 * @return the step result status
 	 */
-	protected StepResultStatus runCucumberStep(AteProjectFilter executionFilter,
-			ActionNameValuePair... actionNameValuePairs) {
-		String testProjectXml = this.getAteGlueTestProjectXmlFilePath();
-		
-			
+	protected StepResultStatus runCucumberStep(CucumberFilter executionFilter,
+								    	       ActionNameValuePair... actionNameValuePairs) 
+	{
+		String testProjectXml = this.getAteGlueTestProjectXmlFilePath();			
 		return runStep(executionFilter, testProjectXml, 
 					null, actionNameValuePairs);
 		
@@ -257,14 +201,11 @@ abstract public class AbstractCucumberTestStepDefs {
 	 * @param executionFilter the execution filter
 	 * @return the step result status
 	 */
-	protected StepResultStatus runCucumberStep(AteProjectFilter executionFilter) {
+	protected StepResultStatus runCucumberStep(CucumberFilter executionFilter) 
+	{
 		String testProjectXml = this.getAteGlueTestProjectXmlFilePath();
-	
-
 		return runStep(executionFilter, testProjectXml, 
-					null);
-		
-		
+					null);				
 	};
 
 	/**
@@ -280,11 +221,11 @@ abstract public class AbstractCucumberTestStepDefs {
 	 * @throws ClassNotFoundException
 	 * @throws ParseException
 	 */
-	private StepResultStatus runStep(AteProjectFilter executionFilter,
-			final String testProjectXml,
-			List<Map<String, String>> featureDataTable,
-			ActionNameValuePair... actionNameValuePairs)
-			 {
+	private StepResultStatus runStep(CucumberFilter executionFilter,
+									final String testProjectXml,
+									List<Map<String, String>> featureDataTable,
+									ActionNameValuePair... actionNameValuePairs)
+	{
 		StepResultStatus retVal = StepResultStatus.FAIL;
 		testProjectContext = TestProjectRunner.loadTestProjectContext(testProjectXml);
 
@@ -295,8 +236,7 @@ abstract public class AbstractCucumberTestStepDefs {
 //				.getBean(GlobalConstants.BEAN_ID_GLOBAL_DBINITIALIZER);
 		try {
 			TestProjectRunner.initDB(testProjectContext);
-
-		retVal = runStep(testProjectContext, executionFilter, featureDataTable, actionNameValuePairs);
+			retVal = runStep(testProjectContext, executionFilter, featureDataTable, actionNameValuePairs);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			retVal = StepResultStatus.FAIL;
@@ -311,7 +251,6 @@ abstract public class AbstractCucumberTestStepDefs {
 			retVal = StepResultStatus.FAIL;
 		}
 		return retVal;
-
 	}
 
 	/**

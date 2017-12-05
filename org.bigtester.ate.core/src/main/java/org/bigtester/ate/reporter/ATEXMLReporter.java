@@ -8,6 +8,7 @@ import org.testng.ITestNGMethod;
 import org.testng.Reporter;
 import org.testng.internal.Utils;
 import org.testng.reporters.XMLReporterConfig;
+import org.testng.reporters.XMLReporterConfig.StackTraceLevels;
 import org.testng.reporters.XMLStringBuffer;
 import org.testng.xml.XmlSuite;
 
@@ -22,7 +23,6 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.TimeZone;
 import java.util.concurrent.ConcurrentHashMap;
-
 
 /**
  * The main entry for the XML generation operation
@@ -199,7 +199,7 @@ public class ATEXMLReporter implements IReporter {
 	public static void addDurationAttributes(XMLReporterConfig config,
 			Properties attributes, Date minStartDate, Date maxEndDate) {
 		SimpleDateFormat format = new SimpleDateFormat(
-				XMLReporterConfig.getTimestampFormat());
+				config.getTimestampFormat());
 		TimeZone utc = TimeZone.getTimeZone("UTC");
 		format.setTimeZone(utc);
 		String startTime = format.format(minStartDate);
@@ -230,12 +230,12 @@ public class ATEXMLReporter implements IReporter {
 		config.setFileFragmentationLevel(fileFragmentationLevel);
 	}
 
-	public int getStackTraceOutputMethod() {
-		return config.getStackTraceOutputMethod();
+	public XMLReporterConfig.StackTraceLevels getStackTraceOutput() {
+		return config.getStackTraceOutput();
 	}
 
-	public void setStackTraceOutputMethod(int stackTraceOutputMethod) {
-		config.setStackTraceOutputMethod(stackTraceOutputMethod);
+	public void setStackTraceOutputMethod(StackTraceLevels none) {
+		config.setStackTraceOutput(none);
 	}
 
 	public String getOutputDirectory() {
@@ -262,8 +262,8 @@ public class ATEXMLReporter implements IReporter {
 		config.setSplitClassAndPackageNames(splitClassAndPackageNames);
 	}
 
-	public String getTimestampFormat() {
-		return XMLReporterConfig.getTimestampFormat();
+	public String getTimestampFormat(XMLReporterConfig config) {
+		return config.getTimestampFormat();
 	}
 
 	public void setTimestampFormat(String timestampFormat) {
@@ -308,6 +308,5 @@ public class ATEXMLReporter implements IReporter {
 	public void setSuiteResults(Map<String, Map<String, ISuiteResult>> suiteResults) {
 		this.suiteResults = suiteResults;
 	}
-
 	
 }

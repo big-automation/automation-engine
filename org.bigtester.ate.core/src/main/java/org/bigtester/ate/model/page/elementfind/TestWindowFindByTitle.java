@@ -31,7 +31,8 @@ import org.openqa.selenium.WebDriver;
  * @author Peidong Hu
  *
  */
-public class TestWindowFindByTitle extends BaseTestWindowFinderImpl implements ITestWindowFinder, ITestObjectFinderImpl{
+public class TestWindowFindByTitle extends BaseTestWindowFinderImpl 
+                                   implements ITestWindowFinder, ITestObjectFinderImpl{
 
 	/** The title. */
 	final private String title;

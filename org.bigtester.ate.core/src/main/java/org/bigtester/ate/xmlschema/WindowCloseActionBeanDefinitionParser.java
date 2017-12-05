@@ -38,8 +38,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class WindowCloseActionBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class WindowCloseActionBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

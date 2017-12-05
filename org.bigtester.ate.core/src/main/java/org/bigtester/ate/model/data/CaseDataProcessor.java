@@ -29,6 +29,7 @@ import java.util.List;
 import org.apache.commons.lang3.ArrayUtils;
 import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.constant.XsdElementConstants;
+import org.bigtester.ate.model.cucumber.CucumberFilter;
 import org.bigtester.ate.model.page.page.Homepage;
 import org.bigtester.ate.model.page.page.Lastpage;
 import org.bigtester.ate.model.page.page.RegularPage;
@@ -104,8 +105,10 @@ public class CaseDataProcessor implements BeanFactoryPostProcessor {
 			try {
 				getDbInit().initialize(beanFactory);
 				TestProject tpj = GlobalUtils.findTestProjectBean(beanFactory.getParentBeanFactory());
-				if (tpj.getCucumberDataTable()!=null && tpj.getFilteringStepName()!=null)
-					tpj.getCucumberDataInjector().inject(tpj.getCucumberDataTable(), tpj.getFilteringStepName());
+				for(CucumberFilter filter : tpj.getProjectFilter()) {
+					if (tpj.getCucumberDataTable()!=null && filter.getStepName()!=null)
+						tpj.getCucumberDataInjector().inject(tpj.getCucumberDataTable(), filter.getStepName());
+				}				
 			} catch (MalformedURLException | DatabaseUnitException
 					| SQLException e) {
 				throw new FatalBeanException("Case database creation error!", e);

@@ -43,12 +43,14 @@ import org.springframework.aop.support.AopUtils;
  * @author Peidong Hu
  *
  */
-public class StepTypeService extends BaseTestStep implements ITestStep, IStepJumpingEnclosedContainer, ICucumberTestStep {
-	
-	
+public class StepTypeService extends BaseTestStep 
+                             implements ITestStep, 
+                                        IStepJumpingEnclosedContainer, 
+                                        ICucumberTestStep 
+{
+		
 	/** The step i ds. */
 	private List<ITestStep> stepSet = new ArrayList<ITestStep>();
-
 	
 	/**
 	 * {@inheritDoc}
@@ -69,6 +71,7 @@ public class StepTypeService extends BaseTestStep implements ITestStep, IStepJum
 	 * @throws StepExecutionException
 	 * @throws PageValidationException
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	private void runSteps() throws StepExecutionException,
 			PageValidationException, RuntimeDataException {
 		

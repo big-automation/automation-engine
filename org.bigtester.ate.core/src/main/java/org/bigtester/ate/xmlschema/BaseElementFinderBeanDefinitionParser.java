@@ -20,7 +20,6 @@
  *******************************************************************************/
 package org.bigtester.ate.xmlschema;
 
-
 import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.constant.XsdElementConstants;
 import org.eclipse.jdt.annotation.Nullable;
@@ -33,7 +32,6 @@ import org.springframework.beans.factory.xml.ParserContext;
 import org.springframework.util.StringUtils;
 import org.w3c.dom.Element;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class SimpleDateFormatBeanDefinitionParser defines ....
@@ -41,8 +39,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class BaseElementFinderBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class BaseElementFinderBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

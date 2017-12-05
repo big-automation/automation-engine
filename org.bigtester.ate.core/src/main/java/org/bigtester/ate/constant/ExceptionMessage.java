@@ -27,8 +27,7 @@ package org.bigtester.ate.constant;
  *
  */
 public final class ExceptionMessage {
-	
-	
+		
 	/** The Constant MSG_SEPERATOR. */
 	public static final String MSG_SEPERATOR =" ==> "; 
 	/** The Constant MSG_WEBELEMENT_NOTFOUND. */

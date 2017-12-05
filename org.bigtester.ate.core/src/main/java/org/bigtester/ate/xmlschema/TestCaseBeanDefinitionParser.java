@@ -79,6 +79,7 @@ public class TestCaseBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	
 	
+	@SuppressWarnings({ "null", "unused" })
 	private static void parseTestStepComponents(List<Element> childElements,
 			BeanDefinitionBuilder factory, ParserContext parserContext) {
 		if (!childElements.isEmpty()) {

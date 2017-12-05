@@ -35,7 +35,6 @@ import org.openqa.selenium.WebDriver;
 import org.springframework.core.io.Resource;
 import org.springframework.util.StringUtils;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class AbstractPageObject defines ....

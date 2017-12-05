@@ -40,9 +40,7 @@ public class FirefoxFeatureProfile extends AbstractBrowserFeatureProfile {
 
 	/** The ff profile. */
 	@Nullable
-	final private FirefoxProfile profile;
-
-	
+	final private FirefoxProfile profile;	
 	
 	/**
 	 * Instantiates a new profile creator.

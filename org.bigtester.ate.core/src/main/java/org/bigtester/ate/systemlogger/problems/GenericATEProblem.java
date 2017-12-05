@@ -76,6 +76,7 @@ public class GenericATEProblem extends RawProblem implements IATEProblem{
 	 */
 	public GenericATEProblem(Object source, Exception exception) {
 		super(source, exception);
+		@SuppressWarnings("deprecation")
 		String[] stackTraces = Utils.stackTrace(exception, false);
 		String tmp1 = stackTraces[1];
 		if (tmp1 == null)
@@ -109,6 +110,7 @@ public class GenericATEProblem extends RawProblem implements IATEProblem{
 	 */
 	public GenericATEProblem(Object source, Throwable exception) {
 		super(source, exception);
+		@SuppressWarnings("deprecation")
 		String[] stackTraces = Utils.stackTrace(exception, false);
 		String tmp1 = stackTraces[1];
 		if (tmp1 == null)

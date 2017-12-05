@@ -31,6 +31,7 @@ import org.bigtester.ate.annotation.ATELogLevel;
 import org.bigtester.ate.annotation.TestProjectLoggable;
 import org.bigtester.ate.model.caserunner.CaseRunnerGenerator;
 import org.bigtester.ate.model.cucumber.ActionNameValuePair;
+import org.bigtester.ate.model.cucumber.CucumberFilter;
 import org.bigtester.ate.model.data.CucumberFeatureDataInjector;
 import org.bigtester.ate.reporter.ATEXMLReporter;
 import org.eclipse.jdt.annotation.Nullable;
@@ -57,6 +58,7 @@ public class TestProject {
 	/** The cucumber data injector. */
 	@Autowired
 	private CucumberFeatureDataInjector cucumberDataInjector;
+	
 	/** The suite list. */
 	@Nullable
 	private List<TestSuite> suiteList;
@@ -83,15 +85,15 @@ public class TestProject {
 	
 	/** The filtering test case name. */
 	@Nullable
-	private String filteringTestCaseName;
+	private ArrayList<CucumberFilter> testProjectTestCaseFilter = new ArrayList<>();
 	
 	/** The filtering step name. */
-	@Nullable
-	private String filteringStepName;
+	//@Nullable
+	//private String filteringStepName;
 	
 	/** The filtering test suite name. */
-	@Nullable
-	private String filteringTestSuiteName;
+	//@Nullable
+	//private String filteringTestSuiteName;
 	
 	@Nullable
 	/** The cucumber data table. */
@@ -99,6 +101,7 @@ public class TestProject {
 	
 	/** The action name value pairs. */
 	private List<ActionNameValuePair> cucumberActionNameValuePairs;
+	
 	/**
 	 * Instantiates a new test project.
 	 *
@@ -106,8 +109,7 @@ public class TestProject {
 	 *            the global init xml file
 	 * @param testProjectListener
 	 *            the test project listener
-	 */
-	
+	 */	
 	public TestProject(Resource globalInitXmlFile) {
 		this.globalInitXmlFile = globalInitXmlFile;
 	}
@@ -120,9 +122,7 @@ public class TestProject {
 	public List<TestSuite> getSuiteList() {
 		final List<TestSuite> retVal = suiteList;
 		if (null == retVal) {
-			throw new IllegalStateException(
-					"suiteList is not correctly populated");
-
+			throw new IllegalStateException("suiteList is not correctly populated");
 		} else {
 			return retVal;
 		}
@@ -149,7 +149,7 @@ public class TestProject {
 	public void runSuites() throws ClassNotFoundException, ParseException,
 			IOException {
 		//cucumberDataInjector.inject("test", "test1");
-		this.runSuites(this.filteringTestSuiteName, this.filteringTestCaseName);
+		this.runSuites(this.testProjectTestCaseFilter);
 //
 //		final TestProjectListener tla = new TestProjectListener(this);
 //		final TestCaseResultModifier repeatStepResultModifier = new TestCaseResultModifier();
@@ -200,7 +200,8 @@ public class TestProject {
 	 * @throws ParseException
 	 */
 	//@TestProjectLoggable (level=ATELogLevel.INFO)
-	private void runSuites(String filteringSuiteName, String filteringTestCaseName) throws ClassNotFoundException, ParseException,
+	@SuppressWarnings({ "null", "deprecation" })
+	private void runSuites(List<CucumberFilter> filter) throws ClassNotFoundException, ParseException,
 			IOException {
 		if (testng.getTestListeners().stream().filter(listener->listener instanceof TestProjectListener).count()==0) {
 		
@@ -213,21 +214,24 @@ public class TestProject {
 		}
 		if (testng.getTestListeners().stream().filter(listener->listener instanceof ATEXMLReporter).count()==0) {
 			ATEXMLReporter rng = new ATEXMLReporter();
-			rng.setStackTraceOutputMethod(XMLReporterConfig.STACKTRACE_NONE);
+			rng.setStackTraceOutputMethod(XMLReporterConfig.StackTraceLevels.NONE);
 			testng.addListener(rng);
 		}
 		//TODO Can be optimaized in cucumber run, no need to delete old suite cases in each step if it is belong to current test project
 		List<TestSuite> suites = this.getSuiteList();
-		if (filteringTestCaseName!=null) {
-			suites = suites.stream().filter(suite->suite.getSuiteName().equalsIgnoreCase(filteringSuiteName)).collect(Collectors.toList());
-			for (TestSuite tSuite : suites) {
-				tSuite.setTestCaseList(tSuite.getTestCaseList()
-						.stream()
-						.filter(tcase -> tcase.getTestCaseFilePathName()
-								.contains("/" + filteringTestCaseName +".xml"))
-								.collect(Collectors.toList()));
+		for(CucumberFilter f : filter) {
+			if (f.getCaseName() != null) {
+				suites = suites.stream().filter(suite->suite.getSuiteName().equalsIgnoreCase(f.getSuiteName())).collect(Collectors.toList());
+				for (TestSuite tSuite : suites) {
+					tSuite.setTestCaseList(tSuite.getTestCaseList()
+							.stream()
+							.filter(tcase -> tcase.getTestCaseFilePathName()
+									.contains("/" + f.getCaseName() +".xml"))
+									.collect(Collectors.toList()));
+				}
 			}
 		}
+		
 		CaseRunnerGenerator crg = new CaseRunnerGenerator(suites);
 		crg.createCaseRunners();
 		if (0 == crg.loadCaseRunnerClasses()) {
@@ -255,9 +259,7 @@ public class TestProject {
 			testng.setXmlSuites(xmlSuites);
 			testng.setVerbose(0);
 			testng.run();
-
 		}
-
 	}
 
 	/**
@@ -303,9 +305,7 @@ public class TestProject {
 	public ApplicationContext getAppCtx() {
 		final ApplicationContext retVal = appCtx;
 		if (null == retVal) {
-			throw new IllegalStateException(
-					"application context is not correctly initialized.");
-
+			throw new IllegalStateException("application context is not correctly initialized.");
 		} else {
 			return retVal;
 		}
@@ -359,32 +359,53 @@ public class TestProject {
 	}
 
 	/**
+	 * @return the testProjectfilter
+	 */
+	public ArrayList<CucumberFilter> getProjectFilter() {
+		return testProjectTestCaseFilter;
+	}
+
+	/**
+	 * set the testProjectfilter
+	 */
+	public void setProjectFilter(ArrayList<CucumberFilter> filter) {
+		testProjectTestCaseFilter = filter;
+	}
+	
+	/**
+	 * @param filteringTestCaseName the filteringTestCaseName to set
+	 */
+	//public void setFilteringTestCaseName(String filteringTestCaseName) {
+	//	this.filteringTestCaseName = filteringTestCaseName;
+	//}
+	
+	/**
 	 * @return the filteringTestCaseName
 	 */
-	public String getFilteringTestCaseName() {
-		return filteringTestCaseName;
-	}
+	//public String getFilteringTestCaseName() {
+	//	return filteringTestCaseName;
+	//}
 
 	/**
 	 * @param filteringTestCaseName the filteringTestCaseName to set
 	 */
-	public void setFilteringTestCaseName(String filteringTestCaseName) {
-		this.filteringTestCaseName = filteringTestCaseName;
-	}
+	//public void setFilteringTestCaseName(String filteringTestCaseName) {
+	//	this.filteringTestCaseName = filteringTestCaseName;
+	//}
 
 	/**
 	 * @return the filteringStepName
 	 */
-	public String getFilteringStepName() {
-		return filteringStepName;
-	}
+	//public String getFilteringStepName() {
+	//	return filteringStepName;
+	//}
 
 	/**
 	 * @param filteringStepName the filteringStepName to set
 	 */
-	public void setFilteringStepName(String filteringStepName) {
-		this.filteringStepName = filteringStepName;
-	}
+	//public void setFilteringStepName(String filteringStepName) {
+	//	this.filteringStepName = filteringStepName;
+	//}
 
 	/**
 	 * @return the cucumberDataInjector
@@ -404,16 +425,16 @@ public class TestProject {
 	/**
 	 * @return the filteringTestSuiteName
 	 */
-	public String getFilteringTestSuiteName() {
-		return filteringTestSuiteName;
-	}
+	//public String getFilteringTestSuiteName() {
+	//	return filteringTestSuiteName;
+	//}
 
 	/**
 	 * @param filteringTestSuiteName the filteringTestSuiteName to set
 	 */
-	public void setFilteringTestSuiteName(String filteringTestSuiteName) {
-		this.filteringTestSuiteName = filteringTestSuiteName;
-	}
+	//public void setFilteringTestSuiteName(String filteringTestSuiteName) {
+	//	this.filteringTestSuiteName = filteringTestSuiteName;
+	//}
 
 	/**
 	 * @return the cucumberDataTable

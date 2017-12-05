@@ -32,8 +32,8 @@ import org.openqa.selenium.WebElement;
  * 
  * @author Peidong Hu
  */
-public class ClearTextAction extends BaseElementAction implements
-		IElementAction, ITestObjectActionImpl {
+public class ClearTextAction extends BaseElementAction 
+                             implements	IElementAction, ITestObjectActionImpl {
 
 	/**
 	 * @param myWd

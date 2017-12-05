@@ -30,7 +30,8 @@ import org.openqa.selenium.NoSuchElementException;
  * @author Peidong Hu
  *
  */
-public class AlertDialogFindByOpenSequence extends BaseAlertDialogFinderImpl implements IAlertDialogFinder, ITestObjectFinderImpl{
+public class AlertDialogFindByOpenSequence extends BaseAlertDialogFinderImpl 
+                                           implements IAlertDialogFinder, ITestObjectFinderImpl{
 
 	/** The title. */
 	final private int openSequence;

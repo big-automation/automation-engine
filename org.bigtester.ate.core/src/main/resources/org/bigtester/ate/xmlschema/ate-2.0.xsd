@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns="http://www.bigtester.org/schema/ate"
-	xmlns:tool="http://www.springframework.org/schema/tool" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:tns="http://www.bigtester.org/schema/ate"
-	targetNamespace="http://www.bigtester.org/schema/ate"
-	elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xsd:import namespace="http://www.springframework.org/schema/beans"
-		schemaLocation="http://www.springframework.org/schema/beans/spring-beans-4.0.xsd" />
+	        xmlns:tool="http://www.springframework.org/schema/tool" 
+	        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	        xmlns:beans="http://www.springframework.org/schema/beans" 
+	        xmlns:tns="http://www.bigtester.org/schema/ate"
+	        targetNamespace="http://www.bigtester.org/schema/ate"
+	        elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xsd:import namespace="http://www.springframework.org/schema/beans"
+		    schemaLocation="http://www.springframework.org/schema/beans/spring-beans-4.0.xsd" />
 
 	<!--************************* following for testproject ************************* -->
 
@@ -108,7 +110,6 @@
 		<xsd:complexContent>
 			<xsd:extension base="beans:identifiedType">
 				<!-- Here we re-use Spring elements and attributes -->
-
 				<xsd:choice maxOccurs="unbounded">
 					<xsd:element ref="caseTypeService" minOccurs="0"
 						maxOccurs="unbounded" />
@@ -120,21 +121,22 @@
 					<xsd:element ref="repeatStep" minOccurs="0" maxOccurs="unbounded" />
 					<xsd:element ref="lastStep" minOccurs="1" maxOccurs="unbounded" />
 				</xsd:choice>
-
 				<xsd:attribute name="testCaseName" type="xsd:string"
 					use="required" />
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
-<xsd:simpleType name="CucumberStepType">
-						<xsd:restriction base="xsd:string">
-							<xsd:enumeration value="GIVEN" />
-							<xsd:enumeration value="WHEN" />
-							<xsd:enumeration value="THEN" />
-							<xsd:enumeration value="HOOK" />
-							<xsd:enumeration value="BACKGROUND" />
-						</xsd:restriction>
-					</xsd:simpleType>
+	
+    <xsd:simpleType name="CucumberStepType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="GIVEN" />
+			<xsd:enumeration value="WHEN" />
+			<xsd:enumeration value="THEN" />
+			<xsd:enumeration value="HOOK" />
+			<xsd:enumeration value="BACKGROUND" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
 	<xsd:complexType name="CaseTypeServiceType">
 		<xsd:complexContent>
 			<xsd:extension base="beans:identifiedType">
@@ -145,10 +147,7 @@
 					use="required" />
 				<xsd:attribute name="testCaseFileName" type="xsd:string"
 					use="required" />
-				<xsd:attribute name="cucumberStepType" type="CucumberStepType">
-					
-				</xsd:attribute>
-				
+				<xsd:attribute name="cucumberStepType" type="CucumberStepType" />		
 				<xsd:attribute name="parentTestCase" type="xsd:string"
 					use="required">
 					<xsd:annotation>
@@ -167,23 +166,20 @@
 
 	<xsd:complexType name="BaseTestStepType" abstract="true">
 		<xsd:complexContent>
-			<xsd:extension base="beans:identifiedType">
-				
+			<xsd:extension base="beans:identifiedType">				
 				<!-- Here we re-use Spring elements and attributes -->
-<!-- 				<xsd:group ref="beans:beanElements" /> -->
-				
+<!-- 				<xsd:group ref="beans:beanElements" /> -->				
 <!-- 				<xsd:attributeGroup ref="beans:beanAttributes" /> -->
 				<xsd:choice minOccurs="0" maxOccurs="1">
-						<xsd:element ref="asserterReferences" />
-					</xsd:choice>
+					<xsd:element ref="asserterReferences" />
+				</xsd:choice>
 				<xsd:attribute name="targetStep" type="xsd:boolean"
 					use="required" />
 				<xsd:attribute name="optionalStep" type="xsd:boolean" />
 				<xsd:attribute name="correlatedOptionalStepsUtilInclusive"
 					type="xsd:string" />
 				<xsd:attribute name="stepName" type="xsd:string" use="required" />
-				<xsd:attribute name="stepDescription" type="xsd:string" />
-				
+				<xsd:attribute name="stepDescription" type="xsd:string" />				
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -228,7 +224,7 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 
-<xsd:complexType name="JavaCodedStepType">
+	<xsd:complexType name="JavaCodedStepType">
 		<xsd:complexContent>
 			<xsd:extension base="BaseTestStepType">
 				<xsd:attribute name="elementActionDef" type="xsd:string"
@@ -247,7 +243,6 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
-
 
 	<xsd:complexType name="StepTypeServiceRefType">
 		<xsd:complexContent>
@@ -289,13 +284,10 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 
-
 	<xsd:complexType name="StepTypeServiceDefType">
 		<xsd:complexContent>
 			<xsd:extension base="beans:identifiedType">
-
 				<xsd:choice maxOccurs="unbounded">
-
 					<xsd:element ref="homeStep" minOccurs="0" maxOccurs="unbounded" />
 					<xsd:element ref="elementStep" minOccurs="1" maxOccurs="unbounded" />
 					<xsd:element ref="lastStep" minOccurs="0" maxOccurs="unbounded" />
@@ -630,7 +622,6 @@
 							<xsd:enumeration value="RandomNumbers" />
 							<xsd:enumeration value="RandomTextNumbers" />
 							<xsd:enumeration value="RandomEmail" />
-
 						</xsd:restriction>
 					</xsd:simpleType>
 				</xsd:attribute>
@@ -746,7 +737,6 @@
 	<xsd:complexType name="CookiesFindAllType">
 		<xsd:complexContent>
 			<xsd:extension base="beans:identifiedType">
-
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -769,7 +759,6 @@
 				<xsd:attributeGroup ref="beans:beanAttributes"></xsd:attributeGroup>
 				<xsd:attribute name="fileNameWithAbsolutePath" type="xsd:string"
 					use="required" />
-
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -781,7 +770,6 @@
 				<xsd:attributeGroup ref="beans:beanAttributes"></xsd:attributeGroup>
 				<xsd:attribute name="folderNameWithAbsolutePath" type="xsd:string"
 					use="required" />
-
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -805,7 +793,6 @@
 				<xsd:attributeGroup ref="beans:beanAttributes"></xsd:attributeGroup>
 				<xsd:attribute name="folderNameWithAbsolutePath" type="xsd:string"
 					use="required" />
-
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -818,8 +805,6 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 
-
-
 	<xsd:complexType name="ElementFindByPartialLinkTextType">
 		<xsd:complexContent>
 			<xsd:extension base="beans:identifiedType">
@@ -827,8 +812,6 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
-
-
 
 	<xsd:complexType name="ElementFindByNameType">
 		<xsd:complexContent>
@@ -838,8 +821,6 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 
-
-
 	<xsd:complexType name="ElementFindByClassNameType">
 		<xsd:complexContent>
 			<xsd:extension base="beans:identifiedType">
@@ -847,8 +828,6 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
-
-
 
 	<xsd:complexType name="ElementFindByCssType">
 		<xsd:complexContent>
@@ -858,7 +837,6 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 
-
 	<xsd:complexType name="ElementFindByTagNameType">
 		<xsd:complexContent>
 			<xsd:extension base="beans:identifiedType">
@@ -866,10 +844,6 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
-
-
-
-
 
 	<!--************************* following for Element Action ************************* -->
 
@@ -978,11 +952,8 @@
 						<xsd:documentation xml:lang="en">
   							If there are multiple selections in the dropdown list, use comma to seperate each selected value.
   						</xsd:documentation>
-					</xsd:annotation>
-					
-  					
-				</xsd:attribute>
-				
+					</xsd:annotation>  					
+				</xsd:attribute>				
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -1032,6 +1003,26 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
+	
+	<xsd:complexType name="MyRemoteDriverType">
+		<xsd:complexContent>
+			<xsd:extension base="AbstractWebDriverBaseType">
+				<xsd:attribute name="browserName" type="xsd:string" />
+				<xsd:attribute name="version" type="xsd:string" />
+				<xsd:attribute name="platform" type="xsd:string" />
+				<xsd:attribute name="url" type="xsd:string" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="MySauceLabDriverType">
+		<xsd:complexContent>
+			<xsd:extension base="MyRemoteDriverType">
+				<xsd:attribute name="userName" type="xsd:string" />
+				<xsd:attribute name="accessKey" type="xsd:string" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
 
 	<xsd:complexType name="MyIEDriverType">
 		<xsd:complexContent>
@@ -1065,6 +1056,22 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 
+	<xsd:complexType name="MyEdgeDriverType">
+		<xsd:complexContent>
+			<xsd:extension base="AbstractWebDriverBaseType">
+				<!-- <xsd:attribute name="profileName" type="xsd:string"/> -->
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="MyPhantomjsDriverType">
+		<xsd:complexContent>
+			<xsd:extension base="AbstractWebDriverBaseType">
+				<!-- <xsd:attribute name="profileName" type="xsd:string"/> -->
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>	
+	
 	<!--************************* following elements definition ************************* -->
 
 	<xsd:element name="testCase" type="TestCaseType" />
@@ -1077,7 +1084,6 @@
 	<xsd:element name="repeatStep" type="RepeatStepType" />
 	<xsd:element name="stepTypeServiceDefinition" type="StepTypeServiceDefType" />
 	<xsd:element name="stepTypeServiceReference" type="StepTypeServiceRefType" />
-
 	<xsd:element name="baseERValue" type="BaseERValueType" />
 <!-- 	<xsd:element name="stepExpectedResultValue" type="StepExpectedResultValueType" /> -->
 
@@ -1091,7 +1097,6 @@
 	<xsd:element name="pagePropertyCorrectnessAsserter" type="PagePropertyCorrectnessAsserterType" />
 	<xsd:element name="pageElementExistenceAsserter" type="PageElementExistenceAsserterType" />
 	<xsd:element name="ateXmlElementReference" type="AteRefType" />
-
 
 	<xsd:element name="baseInputDataValue" type="BaseInputDataValueType" />
 	<xsd:element name="stepInputDataValueParent" type="InputDataValueParentType" />
@@ -1113,8 +1118,7 @@
 
 	<xsd:element name="cookiesFindByDomainName" type="AllCookiesFindByDomainNameType" />
 	<xsd:element name="cookiesFindAll" type="CookiesFindAllType" />
-	<!-- <xsd:element name="cookieFindByCookieNameInDomain" type="CookieFindByCookieNameInDomainType" 
-		/> -->
+	<!-- <xsd:element name="cookieFindByCookieNameInDomain" type="CookieFindByCookieNameInDomainType" /> -->
 
 	<xsd:element name="elementActionDef" type="ElementActionDefType" />
 	<xsd:element name="browserWindowClose" type="TestWindowsCloseActionType" />
@@ -1135,9 +1139,13 @@
 
 	<xsd:element name="firefoxDriver" type="MyFirefoxDriverType" />
 	<xsd:element name="chromeDriver" type="MyChromeDriverType" />
+	<xsd:element name="remoteDriver" type="MyRemoteDriverType" />
+	<xsd:element name="sauceLabDriver" type="MySauceLabDriverType" />
 	<xsd:element name="IEDriver" type="MyIEDriverType" />
 	<xsd:element name="safariDriver" type="MySafariDriverType" />
 	<xsd:element name="operaDriver" type="MyOperaDriverType" />
 	<xsd:element name="htmlUnitDriver" type="MyHtmlUnitDriverType" />
+	<xsd:element name="edgeDriver" type="MyEdgeDriverType" />
+	<xsd:element name="phantomjsDriver" type="MyPhantomjsDriverType" />
 
 </xsd:schema>

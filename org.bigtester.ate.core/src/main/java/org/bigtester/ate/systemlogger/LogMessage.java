@@ -42,6 +42,7 @@ public class LogMessage {
 	 *
 	 * @return the error msg
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public String getErrorMsg() {
 		String retVal = messages.get(Level.ERROR);
 		if (null == retVal)
@@ -54,6 +55,7 @@ public class LogMessage {
 	 *
 	 * @return the warning msg
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public String getWarningMsg() {
 		String retVal = messages.get(Level.WARN);
 		if (null == retVal)
@@ -66,6 +68,7 @@ public class LogMessage {
 	 *
 	 * @return the info msg
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public String getInfoMsg() {
 		String retVal = messages.get(Level.INFO);
 		if (null == retVal)
@@ -78,6 +81,7 @@ public class LogMessage {
 	 *
 	 * @return the debug msg
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public String getDebugMsg() {
 		String retVal = messages.get(Level.DEBUG);
 		if (null == retVal)
@@ -90,6 +94,7 @@ public class LogMessage {
 	 *
 	 * @return the trace msg
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public String getTraceMsg() {
 		String retVal = messages.get(Level.TRACE);
 		if (null == retVal)

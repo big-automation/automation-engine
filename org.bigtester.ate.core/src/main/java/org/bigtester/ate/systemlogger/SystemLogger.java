@@ -30,7 +30,6 @@ import org.bigtester.ate.model.data.exception.TestDataException;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class GenericSystemLogger handles the error happened out of test case
@@ -40,7 +39,6 @@ import org.testng.Reporter;
  */
 @Aspect
 public class SystemLogger {
-	
 	
 	@Pointcut("within(org.bigtester.ate..*)")
 	private void selectAll() {} //NOPMD
@@ -64,12 +62,14 @@ public class SystemLogger {
 		Throwable flagT = new Exception(ExceptionMessage.MSG_ALREADY_SYSPOINTCUT);
 		error.addSuppressed(flagT);
 	}
+	
 	/**
 	 * After throwing advice.
 	 *
 	 * @param joinPoint the join point
 	 * @param error the error
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	@AfterThrowing(pointcut = "selectAll()", throwing = "error")
 	public void afterThrowingAdvice(JoinPoint joinPoint, Throwable error) {
 		if (isAlreadySysPointCut(error)) {

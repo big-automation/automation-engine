@@ -19,13 +19,13 @@
  * limitations under the License.
  *******************************************************************************/
 package org.bigtester.ate.model.data.dbtable;
+
 import javax.persistence.GenerationType;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-
 
 // TODO: Auto-generated Javadoc
 /**
@@ -36,13 +36,11 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class BaseDBTable { //NOPMD
 	
-	
 	/** The id Column. */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="idColumn")
 	
-
 	private long idColumn; 
 
 	/**

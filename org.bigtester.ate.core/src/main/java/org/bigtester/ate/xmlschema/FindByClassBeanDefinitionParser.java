@@ -1,6 +1,5 @@
 package org.bigtester.ate.xmlschema;
 
-
 import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.constant.XsdElementConstants;
 import org.bigtester.ate.model.page.elementfind.ElementFindByClassName;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.xml.ParserContext;
 import org.springframework.util.StringUtils;
 import org.w3c.dom.Element;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class SimpleDateFormatBeanDefinitionParser defines ....
@@ -20,10 +18,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class FindByClassBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
-
-	
+public class FindByClassBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

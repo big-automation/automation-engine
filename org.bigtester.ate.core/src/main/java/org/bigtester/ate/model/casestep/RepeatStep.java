@@ -286,6 +286,7 @@ public class RepeatStep extends BaseTestStep implements ITestStep, Cloneable {
 	 * @throws StepExecutionException
 	 * @throws PageValidationException
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	private void repeatSteps(IStepJumpingEnclosedContainer jumpingContainer)
 			throws StepExecutionException, PageValidationException,
 			RuntimeDataException {

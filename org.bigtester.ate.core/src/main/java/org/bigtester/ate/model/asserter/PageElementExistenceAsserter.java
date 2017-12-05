@@ -42,9 +42,8 @@ import org.openqa.selenium.TimeoutException;
  * @author Peidong Hu
  * 
  */
-public class PageElementExistenceAsserter extends
-		AbstractExpectedResultAsserter implements IExpectedResultAsserter,
-		IStepExecutionResult {
+public class PageElementExistenceAsserter extends AbstractExpectedResultAsserter 
+                                          implements IExpectedResultAsserter, IStepExecutionResult {
 
 	/** The step er value. */
 	private StepErElementExistenceValue stepERValue;

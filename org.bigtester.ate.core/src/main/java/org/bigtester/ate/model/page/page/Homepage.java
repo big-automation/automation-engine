@@ -23,9 +23,6 @@ package org.bigtester.ate.model.page.page;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
 import org.openqa.selenium.WebDriver;
 
-
-
-
 // TODO: Auto-generated Javadoc
 /**
  * The Class Homepage defines ....

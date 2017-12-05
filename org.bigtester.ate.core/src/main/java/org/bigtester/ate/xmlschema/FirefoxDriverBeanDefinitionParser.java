@@ -20,7 +20,6 @@
  *******************************************************************************/
 package org.bigtester.ate.xmlschema;
 
-
 import org.apache.commons.lang3.StringUtils;
 import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.model.page.atewebdriver.MyFirefoxDriver;
@@ -32,7 +31,6 @@ import org.springframework.beans.factory.xml.AbstractSingleBeanDefinitionParser;
 import org.springframework.beans.factory.xml.ParserContext;
 import org.w3c.dom.Element;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class SimpleDateFormatBeanDefinitionParser defines ....
@@ -40,8 +38,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class FirefoxDriverBeanDefinitionParser extends
-		AbstractSingleBeanDefinitionParser {
+public class FirefoxDriverBeanDefinitionParser extends AbstractSingleBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

@@ -37,7 +37,6 @@ import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProce
  * @author Peidong Hu
  *
  */
-
 public class JavaCodedStepBeanPostProcessor implements BeanDefinitionRegistryPostProcessor{
 	
 	/** The bd reg. */

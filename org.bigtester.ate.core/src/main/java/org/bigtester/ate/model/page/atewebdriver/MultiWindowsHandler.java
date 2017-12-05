@@ -21,9 +21,7 @@
 package org.bigtester.ate.model.page.atewebdriver; //NOPMD
 
 import java.util.Iterator;
-
 import java.util.Set;
-
 import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.model.casestep.ITestCase; 
 import org.bigtester.ate.model.page.atewebdriver.exception.BrowserUnexpectedException;
@@ -46,18 +44,14 @@ import org.springframework.context.ApplicationListener;
  * @author Peidong Hu
  *
  */
-public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandler implements IMultiWindowsHandler,
-		WebDriverEventListener, ApplicationListener<AlertDialogAcceptedEvent> {
+public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandler 
+                                 implements IMultiWindowsHandler, WebDriverEventListener, ApplicationListener<AlertDialogAcceptedEvent> {
 	
 	/** The test case. */
 	@Nullable
 	@Autowired
 	private ITestCase testCase;
 	
-	
-
-
-
 	/**
 	 * Gets the window on focus handle.
 	 *
@@ -328,6 +322,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	 *            the open sequence, indexed from 0
 	 * @return the abstract alert dialog
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	@Nullable
 	public AbstractAlertDialog obtainFocusOnAlertDialog(int openSequence) {
 		AbstractAlertDialog retVal;
@@ -349,6 +344,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	 *
 	 * @return the abstract alert dialog
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	@Nullable
 	public AbstractAlertDialog obtainFocusOnLatestAlertDialog() {
 		AbstractAlertDialog retVal;
@@ -392,10 +388,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 		throw GlobalUtils.createInternalError("web driver wrong state");
 	}
 
-
-
-
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -407,8 +399,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 		} catch (BrowserUnexpectedException e) {
 			retryRefreshWindows(getMyWd().getWebDriverInstance(), false);
 		}
-
-
 	}
 
 	/**
@@ -422,6 +412,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 			throw GlobalUtils.createInternalError("browser fatal error.", e1);//NOPMD
 		}
 	}
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -432,7 +423,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 		} catch (BrowserUnexpectedException e) {
 			retryRefreshWindows(getMyWd().getWebDriverInstance(), false);
 		}
-
 	}
 
 	/**
@@ -480,8 +470,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 		} catch (BrowserUnexpectedException e) {
 			retryRefreshWindows(getMyWd().getWebDriverInstance(), false);
 		}
-
-
 	}
 
 	/**
@@ -494,8 +482,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 		} catch (BrowserUnexpectedException e) {
 			retryRefreshWindows(getMyWd().getWebDriverInstance(), false);
 		}
-
-
 	}
 
 	/**
@@ -529,7 +515,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 //		} catch (BrowserUnexpectedException e) {
 //			retryRefreshWindows(getMyWd().getWebDriverInstance());
 //		}
-
 	}
 
 	/**
@@ -577,14 +562,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 
 	}
 
-
-
-
-
-
-
-
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -608,10 +585,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 
 	}
 
-
-
-
-
 	/**
 	 * @return the testCase
 	 */
@@ -631,8 +604,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 		this.testCase = testCase;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -642,13 +613,35 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 		
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public void beforeNavigateRefresh(WebDriver arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void afterAlertAccept(WebDriver arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void afterAlertDismiss(WebDriver arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void beforeAlertAccept(WebDriver arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void beforeAlertDismiss(WebDriver arg0) {
 		// TODO Auto-generated method stub
 		
 	}

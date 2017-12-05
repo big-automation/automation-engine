@@ -27,14 +27,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
-
 /**
  * The Class ElementFindByClassName.
  *
  * @author Grace Hu
  */
-public class ElementFindByClassName extends AbstractElementFind implements
-		IElementFind, ITestObjectFinderImpl {
+public class ElementFindByClassName extends AbstractElementFind 
+                                    implements IElementFind, ITestObjectFinderImpl {
 
 	/**
 	 * @param findByValue

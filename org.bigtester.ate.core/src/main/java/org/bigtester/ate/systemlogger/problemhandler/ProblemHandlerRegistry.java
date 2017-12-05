@@ -126,6 +126,7 @@ final public class ProblemHandlerRegistry {
 	 * @param hlr
 	 *            the hlr
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public static void registerAttachedProblemHandler(Class<?> cls,
 			ProblemHandler hlr) {
 		Class<?> superCls = cls.getSuperclass();

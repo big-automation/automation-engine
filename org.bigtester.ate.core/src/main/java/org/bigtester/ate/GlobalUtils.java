@@ -125,6 +125,7 @@ public class GlobalUtils implements ApplicationContextAware {
 	 * @throws NoSuchBeanDefinitionException
 	 *             the no such bean definition exception
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	public static ITestCase findTestCaseBean(ApplicationContext appCtx)
 			throws NoSuchBeanDefinitionException {
 		Map<String, ITestCase> testcases = appCtx.getBeansOfType(ITestCase.class);
@@ -168,6 +169,7 @@ public class GlobalUtils implements ApplicationContextAware {
 	 * @throws NoSuchBeanDefinitionException
 	 *             the no such bean definition exception
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public static ITestCase findTestCaseBean()
 			throws NoSuchBeanDefinitionException {
 		ApplicationContext appCtx = getApx();
@@ -192,6 +194,7 @@ public class GlobalUtils implements ApplicationContextAware {
 	 * @return the step data logger
 	 * @throws NoSuchBeanDefinitionException the no such bean definition exception
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public static StepDataLogger findStepDataLoggerBean(ApplicationContext appCtx)
 			throws NoSuchBeanDefinitionException {
 		Map<String, StepDataLogger> loggers = appCtx.getBeansOfType(StepDataLogger.class);
@@ -230,6 +233,7 @@ public class GlobalUtils implements ApplicationContextAware {
 	 *            the app ctx
 	 * @return the test database initializer
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	public static TestDatabaseInitializer findDBInitializer(
 			ApplicationContext appCtx) throws NoSuchBeanDefinitionException {
 		Map<String, TestDatabaseInitializer> dbInit = appCtx
@@ -256,6 +260,7 @@ public class GlobalUtils implements ApplicationContextAware {
 	 *            the bean factory
 	 * @return the test database initializer
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	public static TestDatabaseInitializer findDBInitializer(BeanFactory beanFac)
 			throws NoSuchBeanDefinitionException {
 
@@ -348,6 +353,7 @@ public class GlobalUtils implements ApplicationContextAware {
 	 * @throws NoSuchBeanDefinitionException
 	 *             the no such bean definition exception
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public static TestProject findTestProjectBean(ApplicationContext appCtx)
 			throws NoSuchBeanDefinitionException {
 		Map<String, TestProject> testProjects = appCtx
@@ -375,6 +381,7 @@ public class GlobalUtils implements ApplicationContextAware {
 	 * @throws NoSuchBeanDefinitionException
 	 *             the no such bean definition exception
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public static DataSource findDataSourceBean(ApplicationContext appCtx)
 			throws NoSuchBeanDefinitionException {
 		Map<String, DataSource> testcases = appCtx
@@ -401,6 +408,7 @@ public class GlobalUtils implements ApplicationContextAware {
 	 * @throws NoSuchBeanDefinitionException
 	 *             the no such bean definition exception
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	public static DataSource findDataSourceBean()
 			throws NoSuchBeanDefinitionException {
 		Map<String, DataSource> testcases = GlobalUtils.getApx().
@@ -433,6 +441,7 @@ public class GlobalUtils implements ApplicationContextAware {
 	 * @throws NoSuchBeanDefinitionException
 	 *             the no such bean definition exception
 	 */
+	@SuppressWarnings({ "unused", "null" })
 	public static IMyWebDriver findMyWebDriver(ApplicationContext appCtx)
 			throws NoSuchBeanDefinitionException {
 		Map<String, IMyWebDriver> drivers = appCtx
@@ -459,6 +468,7 @@ public class GlobalUtils implements ApplicationContextAware {
 	 * @throws NoSuchBeanDefinitionException
 	 *             the no such bean definition exception
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public static IMyWebDriver findMyWebDriver()
 			throws NoSuchBeanDefinitionException {
 		Map<String, IMyWebDriver> drivers = GlobalUtils.getApx()
@@ -488,6 +498,7 @@ public class GlobalUtils implements ApplicationContextAware {
 	 * @throws NoSuchBeanDefinitionException
 	 *             the no such bean definition exception
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public static DataSource findDataSourceBean(BeanFactory beanFac) {
 		DataSource dataSrc = beanFac.getBean(DataSource.class);
 
@@ -505,6 +516,7 @@ public class GlobalUtils implements ApplicationContextAware {
 	 * @param beanFac the bean fac
 	 * @return the test project
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public static TestProject findTestProjectBean(BeanFactory beanFac) {
 		TestProject dataSrc = beanFac.getBean(TestProject.class);
 

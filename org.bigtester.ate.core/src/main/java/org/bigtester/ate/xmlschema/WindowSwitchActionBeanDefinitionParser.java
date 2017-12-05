@@ -38,8 +38,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class WindowSwitchActionBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class WindowSwitchActionBeanDefinitionParser extends	AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

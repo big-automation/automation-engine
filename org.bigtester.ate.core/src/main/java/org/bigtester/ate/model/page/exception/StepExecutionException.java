@@ -33,7 +33,6 @@ import org.bigtester.ate.systemlogger.problems.GenericATEProblem;
 import org.bigtester.ate.systemlogger.problems.IATECaseExecProblem;
 import org.eclipse.jdt.annotation.Nullable;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class StepExecutionException defines ....

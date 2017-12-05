@@ -70,33 +70,35 @@ public class MyIEDriver extends AbstractWebDriverBase implements IMyWebDriver {
 			// DesiredCapabilities ieCapabilities =
 			// DesiredCapabilities.internetExplorer();
 			// ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
+			
+			// Important: Link of configuration to run IE
+			//https://github.com/SeleniumHQ/selenium/wiki/InternetExplorerDriver#required-configuration
 
 			switch (platform) {
-			case Windows_32:
-				/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "windows", BROWSERNAME, ReadXmlFile.VERSION);*/
-				if (driverPath == null)
-					System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER
-							           + BROWSERWIN32PATH + BROWSERFILENAME);
-				else
-					System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
-							           + BROWSERWIN32PATH + BROWSERFILENAME);
-				break;
-			case Windows_64:
-				/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "windows", BROWSERNAME, ReadXmlFile.VERSION);*/
-				if (driverPath == null)
-					System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
-							           + BROWSERWIN64PATH + BROWSERFILENAME);
-				else
-					System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
-							           + BROWSERWIN64PATH + BROWSERFILENAME);
-				break;
-			default:
-				throw GlobalUtils.createNotInitializedException("operating system is not supported ");
+				case Windows_32:
+					/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "windows", BROWSERNAME, ReadXmlFile.VERSION);*/
+					if (driverPath == null)
+						System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER
+								           + BROWSERWIN32PATH + BROWSERFILENAME);
+					else
+						System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
+								           + BROWSERWIN32PATH + BROWSERFILENAME);
+					break;
+				case Windows_64:
+					/*versionNum = ReadXmlFile.parserXml(ReadXmlFile.REPOFILENAME, "windows", BROWSERNAME, ReadXmlFile.VERSION);*/
+					if (driverPath == null)
+						System.setProperty(BROWSERDRVNAME, GlobalUtils.DEFAULT_DRIVER_PATH + GlobalUtils.PATH_DELIMITER 
+								           + BROWSERWIN64PATH + BROWSERFILENAME);
+					else
+						System.setProperty(BROWSERDRVNAME, driverPath + GlobalUtils.PATH_DELIMITER 
+								           + BROWSERWIN64PATH + BROWSERFILENAME);
+					break;
+				default:
+					throw GlobalUtils.createNotInitializedException("operating system is not supported ");
 			}
 			retVal = new InternetExplorerDriver();
 			setWebDriver(retVal);
-		}
-		
+		}		
 		return retVal;
 	}
 

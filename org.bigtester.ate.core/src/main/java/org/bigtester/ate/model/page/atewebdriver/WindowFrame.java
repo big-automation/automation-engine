@@ -167,8 +167,6 @@ public class WindowFrame {
 		this.childFrames.clear();
 		for (index = 0; index < iframes.size(); index++) {
 			WebElement iframe = iframes.get(index);
-			if (null == iframe)
-				throw GlobalUtils.createInternalError("web driver");
 			WindowFrame childWinF = new WindowFrame(index, this.myWd, iframe,
 					this);
 			this.childFrames.add(childWinF);
@@ -177,8 +175,6 @@ public class WindowFrame {
 		List<WebElement> frames = myWd.findElements(By.tagName("frame"));
 		for (int indexj = 0; indexj < frames.size(); indexj++) {
 			WebElement frame = frames.get(indexj);
-			if (null == frame)
-				throw GlobalUtils.createInternalError("web driver");
 			WindowFrame childWinF = new WindowFrame(indexj + index, this.myWd,
 					frame, this);
 			this.childFrames.add(childWinF);

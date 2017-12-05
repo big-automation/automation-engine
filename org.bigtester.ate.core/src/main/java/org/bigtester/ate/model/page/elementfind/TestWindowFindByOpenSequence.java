@@ -31,7 +31,8 @@ import org.openqa.selenium.NoSuchElementException;
  * @author Peidong Hu
  *
  */
-public class TestWindowFindByOpenSequence extends BaseTestWindowFinderImpl implements ITestWindowFinder, ITestObjectFinderImpl{
+public class TestWindowFindByOpenSequence extends BaseTestWindowFinderImpl 
+                                          implements ITestWindowFinder, ITestObjectFinderImpl{
 
 	/** The title. */
 	final private int openSequence;

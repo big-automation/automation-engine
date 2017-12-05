@@ -45,8 +45,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class SendKeysActionBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class SendKeysActionBeanDefinitionParser extends	AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

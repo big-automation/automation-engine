@@ -38,8 +38,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class CursorMoveActionBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class CursorMoveActionBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

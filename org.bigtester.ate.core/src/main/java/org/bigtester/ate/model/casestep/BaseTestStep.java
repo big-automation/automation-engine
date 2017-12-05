@@ -89,7 +89,6 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 
 	/** The forced page validation. */
 	private boolean forcedPageValidation;
-
 	
 	/** The optional step. default is false */
 	private boolean optionalStep;
@@ -99,6 +98,7 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 
 	/** The correlated optional steps util inclusive index. */
 	private int correlatedOptionalStepsUtilInclusiveIndex = -1;// NOPMD
+	
 	/** The page object. */
 	@Nullable
 	@XStreamOmitField
@@ -122,6 +122,7 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 	
 	/** The cucumber step type. */
 	private CucumberStepType cucumberStepType;
+	
 	/**
 	 * Gets the test case.
 	 *
@@ -166,7 +167,6 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 	 *
 	 * @return the correlatedOptionalStepsUtilInclusiveIndex
 	 */
-
 	public int getCorrelatedOptionalStepsUtilInclusiveIndex(IStepJumpingEnclosedContainer stepJumpingEnclosedContainer) {
 		if (-1 == correlatedOptionalStepsUtilInclusiveIndex
 				&& !StringUtils
@@ -194,9 +194,7 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 						.setOptionalStep(true);
 			}
 			correlatedOptionalStepsUtilInclusiveIndex = endIndex;
-
 		}
-
 		return correlatedOptionalStepsUtilInclusiveIndex;
 
 	}
@@ -208,7 +206,6 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 	 */
 	public List<IDataParser> getDataHolders() {
 		return dataHolders;
-
 	}
 
 	/**
@@ -218,9 +215,7 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 	 */
 	public List<IExpectedResultAsserter> getExpectedResultAsserter() {
 		return expectedResultAsserter;
-	}
-
-	
+	}	
 
 	/**
 	 * Gets the page object.
@@ -363,9 +358,7 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 	 */
 	public void setForcedPageValidation(boolean forcedPageValidation) {
 		this.forcedPageValidation = forcedPageValidation;
-	}
-
-	
+	}	
 
 	/**
 	 * Sets the optional step.
@@ -543,16 +536,12 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 		return correlatedOptionalStepsUtilInclusive;
 	}
 
-
-
 	/**
 	 * @return the correctedOnTheFly
 	 */
 	public boolean isCorrectedOnTheFly() {
 		return correctedOnTheFly;
 	}
-
-
 
 	/**
 	 * @param correctedOnTheFly the correctedOnTheFly to set
@@ -576,10 +565,10 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 //			IStepJumpingEnclosedContainer stepJumpingEnclosedContainer) {
 //		this.stepJumpingEnclosedContainer = stepJumpingEnclosedContainer;
 //	}
+	
 	/**
 	 * {@inheritDoc}
 	 */
-
 	public CucumberStepType getCucumberStepType() {
 		
 		return this.cucumberStepType;
@@ -591,6 +580,5 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 	public void setCucumberStepType(CucumberStepType cucumberStepType) {
 		this.cucumberStepType = cucumberStepType;
 	}
-
 	
 }

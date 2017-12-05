@@ -40,8 +40,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class RegularPageBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class RegularPageBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

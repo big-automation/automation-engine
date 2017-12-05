@@ -27,9 +27,7 @@ package org.bigtester.ate.constant;
  *
  */
 public final class PagePropertyType {
-	
-	
-	
+		
 	/** The Constant PAGE_TITLE. */
 	public static final String PAGE_TITLE = "Page_Title";
 	
@@ -45,5 +43,5 @@ public final class PagePropertyType {
 	 */
 	private PagePropertyType(){
 	    throw new AssertionError();
-	  }
+	}
 }

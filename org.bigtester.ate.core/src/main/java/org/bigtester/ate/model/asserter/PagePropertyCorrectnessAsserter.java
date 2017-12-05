@@ -20,7 +20,6 @@
  *******************************************************************************/
 package org.bigtester.ate.model.asserter;
 
-
 import org.bigtester.ate.constant.AssertType;
 import org.bigtester.ate.constant.EnumAssertPriority;
 import org.bigtester.ate.constant.EnumAssertResult;
@@ -41,8 +40,8 @@ import org.openqa.selenium.WebDriver;
  * @author Peidong Hu
  *
  */
-public class PagePropertyCorrectnessAsserter extends
-		AbstractExpectedResultAsserter implements IExpectedResultAsserter, IStepExecutionResult {
+public class PagePropertyCorrectnessAsserter extends AbstractExpectedResultAsserter 
+                                             implements IExpectedResultAsserter, IStepExecutionResult {
 	
 	/** The step er value. */
 	private StepErPagePropertyValue stepERValue;

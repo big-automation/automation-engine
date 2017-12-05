@@ -38,8 +38,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class ClickActionBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class ClickActionBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

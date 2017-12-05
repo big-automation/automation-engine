@@ -64,7 +64,7 @@ public class ATEXMLSuiteResultWriter {
     }
   }
 
-  public static Set<ITestResult> convertSuiteResultToTestResults(ISuiteResult suiteResult) {
+public static Set<ITestResult> convertSuiteResultToTestResults(ISuiteResult suiteResult) {
 	  Set<ITestResult> testResults = Sets.newHashSet();
 	    ITestContext testContext = suiteResult.getTestContext();
 	    addAllTestResults(testResults, testContext.getPassedTests());
@@ -77,7 +77,7 @@ public class ATEXMLSuiteResultWriter {
 	    return testResults;
   }
   
-  public static List<TestStepResult> retrieveTestStepResults(ITestResult testResult) {
+public static List<TestStepResult> retrieveTestStepResults(ITestResult testResult) {
 	  if (testResult.getAttribute(TestStepResult.STEPRESULTLIST) instanceof List<?>) {
 			@SuppressWarnings("unchecked")
 			List<TestStepResult> stepResults = (List<TestStepResult>) testResult
@@ -87,7 +87,8 @@ public class ATEXMLSuiteResultWriter {
 		 return new ArrayList<TestStepResult>();
 	 }
   }
-  private void writeAllToBuffer(XMLStringBuffer xmlBuffer, ISuiteResult suiteResult) {
+
+private void writeAllToBuffer(XMLStringBuffer xmlBuffer, ISuiteResult suiteResult) {
     xmlBuffer.push(XMLReporterConfig.TAG_TEST, getSuiteResultAttributes(suiteResult));
     Set<ITestResult> testResults = Sets.newHashSet();
     ITestContext testContext = suiteResult.getTestContext();
@@ -102,7 +103,7 @@ public class ATEXMLSuiteResultWriter {
     xmlBuffer.pop();
   }
 
-  private static void addAllTestResults(Set<ITestResult> testResults, IResultMap resultMap) {
+private static void addAllTestResults(Set<ITestResult> testResults, IResultMap resultMap) {
     if (resultMap != null) {
       // Sort the results chronologically before adding them
       List<ITestResult> allResults = new ArrayList<ITestResult>();
@@ -127,7 +128,7 @@ public class ATEXMLSuiteResultWriter {
     return new File(parentDir + File.separatorChar + suiteResultName);
   }
 
-  private Properties getSuiteResultAttributes(ISuiteResult suiteResult) {
+private Properties getSuiteResultAttributes(ISuiteResult suiteResult) {
     Properties attributes = new Properties();
     ITestContext tc = suiteResult.getTestContext();
     attributes.setProperty(XMLReporterConfig.ATTR_NAME, tc.getName());
@@ -139,7 +140,7 @@ public class ATEXMLSuiteResultWriter {
     Map<String, List<ITestResult>> testsGroupedByClass = buildTestClassGroups(testResults);
     for (Map.Entry<String, List<ITestResult>> result : testsGroupedByClass.entrySet()) {
       Properties attributes = new Properties();
-      String className = result.getKey();
+	String className = result.getKey();
       if (config.isSplitClassAndPackageNames()) {
         int dot = className.lastIndexOf('.');
         attributes.setProperty(XMLReporterConfig.ATTR_NAME,
@@ -150,7 +151,7 @@ public class ATEXMLSuiteResultWriter {
       }
 
       xmlBuffer.push(XMLReporterConfig.TAG_CLASS, attributes);
-      List<ITestResult> sortedResults = result.getValue();
+	List<ITestResult> sortedResults = result.getValue();
       Collections.sort( sortedResults );
       for (ITestResult testResult : sortedResults) {
         addTestResult(xmlBuffer, testResult);
@@ -159,7 +160,7 @@ public class ATEXMLSuiteResultWriter {
     }
   }
 
-  private Map<String, List<ITestResult>> buildTestClassGroups(Set<ITestResult> testResults) {
+private Map<String, List<ITestResult>> buildTestClassGroups(Set<ITestResult> testResults) {
     Map<String, List<ITestResult>> map = Maps.newHashMap();
     for (ITestResult result : testResults) {
       String className = result.getTestClass().getName();
@@ -195,7 +196,6 @@ public class ATEXMLSuiteResultWriter {
     xmlBuffer.pop();
   }
 
-    
   private String getStatusString(int testResultStatus) {
     switch (testResultStatus) {
       case ITestResult.SUCCESS:
@@ -210,7 +210,7 @@ public class ATEXMLSuiteResultWriter {
     return null;
   }
 
-  private Properties getTestResultAttributes(ITestResult testResult) {
+  private Properties getTestResultAttributes(ITestResult testResult) {	
     Properties attributes = new Properties();
     if (!testResult.getMethod().isTest()) {
       attributes.setProperty(XMLReporterConfig.ATTR_IS_CONFIG, "true");
@@ -227,7 +227,7 @@ public class ATEXMLSuiteResultWriter {
 
     attributes.setProperty(XMLReporterConfig.ATTR_METHOD_SIG, removeClassName(testResult.getMethod().toString()));
 
-    SimpleDateFormat format = new SimpleDateFormat(XMLReporterConfig.getTimestampFormat());
+    SimpleDateFormat format = new SimpleDateFormat(config.getTimestampFormat());
     String startTime = format.format(testResult.getStartMillis());
     String endTime = format.format(testResult.getEndMillis());
     attributes.setProperty(XMLReporterConfig.ATTR_STARTED_AT, startTime);
@@ -318,15 +318,13 @@ public class ATEXMLSuiteResultWriter {
         xmlBuffer.pop();
       }
 
-      String[] stackTraces = Utils.stackTrace(exception, false);
-      if ((config.getStackTraceOutputMethod() & XMLReporterConfig.STACKTRACE_SHORT) == XMLReporterConfig
-              .STACKTRACE_SHORT) {
+	String[] stackTraces = Utils.stackTrace(exception, false);
+      if (config.getStackTraceOutput() == XMLReporterConfig.StackTraceLevels.SHORT) {
         xmlBuffer.push(XMLReporterConfig.TAG_SHORT_STACKTRACE);
         xmlBuffer.addCDATA(stackTraces[0]);
         xmlBuffer.pop();
       }
-      if ((config.getStackTraceOutputMethod() & XMLReporterConfig.STACKTRACE_FULL) == XMLReporterConfig
-              .STACKTRACE_FULL) {
+      if (config.getStackTraceOutput() == XMLReporterConfig.StackTraceLevels.FULL) {
         xmlBuffer.push(XMLReporterConfig.TAG_FULL_STACKTRACE);
         xmlBuffer.addCDATA(stackTraces[1]);
         xmlBuffer.pop();

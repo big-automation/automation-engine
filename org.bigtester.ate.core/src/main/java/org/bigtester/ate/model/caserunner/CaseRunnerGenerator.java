@@ -262,6 +262,7 @@ public class CaseRunnerGenerator {
 	 * @return the int
 	 * @throws Exception
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public int loadCaseRunnerClasses() {
 
 		Iterator<Entry<String, String>> iter = caseRunnerJavaFileNames
@@ -619,6 +620,7 @@ public class CaseRunnerGenerator {
 		/**
 		 * @return the methodName
 		 */
+		@SuppressWarnings("unused")
 		public String getMethodName() {
 			return methodName;
 		}

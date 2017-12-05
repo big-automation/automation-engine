@@ -22,7 +22,6 @@ package org.bigtester.ate.model.page.elementaction;
 
 import org.bigtester.ate.model.io.IDiskFileOperation;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class ITestWindowFinder defines ....

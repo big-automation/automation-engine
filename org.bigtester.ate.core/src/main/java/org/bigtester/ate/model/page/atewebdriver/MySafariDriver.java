@@ -64,7 +64,6 @@ public class MySafariDriver extends AbstractWebDriverBase implements IMyWebDrive
 		if (null == retVal) {
 			throw new IllegalStateException(
 					"browserProfile is not correctly populated");
-
 		} else {
 			return retVal;
 		}

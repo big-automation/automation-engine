@@ -22,7 +22,6 @@ package org.bigtester.ate.xmlschema;
 
 import org.springframework.beans.factory.xml.BeanDefinitionParser;
 
-// TODO: Auto-generated Javadoc
 /**
  * This class IXsdBeanDefinitionParser defines ....
  * @author Peidong Hu

@@ -30,8 +30,7 @@ import org.springframework.beans.factory.xml.AbstractBeanDefinitionParser;
 import org.springframework.beans.factory.xml.ParserContext;
 import org.w3c.dom.Element;
 
-public class TestDatabaseInitializerBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class TestDatabaseInitializerBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

@@ -20,7 +20,6 @@
  *******************************************************************************/
 package org.bigtester.ate.model.page.atewebdriver;
 
-// TODO: Auto-generated Javadoc
 /**
  * This class EPlatfrom defines ....
  * @author Jun Yang

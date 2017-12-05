@@ -25,21 +25,14 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-
-
-
 import javax.xml.bind.annotation.XmlRootElement;
-
-
-
-
 import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.constant.LogbackTag;
 import org.bigtester.ate.model.casestep.ITestCase;
 import org.bigtester.ate.model.data.TestParameters;
 import org.bigtester.ate.model.data.exception.TestDataException;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
+import org.bigtester.ate.model.page.atewebdriver.exception.BrowserUnexpectedException;
 import org.bigtester.ate.model.project.IRunTestCase;
 import org.bigtester.ate.model.project.TestProjectListener;
 import org.bigtester.ate.systemlogger.LogbackWriter;
@@ -61,12 +54,7 @@ import org.testng.TestRunner;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;//NOPMD, can't be deleted since this file will be used as a template to create runners
 import org.testng.internal.Utils;
-
-
-
-
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 // TODO: Auto-generated Javadoc
@@ -237,7 +225,13 @@ public class CaseRunner implements IRunTestCase {
 		String[] configFiles = {testParams.getTestFilename()};
 		context = new FileSystemXmlApplicationContext(configFiles, testParams.getTestProject().getAppCtx());
 		IMyWebDriver myWebD = (IMyWebDriver) GlobalUtils
-				.findMyWebDriver(context);
+				.findMyWebDriver(context);		
+		WebDriver webD = myWebD.getWebDriverInstance();
+		try {
+			myWebD.getMultiWindowsHandler().refreshWindowsList(webD,false);
+		} catch (BrowserUnexpectedException e) {
+			myWebD.getMultiWindowsHandler().retryRefreshWindows(webD, false);
+		}
 		mainDriver = myWebD;
 		myTestCase = GlobalUtils.findTestCaseBean(getContext());
 		getMyTestCase().setStepThinkTime(testParams.getStepThinkTime());
@@ -287,6 +281,7 @@ public class CaseRunner implements IRunTestCase {
 					throw (TestDataException) itr.getThrowable();
 				} else { // other test case bean creation errors. need to create
 					// another exception to handle it.
+					@SuppressWarnings("deprecation")
 					String[] fullST = Utils.stackTrace(fbe, false);
 					int TWO = 2; // NOPMD
 					if (fullST.length < TWO) {
@@ -367,6 +362,7 @@ public class CaseRunner implements IRunTestCase {
 	/**
 	 * @return the mainDriver
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	public WebDriver getMainDriver() {
 		final WebDriver retVal = mainDriver.getWebDriverInstance();
 		if (null == retVal) {

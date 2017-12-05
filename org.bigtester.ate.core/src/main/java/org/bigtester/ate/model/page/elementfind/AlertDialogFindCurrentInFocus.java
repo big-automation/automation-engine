@@ -30,7 +30,8 @@ import org.openqa.selenium.NoSuchElementException;
  * @author Peidong Hu
  *
  */
-public class AlertDialogFindCurrentInFocus extends BaseAlertDialogFinderImpl implements IAlertDialogFinder, ITestObjectFinderImpl{
+public class AlertDialogFindCurrentInFocus extends BaseAlertDialogFinderImpl 
+                                           implements IAlertDialogFinder, ITestObjectFinderImpl{
 
 	/**
 	 * {@inheritDoc}

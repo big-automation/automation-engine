@@ -27,8 +27,6 @@ import javax.persistence.Entity;
 import org.bigtester.ate.GlobalUtils;
 import org.eclipse.jdt.annotation.Nullable;
 
-
-
 // TODO: Auto-generated Javadoc
 /**
  * This class StepResult defines ....
@@ -39,7 +37,6 @@ import org.eclipse.jdt.annotation.Nullable;
 @Entity
 @DiscriminatorValue(value="No")  
 public class RepeatStepErPageProperty extends StepErPageProperty {
-
 
 	/** The repeat step bean id. */
 	@Column

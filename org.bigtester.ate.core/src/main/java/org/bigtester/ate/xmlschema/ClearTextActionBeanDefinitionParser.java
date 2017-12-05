@@ -38,8 +38,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class ClearTextActionBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class ClearTextActionBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

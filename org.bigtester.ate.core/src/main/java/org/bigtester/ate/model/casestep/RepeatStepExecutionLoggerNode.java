@@ -24,7 +24,6 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This class RepeatStepExecutionLoggerNode defines ....

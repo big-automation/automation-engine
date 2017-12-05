@@ -39,8 +39,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class AutoIncrementalDataHolderBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class AutoIncrementalDataHolderBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

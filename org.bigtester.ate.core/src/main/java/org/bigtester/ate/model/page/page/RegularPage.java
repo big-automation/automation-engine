@@ -20,12 +20,7 @@
  *******************************************************************************/
 package org.bigtester.ate.model.page.page;
 
-
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
-
-
-
-
 
 // TODO: Auto-generated Javadoc
 /**
@@ -41,6 +36,5 @@ public class RegularPage extends BasePageObject implements IPageObject{
 	public RegularPage(IMyWebDriver myWd) {
 		super(myWd);
 	}
-
 	
 }

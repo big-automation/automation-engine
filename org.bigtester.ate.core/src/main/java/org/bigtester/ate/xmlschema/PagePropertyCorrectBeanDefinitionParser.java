@@ -44,8 +44,7 @@ import org.w3c.dom.Element;
  * @author Peidong Hu
  *
  */
-public class PagePropertyCorrectBeanDefinitionParser extends
-		AbstractBeanDefinitionParser {
+public class PagePropertyCorrectBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 	/**
 	 * {@inheritDoc}

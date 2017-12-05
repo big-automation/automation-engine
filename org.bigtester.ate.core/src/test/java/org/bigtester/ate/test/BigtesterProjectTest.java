@@ -68,6 +68,7 @@ public class BigtesterProjectTest extends BaseATETest {
 	/**
 	 * Inits the test objects.
 	 */
+	@SuppressWarnings({ "null", "unused" })
 	@BeforeClass
 	public void initTestObjects() {
 		Object obj = applicationContext.getBean(IMyWebDriver.class);

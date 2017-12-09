@@ -40,16 +40,16 @@ public final class LogbackWriter {
 	@Nullable
 	private static Logger myLogger = LoggerFactory//NOPMD
 			.getLogger(LogbackWriter.class);
-	
+
 	/** The applog errorheader. */
 	final public static String APPLOG_ERRORHEADER = LogbackTag.TAG_APP_LOG + LogbackTag.TAG_TEST_ERROR;
-	
+
 	/** The applog infoheader. */
 	final public static String APPLOG_INFOHEADER = LogbackTag.TAG_APP_LOG + LogbackTag.TAG_TEST_INFO;
-	
+
 	/** The applog warnheader. */
 	final public static String APPLOG_WARNHEADER = LogbackTag.TAG_APP_LOG + LogbackTag.TAG_TEST_WARNING;
-	
+
 	/** The Constant APPLOG_DEBUGHEADER. */
 	final public static String APPLOG_DEBUGHEADER = LogbackTag.TAG_SYS_LOG + LogbackTag.TAG_TEST_DEBUG;
 
@@ -72,11 +72,11 @@ public final class LogbackWriter {
 						ExceptionMessage.MSG_UNSUPPORTED_LOGBACK_LEVEL
 								+ "MYLOGGER.isErrorEnabled()");
 			}
-			
+
 		}
 	}
-	
-	
+
+
 	/**
 	 * Write logback app log.
 	 *
@@ -98,7 +98,7 @@ public final class LogbackWriter {
 //		if (!logMessenger.getTraceMsg().equals(""))
 //			logger.trace(logMessenger.getTraceMsg());
 	}
-	
+
 	/**
 	 * Write logback app log.
 	 *
@@ -121,7 +121,7 @@ public final class LogbackWriter {
 //		if (!logMessenger.getTraceMsg().equals(""))
 //			logger.trace(logMessenger.getTraceMsg());
 	}
-	
+
 	/**
 	 * Write logback app log.
 	 *
@@ -145,7 +145,7 @@ public final class LogbackWriter {
 //		if (!logMessenger.getTraceMsg().equals(""))
 //			logger.trace(logMessenger.getTraceMsg(), error);
 	}
-	
+
 	/**
 	 * Gets the cause chain messages.
 	 *
@@ -161,7 +161,7 @@ public final class LogbackWriter {
 		}
 		return retVal;
 	}
-	
+
 	/**
 	 * Write app error.
 	 *
@@ -177,9 +177,9 @@ public final class LogbackWriter {
 			logger.error(msg);
 		}
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Write app error.
 	 *
@@ -195,12 +195,13 @@ public final class LogbackWriter {
 			if (mylogger2.isErrorEnabled()) {
 				mylogger2.error(LogbackTag.TAG_APP_LOG
 						+ LogbackTag.TAG_TEST_ERROR + msg);
-			} else {
-				throw new UnsupportedOperationException(
-						ExceptionMessage.MSG_UNSUPPORTED_LOGBACK_LEVEL
-								+ "MYLOGGER.isErrorEnabled()");
 			}
-			
+//			else {
+//				throw new UnsupportedOperationException(
+//						ExceptionMessage.MSG_UNSUPPORTED_LOGBACK_LEVEL
+//								+ "MYLOGGER.isErrorEnabled()");
+//			}
+
 		}
 
 	}
@@ -225,7 +226,7 @@ public final class LogbackWriter {
 			//}
 		}
 	}
-	
+
 	/**
 	 * Write sys error.
 	 *
@@ -254,11 +255,12 @@ public final class LogbackWriter {
 			if (mylogger2.isWarnEnabled()) {
 				mylogger2.warn(LogbackTag.TAG_APP_LOG + LogbackTag.TAG_TEST_WARNING
 						+ msg);
-			} else {
-				throw new UnsupportedOperationException(
-						ExceptionMessage.MSG_UNSUPPORTED_LOGBACK_LEVEL
-								+ "MYLOGGER.isWarnEnabled()");
 			}
+//			else {
+//				throw new UnsupportedOperationException(
+//						ExceptionMessage.MSG_UNSUPPORTED_LOGBACK_LEVEL
+//								+ "MYLOGGER.isWarnEnabled()");
+//			}
 		}
 	}
 
@@ -275,11 +277,12 @@ public final class LogbackWriter {
 		} else {
 			if (mylogger2.isInfoEnabled()) {
 				mylogger2.info(LogbackTag.TAG_APP_LOG + LogbackTag.TAG_TEST_INFO + msg); // NOPMD
-			} else {
-				throw new UnsupportedOperationException(
-						ExceptionMessage.MSG_UNSUPPORTED_LOGBACK_LEVEL
-								+ "MYLOGGER.isInfoEnabled()");
 			}
+//			else {
+//				throw new UnsupportedOperationException(
+//						ExceptionMessage.MSG_UNSUPPORTED_LOGBACK_LEVEL
+//								+ "MYLOGGER.isInfoEnabled()");
+//			}
 		}
 	}
 

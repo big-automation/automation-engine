@@ -289,8 +289,41 @@ mvn com.lazerycode.selenium:driver-binary-downloader-maven-plugin:selenium -->
 			</plugin> -->
 		</plugins>
 	</build>
+<dependencyManagement>
+<dependencies>
+<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-util -->
+<dependency>
+    <groupId>org.eclipse.jetty</groupId>
+    <artifactId>jetty-util</artifactId>
+    <version>9.4.2.v20170220</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-common -->
+<dependency>
+    <groupId>org.eclipse.jetty.websocket</groupId>
+    <artifactId>websocket-common</artifactId>
+    <version>9.4.2.v20170220</version>
+</dependency>
+<dependency>
+    <groupId>org.eclipse.jetty.websocket</groupId>
+    <artifactId>websocket-client</artifactId>
+    <version>9.4.2.v20170220</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
+<dependency>
+    <groupId>org.asynchttpclient</groupId>
+    <artifactId>async-http-client</artifactId>
+    <version>2.1.0-RC1</version>
+</dependency>
+</dependencies>
 
+</dependencyManagement>
 	<dependencies>
+	<!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
+<dependency>
+    <groupId>org.asynchttpclient</groupId>
+    <artifactId>async-http-client</artifactId>
+<!--     <version>2.1.0-RC1</version> -->
+</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
@@ -306,6 +339,24 @@ mvn com.lazerycode.selenium:driver-binary-downloader-maven-plugin:selenium -->
 			<artifactId>hsqldb</artifactId>
 			<version>2.3.3</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-util -->
+<dependency>
+    <groupId>org.eclipse.jetty</groupId>
+    <artifactId>jetty-util</artifactId>
+
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-common -->
+<dependency>
+    <groupId>org.eclipse.jetty.websocket</groupId>
+    <artifactId>websocket-common</artifactId>
+<!--     <version>9.4.2.v20170220</version> -->
+</dependency>
+<dependency>
+    <groupId>org.eclipse.jetty.websocket</groupId>
+    <artifactId>websocket-client</artifactId>
+<!--     <version>9.4.2.v20170220</version> -->
+</dependency>
+
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
@@ -438,21 +489,21 @@ mvn com.lazerycode.selenium:driver-binary-downloader-maven-plugin:selenium -->
 		<!-- <artifactId>jspf.core</artifactId> -->
 		<!-- <version>1.0.3</version> -->
 		<!-- </dependency> -->
-		<dependency>
-			<groupId>org.springframework.plugin</groupId>
-			<artifactId>spring-plugin-core</artifactId>
-			<version>1.2.0.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.plugin</groupId>
-			<artifactId>spring-plugin-integration</artifactId>
-			<version>1.0.0.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.plugin</groupId>
-			<artifactId>spring-plugin-metadata</artifactId>
-			<version>1.2.0.RELEASE</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.plugin</groupId> -->
+<!-- 			<artifactId>spring-plugin-core</artifactId> -->
+<!-- 			<version>1.2.0.RELEASE</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.plugin</groupId> -->
+<!-- 			<artifactId>spring-plugin-integration</artifactId> -->
+<!-- 			<version>1.0.0.RELEASE</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.plugin</groupId> -->
+<!-- 			<artifactId>spring-plugin-metadata</artifactId> -->
+<!-- 			<version>1.2.0.RELEASE</version> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>xml-apis</groupId>
 			<artifactId>xml-apis</artifactId>
@@ -587,6 +638,13 @@ mvn com.lazerycode.selenium:driver-binary-downloader-maven-plugin:selenium -->
             <groupId>com.jcabi</groupId>
             <artifactId>jcabi-aether</artifactId>
             <version>0.10.1</version>
+            <exclusions>
+            <exclusion>
+            <!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
+
+    <groupId>com.ning</groupId>
+    <artifactId>async-http-client</artifactId>
+            </exclusion></exclusions>
         </dependency>
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>

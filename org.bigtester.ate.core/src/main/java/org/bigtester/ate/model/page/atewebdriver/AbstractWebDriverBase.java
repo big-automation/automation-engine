@@ -33,9 +33,14 @@ import java.util.Optional;
 
 import javax.imageio.ImageIO;
 
+import org.apache.commons.io.FileUtils;
 import org.bigtester.ate.GlobalUtils;
 import org.eclipse.jdt.annotation.Nullable;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.Augmenter;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -153,16 +158,34 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 	}
 
 	private boolean createScreenCaptureJPEG(String filename) {
+		File screenshot;
+		if (this.getWebDriverInstance() instanceof RemoteWebDriver) {
+			WebDriver augmentedDriver = new Augmenter().augment(this.getWebDriverInstance());
+		    screenshot = ((TakesScreenshot)augmentedDriver).
+		                            getScreenshotAs(OutputType.FILE);
+		} else {
+			screenshot = ((TakesScreenshot)this.getWebDriverInstance()).
+                    getScreenshotAs(OutputType.FILE);
+		}
 		boolean retVal = false;
 		try {
-			BufferedImage img = getScreenAsBufferedImage();
-			File output = new File(filename);
-			ImageIO.write(img, "jpg", output);
+			// now copy the screenshot to desired location using copyFile
+			// //method
+			FileUtils.copyFile(screenshot, new File(filename));
 			retVal = true;
-		} catch (IOException | AWTException e) {
-			//e.printStackTrace();
-			retVal= false;
+		} catch (IOException e) {
+			//System.out.println(e.getMessage());
+			throw GlobalUtils.createInternalError("createScreenCaptureJPEG", e);
 		}
+//		try {
+//			BufferedImage img = getScreenAsBufferedImage();
+//			File output = new File(filename);
+//			ImageIO.write(img, "jpg", output);
+//			retVal = true;
+//		} catch (IOException | AWTException e) {
+//			//e.printStackTrace();
+//			retVal= false;
+//		}
 		return retVal;
 	}
 
@@ -184,7 +207,7 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 	
 	public Optional<String> saveScreenShot(Optional<String> pathFileName) {
 		String filename = generateRandomFilename(pathFileName
-				.orElse(getWebDriverInstance().getCurrentUrl()));
+				.orElse(getWebDriverInstance().getCurrentUrl().substring(0, 30)));
 		if (createScreenCaptureJPEG(filename)) {
 			return Optional.of(filename); //NOPMD
 		} else {
@@ -196,7 +219,7 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 	 * {@inheritDoc}
 	 */
 	public Optional<String> saveScreenShot() {
-		return saveScreenShot(Optional.ofNullable(getWebDriverInstance().getCurrentUrl()));
+		return saveScreenShot(Optional.ofNullable(getWebDriverInstance().getCurrentUrl().substring(0, 30)));
 	}
 	
 	

@@ -35,6 +35,7 @@ import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FileUtils;
 import org.bigtester.ate.GlobalUtils;
+import org.bigtester.ate.GmailUtils;
 import org.eclipse.jdt.annotation.Nullable;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -65,6 +66,8 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 	@Autowired
 	@Lazy
 	private IMultiWindowsHandler multiWindowsHandler;
+	
+	private Mailer
 	
 	
 	/**
@@ -222,6 +225,13 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 		return saveScreenShot(Optional.ofNullable(getWebDriverInstance().getCurrentUrl().substring(0, 30)));
 	}
 	
-	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void sendScreenShotToEmailAddress(String from, String to, String subject,
+			String mailBody) {
+		GmailUtils.sendEmail(from, to, subject, mailBody, saveScreenShot().orElse(""));
+		
+	}
 
 }

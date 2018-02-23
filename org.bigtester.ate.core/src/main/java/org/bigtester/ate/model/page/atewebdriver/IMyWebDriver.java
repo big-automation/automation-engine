@@ -75,5 +75,15 @@ public interface IMyWebDriver {
 	 */
 	Optional<String> saveScreenShot();
 
+	/**
+	 * Send screen shot to email.
+	 *
+	 * @param from the from
+	 * @param to the to
+	 * @param subject the subject
+	 * @param mailBody the mail body
+	 */
+	void sendScreenShotToEmailAddress(String from, String to, String subject,
+			String mailBody);
 
 }

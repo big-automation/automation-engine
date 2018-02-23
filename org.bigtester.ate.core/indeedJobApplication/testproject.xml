@@ -18,7 +18,7 @@
 
 	<ate:TestProject id="testproject" stepThinkTime="1"
 		globalInitXmlFile="indeedJobApplication/data.xml">
-
+		
 		<ate:TestSuite id="easyApply" suiteName="easyApply">
 		<ate:XmlTestCase
 				testCaseFilePathName="indeedJobApplication/easyApply/applyQAJobPassExample.xml" />
@@ -56,5 +56,7 @@
 <!-- 				</ate:CaseDependencies> -->
 <!-- 			</ate:XmlTestCase> -->
 <!-- 		</ate:TestSuite> -->
+		<ate:mailer fromMailAddress="bigtester.prot@gmail.com" toMailAddress="pei.hu.osv@fedex.com"
+		smtpMailServerHost="smtp.gmail.com" smtpMailServerPort="23" smtpMailUserName="peidong_automation" smtpMailUserPassword="testPassword"></ate:mailer>
 	</ate:TestProject>
 </beans>

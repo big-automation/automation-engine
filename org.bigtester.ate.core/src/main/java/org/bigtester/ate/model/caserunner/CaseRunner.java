@@ -239,6 +239,7 @@ public class CaseRunner implements IRunTestCase {
 		} else {
 			myWebD = (IMyWebDriver) GlobalUtils
 				.findMyWebDriver(testCaseContext);
+			myWebD.setMailer(testParams.getTestProject().getMailer());
 		}
 		return myWebD;
 	}

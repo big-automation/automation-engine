@@ -44,7 +44,12 @@ import org.w3c.dom.Element;
  */
 public class TestProjectBeanDefinitionParser extends
 		AbstractBeanDefinitionParser {
-
+	
+	/** The Constant ELEMENT_MAILER. */
+	public final static String ELEMENT_MAILER = "mailer";
+	
+	/** The Constant PROP_MAILER. */
+	public final static String PROP_MAILER = "mailer";
 	/**
 	 * {@inheritDoc}
 	 */
@@ -77,9 +82,21 @@ public class TestProjectBeanDefinitionParser extends
 			parseSuiteComponents(suiteListElements, factory, parserContext);
 		}
 
+		Element mailerElement = DomUtils.getChildElementByTagName(element, ELEMENT_MAILER);
+		if (mailerElement != null) {
+			parseMailerComponent(mailerElement, factory, parserContext);
+		}
+		
 		return factory.getBeanDefinition();
 	}
 
+	/**
+	 * Parses the suite components.
+	 *
+	 * @param childElements the child elements
+	 * @param factory the factory
+	 * @param parserContext the parser context
+	 */
 	private static void parseSuiteComponents(List<Element> childElements,
 			BeanDefinitionBuilder factory, ParserContext parserContext) {
 		ManagedList<BeanDefinition> children = new ManagedList<BeanDefinition>(
@@ -90,6 +107,23 @@ public class TestProjectBeanDefinitionParser extends
 
 		}
 		factory.addPropertyValue(XsdElementConstants.PROP_TESTPROJECT_SUITELIST, children);
+	}
+	
+	/**
+	 * Parses the mailer component.
+	 *
+	 * @param child the child
+	 * @param factory the factory
+	 * @param parserContext the parser context
+	 */
+	private static void parseMailerComponent(Element child,
+			BeanDefinitionBuilder factory, ParserContext parserContext) {
+		
+		MailerBeanDefinitionParser childMailerParser = new MailerBeanDefinitionParser();
+		BeanDefinition mailerBD = childMailerParser.parse(child, parserContext);
+				
+
+		factory.addPropertyValue(PROP_MAILER, mailerBD);
 	}
 
 }

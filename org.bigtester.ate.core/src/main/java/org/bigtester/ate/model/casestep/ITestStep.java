@@ -47,6 +47,12 @@ public interface ITestStep {
 	boolean isTargetStep();
 	
 	/**
+	 * Checks if is mail screen shot.
+	 *
+	 * @return true, if is mail screen shot
+	 */
+	boolean isMailScreenShot();
+	/**
 	 * Gets the optional step util inclusive.
 	 *
 	 * @return the optional step util inclusive

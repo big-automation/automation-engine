@@ -232,7 +232,7 @@ public class CaseRunner implements IRunTestCase {
 			  
 			  factory.removeBeanDefinition(TestProjectRunner.MULTIPLE_WINDOW_HANDLER);
 			  IMultiWindowsHandler winHandler = (IMultiWindowsHandler) GlobalUtils.getTargetObject(testParams.getTestProject().getAppCtx().getBean(TestProjectRunner.MULTIPLE_WINDOW_HANDLER));
-			  
+			  myWebD.setMailer(testParams.getTestProject().getMailer());
 			  myWebD.setMultiWindowsHandler(winHandler);
 			  factory.registerSingleton(TestProjectRunner.MY_WEB_DRIVER, myWebD);
 			  factory.registerSingleton(TestProjectRunner.MULTIPLE_WINDOW_HANDLER, myWebD.getMultiWindowsHandler());

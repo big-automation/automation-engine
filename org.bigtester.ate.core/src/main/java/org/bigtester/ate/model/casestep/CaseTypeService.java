@@ -338,4 +338,13 @@ public class CaseTypeService extends TestCase implements ITestStep { // NOPMD
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean isMailScreenShot() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

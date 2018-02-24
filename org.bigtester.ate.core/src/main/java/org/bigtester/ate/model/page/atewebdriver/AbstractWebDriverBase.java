@@ -36,6 +36,7 @@ import javax.imageio.ImageIO;
 import org.apache.commons.io.FileUtils;
 import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.GmailUtils;
+import org.bigtester.ate.model.project.Mailer;
 import org.eclipse.jdt.annotation.Nullable;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -67,7 +68,8 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 	@Lazy
 	private IMultiWindowsHandler multiWindowsHandler;
 	
-	private Mailer
+	/** The mailer. */
+	private Mailer mailer;
 	
 	
 	/**
@@ -230,8 +232,29 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 	 */
 	public void sendScreenShotToEmailAddress(String from, String to, String subject,
 			String mailBody) {
-		GmailUtils.sendEmail(from, to, subject, mailBody, saveScreenShot().orElse(""));
+		GmailUtils.sendEmail(mailer.getFromMailAddress(), mailer.getToMailAddress(), subject, mailBody, saveScreenShot().orElse(""), mailer.getSmtpMailUserName(), mailer.getSmtpMailUserPassword());
 		
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void sendScreenShotToEmailAddress(String subject,
+			String mailBody) {
+		GmailUtils.sendEmail(mailer.getFromMailAddress(), mailer.getToMailAddress(), subject, mailBody, saveScreenShot().orElse(""), mailer.getSmtpMailUserName(), mailer.getSmtpMailUserPassword());
+		
+	}
+	/**
+	 * @return the mailer
+	 */
+	public Mailer getMailer() {
+		return mailer;
+	}
+	/**
+	 * @param mailer the mailer to set
+	 */
+	public void setMailer(Mailer mailer) {
+		this.mailer = mailer;
 	}
 
 }

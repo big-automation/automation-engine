@@ -22,6 +22,7 @@ package org.bigtester.ate.model.page.atewebdriver;
 
 import java.util.Optional;
 
+import org.bigtester.ate.model.project.Mailer;
 import org.eclipse.jdt.annotation.Nullable;
 import org.openqa.selenium.WebDriver;
 
@@ -60,6 +61,13 @@ public interface IMyWebDriver {
 	 * @param multiWindowsHandler the new multi windows handler
 	 */
 	void setMultiWindowsHandler(IMultiWindowsHandler multiWindowsHandler);
+	
+	/**
+	 * Sets the mailer.
+	 *
+	 * @param mailer the new mailer
+	 */
+	void setMailer(Mailer mailer);
 	/**
 	 * Save screen shot. if pathFileName supplied,
 	 *
@@ -83,7 +91,16 @@ public interface IMyWebDriver {
 	 * @param subject the subject
 	 * @param mailBody the mail body
 	 */
-	void sendScreenShotToEmailAddress(String from, String to, String subject,
+	void sendScreenShotToEmailAddress(String from, String toAddress, String subject,
+			String mailBody);
+	
+	/**
+	 * Send screen shot to email address.
+	 *
+	 * @param subject the subject
+	 * @param mailBody the mail body
+	 */
+	void sendScreenShotToEmailAddress(String subject,
 			String mailBody);
 
 }

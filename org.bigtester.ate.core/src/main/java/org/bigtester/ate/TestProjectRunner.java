@@ -79,6 +79,7 @@ import org.bigtester.ate.xmlschema.IXsdBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.InputDataValueParentBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.LastPageBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.LastStepBeanDefinitionParser;
+import org.bigtester.ate.xmlschema.MailerBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.MyWebElementBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.OperaDriverBeanDefinitionParser;
 import org.bigtester.ate.xmlschema.PageElementExistBeanDefinitionParser;
@@ -230,6 +231,7 @@ public final class TestProjectRunner {
 	private static void registerLegacyXsdNameSpaceParsers() {
 		/******************************* following for Test Project ******************************/
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_TESTPROJECT, new TestProjectBeanDefinitionParser());
+		XsdNameSpaceParserRegistry.registerNameSpaceHandler(TestProjectBeanDefinitionParser.ELEMENT_MAILER, new MailerBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_TESTSUITE, new TestSuiteBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_XMLTESTCASE, new XmlTestCaseBeanDefinitionParser());
 		XsdNameSpaceParserRegistry.registerNameSpaceHandler(XsdElementConstants.ELEMENT_CASEDEPENDENCY, new CaseDependencyBeanDefinitionParser());

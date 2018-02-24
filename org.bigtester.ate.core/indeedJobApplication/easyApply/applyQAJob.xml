@@ -35,7 +35,7 @@
 
 		<ate:homeStep id="stepOpenHomePage" stepName="stepOpenHomePage"
 			stepDescription="open indeed home page" targetStep="false"
-			pageObject="indeedCaHomepage">
+			pageObject="indeedCaHomepage" mailScreenShot="true">
 			<ate:asserterReferences>
 				<ate:ateXmlElementReference ateXmlElementID="indeedHomepageElementExistenceAsserter"/>
 			</ate:asserterReferences>

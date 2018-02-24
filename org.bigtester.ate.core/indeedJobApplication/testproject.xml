@@ -56,7 +56,7 @@
 <!-- 				</ate:CaseDependencies> -->
 <!-- 			</ate:XmlTestCase> -->
 <!-- 		</ate:TestSuite> -->
-		<ate:mailer fromMailAddress="bigtester.prot@gmail.com" toMailAddress="pei.hu.osv@fedex.com"
-		smtpMailServerHost="smtp.gmail.com" smtpMailServerPort="23" smtpMailUserName="peidong_automation" smtpMailUserPassword="testPassword"></ate:mailer>
+		<ate:mailer id="mailer" fromMailAddress="bigtester.prot@gmail.com" toMailAddress="bigtester.prot@gmail.com"
+		smtpMailServerHost="smtp.gmail.com" smtpMailServerPort="23" smtpMailUserName="automation.test.engine" smtpMailUserPassword="atePassw0rd"></ate:mailer>
 	</ate:TestProject>
 </beans>

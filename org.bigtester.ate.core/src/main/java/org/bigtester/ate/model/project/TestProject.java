@@ -72,6 +72,9 @@ public class TestProject {
 
 	/** The step think time. */
 	private int stepThinkTime;
+	
+	/** The mailer. */
+	private Mailer mailer;
 
 	/** The test project listener. */
 	@Nullable
@@ -284,6 +287,20 @@ public class TestProject {
 	 */
 	public void setMyWebDriver(Optional<IMyWebDriver> myWebDriver) {
 		this.myWebDriver = myWebDriver;
+	}
+
+	/**
+	 * @return the mailer
+	 */
+	public Mailer getMailer() {
+		return mailer;
+	}
+
+	/**
+	 * @param mailer the mailer to set
+	 */
+	public void setMailer(Mailer mailer) {
+		this.mailer = mailer;
 	}
 
 }

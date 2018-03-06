@@ -32,11 +32,10 @@ import org.bigtester.ate.model.caserunner.CaseRunnerGenerator;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
 import org.bigtester.ate.reporter.ATEXMLReporter;
 import org.bigtester.ate.reporter.AteEmailableReporter;
+import org.bigtester.ate.systemlogger.LogbackWriter;
 import org.eclipse.jdt.annotation.Nullable;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
-import org.testng.ITestResult;
-import org.testng.Reporter;
 import org.testng.TestNG;
 import org.testng.reporters.XMLReporterConfig;
 import org.testng.xml.XmlPackage;
@@ -174,10 +173,8 @@ public class TestProject {
 			testng.setXmlSuites(xmlSuites);
 
 			testng.run();
-
-			if (Reporter.getCurrentTestResult().getStatus() == ITestResult.FAILURE) {
-				throw new IllegalStateException("Failed with error: ", Reporter.getCurrentTestResult().getThrowable());
-			}
+			
+			LogbackWriter.writeAppInfo("To enable system log, please configure the logback-production.xml");
 
 		}
 

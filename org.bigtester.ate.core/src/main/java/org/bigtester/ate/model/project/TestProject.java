@@ -35,6 +35,8 @@ import org.bigtester.ate.reporter.AteEmailableReporter;
 import org.eclipse.jdt.annotation.Nullable;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
+import org.testng.ITestResult;
+import org.testng.Reporter;
 import org.testng.TestNG;
 import org.testng.reporters.XMLReporterConfig;
 import org.testng.xml.XmlPackage;
@@ -47,7 +49,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 // TODO: Auto-generated Javadoc
 /**
  * The Class TestProject defines ....
- * 
+ *
  * @author Peidong Hu
  */
 public class TestProject {
@@ -66,13 +68,13 @@ public class TestProject {
 	@XStreamOmitField
 	private Optional<IMyWebDriver> myWebDriver = Optional.empty();
 
-	
+
 	/** The global init xmlfiles. */
 	private Resource globalInitXmlFile;
 
 	/** The step think time. */
 	private int stepThinkTime;
-	
+
 	/** The mailer. */
 	private Mailer mailer;
 
@@ -84,7 +86,7 @@ public class TestProject {
 	/** The testng. */
 	@XStreamOmitField
 	final private TestNG testng = new TestNG();
-	
+
 	/**
 	 * Instantiates a new test project.
 	 *
@@ -99,7 +101,7 @@ public class TestProject {
 
 	/**
 	 * Gets the suite list.
-	 * 
+	 *
 	 * @return the suiteList
 	 */
 	public List<TestSuite> getSuiteList() {
@@ -115,7 +117,7 @@ public class TestProject {
 
 	/**
 	 * Sets the suite list.
-	 * 
+	 *
 	 * @param suiteList
 	 *            the suiteList to set
 	 */
@@ -125,7 +127,7 @@ public class TestProject {
 
 	/**
 	 * Run suites.
-	 * 
+	 *
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 * @throws ParseException
@@ -136,7 +138,7 @@ public class TestProject {
 
 		final TestProjectListener tla = new TestProjectListener(this);
 		final TestCaseResultModifier repeatStepResultModifier = new TestCaseResultModifier();
-		
+
 		testng.addListener(tla);
 		testng.addListener(repeatStepResultModifier);
 
@@ -156,13 +158,13 @@ public class TestProject {
 
 			XmlPackage xmlpackage = new XmlPackage();
 			xmlpackage.setName(crg.getBasePackageName() + "." + tempSuite.getSuiteName());
-			
+
 			packages.add(xmlpackage);
-			
+
 		}
 		List<XmlSuite> xmlSuites = new ArrayList<XmlSuite>();
 		XmlSuite xmlProject = new XmlSuite();
-		
+
 		XmlTest test = new XmlTest(xmlProject);
 		test.setPackages(packages);
 		xmlSuites.add(xmlProject);
@@ -172,6 +174,10 @@ public class TestProject {
 			testng.setXmlSuites(xmlSuites);
 
 			testng.run();
+
+			if (Reporter.getCurrentTestResult().getStatus() == ITestResult.FAILURE) {
+				throw new IllegalStateException("Failed with error: ", Reporter.getCurrentTestResult().getThrowable());
+			}
 
 		}
 
@@ -259,7 +265,7 @@ public class TestProject {
 	public TestNG getTestng() {
 		return testng;
 	}
-	
+
 	/**
 	* {@inheritDoc}
 	*/
@@ -271,7 +277,7 @@ public class TestProject {
 			for (TestSuite suite: suiteList2) {
 				retVal = retVal + "\r\n" +  suite.toString() ;//NOPMD
 			}
-		} 
+		}
 		return retVal;
 	}
 

@@ -44,7 +44,7 @@ import org.testng.annotations.Test;
  * @author Peidong Hu
  *
  */
-@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/assignValueAction.xml" })
+//@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/assignValueAction.xml" })
 public class AssignValueActionTest extends AbstractBigtesterStepTest {
 
 	/** The my web e. */
@@ -59,7 +59,7 @@ public class AssignValueActionTest extends AbstractBigtesterStepTest {
 	 * @throws InterruptedException 
 	 * @throws BrowserUnexpectedException 
 	 */
-	@Test(priority = 1)
+	//@Test(priority = 1)
 	public void assignValueEADTest() throws PageValidationException,
 			RuntimeDataException, StepExecutionException, InterruptedException, BrowserUnexpectedException {
 		getTestPage("bigtesterTestNG/aut/textarea.html");

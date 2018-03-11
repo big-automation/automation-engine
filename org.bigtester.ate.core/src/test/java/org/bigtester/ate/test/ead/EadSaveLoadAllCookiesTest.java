@@ -51,7 +51,7 @@ import org.testng.annotations.AfterClass;
  * @author Peidong Hu
  *
  */
-@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/homePageValidation.xml" })
+//@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/homePageValidation.xml" })
 public class EadSaveLoadAllCookiesTest extends BigtesterProjectTest {
 
 	/** The Constant FILETOSAVE. */
@@ -179,7 +179,7 @@ public class EadSaveLoadAllCookiesTest extends BigtesterProjectTest {
 	/**
 	 * {@inheritDoc}
 	 */
-	@AfterClass
+	//@AfterClass
 	public void tearDown() {
 		File fileSaved = new File(EadSaveLoadAllCookiesTest.FILETOSAVE);
 		if (fileSaved.exists())

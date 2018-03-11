@@ -40,7 +40,7 @@ import org.testng.annotations.Test;
  * @author Peidong Hu
  *
  */
-@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/dropDownList.xml" })
+//@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/dropDownList.xml" })
 public class DropdownSelectActionTest extends BigtesterProjectTest {
 
 	/**
@@ -52,7 +52,7 @@ public class DropdownSelectActionTest extends BigtesterProjectTest {
 	 * @throws InterruptedException
 	 * @throws BrowserUnexpectedException 
 	 */
-	@Test(priority = 1)
+	//@Test(priority = 1)
 	public void mainTest() throws PageValidationException,
 			RuntimeDataException, StepExecutionException, InterruptedException, BrowserUnexpectedException {
 		getTestPage("bigtesterTestNG/aut/dropdownList.html");

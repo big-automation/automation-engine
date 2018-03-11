@@ -39,13 +39,13 @@ import org.testng.annotations.Test;
  * @author Peidong Hu
  *
  */
-@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/stepExecutionException.xml" })
+//@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/stepExecutionException.xml" })
 public class StepExecExpectionTest extends BigtesterProjectTest {
 
 	/**
 	 * Setup.
 	 */
-	@BeforeClass
+	//@BeforeClass
 	public void setup() {
 		when(getMyMockedDriver().getWebDriverInstance()).thenReturn(getMockedDriver());
 		when(getMockedDriver().manage()).thenReturn(getOptions());
@@ -59,7 +59,7 @@ public class StepExecExpectionTest extends BigtesterProjectTest {
 	 * @throws InterruptedException 
 	 * @throws BrowserUnexpectedException 
 	 */
-	@Test(priority = 1)
+	//@Test(priority = 1)
 	public void stepException() throws PageValidationException,
 			RuntimeDataException, StepExecutionException, InterruptedException, BrowserUnexpectedException {
 //here, we need portable file path handling for different system

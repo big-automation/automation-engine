@@ -40,7 +40,7 @@ import static org.mockito.Mockito.when;
  * @author Peidong Hu
  */
 
-@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/loginSuccess.xml" })
+//@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/loginSuccess.xml" })
 public class CookiesManagerTest extends BigtesterProjectTest {
 	
 	/** The cookies data. */
@@ -63,7 +63,7 @@ public class CookiesManagerTest extends BigtesterProjectTest {
 	/**
 	 * Setup.
 	 */
-	@BeforeClass
+	//@BeforeClass
 	public void setup() {
 		cookiesMng.setExportFileNameWithAbsolutePath(fileNameWithAbsolutePath);
 		when(getMyMockedDriver().getWebDriverInstance()).thenReturn(getMockedDriver());
@@ -78,7 +78,7 @@ public class CookiesManagerTest extends BigtesterProjectTest {
 	 * 
 	 * @throws InterruptedException
 	 */
-	@Test (priority = 1)
+	//@Test (priority = 1)
 	public void exportToSingleFileTest() throws InterruptedException {
 		cookiesMng.saveToSingleFile();
 		File newFile = new File(cookiesMng.getExportFileNameWithAbsolutePath());
@@ -88,7 +88,7 @@ public class CookiesManagerTest extends BigtesterProjectTest {
 	/**
 	 * Import file test.
 	 */
-	@Test (priority = 2)
+	//@Test (priority = 2)
 	public void importFromSingleFileTest() {
 		cookiesMng.setImportFileNameWithAbsolutePath(fileNameWithAbsolutePath);
 		cookiesMng.importFromSingleFile();

@@ -14,7 +14,7 @@
 
 	<groupId>org.bigtester</groupId>
 	<artifactId>org.bigtester.ate.core</artifactId>
-	<version>0.1.9</version>
+	<version>0.1.10-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Automation Test Engine Core</name>
@@ -37,7 +37,7 @@
 		<connection>scm:git:git@github.com:bigtester/automation-test-engine.git</connection>
 		<url>scm:git:git@github.com:bigtester/automation-test-engine.git</url>
 		<developerConnection>scm:git:git@github.com:bigtester/automation-test-engine.git</developerConnection>
-	  <tag>v0.1.9</tag>
+	  <tag>v0.1.8</tag>
   </scm>
 
 	<pluginRepositories>

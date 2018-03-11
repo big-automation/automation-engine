@@ -47,7 +47,7 @@ public class SeleniumStandaloneServerTest {
 	 *
 	 * @throws MalformedURLException the malformed url exception
 	 */
-	@Test
+	//@Test
 	public void executeFirefoxDriver() throws MalformedURLException {
 		this.execute(DesiredCapabilities.firefox());
 	}
@@ -57,7 +57,7 @@ public class SeleniumStandaloneServerTest {
 	 *
 	 * @throws MalformedURLException the malformed url exception
 	 */
-	@Test
+	//@Test
 	public void executeChrome() throws MalformedURLException {
 		this.execute(DesiredCapabilities.chrome());
 	}

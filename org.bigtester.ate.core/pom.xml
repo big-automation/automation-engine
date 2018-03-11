@@ -82,7 +82,7 @@
 		<snapshotRepository>
 			<id>sonatype-nexus-snapshots</id>
 			<name>Sonatype Nexus Snapshots</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</snapshotRepository>
 	</distributionManagement>
 	<properties>
@@ -111,7 +111,7 @@
 						</executions>
 						<configuration>
 							<serverId>sonatype-nexus-releases</serverId>
-							<nexusUrl>https://oss.sonatype.org/content/repositories/releases/</nexusUrl>
+							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
 							<skipStaging>true</skipStaging>
 						</configuration>
 					</plugin>

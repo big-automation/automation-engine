@@ -1,6 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
@@ -12,8 +11,8 @@
 	</parent>
 
 	<prerequisites>
-        <maven>3.0</maven>
-    </prerequisites>
+		<maven>3.0</maven>
+	</prerequisites>
 
 	<groupId>org.bigtester</groupId>
 	<artifactId>org.bigtester.ate.core</artifactId>
@@ -32,20 +31,26 @@
 		</license>
 	</licenses>
 
+	<!-- <scm> -->
+	<!-- <url>https://github.com/bigtester/automation-test-engine/tree/master/org.bigtester.ate.core</url> -->
+	<!-- </scm> -->
+
 	<scm>
-		<url>https://github.com/bigtester/automation-test-engine/tree/master/org.bigtester.ate.core</url>
+		<connection>scm:git:git@github.com:bigtester/automation-test-engine.git</connection>
+		<url>scm:git:git@github.com:bigtester/automation-test-engine.git</url>
+		<developerConnection>scm:git:git@github.com:bigtester/automation-test-engine.git</developerConnection>
 	</scm>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/service/local/repositories/snapshots/content/ </url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/service/local/repositories/snapshots/content/ </url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<repositories>
 		<!-- <repository> -->
@@ -57,25 +62,64 @@
 		<!-- <name>ProjectRepo</name> -->
 		<!-- <url>file://${project.basedir}/src/lib</url> -->
 		<!-- </repository> -->
-        <repository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
+		<repository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
 	</repositories>
-
+	<distributionManagement>
+		<repository>
+			<id>sonatype-nexus-releases</id>
+			<name>Sonatype Nexus Releases</name>
+			<url>https://oss.sonatype.org/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
 		<slf4j.version>1.7.25</slf4j.version>
 		<logback.version>1.1.11</logback.version>
 	</properties>
+	<profiles>
+		<profile>
+			<id>sonatype-nexus-releases</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+						<version>1.5.1</version>
+						<executions>
+							<execution>
+								<id>default-deploy</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>deploy</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<serverId>sonatype-nexus-releases</serverId>
+							<nexusUrl>https://oss.sonatype.org/content/repositories/releases/</nexusUrl>
+							<skipStaging>true</skipStaging>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -88,9 +132,15 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
 					<version>2.5.2</version>
+					<configuration>
+						<tagNameFormat>v@{project.version}</tagNameFormat>
+						<autoVersionSubmodules>true</autoVersionSubmodules>
+						<releaseProfiles>sonatype-nexus-releases</releaseProfiles>
+					</configuration>
 				</plugin>
 
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -153,8 +203,7 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-<!-- 			to update the browser driver run
-mvn com.lazerycode.selenium:driver-binary-downloader-maven-plugin:selenium -->
+			<!-- to update the browser driver run mvn com.lazerycode.selenium:driver-binary-downloader-maven-plugin:selenium -->
 
 			<plugin>
 				<groupId>com.lazerycode.selenium</groupId>
@@ -167,11 +216,11 @@ mvn com.lazerycode.selenium:driver-binary-downloader-maven-plugin:selenium -->
 					<downloadedZipFileDirectory>/tmp/zips</downloadedZipFileDirectory>
 					<!-- Location of a custom repository map -->
 					<customRepositoryMap>browserdriver/repo.xml</customRepositoryMap>
-					<!-- This will ensure that the plugin only downloads binaries for the
-						current OS, this will override anything specified in the <operatingSystems>
+					<!-- This will ensure that the plugin only downloads binaries for the 
+						current OS, this will override anything specified in the <operatingSystems> 
 						configuration -->
 					<onlyGetDriversForHostOperatingSystem>true</onlyGetDriversForHostOperatingSystem>
-					<!-- Operating systems you want to download binaries for (Only valid
+					<!-- Operating systems you want to download binaries for (Only valid 
 						options are: windows, linux, osx) -->
 					<operatingSystems>
 						<windows>true</windows>
@@ -182,23 +231,23 @@ mvn com.lazerycode.selenium:driver-binary-downloader-maven-plugin:selenium -->
 					<thirtyTwoBitBinaries>true</thirtyTwoBitBinaries>
 					<!-- Download 64bit binaries -->
 					<sixtyFourBitBinaries>true</sixtyFourBitBinaries>
-					<!-- If set to false will download every version available (Other filters
+					<!-- If set to false will download every version available (Other filters 
 						will be taken into account -->
 					<onlyGetLatestVersions>true</onlyGetLatestVersions>
-					<!-- Provide a list of drivers and binary versions to download (this
+					<!-- Provide a list of drivers and binary versions to download (this 
 						is a map so only one version can be specified per driver) -->
 					<!-- <getSpecificExecutableVersions> -->
 					<!-- <googlechrome>18</googlechrome> -->
 					<!-- </getSpecificExecutableVersions> -->
-					<!-- Throw an exception if any specified binary versions that the plugin
+					<!-- Throw an exception if any specified binary versions that the plugin 
 						tries to download do not exist -->
 					<throwExceptionIfSpecifiedVersionIsNotFound>false</throwExceptionIfSpecifiedVersionIsNotFound>
 					<!-- Number of times to attempt to download each file -->
 					<fileDownloadRetryAttempts>2</fileDownloadRetryAttempts>
-					<!-- Number of ms to wait before timing out when trying to connect to
+					<!-- Number of ms to wait before timing out when trying to connect to 
 						remote server to download file -->
 					<fileDownloadConnectTimeout>20000</fileDownloadConnectTimeout>
-					<!-- Number of ms to wait before timing out when trying to read file
+					<!-- Number of ms to wait before timing out when trying to read file 
 						from remote server -->
 					<fileDownloadReadTimeout>10000</fileDownloadReadTimeout>
 					<!-- Overwrite any existing binaries that have been downloaded and extracted -->
@@ -206,7 +255,7 @@ mvn com.lazerycode.selenium:driver-binary-downloader-maven-plugin:selenium -->
 					<!-- Check file hashes of downloaded files. Default: true -->
 					<checkFileHashes>true</checkFileHashes>
 					<!-- auto detect system proxy to use when downloading files -->
-					<!-- To specify an explicit proxy set the environment variables http.proxyHost
+					<!-- To specify an explicit proxy set the environment variables http.proxyHost 
 						and http.proxyPort -->
 					<useSystemProxy>true</useSystemProxy>
 				</configuration>
@@ -239,91 +288,58 @@ mvn com.lazerycode.selenium:driver-binary-downloader-maven-plugin:selenium -->
 					</execution>
 				</executions>
 			</plugin>
-<!--
-			<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-shade-plugin</artifactId>
-			<version>2.3</version>
-
-			<executions>
-			<execution>
-			<phase>package</phase>
-			<goals>
-			<goal>shade</goal>
-			</goals>
-			<configuration>
-			<finalName>ate</finalName>
-			<shadedArtifactAttached>true</shadedArtifactAttached>
-			<shadedClassifierName>jar-with-dependencies</shadedClassifierName>
-			<transformers>
-			<transformer
-			implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-			<mainClass>org.bigtester.ate.TestProjectRunner</mainClass>
-			</transformer>
-			<transformer
-			implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-			<resource>META-INF/spring.handlers</resource>
-			</transformer>
-			<transformer
-			implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-			<resource>META-INF/spring.schemas</resource>
-			</transformer>
-			<transformer
-			implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-			<resource>META-INF/spring.tooling</resource>
-			</transformer>
-			</transformers>
-			<filters>
-			<filter>
-			<artifact>*:*</artifact>
-			<excludes>
-			<exclude>META-INF/*.SF</exclude>
-			<exclude>META-INF/*.DSA</exclude>
-			<exclude>META-INF/*.RSA</exclude>
-			</excludes>
-			</filter>
-			</filters>
-			</configuration>
-			</execution>
-			</executions>
-			</plugin> -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-shade-plugin</artifactId> 
+				<version>2.3</version> <executions> <execution> <phase>package</phase> <goals> 
+				<goal>shade</goal> </goals> <configuration> <finalName>ate</finalName> <shadedArtifactAttached>true</shadedArtifactAttached> 
+				<shadedClassifierName>jar-with-dependencies</shadedClassifierName> <transformers> 
+				<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"> 
+				<mainClass>org.bigtester.ate.TestProjectRunner</mainClass> </transformer> 
+				<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer"> 
+				<resource>META-INF/spring.handlers</resource> </transformer> <transformer 
+				implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer"> 
+				<resource>META-INF/spring.schemas</resource> </transformer> <transformer 
+				implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer"> 
+				<resource>META-INF/spring.tooling</resource> </transformer> </transformers> 
+				<filters> <filter> <artifact>*:*</artifact> <excludes> <exclude>META-INF/*.SF</exclude> 
+				<exclude>META-INF/*.DSA</exclude> <exclude>META-INF/*.RSA</exclude> </excludes> 
+				</filter> </filters> </configuration> </execution> </executions> </plugin> -->
 		</plugins>
 	</build>
-<dependencyManagement>
-<dependencies>
-<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-util -->
-<dependency>
-    <groupId>org.eclipse.jetty</groupId>
-    <artifactId>jetty-util</artifactId>
-    <version>9.4.2.v20170220</version>
-</dependency>
-<!-- https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-common -->
-<dependency>
-    <groupId>org.eclipse.jetty.websocket</groupId>
-    <artifactId>websocket-common</artifactId>
-    <version>9.4.2.v20170220</version>
-</dependency>
-<dependency>
-    <groupId>org.eclipse.jetty.websocket</groupId>
-    <artifactId>websocket-client</artifactId>
-    <version>9.4.2.v20170220</version>
-</dependency>
-<!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
-<dependency>
-    <groupId>org.asynchttpclient</groupId>
-    <artifactId>async-http-client</artifactId>
-    <version>2.1.0-RC1</version>
-</dependency>
-</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-util -->
+			<dependency>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-util</artifactId>
+				<version>9.4.2.v20170220</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-common -->
+			<dependency>
+				<groupId>org.eclipse.jetty.websocket</groupId>
+				<artifactId>websocket-common</artifactId>
+				<version>9.4.2.v20170220</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.jetty.websocket</groupId>
+				<artifactId>websocket-client</artifactId>
+				<version>9.4.2.v20170220</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
+			<dependency>
+				<groupId>org.asynchttpclient</groupId>
+				<artifactId>async-http-client</artifactId>
+				<version>2.1.0-RC1</version>
+			</dependency>
+		</dependencies>
 
-</dependencyManagement>
+	</dependencyManagement>
 	<dependencies>
-	<!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
-<dependency>
-    <groupId>org.asynchttpclient</groupId>
-    <artifactId>async-http-client</artifactId>
-<!--     <version>2.1.0-RC1</version> -->
-</dependency>
+		<!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
+		<dependency>
+			<groupId>org.asynchttpclient</groupId>
+			<artifactId>async-http-client</artifactId>
+			<!-- <version>2.1.0-RC1</version> -->
+		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
@@ -340,22 +356,22 @@ mvn com.lazerycode.selenium:driver-binary-downloader-maven-plugin:selenium -->
 			<version>2.3.3</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-util -->
-<dependency>
-    <groupId>org.eclipse.jetty</groupId>
-    <artifactId>jetty-util</artifactId>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-util</artifactId>
 
-</dependency>
-<!-- https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-common -->
-<dependency>
-    <groupId>org.eclipse.jetty.websocket</groupId>
-    <artifactId>websocket-common</artifactId>
-<!--     <version>9.4.2.v20170220</version> -->
-</dependency>
-<dependency>
-    <groupId>org.eclipse.jetty.websocket</groupId>
-    <artifactId>websocket-client</artifactId>
-<!--     <version>9.4.2.v20170220</version> -->
-</dependency>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-common -->
+		<dependency>
+			<groupId>org.eclipse.jetty.websocket</groupId>
+			<artifactId>websocket-common</artifactId>
+			<!-- <version>9.4.2.v20170220</version> -->
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty.websocket</groupId>
+			<artifactId>websocket-client</artifactId>
+			<!-- <version>9.4.2.v20170220</version> -->
+		</dependency>
 
 		<dependency>
 			<groupId>org.testng</groupId>
@@ -368,26 +384,26 @@ mvn com.lazerycode.selenium:driver-binary-downloader-maven-plugin:selenium -->
 			<version>3.0.1</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.reflections</groupId>
-            <artifactId>reflections</artifactId>
-            <version>0.9.10</version>
-        </dependency>
-        <dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>0.9.10</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>4.2.2.RELEASE</version>
 		</dependency>
 		<dependency>
-	<groupId>org.springframework</groupId>
-	<artifactId>spring-core</artifactId>
-	<version>4.2.2.RELEASE</version>
-	<exclusions>
-	  <exclusion>
-		<groupId>commons-logging</groupId>
-		<artifactId>commons-logging</artifactId>
-	  </exclusion>
-	</exclusions>
-</dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>4.2.2.RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -400,11 +416,11 @@ mvn com.lazerycode.selenium:driver-binary-downloader-maven-plugin:selenium -->
 			</exclusions>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-htmlunit-driver -->
-<dependency>
-    <groupId>org.seleniumhq.selenium</groupId>
-    <artifactId>selenium-htmlunit-driver</artifactId>
-    <version>2.52.0</version>
-</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-htmlunit-driver</artifactId>
+			<version>2.52.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -478,32 +494,32 @@ mvn com.lazerycode.selenium:driver-binary-downloader-maven-plugin:selenium -->
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/commons-cli/commons-cli -->
-<dependency>
-    <groupId>commons-cli</groupId>
-    <artifactId>commons-cli</artifactId>
-    <version>1.3.1</version>
-</dependency>
+		<dependency>
+			<groupId>commons-cli</groupId>
+			<artifactId>commons-cli</artifactId>
+			<version>1.3.1</version>
+		</dependency>
 
 		<!-- <dependency> -->
 		<!-- <groupId>net.xeon</groupId> -->
 		<!-- <artifactId>jspf.core</artifactId> -->
 		<!-- <version>1.0.3</version> -->
 		<!-- </dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework.plugin</groupId> -->
-<!-- 			<artifactId>spring-plugin-core</artifactId> -->
-<!-- 			<version>1.2.0.RELEASE</version> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework.plugin</groupId> -->
-<!-- 			<artifactId>spring-plugin-integration</artifactId> -->
-<!-- 			<version>1.0.0.RELEASE</version> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework.plugin</groupId> -->
-<!-- 			<artifactId>spring-plugin-metadata</artifactId> -->
-<!-- 			<version>1.2.0.RELEASE</version> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.plugin</groupId> -->
+		<!-- <artifactId>spring-plugin-core</artifactId> -->
+		<!-- <version>1.2.0.RELEASE</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.plugin</groupId> -->
+		<!-- <artifactId>spring-plugin-integration</artifactId> -->
+		<!-- <version>1.0.0.RELEASE</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.plugin</groupId> -->
+		<!-- <artifactId>spring-plugin-metadata</artifactId> -->
+		<!-- <version>1.2.0.RELEASE</version> -->
+		<!-- </dependency> -->
 		<dependency>
 			<groupId>xml-apis</groupId>
 			<artifactId>xml-apis</artifactId>
@@ -514,11 +530,11 @@ mvn com.lazerycode.selenium:driver-binary-downloader-maven-plugin:selenium -->
 			<artifactId>janino</artifactId>
 			<version>2.7.8</version>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.projectlombok</groupId> -->
-<!-- 			<artifactId>lombok</artifactId> -->
-<!-- 			<version>1.16.2</version> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.projectlombok</groupId> -->
+		<!-- <artifactId>lombok</artifactId> -->
+		<!-- <version>1.16.2</version> -->
+		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.dbunit</groupId>
 			<artifactId>dbunit</artifactId>
@@ -618,44 +634,45 @@ mvn com.lazerycode.selenium:driver-binary-downloader-maven-plugin:selenium -->
 				</exclusion>
 				<exclusion>
 					<groupId>org.jsoup</groupId>
-  					<artifactId>jsoup</artifactId>
+					<artifactId>jsoup</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.httpcomponents</groupId>
-		    <artifactId>httpclient</artifactId>
-		    <version>4.3.5</version>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.3.5</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
-<dependency>
-    <groupId>org.apache.commons</groupId>
-    <artifactId>commons-lang3</artifactId>
-    <version>3.5</version>
-</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.5</version>
+		</dependency>
 
-        <dependency>
-            <groupId>com.jcabi</groupId>
-            <artifactId>jcabi-aether</artifactId>
-            <version>0.10.1</version>
-            <exclusions>
-            <exclusion>
-            <!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
+		<dependency>
+			<groupId>com.jcabi</groupId>
+			<artifactId>jcabi-aether</artifactId>
+			<version>0.10.1</version>
+			<exclusions>
+				<exclusion>
+					<!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
 
-    <groupId>com.ning</groupId>
-    <artifactId>async-http-client</artifactId>
-            </exclusion></exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.thoughtworks.xstream</groupId>
-            <artifactId>xstream</artifactId>
-            <version>1.4.8</version>
-        </dependency>
-        <dependency>
-	        <groupId>org.mockito</groupId>
-	        <artifactId>mockito-all</artifactId>
-	        <version>2.0.2-beta</version>
-        </dependency>
+					<groupId>com.ning</groupId>
+					<artifactId>async-http-client</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.4.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>2.0.2-beta</version>
+		</dependency>
 
 	</dependencies>
 

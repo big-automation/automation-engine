@@ -14,7 +14,7 @@
 
 	<groupId>org.bigtester</groupId>
 	<artifactId>org.bigtester.ate.core</artifactId>
-	<version>0.1.8</version>
+	<version>0.1.9-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Automation Test Engine Core</name>

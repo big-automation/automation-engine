@@ -20,16 +20,13 @@
  *******************************************************************************/
 package org.bigtester.ate.xmlschema;
 
-import org.bigtester.ate.constant.XsdElementConstants;
 import org.bigtester.ate.model.data.BaseInputDataValue;
 import org.eclipse.jdt.annotation.Nullable;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
-import org.springframework.beans.factory.config.RuntimeBeanReference;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.xml.AbstractBeanDefinitionParser;
 import org.springframework.beans.factory.xml.ParserContext;
-import org.springframework.util.StringUtils;
 import org.w3c.dom.Element;
 
 
@@ -54,12 +51,12 @@ public class BaseInputDataValueBeanDefinitionParser extends
         BeanDefinitionHolder holder = parserContext.getDelegate().parseBeanDefinitionElement(element);
         BeanDefinition bDef = holder.getBeanDefinition();
         bDef.setBeanClassName(BaseInputDataValue.class.getName());
-        String elementDataDao = element
-				.getAttribute(XsdElementConstants.ATTR_BASEINPUTDATAVALUE_ELEMENTDATADAO);
-		if (StringUtils.hasText(elementDataDao)) {
-			bDef.getConstructorArgumentValues().addGenericArgumentValue(
-					new RuntimeBeanReference(elementDataDao));
-		}
+//        String elementDataDao = element
+//				.getAttribute(XsdElementConstants.ATTR_BASEINPUTDATAVALUE_ELEMENTDATADAO);
+//		if (StringUtils.hasText(elementDataDao)) {
+//			bDef.getConstructorArgumentValues().addGenericArgumentValue(
+//					new RuntimeBeanReference(elementDataDao));
+//		}
 		parserContext.getRegistry().registerBeanDefinition(element.getAttribute("id"), bDef);
         return (AbstractBeanDefinition) bDef;
       

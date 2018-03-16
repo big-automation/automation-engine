@@ -7,11 +7,12 @@
 			</Pattern>
 		</encoder>
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-			<level>ERROR</level>
+			<level>DEBUG</level>
 		</filter>
 	</appender>
 	<appender name="SystemLog"
-		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		class="ch.qos.logback.core.FileAppender">
+		<append>false</append>
 		<file>logs/SystemLog.log</file>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n -	%throwable{full}
@@ -25,7 +26,7 @@
 
 		</rollingPolicy>
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-			<level>ERROR</level>
+			<level>TRACE</level>
 		</filter>
 		<filter class="ch.qos.logback.core.filter.EvaluatorFilter">
 
@@ -41,8 +42,8 @@
 		</filter>
 	</appender>
 	<appender name="ApplicationLog"
-		class="ch.qos.logback.core.rolling.RollingFileAppender">
-
+		class="ch.qos.logback.core.FileAppender">
+<append>false</append>
 		<File>logs/ApplicationLog.log</File>
 
 		<ImmediateFlush>true</ImmediateFlush>
@@ -78,9 +79,7 @@
 		</filter>
 	</appender>
 
-	<logger name="org.bigtester" level="ALL">
-
-	</logger>
+	<logger name="org.bigtester" level="ALL"/>	
 	<root level="ALL">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="SystemLog" />

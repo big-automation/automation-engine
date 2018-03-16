@@ -19,7 +19,7 @@
 	</bean>
 	<bean id="_inputDataValueAbstract" name="_inputDataValueAbstract"
 		abstract="true" class="org.bigtester.ate.model.data.BaseInputDataValue">
-		<property name="elementDataDao" ref="elementInputDataDao" />
+<!-- 		<property name="elementDataDao" ref="elementInputDataDao" /> -->
 	</bean>
 
 	<!-- abstract beans, won't be initialized by Spring -->

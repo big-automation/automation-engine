@@ -36,7 +36,7 @@ import org.testng.annotations.Test;
  * @author Peidong Hu
  *
  */
-@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/javaCodedStep.xml" })
+//@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/javaCodedStep.xml" })
 public class JavaCodedStepTest extends BigtesterProjectTest {
 
 	/**
@@ -48,7 +48,7 @@ public class JavaCodedStepTest extends BigtesterProjectTest {
 	 * @throws InterruptedException
 	 * @throws BrowserUnexpectedException 
 	 */
-	@Test(priority = 1)
+	//@Test(priority = 1)
 	public void javaCodedStepTest() throws PageValidationException,
 			RuntimeDataException, StepExecutionException, InterruptedException, BrowserUnexpectedException {
 		getTestPage("bigtesterTestNG/aut/textarea.html");

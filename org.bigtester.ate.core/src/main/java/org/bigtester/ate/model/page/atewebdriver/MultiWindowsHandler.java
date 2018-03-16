@@ -37,6 +37,7 @@ import org.openqa.selenium.remote.UnreachableBrowserException;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Lazy;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -51,6 +52,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	/** The test case. */
 	@Nullable
 	@Autowired
+	@Lazy
 	private ITestCase testCase;
 	
 	
@@ -200,7 +202,7 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 					checkCloseWindowAlert(win.getWindowHandle());// test if there is alert. if no, refresh windows list
 				} catch (NoAlertPresentException noAlert) {
 					refreshWindowsList(getDriver(), false);
-					if (this.getWindows().size()>1)
+					if (this.getWindows().size()>1) //NOPMD
 						itr = this.getWindows().iterator();
 					else
 						break;
@@ -392,13 +394,37 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	}
 
 
-
-
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void beforeChangeValueOf(WebElement element, WebDriver driver,
+			CharSequence[] keysToSend) {//NOPMD
+		// TODO Auto-generated method stub
+		
+	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
+	public void afterChangeValueOf(WebElement element, WebDriver driver,
+			CharSequence[] keysToSend) {//NOPMD
+		try {
+			refreshWindowsList(driver, false);
+		} catch (BrowserUnexpectedException e) {
+			retryRefreshWindows(getMyWd().getWebDriverInstance(), false);
+		}
+
+		
+	}
+
+	
+
+
+	/**
+	 * {@inheritDoc}
+	 */
 	public void afterChangeValueOf(@Nullable WebElement arg0,
 			@Nullable WebDriver arg1 ) {
 		try {
@@ -410,6 +436,9 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public void retryRefreshWindows(WebDriver driver, boolean refreshFrames) {
 		this.resetWindows();
 		try {
@@ -497,7 +526,6 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public void beforeChangeValueOf(@Nullable WebElement arg0,
 			@Nullable WebDriver arg1 ) {
 		// refreshWindowsList(arg1);
@@ -649,5 +677,42 @@ public class MultiWindowsHandler extends AbstractLockProtectedMultiWindowsHandle
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	
+	public void afterAlertAccept(WebDriver arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	
+	public void afterAlertDismiss(WebDriver arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	
+	public void beforeAlertAccept(WebDriver arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	
+	public void beforeAlertDismiss(WebDriver arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 	 
 }

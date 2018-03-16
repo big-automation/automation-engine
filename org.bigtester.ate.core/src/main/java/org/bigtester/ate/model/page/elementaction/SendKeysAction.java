@@ -43,6 +43,16 @@ public class SendKeysAction extends BaseElementAction implements
 		super(myWd);
 		setDataValue(dataValue);
 	}
+	
+	/**
+	 * Instantiates a new send keys action.
+	 *
+	 * @param dataValue the data value
+	 */
+	public SendKeysAction( IStepInputData dataValue) {
+		super();
+		setDataValue(dataValue);
+	}
 
 	/**
 	 * {@inheritDoc}

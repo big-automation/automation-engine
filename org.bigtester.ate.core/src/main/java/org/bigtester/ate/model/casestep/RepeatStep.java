@@ -305,7 +305,7 @@ public class RepeatStep extends BaseTestStep implements ITestStep, Cloneable {
 			for (int i = 0; i < repeatingStepIndexesInTestCase.size(); i++) {
 				LogbackWriter.writeDebugInfo(
 						"run step (index:" + i + "), in iteration:" + iteration
-								+ " of step:" + this.getStepName(),
+								+ " of step:" + this.getStepName(), //NOPMD
 						this.getClass());// NOPMD
 				ITestStep currentTestStepTmp = getTestCase().getTestStepList()
 						.get(repeatingStepIndexesInTestCase.get(i));
@@ -344,6 +344,8 @@ public class RepeatStep extends BaseTestStep implements ITestStep, Cloneable {
 									.getCurrentRepeatStepFullPathString());
 				}
 				String tmpStepDesc = currentTestStepTmp.getStepDescription();// NOPMD
+				int successConditionJumpToStepIndex = -1;// NOPMD
+				int successConditionJumpingStepIndex = -1;// NOPMD
 				try {
 					currentTestStepTmp.doStep(jumpingContainer);// NOPMD
 					currentTestStepTmp
@@ -355,16 +357,20 @@ public class RepeatStep extends BaseTestStep implements ITestStep, Cloneable {
 									+ iteration + " of step:"
 									+ this.getStepName(), this.getClass());
 					
-					int successConditionJumpToStepIndex = -1;// NOPMD
+					
 					
 					successConditionJumpToStepIndex = currentTestStepTmp
 								.getSuccessConditionallyJumpToStepIndex((IStepJumpingEnclosedContainer) GlobalUtils
 										.getTargetObject(getTestCase())); // NOPMD
 					if (successConditionJumpToStepIndex > repeatingStepIndexesInTestCase
-							.get(i)) {
+							.get(i) && successConditionJumpToStepIndex <= repeatingStepIndexesInTestCase.get(repeatingStepIndexesInTestCase.size()-1)) {
+						successConditionJumpingStepIndex = i;
 						i = repeatingStepIndexesInTestCase
 								.indexOf(successConditionJumpToStepIndex)-1;// NOPMD
 						
+					} else if (successConditionJumpToStepIndex>repeatingStepIndexesInTestCase.get(repeatingStepIndexesInTestCase.size()-1)){
+						successConditionJumpingStepIndex = i;
+						i = repeatingStepIndexesInTestCase.size()-1;
 					}
 				} catch (Exception e) { // NOPMD
 					IATEProblem prob;
@@ -478,15 +484,15 @@ public class RepeatStep extends BaseTestStep implements ITestStep, Cloneable {
 						"finish repeatingsteps iteration normally, step (index:"
 								+ i
 								+ " stepname: "
-								+ getTestCase().getTestStepList().get(i)
-										.getStepName() + "), in iteration:"
+								+ (successConditionJumpingStepIndex>-1?getTestCase().getTestStepList().get(successConditionJumpingStepIndex).getStepName(): getTestCase().getTestStepList().get(i).getStepName())
+										+ "), in iteration:"
 								+ iteration + " of step:" + this.getStepName(),
 						this.getClass());
 				LogbackWriter
 						.writeDebugInfo(
 								"total repeating steps number is:"
 										+ repeatingStepIndexesInTestCase.size()
-										+ " and last repeating step is: "
+										+ " (success jumping case not counted here) and last repeating step is: "
 										+ getTestCase()
 												.getTestStepList()
 												.get(repeatingStepIndexesInTestCase

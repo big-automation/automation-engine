@@ -57,9 +57,38 @@ public class MyWebElement<T> extends PageModelBase {
 	 * @param iElmAction
 	 *            the ea
 	 */
+	@Deprecated
 	public MyWebElement(final ITestObjectFinderImpl iElmFind,
 			@Nullable final ITestObjectActionImpl iElmAction, IMyWebDriver myWd) {
 		super(myWd);
+		if (null == iElmAction) {
+			testObjectAction = null; //NOPMD
+		} else {
+			ITestObjectAction<T> testObjectActionTmp = new TestObjectAction(iElmAction).getCapability(ITestObjectAction.class); 
+			if (null == testObjectActionTmp) {
+				throw GlobalUtils
+						.createNotInitializedException("test object finder"); //NOPMD
+			} else {
+				testObjectAction = testObjectActionTmp;
+			}
+		} 
+		ITestObjectFinder<T> testObjectFinderTmp = new TestObjectFinder(iElmFind).getCapability(ITestObjectFinder.class); 
+		if (null == testObjectFinderTmp) {
+			throw GlobalUtils.createNotInitializedException("test object finder");//NOPMD
+		} else {
+			testObjectFinder = testObjectFinderTmp;
+		}
+	}
+	
+	/**
+	 * Instantiates a new my web element.
+	 *
+	 * @param iElmFind the i elm find
+	 * @param iElmAction the i elm action
+	 */
+	public MyWebElement(final ITestObjectFinderImpl iElmFind,
+			@Nullable final ITestObjectActionImpl iElmAction) {
+		super();
 		if (null == iElmAction) {
 			testObjectAction = null; //NOPMD
 		} else {
@@ -100,6 +129,7 @@ public class MyWebElement<T> extends PageModelBase {
 			throw GlobalUtils.createNotInitializedException("test object action.");
 		} else {
 			try {
+				
 				testObjectAction2.doAction(testObjectFinder.doFind(getMyWd()));
 			} catch (UnexpectedTagNameException ute) {
 				throw new NoSuchElementException("Html element found by ate has different tag name.", ute);

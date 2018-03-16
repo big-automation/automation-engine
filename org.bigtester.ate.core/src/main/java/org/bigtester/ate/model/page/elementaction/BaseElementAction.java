@@ -53,6 +53,14 @@ public class BaseElementAction extends PageModelBase{
 	}
 	
 	/**
+	 * Instantiates a new base element action.
+	 */
+	public BaseElementAction() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	/**
 	 * Gets the action parameters logging value.
 	 *
 	 * @return the action parameters logging value

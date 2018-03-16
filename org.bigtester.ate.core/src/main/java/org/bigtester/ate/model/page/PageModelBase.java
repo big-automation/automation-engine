@@ -21,6 +21,8 @@
 package org.bigtester.ate.model.page;
 
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
@@ -35,6 +37,8 @@ public class PageModelBase {//NOPMD
 	
 	/** The i my wd. */
 	@XStreamOmitField
+	@Autowired
+	@Lazy
 	protected IMyWebDriver myWd;
 
 	/**
@@ -62,5 +66,12 @@ public class PageModelBase {//NOPMD
 	 */
 	public PageModelBase(IMyWebDriver myWd) {
 		this.myWd = myWd;
+	}
+	
+	/**
+	 * Instantiates a new page model base.
+	 */
+	public PageModelBase() {
+		super();
 	}
 }

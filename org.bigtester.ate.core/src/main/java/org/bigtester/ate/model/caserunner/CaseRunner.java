@@ -29,11 +29,14 @@ import java.util.Map;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.bigtester.ate.GlobalUtils;
+import org.bigtester.ate.TestProjectRunner;
 import org.bigtester.ate.constant.LogbackTag;
-import org.bigtester.ate.model.casestep.ITestCase; 
+import org.bigtester.ate.model.casestep.ITestCase;
 import org.bigtester.ate.model.data.TestParameters;
 import org.bigtester.ate.model.data.exception.TestDataException;
+import org.bigtester.ate.model.page.atewebdriver.IMultiWindowsHandler;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
+import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver2;
 import org.bigtester.ate.model.project.IRunTestCase;
 import org.bigtester.ate.model.project.TestProjectListener;
 import org.bigtester.ate.systemlogger.LogbackWriter;
@@ -43,6 +46,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.UnreachableBrowserException;
 import org.springframework.beans.FatalBeanException;
 import org.springframework.beans.factory.BeanCreationException;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -63,7 +67,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 // TODO: Auto-generated Javadoc
 /**
  * The Class CaseRunner runs a single test case
- * 
+ *
  * @author Peidong Hu
  */
 @XmlRootElement
@@ -149,7 +153,7 @@ public class CaseRunner implements IRunTestCase {
 
 	/**
 	 * Gets the test data.
-	 * 
+	 *
 	 * @param ctx
 	 *            the ctx
 	 * @return the test data
@@ -186,7 +190,7 @@ public class CaseRunner implements IRunTestCase {
 
 	/**
 	 * Test data.
-	 * 
+	 *
 	 * @param method
 	 *            the method
 	 * @param testData
@@ -217,10 +221,32 @@ public class CaseRunner implements IRunTestCase {
 	public String getTestName() {
 		return this.getCurrentExecutingTCName();
 	}
+	
+	private IMyWebDriver prepareWebDriver(TestParameters testParams, ApplicationContext testCaseContext) {
+		IMyWebDriver myWebD;
+		if (testParams.getTestProject().getMyWebDriver().isPresent()) {
+			myWebD = testParams.getTestProject().getMyWebDriver().get();
+			//BeanDefinitionBuilder builder = BeanDefinitionBuilder.rootBeanDefinition(MySauceLabDriver.class);
+			  
+			DefaultListableBeanFactory factory = (DefaultListableBeanFactory) ((ConfigurableApplicationContext)testCaseContext).getBeanFactory();
+			  
+			  factory.removeBeanDefinition(TestProjectRunner.MULTIPLE_WINDOW_HANDLER);
+			  IMultiWindowsHandler winHandler = (IMultiWindowsHandler) GlobalUtils.getTargetObject(testParams.getTestProject().getAppCtx().getBean(TestProjectRunner.MULTIPLE_WINDOW_HANDLER));
+			  myWebD.setMailer(testParams.getTestProject().getMailer());
+			  myWebD.setMultiWindowsHandler(winHandler);
+			  factory.registerSingleton(TestProjectRunner.MY_WEB_DRIVER, myWebD);
+			  factory.registerSingleton(TestProjectRunner.MULTIPLE_WINDOW_HANDLER, myWebD.getMultiWindowsHandler());
+		} else {
+			myWebD = (IMyWebDriver) GlobalUtils
+				.findMyWebDriver(testCaseContext);
+			myWebD.setMailer(testParams.getTestProject().getMailer());
+		}
+		return myWebD;
+	}
 
 	/**
 	 * Test runner1.
-	 * 
+	 *
 	 * @param ctx
 	 *            the ctx
 	 * @throws Throwable
@@ -232,9 +258,12 @@ public class CaseRunner implements IRunTestCase {
 		// ApplicationContext context;
 		try {
 			context = new FileSystemXmlApplicationContext(testname);
-			IMyWebDriver myWebD = (IMyWebDriver) GlobalUtils
-					.findMyWebDriver(context);
-			mainDriver = myWebD.getWebDriverInstance();
+			
+			IMyWebDriver myWebD = prepareWebDriver(testParams, context);
+			if (myWebD instanceof IMyWebDriver2)
+				mainDriver = ((IMyWebDriver2)myWebD).getWebDriverInstance(true);
+			else
+				mainDriver = myWebD.getWebDriverInstance();
 			myTestCase = GlobalUtils.findTestCaseBean(getContext());
 			getMyTestCase().setStepThinkTime(testParams.getStepThinkTime());
 			getMyTestCase().setCurrentWebDriver(myWebD);
@@ -244,8 +273,12 @@ public class CaseRunner implements IRunTestCase {
 		} catch (FatalBeanException fbe) {
 			if (fbe.getCause() instanceof FileNotFoundException) {
 				context = new ClassPathXmlApplicationContext(testname);
-				mainDriver = ((IMyWebDriver) GlobalUtils
-						.findMyWebDriver(context)).getWebDriverInstance();
+
+				IMyWebDriver myWebD = prepareWebDriver(testParams, context);
+				if (myWebD instanceof IMyWebDriver2)
+					mainDriver = ((IMyWebDriver2)myWebD).getWebDriverInstance(true);
+				else
+					mainDriver = myWebD.getWebDriverInstance();
 				myTestCase = GlobalUtils.findTestCaseBean(getContext());
 				myTestCase.setStepThinkTime(testParams.getStepThinkTime());
 				getMyTestCase().goSteps();
@@ -284,13 +317,15 @@ public class CaseRunner implements IRunTestCase {
 
 				}
 			} else {
+				LogbackWriter
+				.writeSysError(this.getClass(), fbe);
 				throw fbe;
 			}
 		}
-//		catch (Throwable th) {//NOPMD
-//			LogbackWriter.printStackTrace(th);
-//			throw th;
-//		}
+		catch (Throwable th) {//NOPMD
+			LogbackWriter.printStackTrace(th);
+			throw th;
+		}
 	}
 
 	/**

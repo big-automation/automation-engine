@@ -273,10 +273,17 @@ public class CaseTypeService extends TestCase implements ITestStep { // NOPMD
 		// TODO add optionalStepUtil parameter for caseTypeService
 		return "";
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public int getSuccessConditionallyJumpToStepIndex(IStepJumpingEnclosedContainer jumpingContainer) {
 		return -1;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public String getSuccessConditionallyJumpToStep() {
 		return "";
 	}
@@ -329,6 +336,15 @@ public class CaseTypeService extends TestCase implements ITestStep { // NOPMD
 	public void setCorrectedOnTheFly(boolean correctedOnTheFly) {
 		//for future.
 		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean isMailScreenShot() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

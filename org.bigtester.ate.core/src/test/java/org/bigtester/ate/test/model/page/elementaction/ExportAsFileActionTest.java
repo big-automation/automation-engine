@@ -36,7 +36,7 @@ import org.testng.annotations.Test;
  * @author Peidong Hu
  *
  */
-@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/loginSuccess.xml" })
+//@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/loginSuccess.xml" })
 
 public class ExportAsFileActionTest extends BigtesterProjectTest{
 	
@@ -66,7 +66,7 @@ public class ExportAsFileActionTest extends BigtesterProjectTest{
 	/**
 	 * Setup.
 	 */
-	@BeforeClass
+	//@BeforeClass
 	public void setup() {
 		when(getMyMockedDriver().getWebDriverInstance()).thenReturn(getMockedDriver());
 		when(getMockedDriver().manage()).thenReturn(getOptions());
@@ -77,7 +77,7 @@ public class ExportAsFileActionTest extends BigtesterProjectTest{
 	/**
 	 * Do action test.
 	 */
-	@Test
+	//@Test
 	public void doActionTest() {
 		ExportAsFileAction eafa = new ExportAsFileAction(getMyMockedDriver(), this.FILENAME);
 		eafa.doAction(fileOpr);

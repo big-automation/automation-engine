@@ -157,7 +157,7 @@
 				<xsd:group ref="beans:beanElements" />
 				<xsd:attributeGroup ref="beans:beanAttributes"></xsd:attributeGroup>
 				<xsd:attribute name="myWebDriver" type="xsd:string"
-					use="required">
+					>
 					<xsd:annotation>
 						<xsd:appinfo>
 							<tool:annotation kind="ref">
@@ -300,7 +300,7 @@
 				<xsd:group ref="beans:beanElements" />
 				<xsd:attributeGroup ref="beans:beanAttributes" />
 				<xsd:attribute name="elementDataDao" type="xsd:string"
-					use="required">
+					>
 					<xsd:annotation>
 						<xsd:appinfo>
 							<tool:annotation kind="ref">

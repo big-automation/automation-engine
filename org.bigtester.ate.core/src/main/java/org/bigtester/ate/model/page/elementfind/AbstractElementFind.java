@@ -58,6 +58,9 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 	@Nullable
 	private IOnTheFlyData<Integer> indexOfSameElements;
 
+	/** The search only on previous i frame. */
+	private transient boolean searchOnlyOnPreviousSuccessIFrame = false;//NOPMD
+	
 	/** The wait. */
 	@Nullable
 	transient protected Wait<WebDriver> wait;
@@ -69,8 +72,13 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 	 *
 	 * @return the finding parameters logging value
 	 */
+	@SuppressWarnings("null")
 	public String getFindingParametersLoggingValue() {
-		return "findByValue = " + findByValue;
+		String indexStr = "";
+		if (!(indexOfSameElements==null || indexOfSameElements.getOnTheFlyData()==null )) {
+			indexStr = ", indexOfSameElements = " + indexOfSameElements.getOnTheFlyData().toString();
+		}
+		return "findByValue = " + findByValue + indexStr;
 	}
 	
 	/**
@@ -109,6 +117,7 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 	public AbstractElementFind(String findByValue) {
 		super();
 		this.findByValue = findByValue;
+		
 	}
 
 	/**
@@ -150,8 +159,8 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 	 */
 	public void createWait(WebDriver driver) {
 		wait = new FluentWait<WebDriver>(driver)
-				.withTimeout(30, TimeUnit.SECONDS)
-				.pollingEvery(5, TimeUnit.SECONDS)
+				.withTimeout(10, TimeUnit.SECONDS)
+				.pollingEvery(2, TimeUnit.SECONDS)
 				.ignoring(NoSuchElementException.class);
 	}
 
@@ -364,6 +373,10 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 						});
 
 			} catch (NoSuchElementException | TimeoutException error) {
+				if (!winOnFocus.getLastSuccessElementFindFrameChain().isEmpty() && this.searchOnlyOnPreviousSuccessIFrame) {
+					//only search on previoius success iframe
+					throw error;
+				}
 				winOnFocus.getCurrentElementFindFrameChain().clear();
 				try {
 					myWebDriver.getMultiWindowsHandler().refreshWindowsList(myWebDriver.getWebDriverInstance(), true);
@@ -413,4 +426,20 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 		}
 	}
 
+	/**
+	 * @return the searchOnlyOnPreviousSuccessIFrame
+	 */
+	public boolean isSearchOnlyOnPreviousSuccessIFrame() {
+		return searchOnlyOnPreviousSuccessIFrame;
+	}
+
+	/**
+	 * @param searchOnlyOnPreviousSuccessIFrame the searchOnlyOnPreviousSuccessIFrame to set
+	 */
+	public void setSearchOnlyOnPreviousSuccessIFrame(
+			boolean searchOnlyOnPreviousSuccessIFrame) {
+		this.searchOnlyOnPreviousSuccessIFrame = searchOnlyOnPreviousSuccessIFrame;
+	}
+
+	
 }

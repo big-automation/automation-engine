@@ -43,7 +43,14 @@ public class SendReturnAction extends BaseElementAction implements IElementActio
 		super(myWd);
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	/**
+	 * Instantiates a new send return action.
+	 */
+	public SendReturnAction() {
+		super();
+	}
+	
 	/**
 	 * {@inheritDoc}
 	 */

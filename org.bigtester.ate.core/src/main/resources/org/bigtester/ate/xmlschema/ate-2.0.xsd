@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns="http://www.bigtester.org/schema/ate"
+<xsd:schema 
+xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1"
+xmlns="http://www.bigtester.org/schema/ate"
 	xmlns:tool="http://www.springframework.org/schema/tool" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:tns="http://www.bigtester.org/schema/ate"
+	xmlns:sch="http://www.ascc.net/xml/schematron" 
 	targetNamespace="http://www.bigtester.org/schema/ate"
 	elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xsd:import namespace="http://www.springframework.org/schema/beans"
@@ -13,9 +16,11 @@
 		<xsd:complexType>
 			<xsd:complexContent>
 				<xsd:extension base="beans:identifiedType">
-					<xsd:choice minOccurs="1" maxOccurs="unbounded">
-						<xsd:element ref="TestSuite" />
-					</xsd:choice>
+					<xsd:sequence >
+						<xsd:element ref="TestSuite" minOccurs="1" maxOccurs="unbounded"/>
+						<xsd:element ref="mailer" minOccurs="0" maxOccurs="1"/>
+					</xsd:sequence>
+					
 					<xsd:attribute name="stepThinkTime" type="xsd:int" />
 					<xsd:attribute name="globalInitXmlFile" type="xsd:string"
 						use="required" />
@@ -154,6 +159,7 @@
 	<!--************************* following for Test Step ************************* -->
 
 	<xsd:complexType name="BaseTestStepType" abstract="true">
+	
 		<xsd:complexContent>
 			<xsd:extension base="beans:identifiedType">
 				
@@ -164,6 +170,7 @@
 				<xsd:choice minOccurs="0" maxOccurs="1">
 						<xsd:element ref="asserterReferences" />
 					</xsd:choice>
+				
 				<xsd:attribute name="targetStep" type="xsd:boolean"
 					use="required" />
 				<xsd:attribute name="optionalStep" type="xsd:boolean" />
@@ -173,6 +180,9 @@
 					type="xsd:string" />
 				<xsd:attribute name="stepName" type="xsd:string" use="required" />
 				<xsd:attribute name="stepDescription" type="xsd:string" />
+				
+				
+				<xsd:attribute name="mailScreenShot" type="xsd:boolean" use="optional"/>
 				
 			</xsd:extension>
 		</xsd:complexContent>
@@ -214,6 +224,7 @@
 						</xsd:appinfo>
 					</xsd:annotation>
 				</xsd:attribute>
+				<xsd:attribute name="searchOnlyOnPreviousSuccessIFrame" type="xsd:boolean" />
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -299,6 +310,24 @@
 					type="xsd:string" />
 				<xsd:attribute name="stepName" type="xsd:string" use="required" />
 				<xsd:attribute name="stepDescription" type="xsd:string" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+<xsd:complexType name="MailerType">
+		<xsd:complexContent>
+			<xsd:extension base="beans:identifiedType">
+
+				<xsd:attribute name="fromMailAddress" type="xsd:string"
+					use="required" />
+				<xsd:attribute name="toMailAddress" type="xsd:string" use="required"/>
+				<xsd:attribute name="smtpMailServerHost"
+					type="xsd:string" use="required"/>
+					<xsd:attribute name="smtpMailServerPort"
+					type="xsd:integer" use="required"/>
+				<xsd:attribute name="smtpMailUserName" type="xsd:string" use="required" />
+				<xsd:attribute name="smtpMailUserPassword" type="xsd:string" use="required" />
+				
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -420,7 +449,7 @@
 				<xsd:group ref="beans:beanElements" />
 				<xsd:attributeGroup ref="beans:beanAttributes"></xsd:attributeGroup>
 				<xsd:attribute name="myWebDriver" type="xsd:string"
-					use="required">
+					>
 					<xsd:annotation>
 						<xsd:appinfo>
 							<tool:annotation kind="ref">
@@ -580,7 +609,7 @@
 				<xsd:group ref="beans:beanElements" />
 				<xsd:attributeGroup ref="beans:beanAttributes" />
 				<xsd:attribute name="elementDataDao" type="xsd:string"
-					use="required">
+					>
 					<xsd:annotation>
 						<xsd:appinfo>
 							<tool:annotation kind="ref">
@@ -672,6 +701,7 @@
 		<xsd:complexContent>
 			<xsd:extension base="beans:identifiedType">
 				<xsd:attribute name="findByValue" type="xsd:string" />
+				
 				<xsd:attribute name="indexOfSameElements" type="xsd:string">
 					<xsd:annotation>
 						<xsd:appinfo>
@@ -681,6 +711,7 @@
 						</xsd:appinfo>
 					</xsd:annotation>
 				</xsd:attribute>
+				
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -1023,6 +1054,8 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
+	
+	
 	<xsd:complexType name="MyRemoteDriverType">
 		<xsd:complexContent>
 			<xsd:extension base="AbstractWebDriverBaseType">
@@ -1044,6 +1077,19 @@
 	</xsd:complexType>
 	
 	<xsd:complexType name="MyRemoteChromeDriverType">
+		<xsd:complexContent>
+			<xsd:extension base="MyRemoteDriverType">
+<!-- 				<xsd:attribute name="url" type="xsd:string" /> -->
+				
+				
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+
+
+	<xsd:complexType name="MyRemoteFirefoxDriverType">
 		<xsd:complexContent>
 			<xsd:extension base="MyRemoteDriverType">
 <!-- 				<xsd:attribute name="url" type="xsd:string" /> -->
@@ -1157,11 +1203,12 @@
 	<xsd:element name="chromeDriver" type="MyChromeDriverType" />
 	<xsd:element name="remoteDriver" type="MyRemoteDriverType" />
 	<xsd:element name="remoteChromeDriver" type="MyRemoteChromeDriverType" />
+	<xsd:element name="remoteFirefoxDriver" type="MyRemoteFirefoxDriverType" />
 	
 	<xsd:element name="sauceLabDriver" type="MySauceLabDriverType" />
 	<xsd:element name="IEDriver" type="MyIEDriverType" />
 	<xsd:element name="safariDriver" type="MySafariDriverType" />
 	<xsd:element name="operaDriver" type="MyOperaDriverType" />
 	<xsd:element name="htmlUnitDriver" type="MyHtmlUnitDriverType" />
-
+	<xsd:element name="mailer" type="MailerType" />
 </xsd:schema>

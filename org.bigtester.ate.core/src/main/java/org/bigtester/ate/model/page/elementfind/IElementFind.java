@@ -48,4 +48,12 @@ public interface IElementFind extends ITestObjectFinder<WebElement>{
 	 * @return the find by value
 	 */
 	String getFindByValue();
+	
+	/**
+	 * Sets the search only on previous success i frame.
+	 *
+	 * @param searchOnlyOnPreviousSuccessIFrame the new search only on previous success i frame
+	 */
+	void setSearchOnlyOnPreviousSuccessIFrame(boolean searchOnlyOnPreviousSuccessIFrame);
+	
 }

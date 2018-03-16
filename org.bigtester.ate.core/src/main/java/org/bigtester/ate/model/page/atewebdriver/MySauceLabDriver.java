@@ -45,6 +45,14 @@ public class MySauceLabDriver extends MyRemoteDriver implements IMyWebDriver {
 		this.setAccesskey(accesskey);
 	}
 	
+	/**
+	 * Instantiates a new my sauce lab driver.
+	 *
+	 * @param browserName the browser name
+	 * @param version the version
+	 * @param userName the user name
+	 * @param accesskey the accesskey
+	 */
 	public MySauceLabDriver( String browserName, String version, String userName, String accesskey) {
 		
 		super(browserName, version, Platform.ANY.toString(), "https://" + userName + ":" + accesskey + "@ondemand.saucelabs.com:443/wd/hub");

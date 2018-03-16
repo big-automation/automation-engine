@@ -42,6 +42,14 @@ public class CursorMoveAction extends BaseElementAction implements
 		super(myWd);
 		// TODO Auto-generated constructor stub
 	}
+	
+	/**
+	 * Instantiates a new cursor move action.
+	 */
+	public CursorMoveAction() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * {@inheritDoc}

@@ -89,7 +89,9 @@ public class SendKeysActionPostBeanProcessor implements
 		for (int index = 0; index < allSendKeysActions.length; index++) {
 			BeanDefinition sendKeyActDef = beanFactory
 					.getBeanDefinition(allSendKeysActions[index]);
-			String dataValue = ((RuntimeBeanReference) sendKeyActDef.getConstructorArgumentValues().getGenericArgumentValue(RuntimeBeanReference.class).getValue()).getBeanName();
+			
+			
+			String dataValue = null == sendKeyActDef.getConstructorArgumentValues().getGenericArgumentValue(RuntimeBeanReference.class) ? null: ((RuntimeBeanReference) sendKeyActDef.getConstructorArgumentValues().getGenericArgumentValue(RuntimeBeanReference.class).getValue()).getBeanName();
 					//.getAttribute(XsdElementConstants.ATTR_SENDKEYSACTION_DATAVALUE);
 			if (null == dataValue) {
 				throw new IllegalStateException(

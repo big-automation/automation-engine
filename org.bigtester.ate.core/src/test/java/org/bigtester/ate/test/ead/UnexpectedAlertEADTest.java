@@ -46,7 +46,7 @@ import org.testng.annotations.AfterClass;
  * @author Peidong Hu
  *
  */
-@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/unexpectedAlertHandling.xml" })
+//@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testSuite01/unexpectedAlertHandling.xml" })
 public class UnexpectedAlertEADTest extends BigtesterProjectTest {
 
 	/**

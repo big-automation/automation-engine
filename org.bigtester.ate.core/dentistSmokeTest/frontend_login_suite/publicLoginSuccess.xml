@@ -55,12 +55,7 @@
 		<ate:elementStep id="publicLogin_clickLoginButton"
 			stepDescription="click Login button to log in" stepName="clickLoginButton"
 			targetStep="true" elementActionDef="clickLoginButtonWE" pageObject="publicLoginDashBoard">
-			<property name="expectedResultAsserter">
-				<list>
-<!-- 					<ref bean="publicLoginDashBoardPropertyAsserter" /> -->
-					<ref bean="publicLoginDashBoardElementExistenceAsserter" />
-				</list>
-			</property>
+			
 		</ate:elementStep>
 		<ate:elementStep id="logoutPatient"
 			stepDescription="logout patient" stepName="logoutPatient"

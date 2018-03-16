@@ -1,4 +1,4 @@
-//org.springframework.ide.eclipse.beans.core.default.version.http\://www.bigtester.org/schema/ate=
+//org.springframework.ide.eclipse.beans.core.default.version.http\://www.bigtester.org/schema/ate=http\://www.bigtester.org/schema/ate/ate-2.0.xsd
 //org.springframework.ide.eclipse.beans.core.default.version.http\://www.hazelcast.com/schema/spring=
 //org.springframework.ide.eclipse.beans.core.default.version.http\://www.springframework.org/schema/aop=
 //org.springframework.ide.eclipse.beans.core.default.version.http\://www.springframework.org/schema/beans=
@@ -34,6 +34,7 @@
 //org.springframework.ide.eclipse.beans.core.prefix.http\://www.springframework.org/schema/util=util
 eclipse.preferences.version=1
 org.springframework.ide.eclipse.beans.core.default.version.check.classpath=true
-org.springframework.ide.eclipse.beans.core.enable.project.preferences=false
+org.springframework.ide.eclipse.beans.core.disableCachingForNamespaceLoadingFromClasspath=true
+org.springframework.ide.eclipse.beans.core.enable.project.preferences=true
 org.springframework.ide.eclipse.beans.core.ignoreMissingNamespaceHandler=false
 org.springframework.ide.eclipse.beans.core.loadNamespaceHandlerFromClasspath=true

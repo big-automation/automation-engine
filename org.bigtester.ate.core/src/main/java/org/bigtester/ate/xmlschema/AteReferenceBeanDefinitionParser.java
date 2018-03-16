@@ -20,10 +20,10 @@
  *******************************************************************************/
 package org.bigtester.ate.xmlschema;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import org.bigtester.ate.GlobalUtils;
-import org.eclipse.jdt.annotation.Nullable; 
+import org.eclipse.jdt.annotation.Nullable;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.xml.AbstractBeanDefinitionParser;
 import org.springframework.beans.factory.xml.ParserContext;
@@ -33,7 +33,7 @@ import org.w3c.dom.Element;
 // TODO: Auto-generated Javadoc
 /**
  * This class SimpleDateFormatBeanDefinitionParser defines ....
- * 
+ *
  * @author Peidong Hu
  *
  */
@@ -60,8 +60,8 @@ public class AteReferenceBeanDefinitionParser extends
 		return retVal;
 	}
 
-        
+
 	}
-	
+
 
 }

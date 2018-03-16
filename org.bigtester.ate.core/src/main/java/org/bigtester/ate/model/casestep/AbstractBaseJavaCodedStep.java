@@ -28,6 +28,7 @@ import org.bigtester.ate.model.page.exception.PageValidationException;
 import org.bigtester.ate.model.page.exception.StepExecutionException; 
 import org.eclipse.jdt.annotation.Nullable; 
 import org.springframework.beans.factory.annotation.Autowired;   
+import org.springframework.context.annotation.Lazy;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -41,6 +42,7 @@ abstract public class AbstractBaseJavaCodedStep extends BaseTestStep{
 	/** The my web driver. */
 	@Autowired
 	@Nullable
+	@Lazy
 	private IMyWebDriver myWebDriver;
 	
 	

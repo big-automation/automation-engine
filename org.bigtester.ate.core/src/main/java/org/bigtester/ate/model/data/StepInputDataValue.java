@@ -21,12 +21,16 @@
 package org.bigtester.ate.model.data;
 
 
+import javax.annotation.PostConstruct;
+
 import org.bigtester.ate.model.casestep.RepeatDataRefreshEvent;
 import org.bigtester.ate.model.casestep.RepeatStep;
 import org.bigtester.ate.model.data.dao.ElementInputDataDaoImpl;
+import org.bigtester.ate.model.data.dao.IElementInputDataDaoImpl;
 import org.bigtester.ate.model.data.exception.RepeatTestDataException;
 import org.bigtester.ate.model.data.exception.TestDataException;
 import org.eclipse.jdt.annotation.Nullable;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 
 // TODO: Auto-generated Javadoc
@@ -39,7 +43,8 @@ import org.springframework.context.ApplicationListener;
 public class StepInputDataValue extends BaseInputDataValue implements IStepInputData, ApplicationListener<RepeatDataRefreshEvent>{
 
 	/** The element data dao. */
-	private ElementInputDataDaoImpl elementDataDao;//NOPMD
+	@Autowired
+	private IElementInputDataDaoImpl elementDataDao;//NOPMD
 	/**
 	 * @param elementDataDao
 	 * @throws TestDataException 
@@ -51,7 +56,30 @@ public class StepInputDataValue extends BaseInputDataValue implements IStepInput
 		this.dataValueID = dataValueID;
 		initDataValue (dataValueID);
 	}
+	
+	/**
+	 * Instantiates a new step input data value.
+	 *
+	 * @param dataValueID the data value id
+	 * @throws TestDataException the test data exception
+	 */
+	public StepInputDataValue(
+			String dataValueID) throws TestDataException {
+		super("");
+		this.dataValueID = dataValueID;
+		//initDataValue (dataValueID);
+	}
 
+	/**
+	 * Inits the.
+	 *
+	 * @throws TestDataException the test data exception
+	 */
+	@PostConstruct
+	public void init() throws TestDataException {
+		initDataValue(dataValueID);
+	}
+	
 	/**
 	 * Gets the data value id.
 	 *
@@ -66,7 +94,7 @@ public class StepInputDataValue extends BaseInputDataValue implements IStepInput
 	 *
 	 * @return the elementDataDao
 	 */
-	public ElementInputDataDaoImpl getElementDataDao() {
+	public IElementInputDataDaoImpl getElementDataDao() {
 		return elementDataDao;
 	}
 

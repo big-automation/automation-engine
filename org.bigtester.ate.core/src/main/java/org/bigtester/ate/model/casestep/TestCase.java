@@ -165,7 +165,11 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer{
 
 			try {
 				currentTestStepTmp.doStep(this);// NOPMD
+				
 				currentTestStepTmp.setStepResultStatus(StepResultStatus.PASS);
+				if (currentTestStepTmp.isMailScreenShot()) {
+					currentTestStepTmp.getMyWebDriver().sendScreenShotToEmailAddress(currentTestStepTmp.getStepName(), "Test Step Result is PASS");
+				}
 				setCurrentTestStep(currentTestStepTmp);
 				int successConditonalJumpToStepIndex = currentTestStepTmp.getSuccessConditionallyJumpToStepIndex(this); //NOPMD
 				if (AopUtils.getTargetClass(currentTestStepTmp) == RepeatStep.class)

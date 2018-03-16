@@ -68,12 +68,23 @@ public class ImportFromFileAction extends PageModelBase implements
 	/**
 	 * @param myWd
 	 */
+	@Deprecated
 	public ImportFromFileAction(IMyWebDriver myWd, String fileName) {
 		super(myWd);
 		if (StringUtils.isEmpty(fileName)) throw GlobalUtils.createNotInitializedException("file Name");
 		this.fileNameWithAbsolutePath = fileName;
 	}
-
+	
+	/**
+	 * Instantiates a new import from file action.
+	 *
+	 * @param fileName the file name
+	 */
+	public ImportFromFileAction(String fileName) {
+		super();
+		if (StringUtils.isEmpty(fileName)) throw GlobalUtils.createNotInitializedException("file Name");
+		this.fileNameWithAbsolutePath = fileName;
+	}
 	
 	/**
 	 * {@inheritDoc}

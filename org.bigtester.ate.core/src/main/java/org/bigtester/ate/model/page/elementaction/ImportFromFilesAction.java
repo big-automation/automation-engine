@@ -39,8 +39,16 @@ public class ImportFromFilesAction extends PageModelBase implements
 	/**
 	 * @param myWd
 	 */
+	
 	public ImportFromFilesAction(IMyWebDriver myWd) {
 		super(myWd);
+	}
+
+	/**
+	 * Instantiates a new import from files action.
+	 */
+	public ImportFromFilesAction() {
+		super();
 	}
 
 	

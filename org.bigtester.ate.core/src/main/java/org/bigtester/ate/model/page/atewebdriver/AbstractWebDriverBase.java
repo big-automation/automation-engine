@@ -33,11 +33,19 @@ import java.util.Optional;
 
 import javax.imageio.ImageIO;
 
+import org.apache.commons.io.FileUtils;
 import org.bigtester.ate.GlobalUtils;
+import org.bigtester.ate.GmailUtils;
+import org.bigtester.ate.model.project.Mailer;
 import org.eclipse.jdt.annotation.Nullable;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.Augmenter;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
@@ -57,7 +65,11 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 	/** The browser windows monitor. */
 	@Nullable
 	@Autowired
+	@Lazy
 	private IMultiWindowsHandler multiWindowsHandler;
+	
+	/** The mailer. */
+	private Mailer mailer;
 	
 	
 	/**
@@ -134,7 +146,7 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 		this.multiWindowsHandler = multiWindowsHandler;
 	}
 	
-	@SuppressWarnings("null")
+	
 	private String generateRandomFilename(String filename) {
 		Calendar cld = Calendar.getInstance();
 		filename=filename.trim();
@@ -151,28 +163,45 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 	}
 
 	private boolean createScreenCaptureJPEG(String filename) {
+		File screenshot;
+		if (this.getWebDriverInstance() instanceof RemoteWebDriver) {
+			WebDriver augmentedDriver = new Augmenter().augment(this.getWebDriverInstance());
+		    screenshot = ((TakesScreenshot)augmentedDriver).
+		                            getScreenshotAs(OutputType.FILE);
+		} else {
+			screenshot = ((TakesScreenshot)this.getWebDriverInstance()).
+                    getScreenshotAs(OutputType.FILE);
+		}
 		boolean retVal = false;
 		try {
-			BufferedImage img = getScreenAsBufferedImage();
-			File output = new File(filename);
-			ImageIO.write(img, "jpg", output);
+			// now copy the screenshot to desired location using copyFile
+			// //method
+			FileUtils.copyFile(screenshot, new File(filename));
 			retVal = true;
-		} catch (IOException | AWTException e) {
-			e.printStackTrace();
-			retVal= false;
+		} catch (IOException e) {
+			//System.out.println(e.getMessage());
+			throw GlobalUtils.createInternalError("createScreenCaptureJPEG", e);
 		}
+//		try {
+//			BufferedImage img = getScreenAsBufferedImage();
+//			File output = new File(filename);
+//			ImageIO.write(img, "jpg", output);
+//			retVal = true;
+//		} catch (IOException | AWTException e) {
+//			//e.printStackTrace();
+//			retVal= false;
+//		}
 		return retVal;
 	}
 
-	@SuppressWarnings("null")
 	private BufferedImage getScreenAsBufferedImage() throws AWTException {
 		BufferedImage img = null;
 
-		Robot r;
-		r = new Robot();
-		Toolkit t = Toolkit.getDefaultToolkit();
-		Rectangle rect = new Rectangle(t.getScreenSize());
-		img = r.createScreenCapture(rect);
+		Robot rob;
+		rob = new Robot();
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Rectangle rect = new Rectangle(toolkit.getScreenSize());
+		img = rob.createScreenCapture(rect);
 
 		return img;
 	}
@@ -180,12 +209,12 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 	/**
 	 * {@inheritDoc}
 	 */
-	@SuppressWarnings("null")
+	
 	public Optional<String> saveScreenShot(Optional<String> pathFileName) {
 		String filename = generateRandomFilename(pathFileName
-				.orElse(getWebDriverInstance().getCurrentUrl()));
+				.orElse(getWebDriverInstance().getCurrentUrl().substring(0, 30)));
 		if (createScreenCaptureJPEG(filename)) {
-			return Optional.of(filename);
+			return Optional.of(filename); //NOPMD
 		} else {
 			return Optional.empty();
 		}
@@ -194,11 +223,38 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 	/**
 	 * {@inheritDoc}
 	 */
-	@SuppressWarnings("null")
 	public Optional<String> saveScreenShot() {
-		return saveScreenShot(Optional.ofNullable(getWebDriverInstance().getCurrentUrl()));
+		return saveScreenShot(Optional.ofNullable(getWebDriverInstance().getCurrentUrl().substring(0, 30)));
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void sendScreenShotToEmailAddress(String from, String to, String subject,
+			String mailBody) {
+		GmailUtils.sendEmail(mailer.getFromMailAddress(), mailer.getToMailAddress(), subject, mailBody, saveScreenShot().orElse(""), mailer.getSmtpMailUserName(), mailer.getSmtpMailUserPassword());
+		
+	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void sendScreenShotToEmailAddress(String subject,
+			String mailBody) {
+		GmailUtils.sendEmail(mailer.getFromMailAddress(), mailer.getToMailAddress(), subject, mailBody, saveScreenShot().orElse(""), mailer.getSmtpMailUserName(), mailer.getSmtpMailUserPassword());
+		
+	}
+	/**
+	 * @return the mailer
+	 */
+	public Mailer getMailer() {
+		return mailer;
+	}
+	/**
+	 * @param mailer the mailer to set
+	 */
+	public void setMailer(Mailer mailer) {
+		this.mailer = mailer;
+	}
 
 }

@@ -44,7 +44,8 @@ public class SystemLogger {
 	
 	@Pointcut("within(org.bigtester.ate..*)")
 	private void selectAll() {} //NOPMD
-
+	
+	
 	private boolean isAlreadySysPointCut(Throwable error) {
 		boolean retVal = false; //NOPMD
 		for (int i =0; i <error.getSuppressed().length; i++) {

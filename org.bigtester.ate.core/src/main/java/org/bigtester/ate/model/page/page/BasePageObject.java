@@ -66,6 +66,12 @@ public class BasePageObject extends PageModelBase {
 	private String pageTitle;
 	
 	/**
+	 * Instantiates a new base page object.
+	 */
+	public BasePageObject() { //NOPMD
+		
+	}
+	/**
 	 * @param myWd
 	 */
 	public BasePageObject(IMyWebDriver myWd) {

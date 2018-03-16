@@ -26,7 +26,6 @@ import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
 import org.bigtester.ate.model.page.atewebdriver.exception.BrowserUnexpectedException;
 import org.eclipse.jdt.annotation.Nullable;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -37,7 +36,7 @@ import org.testng.annotations.BeforeClass;
  * @author Peidong Hu
  *
  */
-@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testproject.xml" })
+//@ContextConfiguration(locations = { "classpath:bigtesterTestNG/testproject.xml" })
 public class BigtesterProjectTest extends BaseATETest {
 
 	/** The my driver. */

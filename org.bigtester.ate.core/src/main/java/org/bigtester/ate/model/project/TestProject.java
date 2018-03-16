@@ -23,12 +23,16 @@ package org.bigtester.ate.model.project; //NOPMD
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.annotation.ATELogLevel;
 import org.bigtester.ate.annotation.TestProjectLoggable;
 import org.bigtester.ate.model.caserunner.CaseRunnerGenerator;
+import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
 import org.bigtester.ate.reporter.ATEXMLReporter;
+import org.bigtester.ate.reporter.AteEmailableReporter;
+import org.bigtester.ate.systemlogger.LogbackWriter;
 import org.eclipse.jdt.annotation.Nullable;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
@@ -44,7 +48,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 // TODO: Auto-generated Javadoc
 /**
  * The Class TestProject defines ....
- * 
+ *
  * @author Peidong Hu
  */
 public class TestProject {
@@ -58,11 +62,20 @@ public class TestProject {
 	@XStreamOmitField
 	private ApplicationContext appCtx;
 
+	/** The my web driver. */
+	@Nullable
+	@XStreamOmitField
+	private Optional<IMyWebDriver> myWebDriver = Optional.empty();
+
+
 	/** The global init xmlfiles. */
 	private Resource globalInitXmlFile;
 
 	/** The step think time. */
 	private int stepThinkTime;
+
+	/** The mailer. */
+	private Mailer mailer;
 
 	/** The test project listener. */
 	@Nullable
@@ -72,7 +85,7 @@ public class TestProject {
 	/** The testng. */
 	@XStreamOmitField
 	final private TestNG testng = new TestNG();
-	
+
 	/**
 	 * Instantiates a new test project.
 	 *
@@ -87,7 +100,7 @@ public class TestProject {
 
 	/**
 	 * Gets the suite list.
-	 * 
+	 *
 	 * @return the suiteList
 	 */
 	public List<TestSuite> getSuiteList() {
@@ -103,7 +116,7 @@ public class TestProject {
 
 	/**
 	 * Sets the suite list.
-	 * 
+	 *
 	 * @param suiteList
 	 *            the suiteList to set
 	 */
@@ -113,7 +126,7 @@ public class TestProject {
 
 	/**
 	 * Run suites.
-	 * 
+	 *
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 * @throws ParseException
@@ -124,13 +137,15 @@ public class TestProject {
 
 		final TestProjectListener tla = new TestProjectListener(this);
 		final TestCaseResultModifier repeatStepResultModifier = new TestCaseResultModifier();
-		
+
 		testng.addListener(tla);
 		testng.addListener(repeatStepResultModifier);
 
 		ATEXMLReporter rng = new ATEXMLReporter();
 		rng.setStackTraceOutputMethod(XMLReporterConfig.STACKTRACE_NONE);
+		AteEmailableReporter emailReport = new AteEmailableReporter();
 		testng.addListener(rng);
+		testng.addListener(emailReport);
 		CaseRunnerGenerator crg = new CaseRunnerGenerator(this.getSuiteList());
 		crg.createCaseRunners();
 		if (0 == crg.loadCaseRunnerClasses()) {
@@ -142,13 +157,13 @@ public class TestProject {
 
 			XmlPackage xmlpackage = new XmlPackage();
 			xmlpackage.setName(crg.getBasePackageName() + "." + tempSuite.getSuiteName());
-			
+
 			packages.add(xmlpackage);
-			
+
 		}
 		List<XmlSuite> xmlSuites = new ArrayList<XmlSuite>();
 		XmlSuite xmlProject = new XmlSuite();
-		
+
 		XmlTest test = new XmlTest(xmlProject);
 		test.setPackages(packages);
 		xmlSuites.add(xmlProject);
@@ -158,6 +173,8 @@ public class TestProject {
 			testng.setXmlSuites(xmlSuites);
 
 			testng.run();
+			
+			LogbackWriter.writeAppInfo("To enable system log, please configure the logback-production.xml");
 
 		}
 
@@ -245,7 +262,7 @@ public class TestProject {
 	public TestNG getTestng() {
 		return testng;
 	}
-	
+
 	/**
 	* {@inheritDoc}
 	*/
@@ -257,8 +274,36 @@ public class TestProject {
 			for (TestSuite suite: suiteList2) {
 				retVal = retVal + "\r\n" +  suite.toString() ;//NOPMD
 			}
-		} 
+		}
 		return retVal;
+	}
+
+	/**
+	 * @return the myWebDriver
+	 */
+	public Optional<IMyWebDriver> getMyWebDriver() {
+		return myWebDriver;
+	}
+
+	/**
+	 * @param myWebDriver the myWebDriver to set
+	 */
+	public void setMyWebDriver(Optional<IMyWebDriver> myWebDriver) {
+		this.myWebDriver = myWebDriver;
+	}
+
+	/**
+	 * @return the mailer
+	 */
+	public Mailer getMailer() {
+		return mailer;
+	}
+
+	/**
+	 * @param mailer the mailer to set
+	 */
+	public void setMailer(Mailer mailer) {
+		this.mailer = mailer;
 	}
 
 }

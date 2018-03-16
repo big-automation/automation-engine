@@ -56,6 +56,16 @@ public class DropdownListSelectAction extends BaseElementAction implements
 		super(myWd);
 		this.selections = selections;
 	}
+	
+	/**
+	 * Instantiates a new dropdown list select action.
+	 *
+	 * @param selections the selections
+	 */
+	public DropdownListSelectAction(String selections) {
+		super();
+		this.selections = selections;
+	}
 
 	/**
 	 * {@inheritDoc}

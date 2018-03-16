@@ -50,6 +50,7 @@ import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.xml.BeanDefinitionParser;
 import org.springframework.beans.factory.xml.ParserContext;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.util.StringUtils;
 import org.w3c.dom.Element;
 
@@ -67,6 +68,7 @@ public class JavaCodedStep extends BaseTestStep implements IJavaCodedStep,
 	/** The my web driver. */
 	@Autowired
 	@Nullable
+	@Lazy
 	private IMyWebDriver myWebDriver;
 
 	/** The user java step. */

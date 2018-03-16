@@ -22,7 +22,7 @@ package org.bigtester.ate.model.page.atewebdriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Optional; 
+import java.util.Optional;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -31,27 +31,26 @@ import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.apache.commons.lang3.StringUtils;
-import org.bigtester.ate.GlobalUtils;
 import org.eclipse.jdt.annotation.Nullable;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class MyChromeDriver defines ....
- * 
- * @author Jun Yang
+ *
+ * @author Peidong Hu
  */
-public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDriver {
+public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDriver2 {
 
 	/** The caps. */
 	private Optional<DesiredCapabilities> caps = Optional.empty();
-	
+
 	/** The url. */
 	private String url;
 	/**
 	 * Instantiates a new my Chrome driver.
 	 */
 	public MyRemoteDriver(String browserName, String version, String platform, String url) {
-		
+
 		super();
 		if (StringUtils.isEmpty(browserName)){
 			caps = Optional.of(DesiredCapabilities.chrome());
@@ -70,37 +69,40 @@ public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDrive
 			default:
 				break;
 			}
-				
+
 		}
 		if (!StringUtils.isEmpty(version))
 			caps.get().setVersion(version);
 		if (!StringUtils.isEmpty(platform))
 			caps.get().setPlatform(Platform.valueOf(platform));
 		caps.get().setCapability("maxDuration", 10800);
-		caps.get().setCapability("screenResolution", "1920x1080");
+		caps.get().setCapability("screenResolution", "1024x768");
+		caps.get().setCapability("takesScreenshot", false);
+		caps.get().setCapability("takesElementScreenshot", false);
 		if (!StringUtils.isEmpty(version))
 			caps.get().setVersion(version);
 		this.setUrl(url);
 	}
-		
+
 	/**
 	 * Instantiates a new my Chrome driver.
 	 */
 	public MyRemoteDriver() {
-		
+
 		super();
-		 
-		 
+
+
 	}
 
-	
-		
+
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	@Nullable
 	public WebDriver getWebDriver() {
+		//System.out.println("driver status: " + super.getWebDriver().toString());
 		return super.getWebDriver();
 	}
 
@@ -109,24 +111,35 @@ public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDrive
 	 */
 	@Override
 	public WebDriver getWebDriverInstance() {
+		return this.getWebDriverInstance(false);
+	}
+
+	/* (non-Javadoc)
+	 * @see org.bigtester.ate.model.page.atewebdriver.IMyWebDriver2#getWebDriverInstance(boolean)
+	 */
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public WebDriver getWebDriverInstance(boolean forceToNew) {
 		WebDriver retVal = getWebDriver();
-		if (null == retVal || !(((EventFiringWebDriver)retVal).getWrappedDriver() instanceof RemoteWebDriver)) {
-			
+
+		if (null == retVal || forceToNew || !(((EventFiringWebDriver)retVal).getWrappedDriver() instanceof RemoteWebDriver)) {
+
 			try {
 				RemoteWebDriver remoteVal = new RemoteWebDriver(new URL(url), caps.get());
 				remoteVal.setFileDetector(new LocalFileDetector());
 				retVal = remoteVal;
 			} catch (MalformedURLException e) {
 				//TODO add handling for bad url
-				e.printStackTrace();
+				e.printStackTrace(); //NOPMD
 			}
-			
+
 			setWebDriver(retVal);
 		}
 		return retVal;
 
 	}
-
 	/**
 	 * @return the caps
 	 */

@@ -92,13 +92,17 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 	
 	/** The optional step. default is false */
 	private boolean optionalStep;
+	
+	/** The mail screen shot. */
+	private boolean mailScreenShot;
 
 	/** The optional step inclusive. */
 	private String correlatedOptionalStepsUtilInclusive = "";// NOPMD
 	
 	private String successConditionallyJumpToStep = "";// NOPMD
 	
-	private int successConditionallyJumpToStepIndex = -1;
+	/** The success conditionally jump to step index. */
+	private int successConditionallyJumpToStepIndex = -1;//NOPMD
 
 	/** The correlated optional steps util inclusive index. */
 	private int correlatedOptionalStepsUtilInclusiveIndex = -1;// NOPMD
@@ -203,6 +207,12 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 
 	}
 	
+	/**
+	 * Gets the success conditionally jump to step index.
+	 *
+	 * @param stepJumpingEnclosedContainer the step jumping enclosed container
+	 * @return the success conditionally jump to step index
+	 */
 	public int getSuccessConditionallyJumpToStepIndex(IStepJumpingEnclosedContainer stepJumpingEnclosedContainer) {
 		if (-1 == successConditionallyJumpToStepIndex
 				&& !StringUtils
@@ -631,8 +641,22 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 	 * @param successConditionallyJumpToStepIndex the successConditionallyJumpToStepIndex to set
 	 */
 	public void setSuccessConditionallyJumpToStepIndex(
-			int successConditionallyJumpToStepIndex) {
+			int successConditionallyJumpToStepIndex) {//NOPMD
 		this.successConditionallyJumpToStepIndex = successConditionallyJumpToStepIndex;
+	}
+
+	/**
+	 * @return the mailScreenShot
+	 */
+	public boolean isMailScreenShot() {
+		return mailScreenShot;
+	}
+
+	/**
+	 * @param mailScreenShot the mailScreenShot to set
+	 */
+	public void setMailScreenShot(boolean mailScreenShot) {
+		this.mailScreenShot = mailScreenShot;
 	}
 
 //	/**

@@ -49,7 +49,9 @@ import org.w3c.dom.Element;
  */
 public class BaseTestStepBeanDefinitionParser extends
 		AbstractBeanDefinitionParser {
-
+	
+	/** The Constant ATTR_MAIL_SCREEN_SHOT. */
+	public static final String ATTR_MAIL_SCREEN_SHOT = "mailScreenShot";
 	/**
 	 * {@inheritDoc}
 	 */
@@ -100,6 +102,12 @@ public class BaseTestStepBeanDefinitionParser extends
 		bDef.getPropertyValues().addPropertyValue(
 				XsdElementConstants.ATTR_TESTSTEP_STEPNAME, stepName);
 
+		boolean mailScreenShot = Boolean.parseBoolean(element
+				.getAttribute(ATTR_MAIL_SCREEN_SHOT));
+		bDef.getPropertyValues().addPropertyValue(
+				ATTR_MAIL_SCREEN_SHOT, mailScreenShot);
+		
+		
 		String stepDesc = element
 				.getAttribute(XsdElementConstants.ATTR_TESTSTEP_STEPDESCRIPTION);
 		bDef.getPropertyValues().addPropertyValue(

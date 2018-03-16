@@ -39,7 +39,14 @@ public class Lastpage extends BasePageObject implements ILastpage{
 		super(myWd);
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	/**
+	 * Instantiates a new lastpage.
+	 */
+	public Lastpage() {//NOPMD
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * Close lastpage.
 	 */

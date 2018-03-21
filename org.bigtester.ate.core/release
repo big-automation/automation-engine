@@ -1,0 +1,4 @@
+mvn release:clean
+mvn release:prepare -Darguments="-DskipTests=true -Dmaven.javadoc.skip=true" -DignoreSnapshots=true
+mvn release:perform -Darguments="-DskipTests=true -Dmaven.javadoc.skip=true" -DignoreSnapshots=true
+

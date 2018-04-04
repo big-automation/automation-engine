@@ -162,7 +162,10 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer{
 			} else {
 				setCurrentTestStep(currentTestStepTmp);
 			}
-
+			if (this.getCurrentTestStep().getStepSpecificThinkTime()>0) {
+				ThinkTime thinkTimer = new ThinkTime(this.getCurrentTestStep().getStepSpecificThinkTime());
+				thinkTimer.setTimer();
+			}
 			try {
 				currentTestStepTmp.doStep(this);// NOPMD
 				
@@ -231,7 +234,7 @@ public class TestCase implements ITestCase, IStepJumpingEnclosedContainer{
 				
 			}
 
-			if (stepThinkTime > 0) {
+			if (this.getCurrentTestStep().getStepSpecificThinkTime()==0 && stepThinkTime > 0) {
 				ThinkTime thinkTimer = new ThinkTime(stepThinkTime);
 				thinkTimer.setTimer();
 			}

@@ -51,6 +51,7 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 	@Nullable
 	private ITestCase testCase;
 
+	private int stepSpecificThinkTime;
 //	@Nullable
 //	private IStepJumpingEnclosedContainer stepJumpingEnclosedContainer;
 	
@@ -657,6 +658,20 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 	 */
 	public void setMailScreenShot(boolean mailScreenShot) {
 		this.mailScreenShot = mailScreenShot;
+	}
+
+	/**
+	 * @return the stepSpecificThinkTime
+	 */
+	public int getStepSpecificThinkTime() {
+		return stepSpecificThinkTime;
+	}
+
+	/**
+	 * @param stepSpecificThinkTime the stepSpecificThinkTime to set
+	 */
+	public void setStepSpecificThinkTime(int stepSpecificThinkTime) {
+		this.stepSpecificThinkTime = stepSpecificThinkTime;
 	}
 
 //	/**

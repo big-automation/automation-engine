@@ -24,7 +24,7 @@ package org.bigtester.ate.xmlschema;
 import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.constant.XsdElementConstants;
 import org.bigtester.ate.model.page.elementaction.DropdownListSelectAction;
-
+import org.bigtester.ate.model.page.elementaction.DropdownListSelectAction.SelectionType;
 import org.eclipse.jdt.annotation.Nullable;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
@@ -61,6 +61,16 @@ public class DropdownListSelectActionBeanDefinitionParser extends
 				BeanDefinition bDef = holder.getBeanDefinition();
 				bDef.setBeanClassName(DropdownListSelectAction.class.getName());
 
+				String selectionType= element
+						.getAttribute(XsdElementConstants.ATTR_DROPDOWNLISTSELECTACTION_SELECTIONTYPE);
+				if (StringUtils.hasText(selectionType)) {
+					SelectionType sType = SelectionType.valueOf(selectionType);
+					bDef.setAttribute(XsdElementConstants.ATTR_DROPDOWNLISTSELECTACTION_SELECTIONTYPE, sType);
+					bDef.getConstructorArgumentValues().addGenericArgumentValue(sType);
+				} else {
+					bDef.setAttribute(XsdElementConstants.ATTR_DROPDOWNLISTSELECTACTION_SELECTIONTYPE, SelectionType.VISIBLE_TEXT);
+				}
+				
 				String selections = element
 						.getAttribute(XsdElementConstants.ATTR_DROPDOWNLISTSELECTACTION_SELECTIONS);
 				if (StringUtils.hasText(selections)) {

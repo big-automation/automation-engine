@@ -347,4 +347,13 @@ public class CaseTypeService extends TestCase implements ITestStep { // NOPMD
 		return false;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public int getStepSpecificThinkTime() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

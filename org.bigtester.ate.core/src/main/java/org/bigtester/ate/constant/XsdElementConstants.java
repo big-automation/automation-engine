@@ -157,6 +157,9 @@ public final class XsdElementConstants {
 	/** The Constant ATTR_TESTSTEP_TARGETSTEP. */
 	public static final String ATTR_TESTSTEP_TARGETSTEP = "targetStep";
 	
+	/** The Constant ATTR_TESTSTEP_STEPSPECIFICTHINKTIME. */
+	public static final String ATTR_TESTSTEP_STEPSPECIFICTHINKTIME = "stepSpecificThinkTime";
+	
 	/** The Constant ATTR_TESTSTEP_PAGEOBJECT. */
 	public static final String ATTR_TESTSTEP_PAGEOBJECT = "pageObject";
 	
@@ -417,6 +420,9 @@ public final class XsdElementConstants {
 	
 	/** The Constant ATTR_DROPDOWNLISTSELECTACTION_SELECTIONS. */
 	public static final String ATTR_DROPDOWNLISTSELECTACTION_SELECTIONS = "selections";//NOPMD
+	
+	/** The Constant ATTR_DROPDOWNLISTSELECTACTION_SELECTIONTYPE. */
+	public static final String ATTR_DROPDOWNLISTSELECTACTION_SELECTIONTYPE = "selectionType";//NOPMD
 	
 	/** The Constant ATTR_ASSIGNVALUEACTION_ASSIGNMETHOD. */
 	public static final String ATTR_ASSIGNVALUEACTION_ASSIGNMETHOD = "assignMethod";//NOPMD

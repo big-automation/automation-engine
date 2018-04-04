@@ -202,4 +202,11 @@ public interface ITestStep {
 	 * @param correctedOnTheFly the correctedOnTheFly to set
 	 */
 	void setCorrectedOnTheFly(boolean correctedOnTheFly);
+	
+	/**
+	 * Gets the step specific think time.
+	 *
+	 * @return the step specific think time
+	 */
+	int getStepSpecificThinkTime();
 }

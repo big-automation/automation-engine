@@ -35,7 +35,7 @@
 
 		<ate:homeStep id="stepOpenHomePage" stepName="openHomePage"
 			stepDescription="open indeed home page" targetStep="false"
-			pageObject="indeedCaHomepage" />
+			pageObject="indeedCaHomepage" stepSpecificThinkTime="20"/>
 
 		<ate:stepTypeServiceReference id="searchjobs" stepTypeServiceDefinitionID="qaJobSearchService"/>
 

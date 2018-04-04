@@ -70,7 +70,13 @@ public class BaseTestStepBeanDefinitionParser extends
 					XsdElementConstants.ATTR_TESTSTEP_PAGEOBJECT, new RuntimeBeanReference(pageObject));
 		}
 		
-				
+		String thinkTimeStr = element
+		.getAttribute(XsdElementConstants.ATTR_TESTSTEP_STEPSPECIFICTHINKTIME);
+		int stepSpecificThinkTime = StringUtils.isEmpty(thinkTimeStr) || Integer.valueOf(thinkTimeStr) < 0 ? 0 : Integer.valueOf(thinkTimeStr);
+		bDef.getPropertyValues().addPropertyValue(
+				XsdElementConstants.ATTR_TESTSTEP_STEPSPECIFICTHINKTIME, stepSpecificThinkTime);
+		
+		
 		boolean target = Boolean.parseBoolean(element
 				.getAttribute(XsdElementConstants.ATTR_TESTSTEP_TARGETSTEP));
 		bDef.getPropertyValues().addPropertyValue(

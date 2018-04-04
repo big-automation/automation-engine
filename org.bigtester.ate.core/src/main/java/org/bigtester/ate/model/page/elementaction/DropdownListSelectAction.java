@@ -36,8 +36,18 @@ import org.openqa.selenium.support.ui.Select;
  */
 public class DropdownListSelectAction extends BaseElementAction implements
 		IElementAction, ITestObjectActionImpl {
-
 	
+	/**
+	 * The Enum SELECTIONTYPE.
+	 *
+	 * @author Peidong Hu
+	 */
+	public enum SelectionType {
+		INDEX, VISIBLE_TEXT, VALUE
+	}
+
+	/** The selection type. */
+	final private SelectionType selectionType;
 	
 	
 	/** The selections. */
@@ -52,9 +62,10 @@ public class DropdownListSelectAction extends BaseElementAction implements
 	 * @param dataValue
 	 *            the data value
 	 */
-	public DropdownListSelectAction(IMyWebDriver myWd, String selections) {
+	public DropdownListSelectAction(IMyWebDriver myWd, String selections, SelectionType selectionType) {
 		super(myWd);
 		this.selections = selections;
+		this.selectionType = selectionType;
 	}
 	
 	/**
@@ -62,9 +73,10 @@ public class DropdownListSelectAction extends BaseElementAction implements
 	 *
 	 * @param selections the selections
 	 */
-	public DropdownListSelectAction(String selections) {
+	public DropdownListSelectAction(String selections, SelectionType selectionType) {
 		super();
 		this.selections = selections;
+		this.selectionType = selectionType;
 	}
 
 	/**
@@ -76,8 +88,13 @@ public class DropdownListSelectAction extends BaseElementAction implements
 		String multipleSel[] = selections.split(",");
 
 		   for (String valueToBeSelected : multipleSel) {
-
-			   new Select(webElm).selectByVisibleText(valueToBeSelected);
+			   if (this.selectionType.equals(SelectionType.INDEX)) {
+				   new Select(webElm).selectByIndex(Integer.valueOf(valueToBeSelected));
+			   } else if (this.selectionType.equals(SelectionType.VALUE)){
+				   new Select(webElm).selectByValue(valueToBeSelected);
+			   } else {
+				   new Select(webElm).selectByVisibleText(valueToBeSelected);
+			   }
 			   if (multipleSel.length > 1) //NOPMD
 				   webElm.sendKeys(Keys.CONTROL);
 
@@ -92,6 +109,13 @@ public class DropdownListSelectAction extends BaseElementAction implements
 	 */
 	public String getSelections() {
 		return selections;
+	}
+
+	/**
+	 * @return the selectionType
+	 */
+	public SelectionType getSelectionType() {
+		return selectionType;
 	}
 
 }

@@ -118,7 +118,7 @@
 	</ate:elementActionDef>
 	<ate:elementFindById id="efQ0"
 		findByValue="q_0"  />
-	<ate:dropdownListSelectAction id="eaSelectYes" selections="Yes"/>
+	<ate:dropdownListSelectAction id="eaSelectYes" selectionType="VISIBLE_TEXT" selections="Yes"/>
 	
 	<ate:elementActionDef id="eadAnswerYesForQ1"
 		elementFind="efQ1" elementAction="eaSelectYes">

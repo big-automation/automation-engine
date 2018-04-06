@@ -90,7 +90,8 @@ public class MyFirefoxDriver extends AbstractWebDriverBase implements
 		WebDriver retVal = super.getWebDriver();
 		if (null == retVal) {
 			FirefoxFeatureProfile bPro = getBrowserProfile();
-			File pathToBinary = new File("/home/peidong/Downloads/firefox/firefox");
+			
+			File pathToBinary = new File(System.getProperty("user.home") + "/Downloads/firefox/firefox");
 			FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
 			//ffBinary.addCommandLineOptions("-no-remote");
 			FirefoxProfile firefoxProfile = new FirefoxProfile(); 

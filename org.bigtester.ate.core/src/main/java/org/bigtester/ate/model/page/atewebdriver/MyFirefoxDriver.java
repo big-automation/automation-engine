@@ -20,10 +20,15 @@
  *******************************************************************************/
 package org.bigtester.ate.model.page.atewebdriver;
 
+import java.io.File;
+
 import org.eclipse.jdt.annotation.Nullable;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -85,13 +90,21 @@ public class MyFirefoxDriver extends AbstractWebDriverBase implements
 		WebDriver retVal = super.getWebDriver();
 		if (null == retVal) {
 			FirefoxFeatureProfile bPro = getBrowserProfile();
+			File pathToBinary = new File("/home/peidong/Downloads/firefox/firefox");
+			FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
+			//ffBinary.addCommandLineOptions("-no-remote");
+			FirefoxProfile firefoxProfile = new FirefoxProfile(); 
+			DesiredCapabilities capabilities = new DesiredCapabilities();
+			capabilities.setCapability("marionette", false);
+			
 			if (null == bPro) {
-				retVal = new FirefoxDriver();
+				retVal = new FirefoxDriver(ffBinary, firefoxProfile, capabilities);
 			} else {
 				//TODO need to change for selenium 3
-				FirefoxBinary binary = new FirefoxBinary();
-				binary.addCommandLineOptions("-no-remote");
-				retVal = new FirefoxDriver();
+				
+//				FirefoxBinary binary = new FirefoxBinary();
+//				binary.addCommandLineOptions("-no-remote");
+				retVal = new FirefoxDriver(ffBinary, firefoxProfile, capabilities);
 			}
 			setWebDriver(retVal);
 

@@ -25,6 +25,7 @@ import org.bigtester.ate.annotation.ActionLoggable;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -58,7 +59,9 @@ public class ClickAction extends BaseElementAction implements
 	@ActionLoggable (level=ATELogLevel.INFO)
 	public void doAction(final WebElement webElm) {
 		if (webElm.isDisplayed()) {
-			webElm.click();
+			Actions builder = new Actions(this.getMyWd().getWebDriverInstance());
+			builder.moveToElement(webElm).click().build().perform();
+			//webElm.click();
 		} else {
 			throw new NoSuchElementException("Element invisible");
 		}

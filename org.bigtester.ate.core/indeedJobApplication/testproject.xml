@@ -14,8 +14,9 @@
 
 	<import resource="classpath:META-INF/db-services.xml" />
 	<import resource="classpath:META-INF/project_base_bean.xml" />
-<ate:sauceLabDriver  userName="zhouyibhic" accessKey="5b66a725-2fd8-4d53-9328-d8c988ac58c6" browserName="chrome" version="46" />
-
+<!-- <ate:sauceLabDriver  userName="zhouyibhic" accessKey="5b66a725-2fd8-4d53-9328-d8c988ac58c6" browserName="chrome" version="46" /> -->
+<!-- <ate:remoteFirefoxDriver url="http://172.17.0.1:4444/wd/hub"/> -->
+	<ate:firefoxDriver/>
 	<ate:TestProject id="testproject" stepThinkTime="1"
 		globalInitXmlFile="indeedJobApplication/data.xml">
 		

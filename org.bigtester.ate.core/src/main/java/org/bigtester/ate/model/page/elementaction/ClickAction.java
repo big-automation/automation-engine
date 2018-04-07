@@ -59,9 +59,9 @@ public class ClickAction extends BaseElementAction implements
 	@ActionLoggable (level=ATELogLevel.INFO)
 	public void doAction(final WebElement webElm) {
 		if (webElm.isDisplayed()) {
-			Actions builder = new Actions(this.getMyWd().getWebDriverInstance());
-			builder.moveToElement(webElm).click().build().perform();
-			//webElm.click();
+			//Actions builder = new Actions(this.getMyWd().getWebDriverInstance());
+			//builder.moveToElement(webElm).click().build().perform();
+			webElm.click();
 		} else {
 			throw new NoSuchElementException("Element invisible");
 		}

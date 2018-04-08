@@ -106,7 +106,7 @@ public class WindowFrame {
 			myWd.switchTo().frame(this.getFrame());
 		} catch (WebDriverException thr) {
 			String msg = thr.getMessage();
-			if (null!=msg && (msg.contains("is not attached") || msg.contains("is no longer attached"))) { 
+			if (null!=msg && (msg.contains("is not attached") || msg.contains("is no longer attached") || msg.contains("Unable to locate frame"))) { 
 				throw new PageFrameRefreshException(msg, ExceptionErrorCode.WINDOWFRAME_REFRESH, this);//NOPMD
 			} else {
 				throw GlobalUtils.createInternalError("obtainFrameFocus", thr);

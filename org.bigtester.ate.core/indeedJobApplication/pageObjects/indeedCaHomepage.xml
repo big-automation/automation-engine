@@ -21,8 +21,12 @@
 	<ate:elementActionDef id="eadTypeInSearchKeyWordQA"
 		elementFind="efSearchKeyWordInput" elementAction="eaTypeKeyWordQA">
 	</ate:elementActionDef>
+	<ate:elementActionDef id="eadInjectJsToTypeInSearchKeyword"
+		elementFind="efSearchKeyWordInput" elementAction="eaInjectJsSetValue">
+	</ate:elementActionDef>
 	<ate:elementFindById id="efSearchKeyWordInput"
 		findByValue="what"/>
+	<ate:injectJsAction id="eaInjectJsSetValue" javaScriptCode="arguments[0].setAttribute('value', 'jsInjectedKeyWord');"></ate:injectJsAction>
 	<ate:sendKeysAction id="eaTypeKeyWordQA" dataValue="dvkeyWordQA" />
 	<ate:fileDataHolder id="dvkeyWordQA" dataValueID="jobKeyWord" />
 	

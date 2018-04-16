@@ -934,6 +934,27 @@ xmlns="http://www.bigtester.org/schema/ate"
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
+	
+	
+	<xsd:complexType name="InjectJsActionType">
+		<xsd:complexContent>
+			<xsd:extension base="beans:identifiedType">
+				<xsd:group ref="beans:beanElements" />
+				<xsd:attributeGroup ref="beans:beanAttributes"></xsd:attributeGroup>
+				
+				<xsd:attribute name="javaScriptCode" type="xsd:string" use="required">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+  							Make sure the js code is executable and correctly escaped.
+  						</xsd:documentation>
+					</xsd:annotation>
+					
+  					
+				</xsd:attribute>
+				
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
 
 	<xsd:complexType name="TestWindowsSwitchActionType">
 		<xsd:complexContent>
@@ -1198,6 +1219,8 @@ xmlns="http://www.bigtester.org/schema/ate"
 	<xsd:element name="clickAction" type="ClickActionType" />
 	<xsd:element name="clearTextAction" type="ClearTextActionType" />
 	<xsd:element name="mouseMoveToAction" type="MouseMoveToActionType" />
+	<xsd:element name="injectJsAction" type="InjectJsActionType" />
+	
 	<xsd:element name="sendKeysAction" type="SendKeysActionType" />
 	<xsd:element name="dropdownListSelectAction" type="DropdownListSelectActionType" />
 	

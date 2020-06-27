@@ -20,6 +20,9 @@
  *******************************************************************************/
 package org.bigtester.ate.model.page.elementaction;
 
+import java.util.List;
+
+import org.bigtester.ate.model.data.IStepInputData;
 import org.bigtester.ate.model.page.atewebdriver.exception.BrowserUnexpectedException;
 
 /**
@@ -44,4 +47,5 @@ public interface ITestObjectAction<T> {
 	 * @return the action parameters logging value
 	 */
 	String getActionParametersLoggingValue();
+	IStepInputData getDataValue();
 }

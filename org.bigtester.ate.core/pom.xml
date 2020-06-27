@@ -488,6 +488,32 @@
 			<artifactId>aspectjweaver</artifactId>
 			<version>1.8.7</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.google.api-client</groupId>
+			<artifactId>google-api-client</artifactId>
+			<version>1.23.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.oauth-client</groupId>
+			<artifactId>google-oauth-client-jetty</artifactId>
+			<version>1.23.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-gmail</artifactId>
+			<version>v1-rev83-1.23.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.camel/camel-google-mail -->
+<dependency>
+    <groupId>org.apache.camel</groupId>
+    <artifactId>camel-google-mail</artifactId>
+    <version>3.4.0</version>
+</dependency>
+
+
 		<dependency>
 			<groupId>org.bigtester</groupId>
 			<artifactId>org.bigtester.general.problomatic2</artifactId>

@@ -26,6 +26,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.annotation.ATELogLevel;
 import org.bigtester.ate.annotation.ActionLoggable;
+import org.bigtester.ate.model.data.IStepInputData;
 import org.bigtester.ate.model.io.IDiskFileOperation;
 import org.bigtester.ate.model.page.PageModelBase;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
@@ -140,6 +141,13 @@ public class ImportFromFileAction extends PageModelBase implements
 	 */
 	public void setFileNotFoundRaiseError(boolean fileNotFoundRaiseError) {
 		this.fileNotFoundRaiseError = fileNotFoundRaiseError;
+	}
+
+
+	@Override
+	public IStepInputData getDataValue() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

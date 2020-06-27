@@ -362,8 +362,32 @@ abstract public class BaseTestStep implements ApplicationContextAware {// NOPMD
 	 *             the runtime data exception
 	 */
 	protected void parseDataHolder() throws RuntimeDataException {
+		parsePostStepDataHolder();
+	}
+	
+	/**
+	 * Parses the data holder.
+	 *
+	 * @throws RuntimeDataException
+	 *             the runtime data exception
+	 */
+	protected void parsePostStepDataHolder() throws RuntimeDataException {
 		for (int i = 0; i < getDataHolders().size(); i++) {
-			getDataHolders().get(i).parseData();
+			if (!getDataHolders().get(i).isParseDataBeforeAction())
+				getDataHolders().get(i).parseData();
+		}
+	}
+	
+	/**
+	 * Parses the data holder.
+	 *
+	 * @throws RuntimeDataException
+	 *             the runtime data exception
+	 */
+	protected void parsePreStepDataHolder() throws RuntimeDataException {
+		for (int i = 0; i < getDataHolders().size(); i++) {
+			if (getDataHolders().get(i).isParseDataBeforeAction())
+				getDataHolders().get(i).parseData();
 		}
 	}
 

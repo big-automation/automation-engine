@@ -57,6 +57,7 @@ public abstract class AbstractRunTimeInputDataHolder extends BaseInputDataValue{
 	@Nullable
 	private String pageHtmlRightBoundry;
 
+	private boolean parseDataBeforeAction = false;
 	
 	/**
 	 * @return the dataType
@@ -199,6 +200,14 @@ public abstract class AbstractRunTimeInputDataHolder extends BaseInputDataValue{
 	 */
 	public String getSpringBeanID() {
 		return springBeanID;
+	}
+
+	public boolean isParseDataBeforeAction() {
+		return parseDataBeforeAction;
+	}
+
+	protected void setParseDataBeforeAction(boolean parseDataBeforeAction) {
+		this.parseDataBeforeAction = parseDataBeforeAction;
 	}
 
 	

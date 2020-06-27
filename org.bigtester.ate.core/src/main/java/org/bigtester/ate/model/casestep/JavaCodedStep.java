@@ -26,6 +26,8 @@ import org.bigtester.ate.constant.ExceptionErrorCode;
 import org.bigtester.ate.constant.ExceptionMessage;
 import org.bigtester.ate.constant.XsdElementConstants;
 import org.bigtester.ate.model.AbstractATEException;
+import org.bigtester.ate.model.data.IDataParser;
+import org.bigtester.ate.model.data.IStepInputData;
 import org.bigtester.ate.model.data.exception.RuntimeDataException;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
 import org.bigtester.ate.model.page.exception.PageValidationException;
@@ -248,7 +250,8 @@ public class JavaCodedStep extends BaseTestStep implements IJavaCodedStep,
 	public JavaCodedStep() {
 		super();
 	}
-
+	
+	
 	/**
 	 * {@inheritDoc}
 	 */

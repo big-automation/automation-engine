@@ -35,6 +35,7 @@ public interface IDataParser {
 	 */
 	void parseData() throws RuntimeDataException ;
 	
+	public boolean isParseDataBeforeAction();
 	/**
 	 * Gets the spring bean id.
 	 *

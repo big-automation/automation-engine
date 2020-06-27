@@ -29,6 +29,7 @@ import org.bigtester.ate.annotation.ATELogLevel;
 import org.bigtester.ate.constant.ExceptionErrorCode;
 import org.bigtester.ate.constant.ExceptionMessage;
 import org.bigtester.ate.model.asserter.IExpectedResultAsserter;
+import org.bigtester.ate.model.data.IDataParser;
 import org.bigtester.ate.model.data.exception.RuntimeDataException;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
 import org.bigtester.ate.model.page.elementfind.IElementFind;
@@ -82,6 +83,12 @@ public class ElementTestStep extends BaseTestStep implements IElementStep {
 		try {
 			if (getMyWebElement().getTestObjectFinder() instanceof IElementFind) {
 				((IElementFind) getMyWebElement().getTestObjectFinder()).setSearchOnlyOnPreviousSuccessIFrame(this.searchOnlyOnPreviousSuccessIFrame);
+			}
+			super.parsePreStepDataHolder();
+			if( getMyWebElement().getTestObjectAction().getDataValue() != null && getMyWebElement().getTestObjectAction().getDataValue() instanceof IDataParser ) {
+				if (((IDataParser) getMyWebElement().getTestObjectAction().getDataValue()).isParseDataBeforeAction()) {
+					((IDataParser) getMyWebElement().getTestObjectAction().getDataValue()).parseData();
+				}
 			}
 			getMyWebElement().doAction();
 			super.parseDataHolder();

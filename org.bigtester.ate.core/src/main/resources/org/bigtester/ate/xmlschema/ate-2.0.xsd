@@ -231,10 +231,16 @@ xmlns="http://www.bigtester.org/schema/ate"
 
 <xsd:complexType name="JavaCodedStepType">
 		<xsd:complexContent>
+		<!-- Here we re-use Spring elements and attributes -->
+ 				<!-- <xsd:group ref="beans:beanElements" />-->  
+				
+ 				
 			<xsd:extension base="BaseTestStepType">
+			
 				<xsd:attribute name="elementActionDef" type="xsd:string"
 					use="required">
 				</xsd:attribute>
+				
 				<xsd:attribute name="pageObject" type="xsd:string">
 					<xsd:annotation>
 						<xsd:appinfo>
@@ -645,7 +651,7 @@ xmlns="http://www.bigtester.org/schema/ate"
 							<xsd:enumeration value="PageSourceParsed" />
 							<xsd:enumeration value="CaseServiceParsed" />
 							<xsd:enumeration value="StepServiceParsed" />
-
+							<xsd:enumeration value="GmailParsed" />
 							<xsd:enumeration value="RandomAlphaText" />
 							<xsd:enumeration value="RandomNumbers" />
 							<xsd:enumeration value="RandomTextNumbers" />

@@ -26,6 +26,7 @@ import org.bigtester.ate.constant.EnumRunTimeDataType;
 import org.bigtester.ate.constant.RumtimeDataHolderType;
 import org.bigtester.ate.constant.XsdElementConstants;
 import org.bigtester.ate.model.data.CaseServiceParsedDataHolder;
+import org.bigtester.ate.model.data.GmailParsedDataHolder;
 import org.bigtester.ate.model.data.ManualAssignedValueDataHolder;
 import org.bigtester.ate.model.data.PageParsedDataHolder;
 import org.bigtester.ate.model.data.RandomAlphaNumericValueDataHolder;
@@ -80,6 +81,9 @@ public class RunTimeDataHolderBeanDefinitionParser extends
 		switch (enumDataHolderType) {
 		case PAGESOURCEPARSED:
 			bDef.setBeanClassName(PageParsedDataHolder.class.getName());
+			break;
+		case GMAILPARSED:
+			bDef.setBeanClassName(GmailParsedDataHolder.class.getName());
 			break;
 		case MANUALASSIGNED:
 			bDef.setBeanClassName(ManualAssignedValueDataHolder.class.getName());

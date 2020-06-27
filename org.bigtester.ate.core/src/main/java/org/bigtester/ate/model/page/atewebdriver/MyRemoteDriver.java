@@ -20,12 +20,15 @@
  *******************************************************************************/
 package org.bigtester.ate.model.page.atewebdriver;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Optional;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -63,7 +66,14 @@ public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDrive
 				caps.get().setBrowserName("chrome");
 				break;
 			case "firefox":
+				File profileFolder = new File("azCaptchaProfile/");
+				FirefoxProfile firefoxProfile = new FirefoxProfile(profileFolder);
+				//File extension = new File("azcaptcha.com_v0.3101.xpi");
+				//firefoxProfile..addExtension(extension);
+				
+				
 				caps = Optional.of(DesiredCapabilities.firefox());
+				caps.get().setCapability(FirefoxDriver.PROFILE, firefoxProfile);
 				caps.get().setBrowserName("firefox");
 				break;
 			default:

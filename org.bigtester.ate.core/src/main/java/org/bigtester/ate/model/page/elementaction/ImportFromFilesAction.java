@@ -22,6 +22,7 @@ package org.bigtester.ate.model.page.elementaction;
 
 import org.bigtester.ate.annotation.ATELogLevel;
 import org.bigtester.ate.annotation.ActionLoggable;
+import org.bigtester.ate.model.data.IStepInputData;
 import org.bigtester.ate.model.io.IDiskFileOperation;
 import org.bigtester.ate.model.page.PageModelBase;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
@@ -82,6 +83,12 @@ public class ImportFromFilesAction extends PageModelBase implements
 	*/
 	public String getActionParametersLoggingValue() {
 		return "this action is not implemented yet.";
+	}
+
+	@Override
+	public IStepInputData getDataValue() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -21,6 +21,7 @@
 package org.bigtester.ate.model.data;
 
 import org.bigtester.ate.constant.EnumRunTimeDataType;
+import org.bigtester.ate.model.data.exception.RuntimeDataException;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -28,7 +29,7 @@ import org.bigtester.ate.constant.EnumRunTimeDataType;
  * @author Peidong Hu
  *
  */
-public class ManualAssignedValueDataHolder extends AbstractRunTimeInputDataHolder  implements IStepInputData{
+public class ManualAssignedValueDataHolder extends AbstractRunTimeInputDataHolder  implements IDataParser, IStepInputData{
 
 	/**
 	 * @param dataType
@@ -38,5 +39,11 @@ public class ManualAssignedValueDataHolder extends AbstractRunTimeInputDataHolde
 	public ManualAssignedValueDataHolder(EnumRunTimeDataType dataType,
 			String strDataValue, String springBeanID) {
 		super(dataType, strDataValue, springBeanID);
+	}
+
+	@Override
+	public void parseData() throws RuntimeDataException {
+		// TODO Auto-generated method stub
+		
 	}
 }

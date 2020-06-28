@@ -42,6 +42,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.Augmenter;
+import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,10 +95,11 @@ abstract public class AbstractWebDriverBase implements IMyWebDriver{
 	 *            the webDriver to set
 	 */
 	public final void setWebDriver(final WebDriver webDriver) {
-		
+		((RemoteWebDriver) webDriver).setFileDetector(new LocalFileDetector());
 		EventFiringWebDriver eDriver  = new EventFiringWebDriver(webDriver);
 //		multiWindowsHandler = new MultiWindowsHandler(this);
 		eDriver.register((MultiWindowsHandler)GlobalUtils.getTargetObject(multiWindowsHandler));
+		
 		this.webDriver = eDriver;
 	}
 

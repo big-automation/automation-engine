@@ -90,6 +90,7 @@ public class ElementTestStep extends BaseTestStep implements IElementStep {
 					((IDataParser) getMyWebElement().getTestObjectAction().getDataValue()).parseData();
 				}
 			}
+			
 			getMyWebElement().doAction();
 			super.parseDataHolder();
 		} catch (InvalidElementStateException | NotFoundException | TimeoutException e ) {

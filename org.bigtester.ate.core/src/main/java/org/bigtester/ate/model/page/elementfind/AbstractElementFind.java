@@ -22,6 +22,7 @@ package org.bigtester.ate.model.page.elementfind;//NOPMD
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.annotation.ATELogLevel;
@@ -41,7 +42,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
-import com.google.common.base.Function;
+//import com.google.common.base.Function;
 
 // TODO: Auto-generated Javadoc
 /**

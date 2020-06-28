@@ -34,6 +34,24 @@ import org.openqa.selenium.interactions.Actions;
  */
 public class CursorMoveAction extends BaseElementAction implements
 		IElementAction, ITestObjectActionImpl  {
+	int xOffset = 0;
+	public int getxOffset() {
+		return xOffset;
+	}
+
+	public void setxOffset(int xOffset) {
+		this.xOffset = xOffset;
+	}
+
+	public int getyOffset() {
+		return yOffset;
+	}
+
+	public void setyOffset(int yOffset) {
+		this.yOffset = yOffset;
+	}
+
+	int yOffset = 0;
 
 	/**
 	 * @param myWd
@@ -58,7 +76,12 @@ public class CursorMoveAction extends BaseElementAction implements
 	@ActionLoggable (level=ATELogLevel.INFO)
 	public void doAction(final WebElement webElm) {
 		Actions act = new Actions(getMyWd().getWebDriver());
-		act.moveToElement(webElm).build().perform();
+		if (xOffset ==0 && yOffset == 0)
+			act.moveToElement(webElm).build().perform();
+		else
+			act.moveToElement(webElm, xOffset, yOffset).build().perform();
+		act.click().build().perform();
+		
 	}
 
 	

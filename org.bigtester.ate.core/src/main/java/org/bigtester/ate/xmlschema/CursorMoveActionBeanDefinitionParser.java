@@ -23,6 +23,7 @@ package org.bigtester.ate.xmlschema;
 import org.bigtester.ate.GlobalUtils;
 import org.bigtester.ate.constant.XsdElementConstants;
 import org.bigtester.ate.model.page.elementaction.CursorMoveAction;
+import org.bigtester.ate.model.page.elementaction.CursorMoveAndClickAction;
 import org.eclipse.jdt.annotation.Nullable;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
@@ -58,7 +59,15 @@ public class CursorMoveActionBeanDefinitionParser extends
 		BeanDefinition bDef = holder.getBeanDefinition();
 		bDef.setBeanClassName(CursorMoveAction.class.getName());
 		
-
+		int offset = Integer.parseInt(element
+				.getAttribute(CursorMoveAndClickAction.ATTR_CURSORMOVE_XOFFSET));
+		bDef.getPropertyValues().addPropertyValue(CursorMoveAndClickAction.ATTR_CURSORMOVE_XOFFSET,
+				offset);
+		
+		offset = Integer.parseInt(element
+				.getAttribute(CursorMoveAndClickAction.ATTR_CURSORMOVE_YOFFSET));
+		bDef.getPropertyValues().addPropertyValue(CursorMoveAndClickAction.ATTR_CURSORMOVE_YOFFSET,
+				offset);
 		
 		bDef.setParentName(XsdElementConstants.ELEMENT_ID_BASEELEMENTACTION);
 		

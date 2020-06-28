@@ -917,8 +917,10 @@ xmlns="http://www.bigtester.org/schema/ate"
 	<xsd:complexType name="ClickActionType">
 		<xsd:complexContent>
 			<xsd:extension base="beans:identifiedType">
+				
 				<xsd:group ref="beans:beanElements" />
 				<xsd:attributeGroup ref="beans:beanAttributes"></xsd:attributeGroup>
+				
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -937,10 +939,23 @@ xmlns="http://www.bigtester.org/schema/ate"
 			<xsd:extension base="beans:identifiedType">
 				<xsd:group ref="beans:beanElements" />
 				<xsd:attributeGroup ref="beans:beanAttributes"></xsd:attributeGroup>
+				<xsd:attribute name="xOffset" type="xsd:int" />
+				<xsd:attribute name="yOffset" type="xsd:int" />
+				
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
-
+<xsd:complexType name="MouseMoveAndClickActionType">
+		<xsd:complexContent>
+			<xsd:extension base="beans:identifiedType">
+				<xsd:group ref="beans:beanElements" />
+				<xsd:attributeGroup ref="beans:beanAttributes"></xsd:attributeGroup>
+				<xsd:attribute name="xOffset" type="xsd:int" />
+				<xsd:attribute name="yOffset" type="xsd:int" />
+				
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
 	<xsd:complexType name="TestWindowsSwitchActionType">
 		<xsd:complexContent>
 			<xsd:extension base="beans:identifiedType">
@@ -1204,6 +1219,8 @@ xmlns="http://www.bigtester.org/schema/ate"
 	<xsd:element name="clickAction" type="ClickActionType" />
 	<xsd:element name="clearTextAction" type="ClearTextActionType" />
 	<xsd:element name="mouseMoveToAction" type="MouseMoveToActionType" />
+	<xsd:element name="mouseMoveAndClickAction" type="MouseMoveAndClickActionType" />
+	
 	<xsd:element name="sendKeysAction" type="SendKeysActionType" />
 	<xsd:element name="dropdownListSelectAction" type="DropdownListSelectActionType" />
 	

@@ -433,6 +433,8 @@ public final class XsdElementConstants {
 	/** The Constant ATTR_ASSIGNVALUEACTION_PREPEND. */
 	public static final String ATTR_ASSIGNVALUEACTION_PREPEND = "prependExistingValue";
 	
+	
+	
 	/** The Constant ELEMENT_FILEIMPORTACTION. */
 	public static final String ELEMENT_FILEIMPORTACTION = "fileImportAction";
 	

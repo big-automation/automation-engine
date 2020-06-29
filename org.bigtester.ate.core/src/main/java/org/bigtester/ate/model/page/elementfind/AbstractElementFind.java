@@ -159,7 +159,17 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 	 *            the driver
 	 */
 	public void createWait(WebDriver driver) {
-		wait = new FluentWait<WebDriver>(driver)
+		wait = generateWaitInstance(driver);
+	}
+	
+	/**
+	 * Creates the wait.
+	 *
+	 * @param driver
+	 *            the driver
+	 */
+	public static Wait<WebDriver> generateWaitInstance(WebDriver driver) {
+		return new FluentWait<WebDriver>(driver)
 				.withTimeout(10, TimeUnit.SECONDS)
 				.pollingEvery(2, TimeUnit.SECONDS)
 				.ignoring(NoSuchElementException.class);
@@ -228,6 +238,70 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 		this.indexOfSameElements = indexOfSameElements;
 	}
 
+	@Nullable
+	public static WebElement findThroughiFrames(BrowserWindow win,
+			WindowFrame winFrame, Wait<WebDriver> wait, final By findByValue, int intIndex) {
+		win.getCurrentElementFindFrameChain().add(winFrame);
+		try {
+			winFrame.obtainFrameFocus();
+		} catch (PageFrameRefreshException e) {
+			throw GlobalUtils.createNotInitializedException("web driver frame", e);
+		}
+		WebElement retValWE = null;// NOPMD
+		try {
+			retValWE = wait.until( // NOPMD
+					new Function<WebDriver, WebElement>() {
+						public @Nullable WebElement apply( // NOPMD
+								@Nullable WebDriver driver) {
+							if (null == driver) {
+								throw new IllegalStateException(
+										"webdriver is not correctly populated.");
+							} else {
+								List<WebElement> allElements = driver
+										.findElements(findByValue);
+								if (allElements.size() == 0)
+									throw new NoSuchElementException(
+											findByValue.toString());
+								WebElement retVal;
+								
+								if (intIndex < -1) {
+									retVal = allElements.get(0);
+								} else if (intIndex == -1) {
+									retVal = allElements.get(allElements.size() - 1);
+								} else if (intIndex < allElements.size()){
+									retVal = allElements.get(intIndex);
+								} else {
+									throw new NoSuchElementException(findByValue.toString()); 
+								}
+								return retVal;
+								// return driver.findElement(findByValue);
+							}
+						}
+					});
+			
+		} catch (NoSuchElementException | TimeoutException error) {
+			List<WindowFrame> childFrames = winFrame.getChildFrames();
+			for (WindowFrame gChildF : childFrames) {
+				if (null == gChildF)
+					throw GlobalUtils.createInternalError("java arraylist",
+							error);
+				retValWE = findThroughiFrames(win, gChildF, wait, findByValue, intIndex);
+				if (null != retValWE) {
+
+					break;
+				}
+			}
+		}
+		if (null == retValWE) {
+			if (winFrame.getParentFrame() == null) {
+				winFrame.focusDefautContent();
+			} else {
+				winFrame.focusParentFrame();
+			}
+		}
+
+		return retValWE;
+	}
 	/**
 	 * Find through frames.
 	 *
@@ -304,6 +378,118 @@ public abstract class AbstractElementFind extends AbstractTestObjectFinderImpl {
 		}
 
 		return retValWE;
+	}
+	
+	public static WebElement findElementWithMyDriver(final By findBy, Wait<WebDriver> wait, IMyWebDriver myWebDriver, int intIndex, boolean searchOnlyPreviousSuccessFrame) 
+			throws BrowserUnexpectedException, IllegalStateException, NoSuchElementException, TimeoutException {
+		WebDriver webD = myWebDriver.getWebDriver();
+		if (null == webD) {
+			throw new IllegalStateException(
+					"web driver is not correctly populated.");
+		} else {
+			
+
+			BrowserWindow winOnFocus = myWebDriver.getMultiWindowsHandler()
+					.getBrowserWindowOnFocus();
+			winOnFocus.switchToDefaultContent();
+			if (!winOnFocus.getLastSuccessElementFindFrameChain().isEmpty()) {
+				for (WindowFrame lastSuccessWFrame : winOnFocus
+						.getLastSuccessElementFindFrameChain()) {
+					try {
+						lastSuccessWFrame.obtainFrameFocus();
+					} catch (PageFrameRefreshException e) {
+						//throw GlobalUtils.createNotInitializedException("frame chain");
+						break;
+					}
+				}
+			}
+			WebElement retValWE = null;// NOPMD
+			try {
+				retValWE = wait.until( // NOPMD
+						new Function<WebDriver, WebElement>() {
+							public @Nullable WebElement apply( // NOPMD
+									@Nullable WebDriver driver) {
+								if (null == driver) {
+									throw new IllegalStateException(
+											"webdriver is not correctly populated.");
+								} else {
+									List<WebElement> allElements = driver
+											.findElements(findBy);
+									if (allElements.size() == 0)
+										throw new NoSuchElementException(
+												findBy.toString());
+									WebElement retVal;
+									
+									if (intIndex < -1) {
+										retVal = allElements.get(0);
+									} else if (intIndex == -1) {
+										retVal = allElements.get(allElements
+												.size() - 1);
+									} else if (intIndex < allElements.size()){
+										retVal = allElements.get(intIndex);
+									} else {
+										throw new NoSuchElementException(findBy.toString()); 
+									}
+									if (!retVal.isDisplayed()){
+										throw new NoSuchElementException(findBy.toString() + " is invisible!");
+									} 
+									return retVal;
+								}
+							}
+						});
+
+			} catch (NoSuchElementException | TimeoutException error) {
+				if (!winOnFocus.getLastSuccessElementFindFrameChain().isEmpty() && searchOnlyPreviousSuccessFrame) {
+					//only search on previoius success iframe
+					throw error;
+				}
+				winOnFocus.getCurrentElementFindFrameChain().clear();
+				try {
+					myWebDriver.getMultiWindowsHandler().refreshWindowsList(myWebDriver.getWebDriverInstance(), true);
+				} catch (BrowserUnexpectedException e) {
+					myWebDriver.getMultiWindowsHandler().retryRefreshWindows(myWebDriver.getWebDriverInstance(), true);
+				}
+				
+				//for (WindowFrame winfr : winOnFocus.getVisibleFrames()) {
+				for (WindowFrame winfr : winOnFocus.getAllFrames()) {
+					try {
+						if (null == winfr)
+							throw GlobalUtils.createInternalError(
+									"arraylist error", error);
+						winfr.focusDefautContent();
+						winOnFocus.getCurrentElementFindFrameChain().clear();
+						retValWE = findThroughiFrames(winOnFocus, winfr,
+								wait, findBy, intIndex);
+
+						if (null == retValWE)
+							winfr.focusDefautContent();
+						else {
+							
+								if (!winOnFocus.getLastSuccessElementFindFrameChain().equals(
+										winOnFocus.getCurrentElementFindFrameChain())) {
+									winOnFocus.getLastSuccessElementFindFrameChain().clear();
+									winOnFocus.getLastSuccessElementFindFrameChain().addAll(
+											winOnFocus.getCurrentElementFindFrameChain());
+								}
+
+							
+							break;
+						}
+					} catch (NoSuchElementException | TimeoutException error1) {
+
+						continue;
+					}
+
+				}
+			}
+			if (null != retValWE) {
+				if (!retValWE.isDisplayed()){
+					throw new NoSuchElementException(findBy.toString() + " is invisible!");
+				}
+				return retValWE;
+			}
+			throw new NoSuchElementException(findBy.toString());
+		}
 	}
 
 	/**

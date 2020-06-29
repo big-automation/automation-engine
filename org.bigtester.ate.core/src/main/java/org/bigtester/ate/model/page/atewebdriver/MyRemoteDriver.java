@@ -66,12 +66,12 @@ public class MyRemoteDriver extends AbstractWebDriverBase implements IMyWebDrive
 				caps.get().setBrowserName("chrome");
 				break;
 			case "firefox":
-				//File profileFolder = new File("azCaptchaProfile/");
-				//FirefoxProfile firefoxProfile = new FirefoxProfile(profileFolder);
+				File profileFolder = new File("azCaptchaProfile/");
+				FirefoxProfile firefoxProfile = new FirefoxProfile(profileFolder);
 				
 				
 				caps = Optional.of(DesiredCapabilities.firefox());
-				//caps.get().setCapability(FirefoxDriver.PROFILE, firefoxProfile);
+				caps.get().setCapability(FirefoxDriver.PROFILE, firefoxProfile);
 				caps.get().setBrowserName("firefox");
 				break;
 			default:

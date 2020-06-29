@@ -85,4 +85,8 @@
 		<appender-ref ref="SystemLog" />
 		<appender-ref ref="ApplicationLog" />
 	</root>
+	
+    <logger name="org.apache" level="WARN" />
+    <logger name="httpclient" level="WARN" /> 
+
 </configuration>

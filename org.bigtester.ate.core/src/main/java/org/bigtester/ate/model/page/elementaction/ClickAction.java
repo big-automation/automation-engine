@@ -23,6 +23,8 @@ package org.bigtester.ate.model.page.elementaction;
 import org.bigtester.ate.annotation.ATELogLevel;
 import org.bigtester.ate.annotation.ActionLoggable;
 import org.bigtester.ate.model.page.atewebdriver.IMyWebDriver;
+import org.bigtester.ate.model.page.elementaction.AssignValueAction.ValueAssignmentMethod;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -61,8 +63,27 @@ public class ClickAction extends BaseElementAction implements
 		if (webElm.isDisplayed()) {
 			//Actions builder = new Actions(this.getMyWd().getWebDriverInstance());
 			//builder.moveToElement(webElm).click().build().perform();
-			webElm.click();
+			//webElm.click();
+			
+			if (getMyWd().getWebDriver() instanceof JavascriptExecutor) {
+
+				JavascriptExecutor jst = (JavascriptExecutor) getMyWd()// NOPMD
+						.getWebDriver();
+				
+					jst.executeScript("arguments[0].click(); ",
+							 webElm);
+				
+
+			} else {
+				webElm.click();
+			}	
+			
 		} else {
+			JavascriptExecutor jst = (JavascriptExecutor) getMyWd()// NOPMD
+					.getWebDriver();
+			
+				jst.executeScript("arguments[0].click(); ",
+						 webElm);
 			throw new NoSuchElementException("Element invisible");
 		}
 	}

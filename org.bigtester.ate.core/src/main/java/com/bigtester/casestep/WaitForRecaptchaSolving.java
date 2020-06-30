@@ -41,6 +41,7 @@ import org.bigtester.ate.model.page.exception.StepExecutionException;
 import org.eclipse.jdt.annotation.Nullable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
 // TODO: Auto-generated Javadoc
@@ -52,15 +53,16 @@ import org.openqa.selenium.WebElement;
 public class WaitForRecaptchaSolving extends AbstractBaseJavaCodedStep
 		implements IJavaCodedStep {
 
-	/** The Constant JOBREFERENCESSAVEFILE. */
-	private boolean isSolving = true;
-	private boolean solved = false;
-	final long timeoutInMilliseconds = 30000;
+
+	final long timeoutInMilliseconds = 90000;
 	final long sleepInternalInMilliseconds = 2000;
 	
 	@SuppressWarnings("null")
 	private void checkREcaptchaStatus(IMyWebDriver myDrv) throws  RuntimeDataException {
 		long timeHasLooped = 0;
+		/** The Constant JOBREFERENCESSAVEFILE. */
+		boolean isSolving = true;
+		boolean solved = false;
 		while (isSolving && !solved) {
 		
 			try {
@@ -69,8 +71,8 @@ public class WaitForRecaptchaSolving extends AbstractBaseJavaCodedStep
 				solved = false;
 			} catch (Throwable e) {
 				try {
-					AbstractElementFind.findElementWithMyDriver(By.xpath("//a[contains(text(),'Solved')]"), AbstractElementFind.generateWaitInstance(myDrv.getWebDriver()), myDrv, 0, true);
 					isSolving = false;
+					AbstractElementFind.findElementWithMyDriver(By.xpath("//a[contains(text(),'Solved')]"), AbstractElementFind.generateWaitInstance(myDrv.getWebDriver()), myDrv, 0, true);
 					solved = true;
 				} catch (Throwable notInRecaptchaPage) {
 					solved = false;
@@ -78,20 +80,28 @@ public class WaitForRecaptchaSolving extends AbstractBaseJavaCodedStep
 						RuntimeDataException rde = new RuntimeDataException(ExceptionMessage.MSG_RUNTIMEDATA_NOTFOUND, ExceptionErrorCode.RUNTIMEDATA_NOTFOUND, notInRecaptchaPage);
 						rde.setTestCaseName(this.getTestCase().getTestCaseName());
 						rde.setTestStepName(this.getTestCase().getCurrentTestStep().getStepName());
-						rde.initAteProblemInstance(this).setFatalProblem(true);
+						rde.initAteProblemInstance(this).setFatalProblem(!this.getTestCase().getCurrentTestStep().isOptionalStep());
 						throw rde;
 					}
 				}
 				
 			}
+			if (solved) break;
 			try {
 				Thread.sleep(this.sleepInternalInMilliseconds);
 			} catch (InterruptedException e) {
 				throw new RuntimeDataException(ExceptionMessage.MSG_RUNTIMEDATA_NOTFOUND, ExceptionErrorCode.RUNTIMEDATA_NOTFOUND, e);
 			}
 			timeHasLooped = timeHasLooped + this.sleepInternalInMilliseconds;
-			if (timeHasLooped > this.timeoutInMilliseconds) break;
+			if (timeHasLooped > this.timeoutInMilliseconds) {
+				RuntimeDataException rde = new RuntimeDataException(ExceptionMessage.MSG_RUNTIMEDATA_NOTFOUND, ExceptionErrorCode.RUNTIMEDATA_NOTFOUND, new TimeoutException());
+				rde.setTestCaseName(this.getTestCase().getTestCaseName());
+				rde.setTestStepName(this.getTestCase().getCurrentTestStep().getStepName());
+				rde.initAteProblemInstance(this).setFatalProblem(!this.getTestCase().getCurrentTestStep().isOptionalStep());
+				throw rde;
+			}
 		}
+		
 	}
 	
 	/**

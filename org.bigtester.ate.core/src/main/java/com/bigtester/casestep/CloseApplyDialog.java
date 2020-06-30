@@ -33,10 +33,14 @@ import org.bigtester.ate.model.casestep.IJavaCodedStep;
 import org.bigtester.ate.model.casestep.IStepJumpingEnclosedContainer;
 import org.bigtester.ate.model.data.exception.RuntimeDataException;
 import org.bigtester.ate.model.page.atewebdriver.MyRemoteDriver;
+import org.bigtester.ate.model.page.atewebdriver.exception.BrowserUnexpectedException;
+import org.bigtester.ate.model.page.elementfind.AbstractElementFind;
 import org.bigtester.ate.model.page.exception.PageValidationException;
 import org.bigtester.ate.model.page.exception.StepExecutionException; 
 import org.eclipse.jdt.annotation.Nullable;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
 // TODO: Auto-generated Javadoc
@@ -56,18 +60,46 @@ public class CloseApplyDialog extends AbstractBaseJavaCodedStep
 	 */
 	public void doStep(MyRemoteDriver myWebDriver, @Nullable IStepJumpingEnclosedContainer jumpingContainer) throws StepExecutionException,
 			PageValidationException, RuntimeDataException {
-		myWebDriver.getWebDriverInstance().switchTo().defaultContent();
-		myWebDriver.getWebDriverInstance().findElement(By.xpath("//*[@id=\"vjs-x\"]/a")).click();
-		
+		//myWebDriver.getWebDriverInstance().switchTo().defaultContent();
+		//myWebDriver.getWebDriverInstance().findElement(By.xpath("//*[@id=\"vjs-x\"]/a")).click();
+		try {
+			AbstractElementFind.findElementWithMyDriver(By.xpath("//*[@id='vjs-x']/a"), AbstractElementFind.generateWaitInstance(myWebDriver.getWebDriver()), myWebDriver, 0, false);
+		} catch (NoSuchElementException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TimeoutException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BrowserUnexpectedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
 	@Override
 	public void doStep(@Nullable IStepJumpingEnclosedContainer jumpingContainer)
 			throws StepExecutionException, PageValidationException, RuntimeDataException {
-		getMyWebDriver().getWebDriverInstance().switchTo().defaultContent();
-		getMyWebDriver().getWebDriverInstance().findElement(By.xpath("//*[@id=\"vjs-x\"]/a")).click();
-		
+		//getMyWebDriver().getWebDriverInstance().switchTo().defaultContent();
+		//getMyWebDriver().getWebDriverInstance().findElement(By.xpath("//*[@id=\"vjs-x\"]/a")).click();
+		try {
+			AbstractElementFind.findElementWithMyDriver(By.xpath("//*[@id='vjs-x']/a"), AbstractElementFind.generateWaitInstance(getMyWebDriver().getWebDriver()), getMyWebDriver(), 0, false);
+		} catch (NoSuchElementException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TimeoutException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BrowserUnexpectedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 	}
 
 	 

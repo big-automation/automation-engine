@@ -54,7 +54,7 @@ public class WaitForRecaptchaSolving extends AbstractBaseJavaCodedStep
 		implements IJavaCodedStep {
 
 
-	final long timeoutInMilliseconds = 90000;
+	final long timeoutInMilliseconds = 300000;
 	final long sleepInternalInMilliseconds = 2000;
 	
 	@SuppressWarnings("null")

@@ -39,6 +39,7 @@ import org.bigtester.ate.model.page.exception.PageValidationException;
 import org.bigtester.ate.model.page.exception.StepExecutionException; 
 import org.eclipse.jdt.annotation.Nullable;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
@@ -60,10 +61,22 @@ public class CloseApplyDialog extends AbstractBaseJavaCodedStep
 	 */
 	public void doStep(MyRemoteDriver myWebDriver, @Nullable IStepJumpingEnclosedContainer jumpingContainer) throws StepExecutionException,
 			PageValidationException, RuntimeDataException {
-		//myWebDriver.getWebDriverInstance().switchTo().defaultContent();
-		//myWebDriver.getWebDriverInstance().findElement(By.xpath("//*[@id=\"vjs-x\"]/a")).click();
-		try {
-			AbstractElementFind.findElementWithMyDriver(By.xpath("//*[@id='vjs-x']/a"), AbstractElementFind.generateWaitInstance(myWebDriver.getWebDriver()), myWebDriver, 0, false);
+		myWebDriver.getWebDriver().switchTo().defaultContent();
+		if (myWebDriver.getWebDriver() instanceof JavascriptExecutor) {
+
+			JavascriptExecutor jst = (JavascriptExecutor) myWebDriver// NOPMD
+					.getWebDriver();
+			
+				jst.executeScript("arguments[0].click(); ",
+						myWebDriver.getWebDriver().findElement(By.xpath("//*[@id='vjs-x']/a")));
+			
+
+		} else {
+			
+			myWebDriver.getWebDriver().findElement(By.xpath("//*[@id='vjs-x']/a")).click();
+		}
+		/*try {
+			AbstractElementFind.findElementWithMyDriver(By.xpath("//*[@id='vjs-x']/a"), AbstractElementFind.generateWaitInstance(getMyWebDriver().getWebDriver()), getMyWebDriver(), 0, false).click();
 		} catch (NoSuchElementException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,17 +89,29 @@ public class CloseApplyDialog extends AbstractBaseJavaCodedStep
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/	
 
 	}
 
 	@Override
 	public void doStep(@Nullable IStepJumpingEnclosedContainer jumpingContainer)
 			throws StepExecutionException, PageValidationException, RuntimeDataException {
-		//getMyWebDriver().getWebDriverInstance().switchTo().defaultContent();
-		//getMyWebDriver().getWebDriverInstance().findElement(By.xpath("//*[@id=\"vjs-x\"]/a")).click();
-		try {
-			AbstractElementFind.findElementWithMyDriver(By.xpath("//*[@id='vjs-x']/a"), AbstractElementFind.generateWaitInstance(getMyWebDriver().getWebDriver()), getMyWebDriver(), 0, false);
+		getMyWebDriver().getWebDriver().switchTo().defaultContent();
+		if (getMyWebDriver().getWebDriver() instanceof JavascriptExecutor) {
+
+			JavascriptExecutor jst = (JavascriptExecutor) getMyWebDriver()// NOPMD
+					.getWebDriver();
+			
+				jst.executeScript("arguments[0].click(); ",
+						getMyWebDriver().getWebDriver().findElement(By.xpath("//*[@id='vjs-x']/a")));
+			
+
+		} else {
+			
+			getMyWebDriver().getWebDriver().findElement(By.xpath("//*[@id='vjs-x']/a")).click();
+		}
+		/*try {
+			AbstractElementFind.findElementWithMyDriver(By.xpath("//*[@id='vjs-x']/a"), AbstractElementFind.generateWaitInstance(getMyWebDriver().getWebDriver()), getMyWebDriver(), 0, false).click();
 		} catch (NoSuchElementException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -99,7 +124,7 @@ public class CloseApplyDialog extends AbstractBaseJavaCodedStep
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
+		}*/		
 	}
 
 	 

@@ -91,7 +91,7 @@ public class GmailParsedDataHolder extends AbstractRunTimeInputDataHolder implem
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
                 HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
                 .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
-                .setAccessType("offline").setApprovalPrompt("force")
+                .setAccessType("offline").setApprovalPrompt("auto")
                 .build();
         LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
         
@@ -141,7 +141,7 @@ public class GmailParsedDataHolder extends AbstractRunTimeInputDataHolder implem
 
 	        // Print the labels in the user's account.
 	        String user = "me";
-	        ListMessagesResponse listResponse = service.users().messages().list(user).execute();
+	        ListMessagesResponse listResponse = service.users().messages().list(user).setMaxResults(10l).execute();
 	        List<Message> labels = listResponse.getMessages();
 	        List<Message> messages = new ArrayList<Message>();
 	        for (Message label : labels) {

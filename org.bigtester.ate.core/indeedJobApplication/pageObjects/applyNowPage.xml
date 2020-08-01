@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:ate="http://www.bigtester.org/schema/ate" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+                           http://www.springframework.org/schema/aop 
+                           http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+                           http://www.bigtester.org/schema/ate 
+                           http://www.bigtester.org/schema/ate/ate-2.0.xsd">
+
+	<!-- this registers beans annotated with @Aspect -->
+	<aop:aspectj-autoproxy />
+
+	<import resource="classpath:META-INF/logger-reporter.xml" />
+	<import resource="classpath:META-INF/page_base_bean.xml" />
+
+	<ate:regularPage id="applyNowPage" />
+
+	
+	<ate:elementActionDef id="eadClickApplyNow"
+		elementFind="efApplyNowButton2" elementAction="eaApplyNowClick">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efApplyNowButton"
+		findByValue="//a[@class='indeed-apply-widget indeed-apply-button-container indeed-apply-status-not-applied']" indexOfSameElements="0" />
+	<ate:clickAction id="eaApplyNowClick" />
+	
+	
+	<ate:elementActionDef id="eadClickApplyNow2"
+		elementFind="efApplyNowButton2" elementAction="eaApplyNowClick">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efApplyNowButton2"
+		findByValue="//a[@class='indeed-apply-button']"/>
+	
+	
+	<ate:elementActionDef id="eadFilloutApplicantName"
+		elementFind="efApplicantName" elementAction="eaFilloutApplicantName">
+	</ate:elementActionDef>
+	<ate:elementFindByName id="efApplicantName"
+		findByValue="applicant.name"  />
+	<ate:sendKeysAction id="eaFilloutApplicantName" dataValue="Peidong Hu"/>
+	
+	<ate:elementActionDef id="eadFilloutApplicantFirstName"
+		elementFind="efApplicantFirstName" elementAction="eaFilloutApplicantFirstName">
+	</ate:elementActionDef>
+	<ate:elementFindByName id="efApplicantFirstName"
+		findByValue="applicant.firstName"  />
+	<ate:sendKeysAction id="eaFilloutApplicantFirstName" dataValue="Peidong"/>
+	
+	<ate:elementActionDef id="eadFilloutApplicantLastName"
+		elementFind="efApplicantLastName" elementAction="eaFilloutApplicantLastName">
+	</ate:elementActionDef>
+	<ate:elementFindByName id="efApplicantLastName"
+		findByValue="applicant.lastName"  />
+	<ate:sendKeysAction id="eaFilloutApplicantLastName" dataValue="Hu"/>
+	
+	<ate:elementActionDef id="eadFilloutApplicantEmail"
+		elementFind="efApplicantEmail" elementAction="eaFilloutApplicantEmail">
+	</ate:elementActionDef>
+	<ate:elementFindByName id="efApplicantEmail"
+		findByValue="applicant.email"  />
+	<ate:sendKeysAction id="eaFilloutApplicantEmail" dataValue="peidong.hu3@gmail.com"/>
+
+	<ate:elementActionDef id="eadFilloutApplicantPhoneNumber"
+		elementFind="efApplicantPhoneNumber" elementAction="eaFilloutApplicantPhoneNumber">
+	</ate:elementActionDef>
+	<ate:elementFindByName id="efApplicantPhoneNumber"
+		findByValue="applicant.phoneNumber"  />
+	<ate:sendKeysAction id="eaFilloutApplicantPhoneNumber" dataValue="6823471363"/>
+	
+	<ate:elementActionDef id="eadApplyChooseFile"
+		elementFind="efApplyNowChooseFile" elementAction="eaApplyChooseFile">
+	</ate:elementActionDef>
+	<ate:elementFindById id="efApplyNowChooseFile"
+		findByValue="ia-FilePicker-resume"  />
+ 	<ate:uploadFileAction id="eaApplyChooseFile"	
+		fileNameWithAbsolutePath="/var/jenkins_home/peidonghu_resume_aug_2020.pdf" />
+
+<!-- 	<ate:uploadFileAction id="eaApplyChooseFile"	
+		fileNameWithAbsolutePath="/home/centos/Downloads/peidonghu_resume_0_d.pdf" />
+-->
+
+	<ate:elementActionDef id="eadFilloutMessage"
+		elementFind="efMessage" elementAction="eaMessageSent">
+	</ate:elementActionDef>
+	<ate:elementFindByName id="efMessage"
+		findByValue="applicant.applicationMessage"  />
+	<ate:assignValueAction id="eaMessageSent" dataValue=" I sell only the result. "/>
+	
+	<ate:elementActionDef id="eadFilloutVerificationCode"
+		elementFind="efVerificationCode" elementAction="eaInutCode">
+	</ate:elementActionDef>
+	<ate:elementFindById id="efVerificationCode"
+		findByValue="input-verificationCode"  />
+	<ate:sendKeysAction id="eaInutCode" dataValue="indeedCode"/>
+<ate:runTimeDataHolder id="indeedCode" dataHolderType="GmailParsed" dataType="Text" />
+	
+	<ate:elementActionDef id="eadSubmitResume"
+		elementFind="efResumeSubmitButton" elementAction="eaClickSubmitButton">
+	</ate:elementActionDef>
+	<ate:elementFindById id="efResumeSubmitButton"
+		findByValue="apply"  />
+	<ate:clickAction id="eaClickSubmitButton"/>
+	
+	
+	
+	<ate:elementActionDef id="eadGoogleRecapacha"
+		elementFind="efGoogleRecapacha" elementAction="eaGoogleRecapacha">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efGoogleRecapacha"
+		findByValue="//div[@class='recaptcha-checkbox-borderAnimation']"  />
+		<ate:clickAction id="eaGoogleRecapacha"/>
+	
+	<ate:elementActionDef id="eadSubmitResume2"
+		elementFind="efResumeSubmitButton2" elementAction="eaClickSubmitButton">
+	</ate:elementActionDef>
+	<ate:elementFindById id="efResumeSubmitButton2"
+		findByValue="form-action-submit"  />
+	
+	
+	<ate:elementActionDef id="eadContinueApplication"
+		elementFind="efContinueAppButton" elementAction="eaClickContinueButton">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efContinueAppButton"
+		findByValue="//a[@href='#next']"  />
+	<ate:clickAction id="eaClickContinueButton"/>
+	
+	<ate:elementActionDef id="eadContinueApplication2"
+		elementFind="efContinueAppButton2" elementAction="eaClickContinueButton">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efContinueAppButton2"
+		findByValue="//button[@id='form-action-continue']"  />
+	
+	<ate:elementActionDef id="eadContinueApplying"
+		elementFind="efContinueApplying" elementAction="eaClickContinueButton">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efContinueApplying"
+		findByValue="//button[text()='Continue applying']"  />
+	
+	
+	
+	<ate:elementActionDef id="eadAnswerYesForQ0"
+		elementFind="efQ0" elementAction="eaSelectYes">
+	</ate:elementActionDef>
+	<ate:elementFindById id="efQ0"
+		findByValue="q_0"  />
+	<ate:dropdownListSelectAction id="eaSelectYes" selectionType="VISIBLE_TEXT" selections="Yes"/>
+	
+	<ate:elementActionDef id="eadAnswerYesForQ1"
+		elementFind="efQ1" elementAction="eaSelectYes">
+	</ate:elementActionDef>
+	<ate:elementFindById id="efQ1"
+		findByValue="q_1"  />
+	
+	<ate:elementActionDef id="eadAnswerYesForQ2"
+		elementFind="efQ2" elementAction="eaSelectYes">
+	</ate:elementActionDef>
+	<ate:elementFindById id="efQ2"
+		findByValue="q_2"  />
+	
+	<ate:elementActionDef id="eadAnswerYesForQ0Raido"
+		elementFind="efQ0Raido" elementAction="eaClickYes">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efQ0Raido"
+		findByValue="//input[@type='radio' and (@value='0' or @value='yes' or @value='YES' or @value='Yes')]"  indexOfSameElements="0"/>
+	<ate:clickAction id="eaClickYes" />
+	
+	<ate:elementActionDef id="eadAnswerYesForQ1Raido"
+		elementFind="efQ1Raido" elementAction="eaClickYes1">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efQ1Raido"
+		findByValue="//input[@type='radio' and (@value='0' or @value='yes' or @value='YES' or @value='Yes')]"  indexOfSameElements="1"/>
+	<ate:clickAction id="eaClickYes1" />
+	
+	<ate:elementActionDef id="eadAnswerYesForQ2Raido"
+		elementFind="efQ2Raido" elementAction="eaClickYes2">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efQ2Raido"
+		findByValue="//input[@type='radio' and (@value='0' or @value='yes' or @value='YES' or @value='Yes')]"  indexOfSameElements="2"/>
+	<ate:clickAction id="eaClickYes2" />
+
+	<ate:elementActionDef id="eadAnswerIntForInput0"
+		elementFind="efQ0TypeInt" elementAction="eaQ0TypeInt">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efQ0TypeInt"
+		findByValue="//input[@type='text' and @data-format='INTEGER']"  indexOfSameElements="0"/>
+	<ate:sendKeysAction id="eaQ0TypeInt"  dataValue="12"/>
+	
+	<ate:elementActionDef id="eadAnswerIntForInput0-"
+		elementFind="efQ0TypeInt-" elementAction="eaQ0TypeInt">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efQ0TypeInt-"
+		findByValue="//input[@type='text' and contains(@id,'input-q')]"  indexOfSameElements="0"/>
+	
+	
+	<ate:elementActionDef id="eadAnswerIntForInput1"
+		elementFind="efQ1TypeInt" elementAction="eaQ1TypeInt">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efQ1TypeInt"
+		findByValue="//input[@type='text' and @data-format='INTEGER']"  indexOfSameElements="1"/>
+	<ate:sendKeysAction id="eaQ1TypeInt"  dataValue="12"/>
+	
+	<ate:elementActionDef id="eadAnswerIntForInput1-"
+		elementFind="efQ1TypeInt-" elementAction="eaQ1TypeInt">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efQ1TypeInt-"
+		findByValue="//input[@type='text' and contains(@id,'input-q')]"  indexOfSameElements="1"/>
+	
+	
+	<ate:elementActionDef id="eadAnswerIntForInput2"
+		elementFind="efQ2TypeInt" elementAction="eaQ2TypeInt">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efQ2TypeInt"
+		findByValue="//input[@type='text' and @data-format='INTEGER']"  indexOfSameElements="2"/>
+	<ate:sendKeysAction id="eaQ2TypeInt"  dataValue="12"/>
+
+	<ate:elementActionDef id="eadAnswerIntForInput2-"
+		elementFind="efQ2TypeInt-" elementAction="eaQ2TypeInt">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efQ2TypeInt-"
+		findByValue="//input[@type='text' and contains(@id,'input-q')]"  indexOfSameElements="2"/>
+	
+	<ate:elementActionDef id="eadFilloutWhenToInterview"
+		elementFind="efWhenInterview" elementAction="eaWhenInterview">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efWhenInterview"
+		findByValue="//textarea[contains(@id,'textarea-q')]"  indexOfSameElements="0"/>
+	<ate:assignValueAction id="eaWhenInterview" dataValue="1"/>
+	
+	<ate:elementActionDef id="eadFilloutWhenToInterview2"
+		elementFind="efWhenInterview2" elementAction="eaWhenInterview">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efWhenInterview2"
+		findByValue="//textarea[contains(@id,'textarea-q')]"  indexOfSameElements="1"/>
+	
+	<ate:elementActionDef id="eadFilloutWhenToInterview3"
+		elementFind="efWhenInterview3" elementAction="eaWhenInterview">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efWhenInterview3"
+		findByValue="//textarea[contains(@id,'textarea-q')]"  indexOfSameElements="2"/>
+	
+	<ate:elementActionDef id="eadSelect1_0"
+ 		elementFind="efQ0Selections0" elementAction="eaSelections0">
+ 	</ate:elementActionDef>
+ 	<ate:elementActionDef id="eadSelect1_1"
+ 		elementFind="efQ0Selections1" elementAction="eaSelections1">
+ 	</ate:elementActionDef>
+ 	<ate:elementActionDef id="eadSelect1_2"
+ 		elementFind="efQ0Selections2" elementAction="eaSelections2">
+ 	</ate:elementActionDef>
+ 	
+ 	<ate:elementFindByXpath id="efQ0Selections0"
+ 		findByValue="//select[starts-with(@id,'select')]"  indexOfSameElements="0"/>
+ 	<ate:dropdownListSelectAction id="eaSelections0" selectionType="INDEX" selections="1"/>
+ 	
+ 	<ate:elementFindByXpath id="efQ0Selections1"
+ 		findByValue="//select[starts-with(@id,'select')]"  indexOfSameElements="1"/>
+ 	<ate:dropdownListSelectAction id="eaSelections1" selectionType="INDEX" selections="1"/>
+ 	
+ 	<ate:elementFindByXpath id="efQ0Selections2"
+ 		findByValue="//select[starts-with(@id,'select')]"  indexOfSameElements="2"/>
+ 	<ate:dropdownListSelectAction id="eaSelections2" selectionType="INDEX" selections="1"/>
+
+
+
+	<ate:elementActionDef id="eadAcceptAlertInFocus" elementFind="efAlertInFocus" elementAction="eaAcceptAlert" />
+	<ate:alertDialogFindInCurrentFocus id="efAlertInFocus"/>
+	<ate:alertDialogAccept id="eaAcceptAlert"/>
+    
+    <ate:elementActionDef id="eadCloseApplyNowDialog"
+		elementFind="efCloseApplyNowDialog" elementAction="eaCloseApplyNowDialog">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efCloseApplyNowDialog"
+		findByValue="//*[@id='vjs-x']/a"/>
+	<ate:clickAction id="eaCloseApplyNowDialog" />
+    
+    
+    
+    <ate:elementActionDef id="eadDismissClose"
+		elementFind="efDismissClose" elementAction="eaDismissClose">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efDismissClose"
+		findByValue="//button[@class='tos-Button tos-Button-white']"/>
+	<ate:clickAction id="eaDismissClose" />
+    
+    
+	<ate:elementActionDef id="eadCloseSuccessSubmitPopup"
+		elementFind="efSubmitClosePopButton" elementAction="eaClickSubmitPopButton">
+	</ate:elementActionDef>
+	<ate:elementFindByLinkText id="efSubmitClosePopButton"
+		findByValue="Close"/>
+	<ate:clickAction id="eaClickSubmitPopButton" />
+	
+	
+	<ate:elementActionDef id="eadFindJobs2"
+		elementFind="efFindJobs2" elementAction="eaFindJobs2">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efFindJobs2"
+		findByValue="//*[@id='fj']"/>
+	<ate:clickAction id="eaFindJobs2" />
+	
+	<ate:elementActionDef id="eadCloseApplyDialogBG"
+		elementFind="efCloseApplyDialogBG" elementAction="eaCloseApplyDialogBG">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efCloseApplyDialogBG"
+		findByValue="//*[@id='ia-ApplyFormScreen']"/>
+	<ate:mouseMoveAndClickAction id="eaCloseApplyDialogBG" xOffset="20" yOffset="20" />
+	
+	<ate:elementActionDef id="eadBackApply"
+		elementFind="efBackApply" elementAction="eaBackApply">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efBackApply"
+		findByValue="//*[@id='form-action-back']"/>
+	<ate:clickAction id="eaBackApply" />
+	
+	<ate:elementActionDef id="eadCancelApply"
+		elementFind="efCancelApply" elementAction="eaCancelApply">
+	</ate:elementActionDef>
+	<ate:elementFindByXpath id="efCancelApply"
+		findByValue="//*[@id='form-action-cancel']"/>
+	<ate:clickAction id="eaCancelApply" />
+	
+</beans>
